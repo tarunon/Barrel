@@ -4,7 +4,7 @@ Barrel
 A simple type-safe CoreData library for Swift.
 
 ##Pod
-pod 'TNPreferences', :git => 'https://github.com/tarunon/TNPreferences.git'
+pod 'Barrel', :git => 'https://github.com/tarunon/Barrel.git'
 
 ##Summary
 
