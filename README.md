@@ -4,7 +4,7 @@ Barrel
 A simple type-safe CoreData library for Swift.
 
 ##Pod
-```pod
+```ruby
 pod 'Barrel', :git => 'https://github.com/tarunon/Barrel.git'
 ```
 
