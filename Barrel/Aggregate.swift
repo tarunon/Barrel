@@ -81,7 +81,12 @@ public extension Aggregate {
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group<T> {
-        return Group(context: context, builder: builder, keyPath: keyPath(T.attribute()) as! String)
+        return Group(context: context, builder: builder, keyPath: {
+            if let attribute = (keyPath(T.attribute()) as? String)?.decodingAttribute() {
+                return attribute.keyPath
+            }
+            return ""
+        }())
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group<T> {
