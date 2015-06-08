@@ -60,12 +60,13 @@ let persons = context.fetch(Person).execute().all()
 ```
 If the type is defined, fetch's argument can be omitted.
 ```swift
-let personsResult = context.fetch(Person).execute()
+let persons: [Person] = context.fetch().execute().all()
 ```
 
 ###Enum value
 A result of Barrel's fetch is Enum value Array or NSError.
 ```swift
+let personsResult = context.fetch(Person).execute()
 switch personsResult {
 case .Succeed(let persons):
     // case of Array of Person
@@ -80,7 +81,7 @@ Barrel is defined condition of fetch using method chaining.
 let persons = context.fetch(Person)
   .filter(NSPredicate(format: "name == %@", "John"))
   .orderBy(NSSortDescriptor(key: "age", ascending: true))
-  .execute().all
+  .execute().all()
 ```
 
 ###Closure
@@ -89,5 +90,5 @@ Barrel can be defined condition of fetch using closure.
 let persons = context.fetch(Person)
   .filter{ $0.name == "John" }
   .orderBy{ $0.age < $1.age }
-  .execute().all
+  .execute().all()
 ```
