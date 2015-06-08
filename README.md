@@ -3,6 +3,11 @@ Barrel
 
 A simple type-safe CoreData library for Swift.
 
+##Pod
+pod 'TNPreferences', :git => 'https://github.com/tarunon/TNPreferences.git'
+
+##Summary
+
 Swift is a type-safe programing language and supported type-inference.
 
 Before
