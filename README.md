@@ -92,3 +92,60 @@ let persons = context.fetch(Person)
   .orderBy{ $0.age < $1.age }
   .execute().all()
 ```
+
+
+##Insert
+
+Barrel provides insert methods.
+Type-safe and Closure support.
+
+```swift
+let person = context.insert(Person).setValues{
+  $0.name = "John"
+  $0.age = 24
+  }.insert()
+```
+
+And support getOrInsert method.
+
+```swift
+let person = context.insert(Person).setValues{
+  $0.name = "John"
+  $0.age = 24
+  }.getOrInsert()
+```
+
+
+##Others
+
+Barrel has more functions.
+
+###Aggregate and Grouping
+
+Support aggregate method,
+```swift
+let maxAge = context.fetch(Person)
+  .aggregate{ $0.max($1.age) }
+  .execute().get()!
+// maxAge => ["maxAge": XX]
+```
+
+and grouping.
+```swift
+let maxAgePerName = context.fetch(Person)
+  .aggregate{ $0.max($1.age) }
+  .aggregate{ $1.name }
+  .groupBy{ $1.name }
+  .execute().all()
+// maxAgePerName => [["maxAge" : XX, "name": "YY"], ...]
+```
+
+###ResultsController
+NSFetchResultsController is not also type-safe.
+Barrel supports Type-safe ResultsController object.
+```swift
+let resultsController: ResultsController<Person> = context.fetch(Person)
+  .orderBy{ $0.age < $1.age }
+  .resultsController(sectionKeyPath: nil, cacheName: nil)
+let person = resultsController.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+```
