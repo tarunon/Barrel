@@ -73,7 +73,12 @@ public extension Group {
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group {
-        return groupBy(keyPath(T.attribute()) as! String)
+        return groupBy({
+            if let attribute = (keyPath(T.attribute()) as? String)?.decodingAttribute() {
+                return attribute.keyPath
+            }
+            return ""
+            }())
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group {
