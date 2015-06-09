@@ -46,13 +46,9 @@ extension Insert {
         for e in object.changedValues() {
             fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: []))
         }
-        do {
-            if let object2 = try fetch.get() {
-                context.deleteObject(object)
-                return object2
-            }
-        } catch {
-            // dont care
+        if let object2 = try! fetch.get() {
+            context.deleteObject(object)
+            return object2
         }
         context.refreshObject(object, mergeChanges: true)
         return object

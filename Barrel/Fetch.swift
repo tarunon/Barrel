@@ -44,11 +44,7 @@ extension Fetch: Builder {
 extension Fetch: Executable {
     typealias Type = T
     public func delete() {
-        do {
-            try all().map({ self.context.deleteObject($0) })
-        } catch {
-            // don't care
-        }
+        try! all().map{ self.context.deleteObject($0) }
     }
 }
 

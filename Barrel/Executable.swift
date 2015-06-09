@@ -17,27 +17,22 @@ public protocol Executable: Builder {
 
 public extension Executable {
     func all() throws -> [Type] {
-        let result: [AnyObject]
         do {
-            result = try context.executeFetchRequest(build())
+            let result = try context.executeFetchRequest(build())
+            return result.map{ $0 as! Type }
         } catch let error {
-            result = []
             throw error
         }
-        return result.map({ $0 as! Type })
     }
     
     func get() throws -> Type? {
-        let result: [AnyObject]
         do {
             let fetchRequest = build()
             fetchRequest.fetchLimit = 1
-            result = try context.executeFetchRequest(fetchRequest)
+            return try context.executeFetchRequest(fetchRequest) as? Type
         } catch let error {
-            result = []
             throw error
         }
-        return result.first as? Type
     }
     
     func count() throws -> Int {

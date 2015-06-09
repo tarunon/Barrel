@@ -30,7 +30,7 @@ public class ResultsController<T: NSManagedObject> {
     }
     
     public func sections() -> [SectionInfo<T>] {
-        return fetchedResultsController.sections?.map({ SectionInfo<T>(sectionInfo: $0) }) ?? []
+        return fetchedResultsController.sections?.map{ SectionInfo<T>(sectionInfo: $0) } ?? []
     }
     
     public func numberOfSection() -> Int {
