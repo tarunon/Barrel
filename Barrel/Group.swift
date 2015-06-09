@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-public struct Group<T: NSManagedObject>: Builder, Executable {
-    internal let context: NSManagedObjectContext
+public struct Group<T: NSManagedObject> {
+    public let context: NSManagedObjectContext
     internal let builder: RequestBuilder
     
     internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) keyPath: () -> String) {
@@ -29,7 +29,7 @@ public struct Group<T: NSManagedObject>: Builder, Executable {
 }
 
 extension Group: Builder {
-    func build() -> NSFetchRequest {
+    public func build() -> NSFetchRequest {
         let fetchRequest = builder()
         fetchRequest.resultType = .DictionaryResultType
         return fetchRequest
@@ -41,13 +41,7 @@ extension Group: Builder {
 }
 
 extension Group: Executable {
-    public func execute() -> ExecuteResult<[String: AnyObject]> {
-        return _execute(self)
-    }
-    
-    public func count() -> CountResult {
-        return _count(self)
-    }
+    typealias Type = [String: AnyObject]
 }
 
 // MARK: group methods
@@ -69,12 +63,12 @@ public extension Group {
 // MARK: group methods via attribute
 public extension Group {
     public func having(predicate: (T -> Predicate)) -> Group {
-        return having(predicate(T.attribute()).build())
+        return having(predicate(self.context.attribute(T)).build())
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group {
         return groupBy({
-            if let attribute = (keyPath(T.attribute()) as? String)?.decodingAttribute() {
+            if let attribute = (keyPath(self.context.attribute(T)) as? String)?.decodingAttribute() {
                 return attribute.keyPath
             }
             return ""
@@ -82,6 +76,6 @@ public extension Group {
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group {
-        return groupBy(keyPath(T.attribute()).build().keyPath)
+        return groupBy(keyPath(self.context.attribute(T)).build().keyPath)
     }
 }

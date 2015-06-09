@@ -18,7 +18,7 @@ public struct Predicate {
 }
 
 extension Predicate: Builder {
-    func build() -> NSPredicate {
+    public func build() -> NSPredicate {
         return builder()
     }
     
@@ -30,7 +30,7 @@ extension Predicate: Builder {
 // MARK: compariison operation
 private extension Predicate {
     init<T>(lhs: Expression<T>, rhs: Expression<T>, type: NSPredicateOperatorType) {
-        builder = { NSComparisonPredicate(leftExpression: lhs.build(), rightExpression: rhs.build(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
+        builder = { NSComparisonPredicate(leftExpression: lhs.build(), rightExpression: rhs.build(), modifier: .DirectPredicateModifier, type: type, options: []) }
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public struct Aggregate<T: NSManagedObject> {
-    internal let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     internal let builder: RequestBuilder
     
     internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
@@ -28,7 +28,7 @@ public struct Aggregate<T: NSManagedObject> {
 }
 
 extension Aggregate: Builder {
-    func build() -> NSFetchRequest {
+    public func build() -> NSFetchRequest {
         let fetchRequest = builder()
         fetchRequest.resultType = .DictionaryResultType
         return fetchRequest
@@ -40,13 +40,7 @@ extension Aggregate: Builder {
 }
 
 extension Aggregate: Executable {
-    public func execute() -> ExecuteResult<[String: AnyObject]> {
-        return _execute(self)
-    }
-    
-    public func count() -> CountResult {
-        return _count(self)
-    }
+    typealias Type = [String: AnyObject]
 }
 
 // MARK: aggregate methods
@@ -69,20 +63,20 @@ public extension Aggregate {
 // MARK: aggregate methods via attribute
 public extension Aggregate {
     public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate {
-        return aggregate(expressionDescription(ExpressionDescription(context: self.context), T.attribute()).build())
+        return aggregate(expressionDescription(ExpressionDescription(context: self.context), self.context.attribute(T)).build())
     }
     
     public func aggregate<U>(expressionDescription:(ExpressionDescription<T>, T) -> U) -> Aggregate {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression(value: expressionDescription(description, T.attribute()))
+            let result = Expression(value: expressionDescription(description, self.context.attribute(T)))
             return description.keyPath(result).build()
             }())
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group<T> {
         return Group(context: context, builder: builder, keyPath: {
-            if let attribute = (keyPath(T.attribute()) as? String)?.decodingAttribute() {
+            if let attribute = (keyPath(self.context.attribute(T)) as? String)?.decodingAttribute() {
                 return attribute.keyPath
             }
             return ""
@@ -90,6 +84,6 @@ public extension Aggregate {
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group<T> {
-        return Group(context: context, builder: builder, keyPath: keyPath(T.attribute()).build().keyPath)
+        return Group(context: context, builder: builder, keyPath: keyPath(self.context.attribute(T)).build().keyPath)
     }
 }

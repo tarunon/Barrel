@@ -113,7 +113,7 @@ public struct ExpressionDescription<T: NSManagedObject> {
 }
 
 extension ExpressionDescription: Builder {
-    func build() -> NSExpressionDescription {
+    public func build() -> NSExpressionDescription {
         return builder()
     }
     

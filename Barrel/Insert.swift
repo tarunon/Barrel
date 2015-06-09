@@ -27,7 +27,7 @@ public struct Insert<T: NSManagedObject> {
 }
 
 extension Insert: Builder {
-    func build() -> T {
+    public func build() -> T {
         return builder()
     }
 }
@@ -44,11 +44,15 @@ extension Insert {
         let object = build()
         var fetch = context.fetch(T).filter{ $0 != object }
         for e in object.changedValues() {
-            fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as! String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .allZeros))
+            fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: []))
         }
-        if let object2 = fetch.execute().get() {
-            context.deleteObject(object)
-            return object2
+        do {
+            if let object2 = try fetch.get() {
+                context.deleteObject(object)
+                return object2
+            }
+        } catch {
+            // dont care
         }
         context.refreshObject(object, mergeChanges: true)
         return object

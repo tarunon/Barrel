@@ -14,7 +14,7 @@ private typealias ExpressionBuilder = () -> NSExpression
 public struct Expression<T> {
     private let builder: ExpressionBuilder
     internal init(value: T) {
-        if let attribute = value as? ManagedObjectAttribute {
+        if let _ = value as? ManagedObjectAttribute {
             builder = { NSExpression(forKeyPath: "self") }
         } else if let string = value as? String, let attribute = string.decodingAttribute() {
             builder = { NSExpression(forKeyPath: attribute.keyPath) }
@@ -31,7 +31,7 @@ public struct Expression<T> {
 }
 
 extension Expression: Builder {
-    func build() -> NSExpression {
+    public func build() -> NSExpression {
         return builder()
     }
     

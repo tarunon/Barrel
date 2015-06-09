@@ -23,16 +23,16 @@ private extension NSManagedObjectModel {
             }
         }
         set {
-            objc_setAssociatedObject(self, &entityMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &entityMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private func entityName(T: NSManagedObject.Type) -> String? {
-        let className = NSStringFromClass(T)
+    private func entityName(type: NSManagedObject.Type) -> String? {
+        let className = NSStringFromClass(type)
         if let entityName = entityMap[className] {
             return entityName
         }
-        if let entity = (entities as? [NSEntityDescription])?.filter({ className == $0.managedObjectClassName }).first {
+        if let entity = entities.filter({ className == $0.managedObjectClassName }).first {
             entityMap[className] = entity.name
             return entity.name
         }
@@ -41,11 +41,11 @@ private extension NSManagedObjectModel {
 }
 
 internal extension NSManagedObjectContext {
-    internal func entityName(T: NSManagedObject.Type) -> String? {
-        if let coordinator = persistentStoreCoordinator, let entityName = coordinator.managedObjectModel.entityName(T) {
+    internal func entityName(type: NSManagedObject.Type) -> String? {
+        if let coordinator = persistentStoreCoordinator, let entityName = coordinator.managedObjectModel.entityName(type) {
             return entityName
         }
-        if let entityName = parentContext?.entityName(T) {
+        if let entityName = parentContext?.entityName(type) {
             return entityName
         }
         return nil
@@ -58,7 +58,7 @@ internal extension NSManagedObjectContext {
 
 internal extension NSAttributeType {
     init(entityDescription: NSEntityDescription, keyPath: String) {
-        if let attribute = entityDescription.attributesByName[keyPath] as? NSAttributeDescription {
+        if let attribute = entityDescription.attributesByName[keyPath] {
             self = attribute.attributeType
         } else {
             self = .UndefinedAttributeType

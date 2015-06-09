@@ -14,19 +14,25 @@ import XCTest
 class AttributeTest: XCTestCase {
 
     var context: NSManagedObjectContext!
-    var storeURL = NSURL(fileURLWithPath: "test.db")!
+    var storeURL = NSURL(fileURLWithPath: "test.db")
     
     override func setUp() {
         super.setUp()
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
-        context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil, error: nil)
+        do {
+            try context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
+        } catch _ {
+        }
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
+        do {
+            // Put teardown code here. This method is called after the invocation of each test method in the class.
+            try NSFileManager.defaultManager().removeItemAtURL(storeURL)
+        } catch _ {
+        }
         super.tearDown()
     }
 

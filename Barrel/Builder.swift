@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-internal protocol Builder {
+public protocol Builder {
     typealias Result
     func build() -> Result
 }

@@ -25,7 +25,7 @@ public struct SortDescriptor {
 }
 
 extension SortDescriptor: Builder {
-    func build() -> NSSortDescriptor {
+    public func build() -> NSSortDescriptor {
         return builder()
     }
     

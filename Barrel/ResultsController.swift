@@ -22,12 +22,15 @@ public class ResultsController<T: NSManagedObject> {
     public weak var delegate: NSFetchedResultsControllerDelegate? {
         didSet {
             fetchedResultsController.delegate = delegate
-            fetchedResultsController.performFetch(nil)
+            do {
+                try fetchedResultsController.performFetch()
+            } catch _ {
+            }
         }
     }
     
     public func sections() -> [SectionInfo<T>] {
-        return (fetchedResultsController.sections as? [NSFetchedResultsSectionInfo])?.map({ SectionInfo<T>(sectionInfo: $0) }) ?? []
+        return fetchedResultsController.sections?.map({ SectionInfo<T>(sectionInfo: $0) }) ?? []
     }
     
     public func numberOfSection() -> Int {
@@ -70,7 +73,7 @@ public class SectionInfo<T: NSManagedObject> {
         }
     }
     
-    public var indexTitle: String {
+    public var indexTitle: String? {
         get {
             return sectionInfo.indexTitle
         }
@@ -84,7 +87,7 @@ public class SectionInfo<T: NSManagedObject> {
     
     public var objects: [T] {
         get {
-            return sectionInfo.objects as! [T]
+            return sectionInfo.objects as? [T] ?? []
         }
     }
 }

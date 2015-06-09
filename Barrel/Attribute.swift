@@ -53,7 +53,7 @@ internal extension NSManagedObject {
             var properties = class_copyPropertyList(classForCoder(), &propertyCount)
             for i in 0..<Int(propertyCount) {
                 if let propertyName = String.fromCString(property_getName(properties[i])) {
-                    let keyPath: @objc_block() -> AnyObject? = {
+                    let keyPath: @convention(block)() -> AnyObject? = {
                         return String.codingAttribute(PropertyAttribute(parentType: self, keyPath: propertyName))
                     }
                     class_addMethod(attributeClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(keyPath, AnyObject.self)), "@@:")
@@ -73,7 +73,7 @@ internal extension NSManagedObject {
             var properties = class_copyPropertyList(classForCoder(), &propertyCount)
             for i in 0..<Int(propertyCount) {
                 if let propertyName = String.fromCString(property_getName(properties[i])) {
-                    let keyPath: @objc_block() -> AnyObject? = {
+                    let keyPath: @convention(block)() -> AnyObject? = {
                         return nil
                     }
                     class_addMethod(comparisonClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(keyPath, AnyObject.self)), "@@:")
@@ -82,12 +82,14 @@ internal extension NSManagedObject {
         }
         return comparisonClass
     }
-    
-    class func attribute() -> Self {
-        return unsafeBitCast(attributeClass().new(), self)
+}
+
+internal extension NSManagedObjectContext {
+    func attribute<T: NSManagedObject>(type: T.Type) -> T {
+        return unsafeBitCast(T.attributeClass().new(), type)
     }
     
-    class func comparison() -> Self {
-        return unsafeBitCast(comparisonClass().new(), self)
+    func comparison<T: NSManagedObject>(type: T.Type) -> T {
+        return unsafeBitCast(T.comparisonClass().new(), type)
     }
 }
