@@ -29,7 +29,7 @@ public extension Executable {
         do {
             let fetchRequest = build()
             fetchRequest.fetchLimit = 1
-            return try context.executeFetchRequest(fetchRequest) as? Type
+            return try context.executeFetchRequest(fetchRequest).first as? Type
         } catch let error {
             throw error
         }
