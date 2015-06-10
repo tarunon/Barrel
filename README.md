@@ -64,7 +64,7 @@ let persons: [Person] = try! context.fetch().all()
 ```
 
 ###Error handling
-A result of Barrel's fetch is Enum value Array or NSError.
+Handle error using do-catch syntax.
 ```swift
 do {
   let personsResult = try context.fetch(Person).all()
