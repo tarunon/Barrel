@@ -35,10 +35,10 @@ func createPerson(name: String, age: Int) -> Person {
 After
 ```swift
 func findPerson(age: Int) -> [Person] {
-  return context.fetch()
+  return try! context.fetch()
     .filter{ $0.age == age }
     .orderBy{ $0.name < $1.name }
-    .execute().all()
+    .all()
 }
 
 func createPerson(name: String, age: Int) -> Person {
@@ -56,41 +56,41 @@ Barrel provides fetch methods.
 ###Type-safe
 Barrel's fetch method is type-safe.
 ```swift
-let persons = context.fetch(Person).execute().all()
+let persons = try! context.fetch(Person).all()
 ```
 If the type is defined, fetch's argument can be omitted.
 ```swift
-let persons: [Person] = context.fetch().execute().all()
+let persons: [Person] = try! context.fetch().all()
 ```
 
-###Enum value
+###Error handling
 A result of Barrel's fetch is Enum value Array or NSError.
 ```swift
-let personsResult = context.fetch(Person).execute()
-switch personsResult {
-case .Succeed(let persons):
-    // case of Array of Person
-case .Failed(let error):
-    // case of NSError
+do {
+  let personsResult = try context.fetch(Person).all()
+  // write succeed case
+} catch let error as NSError {
+  // write failed case 
 }
+
 ```
 
 ###Method chaining
 Barrel is defined condition of fetch using method chaining.
 ```swift
-let persons = context.fetch(Person)
+let persons = try! context.fetch(Person)
   .filter(NSPredicate(format: "name == %@", "John"))
   .orderBy(NSSortDescriptor(key: "age", ascending: true))
-  .execute().all()
+  .all()
 ```
 
 ###Closure
 Barrel can be defined condition of fetch using closure.
 ```swift
-let persons = context.fetch(Person)
+let persons = try! context.fetch(Person)
   .filter{ $0.name == "John" }
   .orderBy{ $0.age < $1.age }
-  .execute().all()
+  .all()
 ```
 
 
@@ -124,19 +124,19 @@ Barrel has more functions.
 
 Support aggregate method,
 ```swift
-let maxAge = context.fetch(Person)
+let maxAge = try! context.fetch(Person)
   .aggregate{ $0.max($1.age) }
-  .execute().get()!
+  .get()!
 // maxAge => ["maxAge": XX]
 ```
 
 and grouping.
 ```swift
-let maxAgePerName = context.fetch(Person)
+let maxAgePerName = try! context.fetch(Person)
   .aggregate{ $0.max($1.age) }
   .aggregate{ $1.name }
   .groupBy{ $1.name }
-  .execute().all()
+  .all()
 // maxAgePerName => [["maxAge" : XX, "name": "YY"], ...]
 ```
 
