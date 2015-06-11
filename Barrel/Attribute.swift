@@ -61,11 +61,9 @@ internal extension NSManagedObject {
         if attributeClass == nil {
             attributeClass = objc_allocateClassPair(ManagedObjectAttribute.self, className, 0)
             objc_registerClassPair(attributeClass)
-            var propertyCount: UInt32 = 0
-            var properties = class_copyPropertyList(classForCoder(), &propertyCount)
-            for i in 0..<Int(propertyCount) {
-                if let propertyName = String.fromCString(property_getName(properties[i])) {
-                    let keyPath: @convention(block)() -> AnyObject? = {
+            eachProperties({ (property: objc_property_t) -> () in
+                if let propertyName = String.fromCString(property_getName(property)) {
+                    let getKeyPath: @convention(block)() -> AnyObject? = {
                         return String.codingAttribute(PropertyAttribute(parentType: self, keyPath: propertyName))
                     }
                     class_addMethod(attributeClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(getKeyPath, AnyObject.self)), "@@:")
@@ -81,11 +79,9 @@ internal extension NSManagedObject {
         if comparisonClass == nil {
             comparisonClass = objc_allocateClassPair(NSObject.self, className, 0)
             objc_registerClassPair(comparisonClass)
-            var propertyCount: UInt32 = 0
-            var properties = class_copyPropertyList(classForCoder(), &propertyCount)
-            for i in 0..<Int(propertyCount) {
-                if let propertyName = String.fromCString(property_getName(properties[i])) {
-                    let keyPath: @convention(block)() -> AnyObject? = {
+            eachProperties({ (property: objc_property_t) -> () in
+                if let propertyName = String.fromCString(property_getName(property)) {
+                    let getKeyPath: @convention(block)() -> AnyObject? = {
                         return nil
                     }
                     class_addMethod(comparisonClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(getKeyPath, AnyObject.self)), "@@:")

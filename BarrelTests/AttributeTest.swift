@@ -41,12 +41,12 @@ class AttributeTest: XCTestCase {
         XCTAssertNotNil(personFetchRequest.predicate, "Pass")
         XCTAssertEqual(personFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
         XCTAssertNotNil(personFetchRequest.sortDescriptors, "Pass")
-        XCTAssertEqual(personFetchRequest.sortDescriptors as! [NSSortDescriptor], [NSSortDescriptor(key: "age", ascending: true)], "Pass")
+        XCTAssertEqual(personFetchRequest.sortDescriptors!, [NSSortDescriptor(key: "age", ascending: true)], "Pass")
 
         let staffFetchRequest = context.fetch(Staff).filter{ $0.name == "John" && $0.age == 20 }.orderBy{ $0.age < $1.age }.fetchRequest()
         XCTAssertNotNil(staffFetchRequest.predicate, "Pass")
         XCTAssertEqual(staffFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
         XCTAssertNotNil(staffFetchRequest.sortDescriptors, "Pass")
-        XCTAssertEqual(staffFetchRequest.sortDescriptors as! [NSSortDescriptor], [NSSortDescriptor(key: "age", ascending: true)], "Pass")
+        XCTAssertEqual(staffFetchRequest.sortDescriptors!, [NSSortDescriptor(key: "age", ascending: true)], "Pass")
     }
 }
