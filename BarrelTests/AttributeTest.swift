@@ -36,17 +36,17 @@ class AttributeTest: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
+    func testAttributeInFetch() {
+        let personFetchRequest = context.fetch(Person).filter{ $0.name == "John" && $0.age == 20 }.orderBy{ $0.age < $1.age }.fetchRequest()
+        XCTAssertNotNil(personFetchRequest.predicate, "Pass")
+        XCTAssertEqual(personFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
+        XCTAssertNotNil(personFetchRequest.sortDescriptors, "Pass")
+        XCTAssertEqual(personFetchRequest.sortDescriptors as! [NSSortDescriptor], [NSSortDescriptor(key: "age", ascending: true)], "Pass")
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+        let staffFetchRequest = context.fetch(Staff).filter{ $0.name == "John" && $0.age == 20 }.orderBy{ $0.age < $1.age }.fetchRequest()
+        XCTAssertNotNil(staffFetchRequest.predicate, "Pass")
+        XCTAssertEqual(staffFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
+        XCTAssertNotNil(staffFetchRequest.sortDescriptors, "Pass")
+        XCTAssertEqual(staffFetchRequest.sortDescriptors as! [NSSortDescriptor], [NSSortDescriptor(key: "age", ascending: true)], "Pass")
     }
-
 }
