@@ -48,5 +48,14 @@ class AttributeTest: XCTestCase {
         XCTAssertEqual(staffFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
         XCTAssertNotNil(staffFetchRequest.sortDescriptors, "Pass")
         XCTAssertEqual(staffFetchRequest.sortDescriptors!, [NSSortDescriptor(key: "age", ascending: true)], "Pass")
+        
+        let managerFetchRequest = context.fetch(Staff).filter{ $0.post == "manager" }.fetchRequest()
+        XCTAssertNotNil(managerFetchRequest.predicate, "Pass")
+        XCTAssertEqual(managerFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "post == %@", "manager")]), "Pass")
+        
+        let noPostFetchRequest = context.fetch(Staff).filter{ $0.post == nil }.fetchRequest()
+        XCTAssertNotNil(noPostFetchRequest.predicate, "Pass")
+        XCTAssertEqual(noPostFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "post == nil")]), "Pass")
+        
     }
 }

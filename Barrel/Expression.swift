@@ -14,15 +14,15 @@ private typealias ExpressionBuilder = () -> NSExpression
 public struct Expression<T> {
     private let builder: ExpressionBuilder
     internal init(value: T) {
-        if let _ = value as? ManagedObjectAttribute {
+        let unwrapedValue = unwrapImplicitOptional(value)
+        if let _ = unwrapedValue as? ManagedObjectAttribute {
             builder = { NSExpression(forKeyPath: "self") }
         } else if let string = unwrapedValue as? String, let attribute = string.decodingAttribute() {
             builder = { NSExpression(forKeyPath: attribute.keyPath) }
         } else if let value: AnyObject = unwrapedValue as? AnyObject {
             builder = { NSExpression(forConstantValue: value) }
         } else if unwrapedValue == nil {
-            // unsupported at swift 1.2
-            builder = { NSExpression(forConstantValue: NSNull()) }
+            builder = { NSExpression(forConstantValue: nil) }
         } else {
             // TODO: throw exception
             builder = { NSExpression() }
