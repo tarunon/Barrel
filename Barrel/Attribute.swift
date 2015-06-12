@@ -27,6 +27,19 @@ internal protocol PropertyAttributeCoder {
     func decodingAttribute() -> PropertyAttribute?
 }
 
+// Unwrap Any using MirrorType
+// http://stackoverflow.com/questions/27989094/how-to-unwrap-an-optional-value-from-any-type
+internal func unwrapImplicitOptional(any: Any) -> Any? {
+    let mirror = reflect(any)
+    if mirror.disposition != .Optional {
+        return any
+    }
+    if mirror.count == 0 {
+        return nil
+    }
+    return mirror[0].1.value
+}
+
 // TODO support many relationships
 extension String : PropertyAttributeCoder {
     internal static func codingAttribute(attribute: PropertyAttribute) -> String {
