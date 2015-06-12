@@ -24,7 +24,7 @@ public struct Expression<T> {
 
     internal init(value: T) {
         let unwrapedValue = unwrapImplicitOptional(value)
-        if let _ = unwrapedValue as? ManagedObjectAttribute {
+        if let _ = unwrapedValue as? AttributeManagedObject {
             builder = { NSExpression(forKeyPath: "self") }
         } else if let set = value as? NSSet, let relationship = set.anyObject() as? RelationshipManagedObject {
             builder = { NSExpression(forKeyPath: relationship.property.decodingProperty()!.keyPath) }

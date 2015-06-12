@@ -107,21 +107,21 @@ public extension Fetch {
 // MARK: fetch methods via attribute
 public extension Fetch {
     public func filter(predicate: (T -> Predicate)) -> Fetch {
-        return filter(predicate(self.context.attribute(T)).build())
+        return filter(predicate(self.context.attribute()).build())
     }
     
     public func orderBy(sortDescriptor: ((T, T) -> SortDescriptor)) -> Fetch {
-        return orderBy(sortDescriptor(self.context.attribute(T), self.context.comparison(T)).build())
+        return orderBy(sortDescriptor(self.context.attribute(), self.context.comparesion()).build())
     }
     
     public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate<T> {
-        return aggregate(expressionDescription(ExpressionDescription(context: context), self.context.attribute(T)).build())
+        return aggregate(expressionDescription(ExpressionDescription(context: context), self.context.attribute()).build())
     }
     
     public func aggregate<U>(expressionDescription:(ExpressionDescription<T>, T) -> U) -> Aggregate<T> {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression(value: expressionDescription(description, self.context.attribute(T)))
+            let result = Expression(value: expressionDescription(description, self.context.attribute()))
             return description.keyPath(result).build()
         }())
     }

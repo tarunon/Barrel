@@ -61,12 +61,12 @@ internal extension NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Attribute"
         entityDescription.managedObjectClassName = NSStringFromClass(AttributeManagedObject.self)
-        entityDescription.properties = (properties as! [NSPropertyDescription]).map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
+        entityDescription.properties = properties.map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
             let propertyDescription = NSAttributeDescription()
             let keyPath = basePropertyDescription.name
             propertyDescription.name = keyPath
             propertyDescription.attributeType = .TransformableAttributeType
-            if let attributeDescription = basePropertyDescription as? NSAttributeDescription {
+            if let _ = basePropertyDescription as? NSAttributeDescription {
                 propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
             } else if let relationshipDescription = basePropertyDescription as? NSRelationshipDescription {
                 if relationshipDescription.toMany {
@@ -94,7 +94,7 @@ internal extension NSEntityDescription {
     func comparesionEntityDescription() -> NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Comparession"
-        entityDescription.properties = (properties as! [NSPropertyDescription]).map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
+        entityDescription.properties = properties.map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
             let propertyDescription = NSAttributeDescription()
             propertyDescription.name = basePropertyDescription.name
             propertyDescription.optional = true
@@ -119,54 +119,47 @@ internal extension NSManagedObjectContext {
             }
         }
         set {
-            objc_setAssociatedObject(self, &attributeMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &attributeMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    internal class func attributeClass() -> AnyClass! {
-        let className = NSStringFromClass(classForCoder()) + "Attribute"
-        var attributeClass: AnyClass! = NSClassFromString(className)
-        if attributeClass == nil {
-            attributeClass = objc_allocateClassPair(ManagedObjectAttribute.self, className, 0)
-            objc_registerClassPair(attributeClass)
-            eachProperties({ (property: objc_property_t) -> () in
-                if let propertyName = String.fromCString(property_getName(property)) {
-                    let getKeyPath: @convention(block)() -> AnyObject? = {
-                        return String.codingAttribute(PropertyAttribute(parentType: self, keyPath: propertyName))
-                    }
-                    class_addMethod(attributeClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(getKeyPath, AnyObject.self)), "@@:")
-                }
-            })
+    private var comparesionMap: [String: NSManagedObject] {
+        get {
+            if let comparitionMap = objc_getAssociatedObject(self, &comparesionMapKey) as? [String: NSManagedObject] {
+                return comparitionMap
+            } else {
+                self.comparesionMap = [:]
+                return self.comparesionMap
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, &comparesionMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    internal class func comparisonClass() -> AnyClass! {
-        let className = NSStringFromClass(classForCoder()) + "Comparison"
-        var comparisonClass: AnyClass! = NSClassFromString(className)
-        if comparisonClass == nil {
-            comparisonClass = objc_allocateClassPair(NSObject.self, className, 0)
-            objc_registerClassPair(comparisonClass)
-            eachProperties({ (property: objc_property_t) -> () in
-                if let propertyName = String.fromCString(property_getName(property)) {
-                    let getKeyPath: @convention(block)() -> AnyObject? = {
-                        return nil
-                    }
-                    class_addMethod(comparisonClass, Selector(propertyName), imp_implementationWithBlock(unsafeBitCast(getKeyPath, AnyObject.self)), "@@:")
-                }
-            })
+    func attribute<T: NSManagedObject>(type: T.Type) -> T {
+        return attribute()
+    }
+    
+    func attribute<T: NSManagedObject>() -> T {
+        if let object = attributeMap[NSStringFromClass(T.self)] as? T {
+            return object
         }
         let object = T(entity: self.entityDescription(T)!.attributeEntityDescription(), insertIntoManagedObjectContext: self)
         attributeMap[NSStringFromClass(T.self)] = object
         return object
     }
-}
-
-internal extension NSManagedObjectContext {
-    func attribute<T: NSManagedObject>(type: T.Type) -> T {
-        return unsafeBitCast(T.attributeClass().new(), type)
+    
+    func comparesion<T: NSManagedObject>(type: T.Type) -> T {
+        return comparesion()
     }
     
-    func comparison<T: NSManagedObject>(type: T.Type) -> T {
-        return unsafeBitCast(T.comparisonClass().new(), type)
+    func comparesion<T: NSManagedObject>() -> T {
+        if let object = comparesionMap[NSStringFromClass(T.self)] as? T {
+            return object
+        }
+        let object = T(entity: self.entityDescription(T)!.comparesionEntityDescription(), insertIntoManagedObjectContext: self)
+        comparesionMap[NSStringFromClass(T.self)] = object
+        return object
     }
 }
