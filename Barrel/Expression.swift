@@ -16,12 +16,15 @@ public struct Expression<T> {
     internal init(value: T) {
         if let _ = value as? ManagedObjectAttribute {
             builder = { NSExpression(forKeyPath: "self") }
-        } else if let string = value as? String, let attribute = string.decodingAttribute() {
+        } else if let string = unwrapedValue as? String, let attribute = string.decodingAttribute() {
             builder = { NSExpression(forKeyPath: attribute.keyPath) }
-        } else if let value: AnyObject = value as? AnyObject {
+        } else if let value: AnyObject = unwrapedValue as? AnyObject {
             builder = { NSExpression(forConstantValue: value) }
+        } else if unwrapedValue == nil {
+            // unsupported at swift 1.2
+            builder = { NSExpression(forConstantValue: NSNull()) }
         } else {
-            // exception
+            // TODO: throw exception
             builder = { NSExpression() }
         }
     }

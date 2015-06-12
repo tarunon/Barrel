@@ -6,9 +6,11 @@
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="parents" inverseEntity="PersonEntity" syncable="YES"/>
         <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="children" inverseEntity="PersonEntity" syncable="YES"/>
     </entity>
-    <entity name="StaffEntity" representedClassName="BarrelTests.Staff" parentEntity="PersonEntity" syncable="YES"/>
+    <entity name="StaffEntity" representedClassName="BarrelTests.Staff" parentEntity="PersonEntity" syncable="YES">
+        <attribute name="post" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="PersonEntity" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="StaffEntity" positionX="-54" positionY="27" width="128" height="45"/>
+        <element name="StaffEntity" positionX="-54" positionY="27" width="128" height="60"/>
     </elements>
 </model>
