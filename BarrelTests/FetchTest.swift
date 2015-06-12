@@ -62,9 +62,7 @@ class FetchTest: XCTestCase {
     
     func testFetchOffset() {
         let persons1 = context.fetch(Person).orderBy{ $0.age < $1.age }.offset(0).execute().all()
-        println(persons1)
         let persons2 = context.fetch(Person).orderBy{ $0.age < $1.age }.offset(1).execute().all()
-        println(persons2)
         for i in 0..<persons2.count {
             XCTAssertEqual(persons1[i + 1], persons2[i], "Pass")
         }

@@ -69,12 +69,12 @@ public extension Group {
 // MARK: group methods via attribute
 public extension Group {
     public func having(predicate: (T -> Predicate)) -> Group {
-        return having(predicate(T.attribute()).build())
+        return having(predicate(self.context.attribute()).build())
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group {
         return groupBy({
-            if let attribute = (keyPath(T.attribute()) as? String)?.decodingAttribute() {
+            if let attribute = (keyPath(self.context.attribute()) as? String)?.decodingProperty() {
                 return attribute.keyPath
             }
             return ""
@@ -82,6 +82,6 @@ public extension Group {
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group {
-        return groupBy(keyPath(T.attribute()).build().keyPath)
+        return groupBy(keyPath(self.context.attribute()).build().keyPath)
     }
 }
