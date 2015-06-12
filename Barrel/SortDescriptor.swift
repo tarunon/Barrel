@@ -14,9 +14,9 @@ public struct SortDescriptor {
     private let builder: SortDescriptorBuilder
     private init<T>(lhs: T, rhs: T, ascending: Bool) {
         builder = { () -> NSSortDescriptor in
-            if let string = unwrapImplicitOptional(lhs) as? String, let attribute = string.decodingAttribute() {
+            if let string = unwrapImplicitOptional(lhs) as? String, let attribute = string.decodingProperty() {
                 return NSSortDescriptor(key: attribute.keyPath, ascending: ascending)
-            } else if let string = unwrapImplicitOptional(rhs) as? String, let attribute = string.decodingAttribute() {
+            } else if let string = unwrapImplicitOptional(rhs) as? String, let attribute = string.decodingProperty() {
                 return NSSortDescriptor(key: attribute.keyPath, ascending: !ascending)
             }
             return NSSortDescriptor()
