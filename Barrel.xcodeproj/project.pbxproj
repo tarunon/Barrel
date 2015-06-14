@@ -144,8 +144,8 @@
 				D2BA972E1B18C92D00F85AA1 /* FetchTest.swift */,
 				D2BA972D1B18C92D00F85AA1 /* AggregateTest.swift */,
 				D2BA97301B18C92D00F85AA1 /* Person.swift */,
-				D2BA97311B18C92D00F85AA1 /* Person.xcdatamodeld */,
 				EBA7779D1B2A96EC000638E8 /* Staff.swift */,
+				D2BA97311B18C92D00F85AA1 /* Person.xcdatamodeld */,
 				D2BA97171B18C8D100F85AA1 /* Supporting Files */,
 			);
 			path = BarrelTests;
