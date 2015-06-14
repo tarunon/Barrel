@@ -36,7 +36,7 @@ extension Insert: Builder {
 extension Insert {
     public func insert() -> T {
         let object = build()
-        context.refreshObject(object, mergeChanges: true)
+        context.insertObject(object)
         return object
     }
     
@@ -50,7 +50,7 @@ extension Insert {
             context.deleteObject(object)
             return object2
         }
-        context.refreshObject(object, mergeChanges: true)
+        context.insertObject(object)
         return object
     }
 }

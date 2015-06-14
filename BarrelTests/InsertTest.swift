@@ -29,25 +29,26 @@ class InsertTest: XCTestCase {
         super.tearDown()
     }
     
-    func testInsert() {
-        let person1 = context.insert(Person).insert()
-        XCTAssertTrue(person1.isKindOfClass(Person), "Pass")
-        let person2: Person = context.insert().insert()
-        XCTAssertTrue(person2.isKindOfClass(Person), "Pass")
-    }
-    
     func testInsertValue() {
         let person1 = context.insert(Person).setValue("John", forKey: "name").insert()
         XCTAssertEqual(person1.name, "John", "Pass")
+        let personCount1 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount1, 1, "Pass")
         let person2 = context.insert(Person).setValues(["John", 12], forKeys: ["name", "age"]).insert()
         XCTAssertEqual([person2.name, person2.age], ["John", 12], "Pass")
+        let personCount2 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount2, 2, "Pass")
         let person3 = context.insert(Person).setKeyedValues(["name": "John", "age": 12]).insert()
         XCTAssertEqual([person3.name, person3.age], ["John", 12], "Pass")
+        let personCount3 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount3, 3, "Pass")
         let person4 = context.insert(Person).setValues{
             $0.name = "John"
             $0.age = 0
             }.insert()
         XCTAssertEqual([person4.name, person4.age], ["John", 0], "Pass")
+        let personCount4 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount4, 4, "Pass")
     }
     
     func testInsertRelationship() {
@@ -61,6 +62,8 @@ class InsertTest: XCTestCase {
         let person1 = context.insert(Person).setValues{ $0.name = "Michael" }.getOrInsert()
         let person2 = context.insert(Person).setValues{ $0.name = "Michael" }.getOrInsert()
         let person3 = context.insert(Person).setValues{ $0.name = "Michael" }.getOrInsert()
+        let personCount1 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount1, 1, "Pass")
         XCTAssertEqual(person1, person2, "Pass")
         XCTAssertEqual(person1, person3, "Pass")
         let person4 = context.insert(Person).setValues{
@@ -73,6 +76,8 @@ class InsertTest: XCTestCase {
             }.getOrInsert()
         XCTAssertEqual(person4, person5, "Pass")
         XCTAssertNotEqual(person1, person5, "Pass")
+        let personCount2 = context.fetch(Person).count().count()
+        XCTAssertEqual(personCount2, 2, "Pass")
     }
     
     func testPerformanceUseInsertObject() {
