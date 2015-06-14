@@ -26,11 +26,10 @@ class FetchTest: XCTestCase {
             context.insert(Person).setKeyedValues(data).insert()
         }
         context.save(nil)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        context.save(nil)
         NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
         super.tearDown()
     }

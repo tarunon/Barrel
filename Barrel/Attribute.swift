@@ -145,7 +145,7 @@ internal extension NSManagedObjectContext {
         if let object = attributeMap[NSStringFromClass(T.self)] as? T {
             return object
         }
-        let object = T(entity: self.entityDescription(T)!.attributeEntityDescription(), insertIntoManagedObjectContext: self)
+        let object = T(entity: self.entityDescription(T)!.attributeEntityDescription(), insertIntoManagedObjectContext: nil)
         attributeMap[NSStringFromClass(T.self)] = object
         return object
     }
@@ -158,7 +158,7 @@ internal extension NSManagedObjectContext {
         if let object = comparesionMap[NSStringFromClass(T.self)] as? T {
             return object
         }
-        let object = T(entity: self.entityDescription(T)!.comparesionEntityDescription(), insertIntoManagedObjectContext: self)
+        let object = T(entity: self.entityDescription(T)!.comparesionEntityDescription(), insertIntoManagedObjectContext: nil)
         comparesionMap[NSStringFromClass(T.self)] = object
         return object
     }
