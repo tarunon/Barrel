@@ -29,6 +29,7 @@ class AggregateTest: XCTestCase {
     }
     
     override func tearDown() {
+        try! context.save()
         try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
         super.tearDown()
     }

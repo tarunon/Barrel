@@ -20,19 +20,12 @@ class InsertTest: XCTestCase {
         super.setUp()
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
-        do {
-            try context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
-        } catch _ {
-        }
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try! context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
     }
     
     override func tearDown() {
-        do {
-            // Put teardown code here. This method is called after the invocation of each test method in the class.
-            try NSFileManager.defaultManager().removeItemAtURL(storeURL)
-        } catch _ {
-        }
+        try! context.save()
+        try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
         super.tearDown()
     }
     
