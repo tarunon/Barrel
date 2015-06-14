@@ -62,31 +62,31 @@ public func <=<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType)
 }
 
-public func ==<T>(lhs: T, rhs: T) -> Predicate {
+public func ==<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) == Expression(value: rhs)
 }
 
-public func !=<T>(lhs: T, rhs: T) -> Predicate {
+public func !=<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) != Expression(value: rhs)
 }
 
-public func ~=<T>(lhs: T, rhs: T) -> Predicate {
+public func ~=<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) ~= Expression(value: rhs)
 }
 
-public func ><T>(lhs: T, rhs: T) -> Predicate {
+public func ><T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) > Expression(value: rhs)
 }
 
-public func >=<T>(lhs: T, rhs: T) -> Predicate {
+public func >=<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) >= Expression(value: rhs)
 }
 
-public func <<T>(lhs: T, rhs: T) -> Predicate {
+public func <<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) < Expression(value: rhs)
 }
 
-public func <=<T>(lhs: T, rhs: T) -> Predicate {
+public func <=<T>(lhs: T?, rhs: T?) -> Predicate {
     return Expression(value: lhs) <= Expression(value: rhs)
 }
 

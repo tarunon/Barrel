@@ -9,17 +9,29 @@
 import Foundation
 import CoreData
 
-// Unwrap Any using MirrorType
-// http://stackoverflow.com/questions/27989094/how-to-unwrap-an-optional-value-from-any-type
-internal func unwrapImplicitOptional(any: Any) -> Any? {
-    let mirror = reflect(any)
-    if mirror.disposition != .Optional {
-        return any
+internal enum AttributeType {
+    case KeyPath(String)
+    case Value(AnyObject)
+    case Null
+    case Unsupported
+    
+    init(value: Any?) {
+        if let attribute = value as? AttributeManagedObject {
+            self = .KeyPath("self")
+        } else if let relationship = value as? RelationshipManagedObject {
+            self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
+        } else if let set = value as? NSSet, let relationship = set.anyObject() as? RelationshipManagedObject {
+            self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
+        } else if let string = value as? String, let attribute = string.decodingProperty() {
+            self = .KeyPath(attribute.keyPath)
+        } else if let object: AnyObject = value as? AnyObject {
+            self = .Value(object)
+        } else if value == nil {
+            self = .Null
+        } else {
+            self = .Unsupported
+        }
     }
-    if mirror.count == 0 {
-        return nil
-    }
-    return mirror[0].1.value
 }
 
 internal class AttributeManagedObject: NSManagedObject {
@@ -72,7 +84,7 @@ internal extension NSEntityDescription {
                 if relationshipDescription.toMany {
                     propertyDescription.defaultValue = Set(arrayLiteral: NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil))
                 } else {
-                    propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
+                    propertyDescription.defaultValue = NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)
                 }
             }
             return propertyDescription
