@@ -12,15 +12,22 @@ private typealias SortDescriptorBuilder = () -> NSSortDescriptor
 
 public struct SortDescriptor {
     private let builder: SortDescriptorBuilder
-    private init<T>(lhs: T, rhs: T, ascending: Bool) {
-        builder = { () -> NSSortDescriptor in
-            if let string = unwrapImplicitOptional(lhs) as? String, let attribute = string.decodingProperty() {
-                return NSSortDescriptor(key: attribute.keyPath, ascending: ascending)
-            } else if let string = unwrapImplicitOptional(rhs) as? String, let attribute = string.decodingProperty() {
-                return NSSortDescriptor(key: attribute.keyPath, ascending: !ascending)
-            }
-            return NSSortDescriptor()
+    private init<T>(lhs: T?, rhs: T?, ascending: Bool) {
+        switch AttributeType(value: lhs) {
+        case .KeyPath(let keyPath):
+            builder = { NSSortDescriptor(key: keyPath, ascending: ascending) }
+            return
+        default:
+            break
         }
+        switch AttributeType(value: rhs) {
+        case .KeyPath(let keyPath):
+            builder = { NSSortDescriptor(key: keyPath, ascending: !ascending) }
+            return
+        default:
+            break
+        }
+        builder = { NSSortDescriptor() }
     }
 }
 
@@ -34,10 +41,10 @@ extension SortDescriptor: Builder {
     }
 }
 
-public func ><T>(lhs: T, rhs: T) -> SortDescriptor {
+public func ><T>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T>(lhs: T, rhs: T) -> SortDescriptor {
+public func <<T>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: true)
 }

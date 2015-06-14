@@ -48,9 +48,13 @@ class FetchTest: XCTestCase {
     }
     
     func testFetchOrderBy() {
-        let persons = context.fetch(Person).orderBy{ $0.age < $1.age }.execute().all()
-        for i in 0..<persons.count - 1 {
-            XCTAssertLessThanOrEqual(persons[i].age.integerValue, persons[i + 1].age.integerValue, "Pass")
+        let persons1 = context.fetch(Person).orderBy{ $0.age < $1.age }.execute().all()
+        for i in 0..<persons1.count - 1 {
+            XCTAssertLessThanOrEqual(persons1[i].age.integerValue, persons1[i + 1].age.integerValue, "Pass")
+        }
+        let persons2 = context.fetch(Person).orderBy{ $1.age < $0.age }.execute().all()
+        for i in 0..<persons2.count - 1 {
+            XCTAssertGreaterThanOrEqual(persons2[i].age.integerValue, persons2[i + 1].age.integerValue, "Pass")
         }
     }
     
