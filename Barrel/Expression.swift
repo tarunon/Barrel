@@ -22,19 +22,16 @@ public struct Expression<T> {
         return nil
     }
 
-    internal init(value: T) {
-        let unwrapedValue = unwrapImplicitOptional(value)
-        if let _ = unwrapedValue as? AttributeManagedObject {
-            builder = { NSExpression(forKeyPath: "self") }
-        } else if let set = value as? NSSet, let relationship = set.anyObject() as? RelationshipManagedObject {
-            builder = { NSExpression(forKeyPath: relationship.property.decodingProperty()!.keyPath) }
-        } else if let string = unwrapedValue as? String, let attribute = string.decodingProperty() {
-            builder = { NSExpression(forKeyPath: attribute.keyPath) }
-        } else if let value: AnyObject = unwrapedValue as? AnyObject {
+    internal init(value: T?) {
+        let attributeType = AttributeType(value: value)
+        switch attributeType {
+        case .KeyPath(let keyPath):
+            builder = { NSExpression(forKeyPath: keyPath) }
+        case .Value(let value):
             builder = { NSExpression(forConstantValue: value) }
-        } else if unwrapedValue == nil {
+        case .Null:
             builder = { NSExpression(forConstantValue: nil) }
-        } else {
+        case .Unsupported:
             // TODO: throw exception
             builder = { NSExpression() }
         }

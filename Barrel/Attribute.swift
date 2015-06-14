@@ -16,7 +16,7 @@ internal enum AttributeType {
     case Unsupported
     
     init(value: Any?) {
-        if let attribute = value as? AttributeManagedObject {
+        if let _ = value as? AttributeManagedObject {
             self = .KeyPath("self")
         } else if let relationship = value as? RelationshipManagedObject {
             self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
