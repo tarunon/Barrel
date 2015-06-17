@@ -9,18 +9,26 @@
 import Foundation
 import CoreData
 
+// MARK: associated util
+internal extension NSObject {
+    internal func associatedValueOrDefault<T>(key: UnsafePointer<Void>, @autoclosure defaultValue: () -> T) -> T {
+        if let value = objc_getAssociatedObject(self, key) as? T {
+            return value
+        } else {
+            let value = defaultValue()
+            objc_setAssociatedObject(value as! AnyObject, key, self, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return value
+        }
+    }
+}
+
 // MARK: get entity name
 var entityMapKey: Void?
 
 private extension NSManagedObjectModel {
-    private var entityMap: [String: String] {
+    private var entityNames: [String: String] {
         get {
-            if let entityMap = objc_getAssociatedObject(self, &entityMapKey) as? [String: String] {
-                return entityMap
-            } else {
-                self.entityMap = [:]
-                return self.entityMap
-            }
+            return associatedValueOrDefault(&entityMapKey, defaultValue: [:])
         }
         set {
             objc_setAssociatedObject(self, &entityMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -49,6 +57,12 @@ internal extension NSManagedObjectContext {
             return entityName
         }
         return nil
+    }
+}
+
+internal extension NSManagedObjectContext {
+    internal func entityName(T: NSManagedObject.Type) -> String? {
+        return managedObjectModel()?.entityName(T)
     }
 
     internal func entityDescription(T: NSManagedObject.Type) -> NSEntityDescription? {

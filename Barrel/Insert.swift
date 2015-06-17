@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 
-public struct Insert<T: NSManagedObject> {
+public struct Insert<T: NSManagedObject>: Builder {
     internal typealias ManagedObjectBuilder = () -> T
-    private let builder: ManagedObjectBuilder
+    internal let builder: ManagedObjectBuilder
     private let context: NSManagedObjectContext
     
     private init(context: NSManagedObjectContext) {

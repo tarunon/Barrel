@@ -36,7 +36,7 @@ extension Group: Builder {
     }
     
     public func fetchRequest() -> NSFetchRequest {
-        return build()
+        return builder()
     }
 }
 
@@ -63,7 +63,7 @@ public extension Group {
 // MARK: group methods via attribute
 public extension Group {
     public func having(predicate: (T -> Predicate)) -> Group {
-        return having(predicate(self.context.attribute()).build())
+        return having(predicate(self.context.attribute()).predicate())
     }
     
     public func groupBy<U>(keyPath: (T) -> U) -> Group {
@@ -76,6 +76,6 @@ public extension Group {
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group {
-        return groupBy(keyPath(self.context.attribute()).build().keyPath)
+        return groupBy(keyPath(self.context.attribute()).expression().keyPath)
     }
 }
