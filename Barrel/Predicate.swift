@@ -8,29 +8,23 @@
 
 import Foundation
 
-private typealias PredicateBuilder = () -> NSPredicate
+internal typealias PredicateBuilder = () -> NSPredicate
 
-public struct Predicate {
-    private let builder: PredicateBuilder
+public struct Predicate: Builder {
+    internal let builder: PredicateBuilder
     private init(builder: PredicateBuilder) {
         self.builder = builder
     }
-}
-
-extension Predicate: Builder {
-    func build() -> NSPredicate {
-        return builder()
-    }
     
     public func predicate() -> NSPredicate {
-        return build()
+        return builder()
     }
 }
 
 // MARK: compariison operation
 private extension Predicate {
     init<T>(lhs: Expression<T>, rhs: Expression<T>, type: NSPredicateOperatorType) {
-        builder = { NSComparisonPredicate(leftExpression: lhs.build(), rightExpression: rhs.build(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
+        builder = { NSComparisonPredicate(leftExpression: lhs.expression(), rightExpression: rhs.expression(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
     }
 }
 
@@ -93,11 +87,11 @@ public func <=<T>(lhs: T?, rhs: T?) -> Predicate {
 // MARK: logical operation
 private extension Predicate {
     func and(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.build()]) })
+        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func or(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.build()]) })
+        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func not() -> Predicate {

@@ -16,6 +16,7 @@ public struct Aggregate<T: NSManagedObject> {
     internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
         self.context = context
         self.builder = builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+            fetchRequest.resultType = .DictionaryResultType
             fetchRequest.propertiesToFetch = [expressionDescription()]
             return fetchRequest
         }
@@ -69,14 +70,14 @@ public extension Aggregate {
 // MARK: aggregate methods via attribute
 public extension Aggregate {
     public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate {
-        return aggregate(expressionDescription(ExpressionDescription(context: self.context), self.context.attribute()).build())
+        return aggregate(expressionDescription(ExpressionDescription(context: self.context), self.context.attribute()).expressionDescription())
     }
     
     public func aggregate<U>(expressionDescription:(ExpressionDescription<T>, T) -> U) -> Aggregate {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
             let result = Expression(value: expressionDescription(description, self.context.attribute()))
-            return description.keyPath(result).build()
+            return description.keyPath(result).expressionDescription()
             }())
     }
     
@@ -90,6 +91,6 @@ public extension Aggregate {
     }
     
     public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group<T> {
-        return Group(context: context, builder: builder, keyPath: keyPath(self.context.attribute()).build().keyPath)
+        return Group(context: context, builder: builder, keyPath: keyPath(self.context.attribute()).expression().keyPath)
     }
 }

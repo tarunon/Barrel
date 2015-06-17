@@ -11,7 +11,7 @@ import CoreData
 
 internal protocol Builder {
     typealias Result
-    func build() -> Result
+    var builder: () -> Result { get }
 }
 
 infix operator >>> {
