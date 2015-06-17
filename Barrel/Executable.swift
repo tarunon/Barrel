@@ -17,22 +17,13 @@ public protocol Executable {
 
 public extension Executable {
     func all() throws -> [Type] {
-        do {
-            let result = try context.executeFetchRequest(fetchRequest())
-            return result.map{ $0 as! Type }
-        } catch let error {
-            throw error
-        }
+        return try context.executeFetchRequest(fetchRequest()).map{ $0 as! Type }
     }
     
     func get() throws -> Type? {
-        do {
-            let fetchRequest = self.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            return try context.executeFetchRequest(fetchRequest).first as? Type
-        } catch let error {
-            throw error
-        }
+        let fetchRequest = self.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        return try context.executeFetchRequest(fetchRequest).first as? Type
     }
     
     func count() throws -> Int {
