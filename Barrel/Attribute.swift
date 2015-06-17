@@ -122,12 +122,7 @@ var comparisonMapKey: Void
 internal extension NSManagedObjectModel {
     private var attributeEntityDescriptions: [String: NSManagedObject] {
         get {
-            if let attributeMap = objc_getAssociatedObject(self, &attributeMapKey) as? [String: NSManagedObject] {
-                return attributeMap
-            } else {
-                self.attributeEntityDescriptions = [:]
-                return self.attributeEntityDescriptions
-            }
+            return associatedValueOrDefault(&attributeMapKey, defaultValue: [:])
         }
         set {
             objc_setAssociatedObject(self, &attributeMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
@@ -136,12 +131,7 @@ internal extension NSManagedObjectModel {
     
     private var comparisonEntityDescriptions: [String: NSManagedObject] {
         get {
-            if let comparitionMap = objc_getAssociatedObject(self, &comparisonMapKey) as? [String: NSManagedObject] {
-                return comparitionMap
-            } else {
-                self.comparisonEntityDescriptions = [:]
-                return self.comparisonEntityDescriptions
-            }
+            return associatedValueOrDefault(&comparisonMapKey, defaultValue: [:])
         }
         set {
             objc_setAssociatedObject(self, &comparisonMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
