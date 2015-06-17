@@ -4,6 +4,7 @@ Barrel
 A simple type-safe CoreData library for Swift.
 
 ##Installation
+Using Cocoa Pods
 ```ruby
 platform :ios, "8.0"
 use_frameworks!
