@@ -9,18 +9,11 @@
 import Foundation
 import CoreData
 
-private typealias ExpressionBuilder = () -> NSExpression
+internal typealias ExpressionBuilder = () -> NSExpression
 
 
-public struct Expression<T> {
-    private let builder: ExpressionBuilder
-
-    private static func unwrapManagedObjectSet<U>(value: T) -> Set<U>? {
-        if let set = value as? Set<U> {
-            return set
-        }
-        return nil
-    }
+public struct Expression<T>: Builder {
+    internal let builder: ExpressionBuilder
 
     internal init(value: T?) {
         let attributeType = AttributeType(value: value)
@@ -37,17 +30,13 @@ public struct Expression<T> {
             builder = { NSExpression() }
         }
     }
+    
     private init(builder: ExpressionBuilder) {
         self.builder = builder
     }
-}
-
-extension Expression: Builder {
-    func build() -> NSExpression {
-        return builder()
-    }
     
     public func expression() -> NSExpression {
-        return build()
+        return builder()
     }
 }
+

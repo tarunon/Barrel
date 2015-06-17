@@ -103,7 +103,7 @@ internal extension NSEntityDescription {
         return entityDescription
     }
     
-    func comparesionEntityDescription() -> NSEntityDescription {
+    func comparisonEntityDescription() -> NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Comparession"
         entityDescription.properties = (properties as! [NSPropertyDescription]).map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
@@ -117,61 +117,52 @@ internal extension NSEntityDescription {
 }
 
 var attributeMapKey: Void?
-var comparesionMapKey: Void
+var comparisonMapKey: Void
 
-internal extension NSManagedObjectContext {
-    
-    private var attributeMap: [String: NSManagedObject] {
+internal extension NSManagedObjectModel {
+    private var attributeEntityDescriptions: [String: NSManagedObject] {
         get {
-            if let attributeMap = objc_getAssociatedObject(self, &attributeMapKey) as? [String: NSManagedObject] {
-                return attributeMap
-            } else {
-                self.attributeMap = [:]
-                return self.attributeMap
-            }
+            return associatedValueOrDefault(&attributeMapKey, defaultValue: [:])
         }
         set {
             objc_setAssociatedObject(self, &attributeMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
         }
     }
     
-    private var comparesionMap: [String: NSManagedObject] {
+    private var comparisonEntityDescriptions: [String: NSManagedObject] {
         get {
-            if let comparitionMap = objc_getAssociatedObject(self, &comparesionMapKey) as? [String: NSManagedObject] {
-                return comparitionMap
-            } else {
-                self.comparesionMap = [:]
-                return self.comparesionMap
-            }
+            return associatedValueOrDefault(&comparisonMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &comparesionMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &comparisonMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
         }
     }
-    
+}
+
+internal extension NSManagedObjectContext {
     func attribute<T: NSManagedObject>(type: T.Type) -> T {
         return attribute()
     }
     
     func attribute<T: NSManagedObject>() -> T {
-        if let object = attributeMap[NSStringFromClass(T.self)] as? T {
+        if let object = managedObjectModel()?.attributeEntityDescriptions[NSStringFromClass(T.self)] as? T {
             return object
         }
         let object = T(entity: self.entityDescription(T)!.attributeEntityDescription(), insertIntoManagedObjectContext: nil)
-        attributeMap[NSStringFromClass(T.self)] = object
+        managedObjectModel()?.attributeEntityDescriptions[NSStringFromClass(T.self)] = object
         return object
     }
     
-    func comparesion<T: NSManagedObject>(type: T.Type) -> T {
-        return comparesion()
+    func comparison<T: NSManagedObject>(type: T.Type) -> T {
+        return comparison()
     }
     
-    func comparesion<T: NSManagedObject>() -> T {
-        if let object = comparesionMap[NSStringFromClass(T.self)] as? T {
+    func comparison<T: NSManagedObject>() -> T {
+        if let object = managedObjectModel()?.comparisonEntityDescriptions[NSStringFromClass(T.self)] as? T {
             return object
         }
-        let object = T(entity: self.entityDescription(T)!.comparesionEntityDescription(), insertIntoManagedObjectContext: nil)
-        comparesionMap[NSStringFromClass(T.self)] = object
+        let object = T(entity: self.entityDescription(T)!.comparisonEntityDescription(), insertIntoManagedObjectContext: nil)
+        managedObjectModel()?.comparisonEntityDescriptions[NSStringFromClass(T.self)] = object
         return object
     }
 }
