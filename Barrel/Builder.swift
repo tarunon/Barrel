@@ -18,6 +18,6 @@ infix operator >>> {
     
 }
 
-internal func >>><T, U, V>(lhs: (T)->U, rhs: (U)->(V)) -> (T)->V {
+internal func >>><T, U, V>(lhs: (T) -> U, rhs: (U) -> V) -> (T) -> V {
     return { rhs(lhs($0)) }
 }
