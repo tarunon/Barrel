@@ -134,7 +134,7 @@ internal extension NSManagedObjectModel {
             return associatedValueOrDefault(&comparisonMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &comparesionMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &comparisonMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

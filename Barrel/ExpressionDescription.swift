@@ -117,13 +117,3 @@ extension ExpressionDescription {
         return ExpressionDescription(context: context, description: _function(.Average, argument: Expression(value: keyPath)))
     }
 }
-
-extension ExpressionDescription: Builder {
-    public func build() -> NSExpressionDescription {
-        return builder()
-    }
-    
-    public func expressionDescription() -> NSExpressionDescription {
-        return build()
-    }
-}

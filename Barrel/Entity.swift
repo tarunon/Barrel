@@ -16,7 +16,7 @@ internal extension NSObject {
             return value
         } else {
             let value = defaultValue()
-            objc_setAssociatedObject(value as! AnyObject, key, self, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(value as! AnyObject, key, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return value
         }
     }
@@ -35,13 +35,13 @@ private extension NSManagedObjectModel {
         }
     }
     
-    private func entityName(type: NSManagedObject.Type) -> String? {
-        let className = NSStringFromClass(type)
-        if let entityName = entityMap[className] {
+    private func entityName(T: NSManagedObject.Type) -> String? {
+        let className = NSStringFromClass(T)
+        if let entityName = entityNames[className] {
             return entityName
         }
         if let entity = entities.filter({ className == $0.managedObjectClassName }).first {
-            entityMap[className] = entity.name
+            entityNames[className] = entity.name
             return entity.name
         }
         return nil
@@ -49,12 +49,11 @@ private extension NSManagedObjectModel {
 }
 
 internal extension NSManagedObjectContext {
-    internal func entityName(type: NSManagedObject.Type) -> String? {
-        if let coordinator = persistentStoreCoordinator, let entityName = coordinator.managedObjectModel.entityName(type) {
-            return entityName
-        }
-        if let entityName = parentContext?.entityName(type) {
-            return entityName
+    internal func managedObjectModel() -> NSManagedObjectModel? {
+        if let coordinator = persistentStoreCoordinator {
+            return coordinator.managedObjectModel
+        } else if let parentContext = parentContext {
+            return parentContext.managedObjectModel()
         }
         return nil
     }

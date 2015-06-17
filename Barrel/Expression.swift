@@ -33,12 +33,6 @@ public struct Expression<T>: Builder {
     private init(builder: ExpressionBuilder) {
         self.builder = builder
     }
-}
-
-extension Expression: Builder {
-    public func build() -> NSExpression {
-        return builder()
-    }
     
     public func expression() -> NSExpression {
         return builder()

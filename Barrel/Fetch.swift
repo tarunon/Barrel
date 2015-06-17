@@ -11,7 +11,7 @@ import CoreData
 
 internal typealias RequestBuilder = () -> NSFetchRequest
 
-public struct Fetch<T: NSManagedObject> {
+public struct Fetch<T: NSManagedObject>: Builder {
     public let context: NSManagedObjectContext
     internal let builder: RequestBuilder
     
@@ -29,12 +29,6 @@ public struct Fetch<T: NSManagedObject> {
         self.context = context
         self.builder = builder
     }
-}
-
-extension Fetch: Builder {
-    public func build() -> NSFetchRequest {
-        return builder()
-    }
     
     public func fetchRequest() -> NSFetchRequest {
         return builder()
@@ -51,7 +45,7 @@ extension Fetch: Executable {
 // MARK: results controller
 public extension Fetch {
     public func resultsController(sectionKeyPath sectionKeyPath: String?, cacheName: String?) -> ResultsController<T> {
-        return ResultsController(fetchRequest: build(), context: context, sectionNameKeyPath: sectionKeyPath, cacheName: cacheName)
+        return ResultsController(fetchRequest: fetchRequest(), context: context, sectionNameKeyPath: sectionKeyPath, cacheName: cacheName)
     }
 }
 

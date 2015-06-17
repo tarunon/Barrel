@@ -15,12 +15,6 @@ public struct Predicate: Builder {
     private init(builder: PredicateBuilder) {
         self.builder = builder
     }
-}
-
-extension Predicate: Builder {
-    public func build() -> NSPredicate {
-        return builder()
-    }
     
     public func predicate() -> NSPredicate {
         return builder()
@@ -30,7 +24,7 @@ extension Predicate: Builder {
 // MARK: compariison operation
 private extension Predicate {
     init<T>(lhs: Expression<T>, rhs: Expression<T>, type: NSPredicateOperatorType) {
-        builder = { NSComparisonPredicate(leftExpression: lhs.build(), rightExpression: rhs.build(), modifier: .DirectPredicateModifier, type: type, options: []) }
+        builder = { NSComparisonPredicate(leftExpression: lhs.expression(), rightExpression: rhs.expression(), modifier: .DirectPredicateModifier, type: type, options: []) }
     }
 }
 

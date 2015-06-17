@@ -24,10 +24,8 @@ public struct Insert<T: NSManagedObject>: Builder {
         self.context = context
         self.builder = builder
     }
-}
-
-extension Insert: Builder {
-    public func build() -> T {
+    
+    func build() -> T {
         return builder()
     }
 }

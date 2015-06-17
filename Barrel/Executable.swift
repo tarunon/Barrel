@@ -9,16 +9,16 @@
 import Foundation
 import CoreData
 
-public protocol Executable: Builder {
+public protocol Executable {
     typealias Type
     var context: NSManagedObjectContext { get }
-    func build() -> NSFetchRequest
+    func fetchRequest() -> NSFetchRequest
 }
 
 public extension Executable {
     func all() throws -> [Type] {
         do {
-            let result = try context.executeFetchRequest(build())
+            let result = try context.executeFetchRequest(fetchRequest())
             return result.map{ $0 as! Type }
         } catch let error {
             throw error
@@ -27,7 +27,7 @@ public extension Executable {
     
     func get() throws -> Type? {
         do {
-            let fetchRequest = build()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = 1
             return try context.executeFetchRequest(fetchRequest).first as? Type
         } catch let error {
@@ -37,7 +37,7 @@ public extension Executable {
     
     func count() throws -> Int {
         var error: NSError?
-        let count = context.countForFetchRequest(build(), error: &error)
+        let count = context.countForFetchRequest(fetchRequest(), error: &error)
         if let error = error {
             throw error
         }

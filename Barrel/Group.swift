@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public struct Group<T: NSManagedObject> {
+public struct Group<T: NSManagedObject>: Builder {
     public let context: NSManagedObjectContext
     internal let builder: RequestBuilder
     
@@ -25,14 +25,6 @@ public struct Group<T: NSManagedObject> {
     internal init(context: NSManagedObjectContext, builder: RequestBuilder) {
         self.context = context
         self.builder = builder
-    }
-}
-
-extension Group: Builder {
-    public func build() -> NSFetchRequest {
-        let fetchRequest = builder()
-        fetchRequest.resultType = .DictionaryResultType
-        return fetchRequest
     }
     
     public func fetchRequest() -> NSFetchRequest {

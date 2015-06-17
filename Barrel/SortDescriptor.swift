@@ -21,12 +21,6 @@ public struct SortDescriptor: Builder {
             builder = { NSSortDescriptor() }
         }
     }
-}
-
-extension SortDescriptor: Builder {
-    public func build() -> NSSortDescriptor {
-        return builder()
-    }
     
     public func sortDescriptor() -> NSSortDescriptor {
         return builder()
