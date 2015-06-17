@@ -15,13 +15,6 @@ internal typealias ExpressionBuilder = () -> NSExpression
 public struct Expression<T>: Builder {
     internal let builder: ExpressionBuilder
 
-    private static func unwrapManagedObjectSet<U>(value: T) -> Set<U>? {
-        if let set = value as? Set<U> {
-            return set
-        }
-        return nil
-    }
-
     internal init(value: T?) {
         let attributeType = AttributeType(value: value)
         switch attributeType {
