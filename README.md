@@ -21,7 +21,7 @@ func findPerson(age: Int) -> [Person] {
   let fetchRequest = NSFetchRequest(entityName: "Person")
   fetchRequest.predicate = NSPredicate(format: "age == %i", age)
   fetchRequest.sortDescriptor = [NSSortDescriptor(key: "name", ascending: true)]
-  return context.executeFetchRequest(fetchRequest, error: nil) as? [Person] ?? []
+  return try! context.executeFetchRequest(fetchRequest) as? [Person] ?? []
 }
 
 func createPerson(name: String, age: Int) -> Person {
