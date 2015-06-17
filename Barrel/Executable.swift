@@ -12,12 +12,13 @@ import CoreData
 public protocol Executable {
     typealias Type
     var context: NSManagedObjectContext { get }
+    func fetchRequest() -> NSFetchRequest
 }
 
-public extension Executable where Self: Builder, Self.Result == NSFetchRequest {
+public extension Executable {
     func all() throws -> [Type] {
         do {
-            let result = try context.executeFetchRequest(builder())
+            let result = try context.executeFetchRequest(fetchRequest())
             return result.map{ $0 as! Type }
         } catch let error {
             throw error
@@ -26,7 +27,7 @@ public extension Executable where Self: Builder, Self.Result == NSFetchRequest {
     
     func get() throws -> Type? {
         do {
-            let fetchRequest = builder()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = 1
             return try context.executeFetchRequest(fetchRequest).first as? Type
         } catch let error {
@@ -36,7 +37,7 @@ public extension Executable where Self: Builder, Self.Result == NSFetchRequest {
     
     func count() throws -> Int {
         var error: NSError?
-        let count = context.countForFetchRequest(builder(), error: &error)
+        let count = context.countForFetchRequest(fetchRequest(), error: &error)
         if let error = error {
             throw error
         }
