@@ -29,7 +29,7 @@ extension Set: ExpressionType {
 
 public struct Expression<V: ExpressionType>: ExpressionType {
     typealias ValueType = V.ValueType
-    private let builder: ExpressionBuilder
+    internal let builder: ExpressionBuilder
 
     private init(value: V?) {
         let attributeType = Attribute(value: value)

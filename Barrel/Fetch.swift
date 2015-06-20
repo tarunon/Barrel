@@ -123,7 +123,7 @@ public extension Fetch {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
             let result = Expression.createExpression(expressionDescription(description, self.context.attribute()))
-            return description.keyPath(result).build()
+            return description.keyPath(result).expressionDescription()
         }())
     }
 }
