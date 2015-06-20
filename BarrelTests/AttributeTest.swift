@@ -46,9 +46,10 @@ class AttributeTest: XCTestCase {
         XCTAssertNotNil(managerFetchRequest.predicate, "Pass")
         XCTAssertEqual(managerFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "post == %@", "manager")]), "Pass")
 
-        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == [] }.fetchRequest()
-        XCTAssertNotNil(noChildrenFetchRequest.predicate, "Pass")
-        XCTAssertEqual(noChildrenFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "children == %@", Set<Person>())]), "Pass")
+// TODO: swift1.2 unsupported
+//        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == [] }.fetchRequest()
+//        XCTAssertNotNil(noChildrenFetchRequest.predicate, "Pass")
+//        XCTAssertEqual(noChildrenFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "children == %@", Set<Person>())]), "Pass")
         
         let aManager = context.insert(Staff).setValues{
             $0.name = "Stive"

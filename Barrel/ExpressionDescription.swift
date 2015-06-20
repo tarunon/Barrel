@@ -71,44 +71,24 @@ public struct ExpressionDescription<T: NSManagedObject> {
             })
     }
     
-    public func max<U>(argument: Expression<U>) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Max, argument: argument))
+    public func max<E: ExpressionType>(argument: E) -> ExpressionDescription {
+        return ExpressionDescription(context: context, description: _function(.Max, argument: Expression.createExpression(argument)))
     }
     
-    public func min<U>(argument: Expression<U>) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Min, argument: argument))
+    public func min<E: ExpressionType>(argument: E) -> ExpressionDescription {
+        return ExpressionDescription(context: context, description: _function(.Min, argument: Expression.createExpression(argument)))
     }
     
-    public func count<U>(argument: Expression<U>) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Count, argument: argument))
+    public func count<E: ExpressionType>(argument: E) -> ExpressionDescription {
+        return ExpressionDescription(context: context, description: _function(.Count, argument: Expression.createExpression(argument)))
     }
     
-    public func sum<U>(argument: Expression<U>) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Sum, argument: argument))
+    public func sum<E: ExpressionType>(argument: E) -> ExpressionDescription {
+        return ExpressionDescription(context: context, description: _function(.Sum, argument: Expression.createExpression(argument)))
     }
     
-    public func average<U>(argument: Expression<U>) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Average, argument: argument))
-    }
-    
-    public func max<U>(keyPath: U) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Max, argument: Expression(value: keyPath)))
-    }
-    
-    public func min<U>(keyPath: U) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Min, argument: Expression(value: keyPath)))
-    }
-    
-    public func count<U>(keyPath: U) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Count, argument: Expression(value: keyPath)))
-    }
-    
-    public func sum<U>(keyPath: U) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Sum, argument: Expression(value: keyPath)))
-    }
-    
-    public func average<U>(keyPath: U) -> ExpressionDescription {
-        return ExpressionDescription(context: context, description: _function(.Average, argument: Expression(value: keyPath)))
+    public func average<E: ExpressionType>(argument: E) -> ExpressionDescription {
+        return ExpressionDescription(context: context, description: _function(.Average, argument: Expression.createExpression(argument)))
     }
 }
 
