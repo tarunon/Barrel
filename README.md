@@ -4,11 +4,22 @@ Barrel
 A simple type-safe CoreData library for Swift.
 
 ##Installation
+
+### CocoaPods
+
 ```ruby
 platform :ios, "8.0"
 use_frameworks!
 
 pod 'Barrel', :git => 'https://github.com/tarunon/Barrel.git'
+```
+
+### Carthage
+
+You can use Carthage to install Barrel by adding it to your Cartfile:
+
+```ogdl
+github "tarunon/Barrel"
 ```
 
 ##Summary

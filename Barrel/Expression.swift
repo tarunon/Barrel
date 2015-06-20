@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-private typealias ExpressionBuilder = () -> NSExpression
+internal typealias ExpressionBuilder = () -> NSExpression
 
 public protocol ExpressionType {
     typealias ValueType: ExpressionType
@@ -66,6 +66,7 @@ extension Expression: Builder {
     }
     
     public func expression() -> NSExpression {
-        return build()
+        return builder()
     }
 }
+

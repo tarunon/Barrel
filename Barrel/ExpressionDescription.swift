@@ -32,11 +32,11 @@ private enum FunctionType {
     }
 }
 
-private typealias ExpressionDescriptionBuilder = () -> NSExpressionDescription
+internal typealias ExpressionDescriptionBuilder = () -> NSExpressionDescription
 
-public struct ExpressionDescription<T: NSManagedObject> {
+public struct ExpressionDescription<T: NSManagedObject>: Builder {
     private let context: NSManagedObjectContext
-    private let builder: ExpressionDescriptionBuilder
+    internal let builder: ExpressionDescriptionBuilder
     internal init(context: NSManagedObjectContext) {
         self.context = context
         builder = { () -> NSExpressionDescription in
@@ -49,9 +49,15 @@ public struct ExpressionDescription<T: NSManagedObject> {
         self.builder = description
     }
     
+    public func expressionDescription() -> NSExpressionDescription {
+        return builder()
+    }
+}
+
+extension ExpressionDescription {
     private func _function<U>(type: FunctionType, argument: Expression<U>) -> ExpressionDescriptionBuilder {
         return builder >>> { (expressionDescription: NSExpressionDescription) -> NSExpressionDescription in
-            let argument = argument.build()
+            let argument = argument.expression()
             let entityDescription = self.context.entityDescription(T)!
             expressionDescription.expression = NSExpression(forFunction: type.function() + ":", arguments: [argument])
             expressionDescription.name = type.function() + argument.keyPath.capitalizedString
@@ -62,7 +68,7 @@ public struct ExpressionDescription<T: NSManagedObject> {
     
     internal func keyPath<U>(argument: Expression<U>) -> ExpressionDescription {
         return ExpressionDescription(context: context, description: builder >>> { (expressionDescription: NSExpressionDescription) -> NSExpressionDescription in
-            let argument = argument.build()
+            let argument = argument.expression()
             let entityDescription = self.context.entityDescription(T)!
             expressionDescription.expression = argument
             expressionDescription.name = argument.keyPath
@@ -89,15 +95,5 @@ public struct ExpressionDescription<T: NSManagedObject> {
     
     public func average<E: ExpressionType>(argument: E) -> ExpressionDescription {
         return ExpressionDescription(context: context, description: _function(.Average, argument: Expression.createExpression(argument)))
-    }
-}
-
-extension ExpressionDescription: Builder {
-    func build() -> NSExpressionDescription {
-        return builder()
-    }
-    
-    public func expressionDescription() -> NSExpressionDescription {
-        return build()
     }
 }

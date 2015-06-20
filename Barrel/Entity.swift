@@ -9,18 +9,26 @@
 import Foundation
 import CoreData
 
+// MARK: associated util
+internal extension NSObject {
+    internal func associatedValueOrDefault<T>(key: UnsafePointer<Void>, @autoclosure defaultValue: () -> T) -> T {
+        if let value = objc_getAssociatedObject(self, key) as? T {
+            return value
+        } else {
+            let value = defaultValue()
+            objc_setAssociatedObject(value as! AnyObject, key, self, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return value
+        }
+    }
+}
+
 // MARK: get entity name
 var entityMapKey: Void?
 
 private extension NSManagedObjectModel {
-    private var entityMap: [String: String] {
+    private var entityNames: [String: String] {
         get {
-            if let entityMap = objc_getAssociatedObject(self, &entityMapKey) as? [String: String] {
-                return entityMap
-            } else {
-                self.entityMap = [:]
-                return self.entityMap
-            }
+            return associatedValueOrDefault(&entityMapKey, defaultValue: [:])
         }
         set {
             objc_setAssociatedObject(self, &entityMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
@@ -29,11 +37,11 @@ private extension NSManagedObjectModel {
     
     private func entityName(T: NSManagedObject.Type) -> String? {
         let className = NSStringFromClass(T)
-        if let entityName = entityMap[className] {
+        if let entityName = entityNames[className] {
             return entityName
         }
         if let entity = (entities as? [NSEntityDescription])?.filter({ className == $0.managedObjectClassName }).first {
-            entityMap[className] = entity.name
+            entityNames[className] = entity.name
             return entity.name
         }
         return nil
@@ -41,14 +49,19 @@ private extension NSManagedObjectModel {
 }
 
 internal extension NSManagedObjectContext {
-    internal func entityName(T: NSManagedObject.Type) -> String? {
-        if let coordinator = persistentStoreCoordinator, let entityName = coordinator.managedObjectModel.entityName(T) {
-            return entityName
-        }
-        if let entityName = parentContext?.entityName(T) {
-            return entityName
+    internal func managedObjectModel() -> NSManagedObjectModel? {
+        if let coordinator = persistentStoreCoordinator {
+            return coordinator.managedObjectModel
+        } else if let parentContext = parentContext {
+            return parentContext.managedObjectModel()
         }
         return nil
+    }
+}
+
+internal extension NSManagedObjectContext {
+    internal func entityName(T: NSManagedObject.Type) -> String? {
+        return managedObjectModel()?.entityName(T)
     }
 
     internal func entityDescription(T: NSManagedObject.Type) -> NSEntityDescription? {
