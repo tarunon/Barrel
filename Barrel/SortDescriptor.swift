@@ -13,9 +13,9 @@ internal typealias SortDescriptorBuilder = () -> NSSortDescriptor
 public struct SortDescriptor: Builder {
     internal let builder: SortDescriptorBuilder
     private init<T>(lhs: T?, rhs: T?, ascending: Bool) {
-        if case .KeyPath(let keyPath) = AttributeType(value: lhs) {
+        if case .KeyPath(let keyPath) = Attribute(value: lhs) {
             builder = { NSSortDescriptor(key: keyPath, ascending: ascending) }
-        } else if case .KeyPath(let keyPath) = AttributeType(value: rhs) {
+        } else if case .KeyPath(let keyPath) = Attribute(value: rhs) {
             builder = { NSSortDescriptor(key: keyPath, ascending: !ascending) }
         } else {
             builder = { NSSortDescriptor() }
