@@ -9,7 +9,23 @@
 import Foundation
 import CoreData
 
-internal enum AttributeType {
+public protocol AttributeType {
+    
+}
+
+extension NSObject: AttributeType {
+    
+}
+
+extension String: AttributeType {
+    
+}
+
+extension Set: AttributeType {
+    
+}
+
+internal enum Attribute {
     case KeyPath(String)
     case Value(AnyObject)
     case Null
