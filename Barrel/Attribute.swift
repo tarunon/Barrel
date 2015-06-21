@@ -34,7 +34,7 @@ internal enum Attribute {
     
     init(value: Any?) {
         if let _ = value as? AttributeManagedObject {
-            self = .KeyPath("self")
+            self = .This
         } else if let relationship = value as? RelationshipManagedObject {
             self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
         } else if let set = value as? NSSet, let relationship = set.anyObject() as? RelationshipManagedObject {
