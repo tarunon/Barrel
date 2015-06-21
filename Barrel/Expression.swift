@@ -34,6 +34,8 @@ public struct Expression<V: ExpressionType>: ExpressionType {
     private init(value: V?) {
         let attributeType = Attribute(value: value)
         switch attributeType {
+        case .This:
+            builder = { NSExpression.expressionForEvaluatedObject() }
         case .KeyPath(let keyPath):
             builder = { NSExpression(forKeyPath: keyPath) }
         case .Value(let value):

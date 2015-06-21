@@ -26,6 +26,7 @@ extension Set: AttributeType {
 }
 
 internal enum Attribute {
+    case This
     case KeyPath(String)
     case Value(AnyObject)
     case Null
@@ -33,7 +34,7 @@ internal enum Attribute {
     
     init(value: Any?) {
         if let attribute = value as? AttributeManagedObject {
-            self = .KeyPath("self")
+            self = .This
         } else if let relationship = value as? RelationshipManagedObject {
             self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
         } else if let set = value as? NSSet, let relationship = set.anyObject() as? RelationshipManagedObject {
