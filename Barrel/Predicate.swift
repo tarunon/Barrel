@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 internal typealias PredicateBuilder = () -> NSPredicate
 
@@ -50,6 +51,10 @@ public func >=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
 
 public func <<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanPredicateOperatorType)
+}
+
+public func <=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanOrEqualToPredicateOperatorType)
 }
 
 // MARK: logical operation
