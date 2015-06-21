@@ -73,10 +73,10 @@ public extension Aggregate {
         return aggregate(expressionDescription(ExpressionDescription(context: self.context), self.context.attribute()).expressionDescription())
     }
     
-    public func aggregate<U>(expressionDescription:(ExpressionDescription<T>, T) -> U) -> Aggregate {
+    public func aggregate<E: ExpressionType>(expressionDescription:(ExpressionDescription<T>, T) -> E) -> Aggregate {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression(value: expressionDescription(description, self.context.attribute()))
+            let result = Expression.createExpression(expressionDescription(description, self.context.attribute()))
             return description.keyPath(result).expressionDescription()
             }())
     }

@@ -40,7 +40,7 @@ extension Insert {
     
     public func getOrInsert() -> T {
         let object = build()
-        var fetch = context.fetch(T).filter{ $0 != object }
+        var fetch = context.fetch(T).filter(NSPredicate(format: "self != %@", argumentArray: [object]))
         for e in object.changedValues() {
             fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as! String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .allZeros))
         }

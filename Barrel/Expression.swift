@@ -11,12 +11,28 @@ import CoreData
 
 internal typealias ExpressionBuilder = () -> NSExpression
 
+public protocol ExpressionType {
+    typealias ValueType: ExpressionType
+}
 
-public struct Expression<T>: Builder {
+extension NSObject: ExpressionType {
+    typealias ValueType = NSObject
+}
+
+extension String: ExpressionType {
+    typealias ValueType = String
+}
+
+extension Set: ExpressionType {
+    typealias ValueType = Set
+}
+
+public struct Expression<V: ExpressionType>: ExpressionType {
+    typealias ValueType = V.ValueType
     internal let builder: ExpressionBuilder
 
-    internal init(value: T?) {
-        let attributeType = AttributeType(value: value)
+    private init(value: V?) {
+        let attributeType = Attribute(value: value)
         switch attributeType {
         case .KeyPath(let keyPath):
             builder = { NSExpression(forKeyPath: keyPath) }
@@ -33,6 +49,20 @@ public struct Expression<T>: Builder {
     
     private init(builder: ExpressionBuilder) {
         self.builder = builder
+    }
+    
+    static func createExpression<E: ExpressionType where E.ValueType == V>(value: E?) -> Expression {
+        if let expression = value as? Expression {
+            return expression
+        } else {
+            return Expression(value: value as? V)
+        }
+    }
+}
+
+extension Expression: Builder {
+    func build() -> NSExpression {
+        return builder()
     }
     
     public func expression() -> NSExpression {

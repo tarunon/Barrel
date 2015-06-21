@@ -13,14 +13,14 @@ internal typealias SortDescriptorBuilder = () -> NSSortDescriptor
 public struct SortDescriptor: Builder {
     internal let builder: SortDescriptorBuilder
     private init<T>(lhs: T?, rhs: T?, ascending: Bool) {
-        switch AttributeType(value: lhs) {
+        switch Attribute(value: lhs) {
         case .KeyPath(let keyPath):
             builder = { NSSortDescriptor(key: keyPath, ascending: ascending) }
             return
         default:
             break
         }
-        switch AttributeType(value: rhs) {
+        switch Attribute(value: rhs) {
         case .KeyPath(let keyPath):
             builder = { NSSortDescriptor(key: keyPath, ascending: !ascending) }
             return
@@ -35,10 +35,10 @@ public struct SortDescriptor: Builder {
     }
 }
 
-public func ><T>(lhs: T?, rhs: T?) -> SortDescriptor {
+public func ><T: AttributeType>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T>(lhs: T?, rhs: T?) -> SortDescriptor {
+public func <<T: AttributeType>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: true)
 }
