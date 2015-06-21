@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 internal typealias PredicateBuilder = () -> NSPredicate
 
@@ -23,7 +24,7 @@ public struct Predicate: Builder {
 
 // MARK: compariison operation
 private extension Predicate {
-    init<T>(lhs: Expression<T>, rhs: Expression<T>, type: NSPredicateOperatorType) {
+    init<T, U>(lhs: Expression<T>, rhs: Expression<U>, type: NSPredicateOperatorType) {
         builder = { NSComparisonPredicate(leftExpression: lhs.expression(), rightExpression: rhs.expression(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
     }
 }
@@ -50,6 +51,10 @@ public func >=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
 
 public func <<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanPredicateOperatorType)
+}
+
+public func <=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanOrEqualToPredicateOperatorType)
 }
 
 // MARK: logical operation
