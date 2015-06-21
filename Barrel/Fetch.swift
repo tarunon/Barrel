@@ -11,7 +11,7 @@ import CoreData
 
 internal typealias RequestBuilder = () -> NSFetchRequest
 
-public struct Fetch<T: NSManagedObject> {
+public struct Fetch<T: NSManagedObject>: Builder {
     internal let context: NSManagedObjectContext
     internal let builder: RequestBuilder
     
@@ -29,15 +29,9 @@ public struct Fetch<T: NSManagedObject> {
         self.context = context
         self.builder = builder
     }
-}
-
-extension Fetch: Builder {
-    func build() -> NSFetchRequest {
-        return builder()
-    }
     
     public func fetchRequest() -> NSFetchRequest {
-        return build()
+        return builder()
     }
 }
 
@@ -58,7 +52,7 @@ extension Fetch: Executable {
 // MARK: results controller
 public extension Fetch {
     public func resultsController(#sectionKeyPath: String?, cacheName: String?) -> ResultsController<T> {
-        return ResultsController(fetchRequest: build(), context: context, sectionNameKeyPath: sectionKeyPath, cacheName: cacheName)
+        return ResultsController(fetchRequest: fetchRequest(), context: context, sectionNameKeyPath: sectionKeyPath, cacheName: cacheName)
     }
 }
 
@@ -114,22 +108,22 @@ public extension Fetch {
 // MARK: fetch methods via attribute
 public extension Fetch {
     public func filter(predicate: (T -> Predicate)) -> Fetch {
-        return filter(predicate(self.context.attribute()).build())
+        return filter(predicate(self.context.attribute()).predicate())
     }
     
     public func orderBy(sortDescriptor: ((T, T) -> SortDescriptor)) -> Fetch {
-        return orderBy(sortDescriptor(self.context.attribute(), self.context.comparesion()).build())
+        return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
     public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate<T> {
-        return aggregate(expressionDescription(ExpressionDescription(context: context), self.context.attribute()).build())
+        return aggregate(expressionDescription(ExpressionDescription(context: context), self.context.attribute()).expressionDescription())
     }
     
-    public func aggregate<U>(expressionDescription:(ExpressionDescription<T>, T) -> U) -> Aggregate<T> {
+    public func aggregate<E: ExpressionType>(expressionDescription:(ExpressionDescription<T>, T) -> E) -> Aggregate<T> {
         return aggregate({ () -> NSExpressionDescription in
             let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression(value: expressionDescription(description, self.context.attribute()))
-            return description.keyPath(result).build()
+            let result = Expression.createExpression(expressionDescription(description, self.context.attribute()))
+            return description.keyPath(result).expressionDescription()
         }())
     }
 }

@@ -9,21 +9,30 @@
 import Foundation
 import CoreData
 
-private typealias ExpressionBuilder = () -> NSExpression
+internal typealias ExpressionBuilder = () -> NSExpression
 
+public protocol ExpressionType {
+    typealias ValueType: ExpressionType
+}
 
-public struct Expression<T> {
-    private let builder: ExpressionBuilder
+extension NSObject: ExpressionType {
+    typealias ValueType = NSObject
+}
 
-    private static func unwrapManagedObjectSet<U>(value: T) -> Set<U>? {
-        if let set = value as? Set<U> {
-            return set
-        }
-        return nil
-    }
+extension String: ExpressionType {
+    typealias ValueType = String
+}
 
-    internal init(value: T?) {
-        let attributeType = AttributeType(value: value)
+extension Set: ExpressionType {
+    typealias ValueType = Set
+}
+
+public struct Expression<V: ExpressionType>: ExpressionType {
+    typealias ValueType = V.ValueType
+    internal let builder: ExpressionBuilder
+
+    private init(value: V?) {
+        let attributeType = Attribute(value: value)
         switch attributeType {
         case .This:
             builder = { NSExpression.expressionForEvaluatedObject() }
@@ -39,8 +48,17 @@ public struct Expression<T> {
             builder = { NSExpression() }
         }
     }
+    
     private init(builder: ExpressionBuilder) {
         self.builder = builder
+    }
+    
+    static func createExpression<E: ExpressionType where E.ValueType == V>(value: E?) -> Expression {
+        if let expression = value as? Expression {
+            return expression
+        } else {
+            return Expression(value: value as? V)
+        }
     }
 }
 
@@ -50,6 +68,7 @@ extension Expression: Builder {
     }
     
     public func expression() -> NSExpression {
-        return build()
+        return builder()
     }
 }
+

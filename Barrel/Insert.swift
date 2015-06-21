@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 
-public struct Insert<T: NSManagedObject> {
+public struct Insert<T: NSManagedObject>: Builder {
     internal typealias ManagedObjectBuilder = () -> T
-    private let builder: ManagedObjectBuilder
+    internal let builder: ManagedObjectBuilder
     private let context: NSManagedObjectContext
     
     private init(context: NSManagedObjectContext) {
@@ -24,9 +24,7 @@ public struct Insert<T: NSManagedObject> {
         self.context = context
         self.builder = builder
     }
-}
-
-extension Insert: Builder {
+    
     func build() -> T {
         return builder()
     }
@@ -42,7 +40,7 @@ extension Insert {
     
     public func getOrInsert() -> T {
         let object = build()
-        var fetch = context.fetch(T).filter{ $0 != object }
+        var fetch = context.fetch(T).filter(NSPredicate(format: "self != %@", argumentArray: [object]))
         for e in object.changedValues() {
             fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as! String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .allZeros))
         }

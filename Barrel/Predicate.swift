@@ -7,97 +7,64 @@
 //
 
 import Foundation
+import CoreData
 
-private typealias PredicateBuilder = () -> NSPredicate
+internal typealias PredicateBuilder = () -> NSPredicate
 
-public struct Predicate {
-    private let builder: PredicateBuilder
+public struct Predicate: Builder {
+    internal let builder: PredicateBuilder
     private init(builder: PredicateBuilder) {
         self.builder = builder
     }
-}
-
-extension Predicate: Builder {
-    func build() -> NSPredicate {
-        return builder()
-    }
     
     public func predicate() -> NSPredicate {
-        return build()
+        return builder()
     }
 }
 
 // MARK: compariison operation
 private extension Predicate {
-    init<T>(lhs: Expression<T>, rhs: Expression<T>, type: NSPredicateOperatorType) {
-        builder = { NSComparisonPredicate(leftExpression: lhs.build(), rightExpression: rhs.build(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
+    init<T, U>(lhs: Expression<T>, rhs: Expression<U>, type: NSPredicateOperatorType) {
+        builder = { NSComparisonPredicate(leftExpression: lhs.expression(), rightExpression: rhs.expression(), modifier: .DirectPredicateModifier, type: type, options: .allZeros) }
     }
 }
 
-public func ==<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType)
+public func ==<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .EqualToPredicateOperatorType)
 }
 
-public func !=<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType)
+public func !=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .NotEqualToPredicateOperatorType)
 }
 
-public func ~=<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .LikePredicateOperatorType)
+public func ~=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LikePredicateOperatorType)
 }
 
-public func ><T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanPredicateOperatorType)
+public func ><E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .GreaterThanPredicateOperatorType)
 }
 
-public func >=<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanOrEqualToPredicateOperatorType)
+public func >=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .GreaterThanOrEqualToPredicateOperatorType)
 }
 
-public func <<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanPredicateOperatorType)
+public func <<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanPredicateOperatorType)
 }
 
-public func <=<T>(lhs: Expression<T>, rhs: Expression<T>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType)
-}
-
-public func ==<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) == Expression(value: rhs)
-}
-
-public func !=<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) != Expression(value: rhs)
-}
-
-public func ~=<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) ~= Expression(value: rhs)
-}
-
-public func ><T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) > Expression(value: rhs)
-}
-
-public func >=<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) >= Expression(value: rhs)
-}
-
-public func <<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) < Expression(value: rhs)
-}
-
-public func <=<T>(lhs: T?, rhs: T?) -> Predicate {
-    return Expression(value: lhs) <= Expression(value: rhs)
+public func <=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+    return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanOrEqualToPredicateOperatorType)
 }
 
 // MARK: logical operation
 private extension Predicate {
     func and(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.build()]) })
+        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func or(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.build()]) })
+        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func not() -> Predicate {

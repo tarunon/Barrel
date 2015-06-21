@@ -46,17 +46,17 @@ public enum CountResult {
     }
 }
 
-internal protocol Executable: Builder {
+internal protocol Executable {
     typealias T
     var context: NSManagedObjectContext { get }
-    func build() -> NSFetchRequest
+    func fetchRequest() -> NSFetchRequest
     func execute() -> ExecuteResult<T>
     func count() -> CountResult
 }
 
 internal func _execute<T, E: Executable where E.T == T>(executable: E) -> ExecuteResult<T> {
     var error: NSError?
-    let result = executable.context.executeFetchRequest(executable.build(), error: &error)
+    let result = executable.context.executeFetchRequest(executable.fetchRequest(), error: &error)
     if let error = error {
         return .Failed(error)
     } else if let result = result?.map({ $0 as! T }) {
@@ -67,7 +67,7 @@ internal func _execute<T, E: Executable where E.T == T>(executable: E) -> Execut
 
 internal func _count<E: Executable>(executable: E) -> CountResult {
     var error: NSError?
-    let result = executable.context.countForFetchRequest(executable.build(), error: &error)
+    let result = executable.context.countForFetchRequest(executable.fetchRequest(), error: &error)
     if let error = error {
         return .Failed(error)
     } else {
