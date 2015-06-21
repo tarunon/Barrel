@@ -26,6 +26,7 @@ extension Set: AttributeType {
 }
 
 internal enum Attribute {
+    case This
     case KeyPath(String)
     case Value(AnyObject)
     case Null
