@@ -25,6 +25,8 @@ public struct Expression<T> {
     internal init(value: T?) {
         let attributeType = AttributeType(value: value)
         switch attributeType {
+        case .This:
+            builder = { NSExpression.expressionForEvaluatedObject() }
         case .KeyPath(let keyPath):
             builder = { NSExpression(forKeyPath: keyPath) }
         case .Value(let value):
