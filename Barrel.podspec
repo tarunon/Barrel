@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "Barrel"
-    s.version      = "0.3.2"
+    s.version      = "0.4.0"
     s.summary      = "Type safe CoreData library."
     s.license      = { :type => 'MIT', :file => './LICENSE' }
     s.homepage     = "https://github.com/tarunon/Barrel"
