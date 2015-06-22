@@ -35,19 +35,19 @@ class AggregateTest: XCTestCase {
     }
     
     func testFetchAggregate() {
-        let maxs = context.fetch(Person).aggregate{ $0.max($1.age) }.aggregate({ $1.name }).execute().all()
+        let maxs = context.fetch(Person).aggregate{ max($0.age) }.aggregate({ $0.name }).execute().all()
         for max in maxs {
-            XCTAssertEqual(max["maxAge"] as! Int, 39, "Pass")
+            XCTAssertEqual(max["max_age"] as! Int, 39, "Pass")
         }
     }
     
     func testFetchGroupBy() {
-        let maxs = context.fetch(Person).aggregate{ $0.max($1.age) }.aggregate({ $1.name }).groupBy{ $0.name }.execute().all()
+        let maxs = context.fetch(Person).aggregate{ max($0.age) }.aggregate({ $0.name }).groupBy{ $0.name }.execute().all()
         XCTAssertEqual(maxs.count, 2, "Pass")
     }
     
     func testFetchHaving() {
-        let maxs = context.fetch(Person).aggregate{ $0.max($1.age) }.aggregate({ $1.name }).groupBy{ $0.name }.having{ $0.age > 30 }.execute().all()
+        let maxs = context.fetch(Person).aggregate{ max($0.age) }.aggregate({ $0.name }).groupBy{ $0.name }.having{ $0.age > 30 }.execute().all()
         XCTAssertEqual(maxs.count, 1, "Pass")
     }
 }

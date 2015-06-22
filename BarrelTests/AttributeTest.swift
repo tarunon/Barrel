@@ -30,7 +30,6 @@ class AttributeTest: XCTestCase {
     }
 
     func testAttributeInFetch() {
-        let e: Expression<NSNumber> = 20 + 5
         let personFetchRequest = context.fetch(Person).filter{ $0.name == "John" && $0.age == 20 }.orderBy{ $0.age < $1.age }.fetchRequest()
         XCTAssertNotNil(personFetchRequest.predicate, "Pass")
         XCTAssertEqual(personFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "name == %@ && age == %i", "John", 20)]), "Pass")
@@ -49,7 +48,7 @@ class AttributeTest: XCTestCase {
 
         // swift Set object comparison is unsupported at swift 1.2
         // Use NSSet object.
-        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == NSSet() }.fetchRequest()
+        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == Set<Person>() }.fetchRequest()
         XCTAssertNotNil(noChildrenFetchRequest.predicate, "Pass")
         XCTAssertEqual(noChildrenFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "children == %@", Set<Person>())]), "Pass")
         

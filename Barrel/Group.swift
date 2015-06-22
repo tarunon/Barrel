@@ -64,16 +64,7 @@ public extension Group {
         return having(predicate(self.context.attribute()).predicate())
     }
     
-    public func groupBy<U>(keyPath: (T) -> U) -> Group {
-        return groupBy({
-            if let attribute = (keyPath(self.context.attribute()) as? String)?.decodingProperty() {
-                return attribute.keyPath
-            }
-            return ""
-            }())
-    }
-    
-    public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group {
-        return groupBy(keyPath(self.context.attribute()).expression().keyPath)
+    public func groupBy<E: ExpressionType>(argument: (T) -> E) -> Group {
+        return groupBy(Expression.createExpression(argument(self.context.attribute())).name())
     }
 }
