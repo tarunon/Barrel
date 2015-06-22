@@ -27,6 +27,10 @@ extension Set: ExpressionType {
     typealias ValueType = Set
 }
 
+enum ExpressionFunction {
+    case Add
+}
+
 public struct Expression<V: ExpressionType>: ExpressionType {
     typealias ValueType = V.ValueType
     internal let builder: ExpressionBuilder
@@ -70,5 +74,9 @@ extension Expression: Builder {
     public func expression() -> NSExpression {
         return builder()
     }
+}
+
+public func +<E: ExpressionType>(lhs: E?, rhs: E?) -> Expression<E.ValueType> {
+    return Expression(builder: { NSExpression(forFunction: "add:to:", arguments: [Expression.createExpression(lhs).expression(), Expression.createExpression(rhs).expression()]) })
 }
 
