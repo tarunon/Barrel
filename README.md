@@ -135,20 +135,20 @@ Barrel has more functions.
 
 Support aggregate method,
 ```swift
-let maxAge = try! context.fetch(Person)
-  .aggregate{ $0.max($1.age) }
-  .get()!
-// maxAge => ["maxAge": XX]
+let maxAge = context.fetch(Person)
+  .aggregate{ max($0.age) }
+  .execute().get()!
+// maxAge => ["max_age": XX]
 ```
 
 and grouping.
 ```swift
-let maxAgePerName = try! context.fetch(Person)
-  .aggregate{ $0.max($1.age) }
-  .aggregate{ $1.name }
-  .groupBy{ $1.name }
-  .all()
-// maxAgePerName => [["maxAge" : XX, "name": "YY"], ...]
+let maxAgePerName = context.fetch(Person)
+  .aggregate{ max($0.age) }
+  .aggregate{ $0.name }
+  .groupBy{ $0.name }
+  .execute().all()
+// maxAgePerName => [["max_age" : XX, "name": "YY"], ...]
 ```
 
 ###ResultsController

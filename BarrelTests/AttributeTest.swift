@@ -49,7 +49,7 @@ class AttributeTest: XCTestCase {
         // swift Set object comparison is unsupported at swift 1.2
         // Use NSSet object.
         
-        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == [] }.fetchRequest()
+        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == Set<Person>() }.fetchRequest()
         XCTAssertNotNil(noChildrenFetchRequest.predicate, "Pass")
         XCTAssertEqual(noChildrenFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "children == %@", Set<Person>())]), "Pass")
         

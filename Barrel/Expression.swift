@@ -41,7 +41,7 @@ extension NSManagedObject: ExpressionType {
 }
 
 extension Set: ExpressionType {
-    typealias ValueType = NSSet
+    typealias ValueType = Set
 }
 
 internal extension NSAttributeType {
@@ -119,6 +119,7 @@ public struct Expression<V: ExpressionType>: Builder, ExpressionType {
             nameBuilder = { "\(value)" }
         case .Null:
             builder = { NSExpression(forConstantValue: nil) }
+            nameBuilder = { "nil" }
         case .Unsupported:
             // TODO: throw exception
             builder = { NSExpression() }
@@ -185,6 +186,6 @@ public func average<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> 
     return Expression(hs: Expression.createExpression(hs), type: .Average)
 }
 
-public func count<E: ExpressionType>(hs: E?) -> Expression<E.ValueType> {
+public func count<E: ExpressionType, V: ExpressionType where E.ValueType == V>(hs: E?) -> Expression<V> {
     return Expression(hs: Expression.createExpression(hs), type: .Count)
 }
