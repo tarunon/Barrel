@@ -115,15 +115,9 @@ public extension Fetch {
         return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
-    public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate<T> {
-        return aggregate(expressionDescription(ExpressionDescription(context: context), self.context.attribute()).expressionDescription())
-    }
-    
-    public func aggregate<E: ExpressionType>(expressionDescription:(ExpressionDescription<T>, T) -> E) -> Aggregate<T> {
+    public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate<T> {
         return aggregate({ () -> NSExpressionDescription in
-            let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression.createExpression(expressionDescription(description, self.context.attribute()))
-            return description.keyPath(result).expressionDescription()
+            return ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription()
         }())
     }
 }

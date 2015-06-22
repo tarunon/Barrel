@@ -68,13 +68,3 @@ internal extension NSManagedObjectContext {
         return NSEntityDescription.entityForName(entityName(T)!, inManagedObjectContext: self)
     }
 }
-
-internal extension NSAttributeType {
-    init(entityDescription: NSEntityDescription, keyPath: String) {
-        if let attribute = entityDescription.attributesByName[keyPath] as? NSAttributeDescription {
-            self = attribute.attributeType
-        } else {
-            self = .UndefinedAttributeType
-        }
-    }
-}

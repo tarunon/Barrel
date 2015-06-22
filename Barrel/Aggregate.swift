@@ -69,28 +69,13 @@ public extension Aggregate {
 
 // MARK: aggregate methods via attribute
 public extension Aggregate {
-    public func aggregate(expressionDescription:(ExpressionDescription<T>, T) -> ExpressionDescription<T>) -> Aggregate {
-        return aggregate(expressionDescription(ExpressionDescription(context: self.context), self.context.attribute()).expressionDescription())
-    }
-    
-    public func aggregate<E: ExpressionType>(expressionDescription:(ExpressionDescription<T>, T) -> E) -> Aggregate {
+    public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate {
         return aggregate({ () -> NSExpressionDescription in
-            let description = ExpressionDescription<T>(context: self.context)
-            let result = Expression.createExpression(expressionDescription(description, self.context.attribute()))
-            return description.keyPath(result).expressionDescription()
+            return ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription()
             }())
     }
     
-    public func groupBy<U>(keyPath: (T) -> U) -> Group<T> {
-        return Group(context: context, builder: builder, keyPath: {
-            if let attribute = (keyPath(self.context.attribute()) as? String)?.decodingProperty() {
-                return attribute.keyPath
-            }
-            return ""
-        }())
-    }
-    
-    public func groupBy<U>(keyPath: (T) -> Expression<U>) -> Group<T> {
-        return Group(context: context, builder: builder, keyPath: keyPath(self.context.attribute()).expression().keyPath)
+    public func groupBy<E: ExpressionType>(argument: (T) -> E) -> Group<T> {
+        return Group(context: context, builder: builder, keyPath: Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

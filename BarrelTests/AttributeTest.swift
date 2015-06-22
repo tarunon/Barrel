@@ -46,9 +46,7 @@ class AttributeTest: XCTestCase {
         XCTAssertNotNil(managerFetchRequest.predicate, "Pass")
         XCTAssertEqual(managerFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "post == %@", "manager")]), "Pass")
 
-        // swift Set object comparison is unsupported at swift 1.2
-        // Use NSSet object.
-        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == NSSet() }.fetchRequest()
+        let noChildrenFetchRequest = context.fetch(Person).filter{ $0.children == Set<Person>() }.fetchRequest()
         XCTAssertNotNil(noChildrenFetchRequest.predicate, "Pass")
         XCTAssertEqual(noChildrenFetchRequest.predicate!, NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(value: true), NSPredicate(format: "children == %@", Set<Person>())]), "Pass")
         
