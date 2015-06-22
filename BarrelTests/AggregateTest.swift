@@ -37,7 +37,7 @@ class AggregateTest: XCTestCase {
     func testFetchAggregate() {
         let maxs = try! context.fetch(Person).aggregate{ $0.max($1.age) }.aggregate({ $1.name }).all()
         for max in maxs {
-            XCTAssertEqual(max["maxAge"] as! Int, 39, "Pass")
+            XCTAssertEqual(max["max_age"] as! Int, 39, "Pass")
         }
     }
     

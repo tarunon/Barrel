@@ -29,31 +29,31 @@ private extension Predicate {
     }
 }
 
-public func ==<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func ==<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .EqualToPredicateOperatorType)
 }
 
-public func !=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func !=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .NotEqualToPredicateOperatorType)
 }
 
-public func ~=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func ~=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LikePredicateOperatorType)
 }
 
-public func ><E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func ><E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .GreaterThanPredicateOperatorType)
 }
 
-public func >=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func >=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .GreaterThanOrEqualToPredicateOperatorType)
 }
 
-public func <<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func <<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanPredicateOperatorType)
 }
 
-public func <=<E: ExpressionType>(lhs: E?, rhs: E?) -> Predicate {
+public func <=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .LessThanOrEqualToPredicateOperatorType)
 }
 
