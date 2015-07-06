@@ -104,6 +104,39 @@ let persons = context.fetch(Person)
   .execute().all()
 ```
 
+##Operations
+
+In closure, can use operation evaluation.
+###In filter
+
+|Operation|Supported Type|Description|
+|---|---|---|
+|A == B|AnyObject|A equal to B.<br>If evaluate String, == mean case and diacritic insensitive.<br>Need to rigorous evaluating, use === instead of ==.|
+|A != B|AnyObject|A not equal to B.<br>If evaluate String, != mean case and diacritic insensitive.<br>Need to rigorous evaluating, use !== instead of !=.|
+|A ~= B|String|A matches B where case and diacritic insensitive.<br>Need to rigorous evaluating, use ~== instead of ~=.|
+|A &gt; B|AnyObject|A grater than B.|
+|A &gt;= B|AnyObject|A grater than or equal to B.|
+|A &lt; B|AnyObject|A less than B.|
+|A &lt;= B|AnyObject|A less than or equal to B.|
+|A &lt;&lt; [B]|AnyObject|A in array [B].|
+|Set&lt;A&gt; &gt;&gt; B|NSManagedObject|Relationship A contains B.|
+
+####Arithmetic operations.
+If evaluate NSNumber, can use arithmetic operation.
+
+|Operation|Supported Type|Description|
+|---|---|---|
+|A + B|NSNumber|Number of add A to B.|
+|A - B|NSNumber|Number of subtract B from A.|
+|A * B|NSNumber|Number of multiply A by B.|
+|A / B|NSNumber|Number of divide A by B.|
+
+###In orderBy
+
+|Operation|Supported Type|Description|
+|---|---|---|
+|$0.A &lt; $1.A|AnyObject|Order by A ascending.|
+|$0.A &gt; $1.A|AnyObject|Order by A descending.|
 
 ##Insert
 
@@ -150,6 +183,18 @@ let maxAgePerName = context.fetch(Person)
   .execute().all()
 // maxAgePerName => [["max_age" : XX, "name": "YY"], ...]
 ```
+
+In aggregate can use arithmetic operations, and in groupBy can use filter operations.
+
+###Aggregate functions.
+|Operation|Supported Type|Description|
+|---|---|---|
+|max(A)|NSNumber|Number of maximum A.|
+|min(A)|NSNumber|Number of minimum A.|
+|sum(A)|NSNumber|Number of sum A.|
+|average(A)|NSNumber|Number of average A.|
+|count(A)|AnyObject|Number of count A.|
+
 
 ###ResultsController
 NSFetchResultsController is not also type-safe.
