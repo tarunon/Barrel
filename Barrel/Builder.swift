@@ -14,9 +14,7 @@ internal protocol Builder {
     var builder: () -> Result { get }
 }
 
-infix operator >>> {
-    
-}
+infix operator >>> { associativity left precedence 150 }
 
 internal func >>><T, U, V>(lhs: (T) -> U, rhs: (U) -> V) -> (T) -> V {
     return { rhs(lhs($0)) }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D29A02541B1A096C0064110B /* AttributeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A02531B1A096C0064110B /* AttributeTest.swift */; };
 		D2BA970D1B18C8D100F85AA1 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = D2BA970C1B18C8D100F85AA1 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2BA97131B18C8D100F85AA1 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA97071B18C8D100F85AA1 /* Barrel.framework */; };
 		D2BA97281B18C8F700F85AA1 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA97231B18C8F700F85AA1 /* Aggregate.swift */; };
@@ -21,6 +20,8 @@
 		D2BA97371B18C92D00F85AA1 /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2BA97311B18C92D00F85AA1 /* Person.xcdatamodeld */; };
 		D2C9DFE11B2D5D5600D176A8 /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9DFE01B2D5D5600D176A8 /* Staff.swift */; };
 		D2FBB19A1B23E45C002568C5 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FBB1991B23E45C002568C5 /* Attribute.swift */; };
+		EB28F09B1B4A194900A2E879 /* ExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28F09A1B4A194900A2E879 /* ExpressionTest.swift */; };
+		EB28F09D1B4A1D8C00A2E879 /* PredicateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28F09C1B4A1D8C00A2E879 /* PredicateTest.swift */; };
 		EB8256BB1B1FDC190010B3A7 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8256BA1B1FDC190010B3A7 /* Group.swift */; };
 		EB9FF9991B1E810C0097DFD3 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FF9921B1E810C0097DFD3 /* Builder.swift */; };
 		EB9FF99A1B1E810C0097DFD3 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FF9931B1E810C0097DFD3 /* Entity.swift */; };
@@ -42,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D29A02531B1A096C0064110B /* AttributeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeTest.swift; sourceTree = "<group>"; };
 		D2BA97071B18C8D100F85AA1 /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BA970B1B18C8D100F85AA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BA970C1B18C8D100F85AA1 /* Barrel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Barrel.h; sourceTree = "<group>"; };
@@ -59,6 +59,8 @@
 		D2BA97321B18C92D00F85AA1 /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
 		D2C9DFE01B2D5D5600D176A8 /* Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
 		D2FBB1991B23E45C002568C5 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		EB28F09A1B4A194900A2E879 /* ExpressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionTest.swift; sourceTree = "<group>"; };
+		EB28F09C1B4A1D8C00A2E879 /* PredicateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateTest.swift; sourceTree = "<group>"; };
 		EB8256BA1B1FDC190010B3A7 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		EB9FF9921B1E810C0097DFD3 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		EB9FF9931B1E810C0097DFD3 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
@@ -139,7 +141,8 @@
 		D2BA97161B18C8D100F85AA1 /* BarrelTests */ = {
 			isa = PBXGroup;
 			children = (
-				D29A02531B1A096C0064110B /* AttributeTest.swift */,
+				EB28F09A1B4A194900A2E879 /* ExpressionTest.swift */,
+				EB28F09C1B4A1D8C00A2E879 /* PredicateTest.swift */,
 				D2BA972F1B18C92D00F85AA1 /* InsertTest.swift */,
 				D2BA972E1B18C92D00F85AA1 /* FetchTest.swift */,
 				D2BA972D1B18C92D00F85AA1 /* AggregateTest.swift */,
@@ -287,13 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29A02541B1A096C0064110B /* AttributeTest.swift in Sources */,
 				D2BA97341B18C92D00F85AA1 /* FetchTest.swift in Sources */,
 				D2BA97331B18C92D00F85AA1 /* AggregateTest.swift in Sources */,
 				D2BA97361B18C92D00F85AA1 /* Person.swift in Sources */,
 				D2BA97351B18C92D00F85AA1 /* InsertTest.swift in Sources */,
+				EB28F09D1B4A1D8C00A2E879 /* PredicateTest.swift in Sources */,
 				D2C9DFE11B2D5D5600D176A8 /* Staff.swift in Sources */,
 				D2BA97371B18C92D00F85AA1 /* Person.xcdatamodeld in Sources */,
+				EB28F09B1B4A194900A2E879 /* ExpressionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
