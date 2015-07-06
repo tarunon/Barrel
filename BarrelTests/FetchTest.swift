@@ -74,7 +74,7 @@ class FetchTest: XCTestCase {
     func testPerformanceUseFetchObject() {
         measureBlock { () -> Void in
             for _ in 0..<1000 {
-                try! self.context.fetch(Person).filter{ $0.name != "John" }.orderBy{ $0.age > $1.age }.all()
+                try! self.context.fetch(Person).filter{ $0.name !== "John" }.orderBy{ $0.age > $1.age }.all()
             }
         }
     }

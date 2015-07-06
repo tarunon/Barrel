@@ -44,15 +44,19 @@ extension Set: ExpressionType {
     typealias ValueType = Set
 }
 
+extension Array: ExpressionType {
+    typealias ValueType = Array
+}
+
 internal extension NSAttributeType {
     init<E: ExpressionType>(type: E.Type) {
-        if let _ = E.ValueType.self as? NSNumber.Type {
+        if E.ValueType.self is NSNumber.Type {
             self = .DoubleAttributeType
-        } else if let _ = E.ValueType.self as? String.Type {
+        } else if E.ValueType.self is String.Type {
             self = .StringAttributeType
-        } else if let _ = E.ValueType.self as? NSDate.Type {
+        } else if E.ValueType.self is NSDate.Type {
             self = .DateAttributeType
-        } else if let _ = E.ValueType.self as? NSData.Type {
+        } else if E.ValueType.self is NSData.Type {
             self = .BinaryDataAttributeType
         } else {
             self = .UndefinedAttributeType
