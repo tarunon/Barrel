@@ -9,26 +9,26 @@
 import Foundation
 import CoreData
 
-public struct Group<T: NSManagedObject>: Builder {
+public struct Group<T: NSManagedObject> {
     internal let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
-    internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) keyPath: () -> String) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) keyPath: () -> String) {
         self.context = context
-        self.builder = builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+        self.builder = builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
             fetchRequest.propertiesToGroupBy = [keyPath()]
             fetchRequest.havingPredicate = NSPredicate(value: true)
             return fetchRequest
         }
     }
     
-    internal init(context: NSManagedObjectContext, builder: RequestBuilder) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>) {
         self.context = context
         self.builder = builder
     }
     
     public func fetchRequest() -> NSFetchRequest {
-        return builder()
+        return builder.build()
     }
 }
 
@@ -45,13 +45,13 @@ extension Group: Executable {
 // MARK: group methods
 public extension Group {
     func groupBy(@autoclosure(escaping) keyPath: () -> String) -> Group {
-        return Group(context: context, builder: builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+        return Group(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
             fetchRequest.propertiesToGroupBy = fetchRequest.propertiesToGroupBy! + [keyPath()]
             return fetchRequest
             })
     }
     func having(@autoclosure(escaping) predicate: () -> NSPredicate) -> Group {
-        return Group(context: context, builder: builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+        return Group(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
             fetchRequest.havingPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [fetchRequest.havingPredicate!, predicate()])
             return fetchRequest
             })

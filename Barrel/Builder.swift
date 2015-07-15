@@ -7,15 +7,27 @@
 //
 
 import Foundation
-import CoreData
 
-internal protocol Builder {
-    typealias Result
-    var builder: () -> Result { get }
-}
-
-infix operator >>> { associativity left precedence 150 }
-
-internal func >>><T, U, V>(lhs: (T) -> U, rhs: (U) -> V) -> (T) -> V {
-    return { rhs(lhs($0)) }
+struct Builder<T> {
+    var builder: () -> T
+    
+    init(_ result: T) {
+        builder = { result }
+    }
+    
+    init(_ builder: () -> T) {
+        self.builder = builder
+    }
+    
+    func build() -> T {
+        return builder()
+    }
+    
+    func map<U>(transfer: T -> U) -> Builder<U> {
+        return Builder<U> { transfer(self.build()) }
+    }
+    
+    func flatMap<U>(transfer: T -> Builder<U>) -> Builder<U> {
+        return Builder<U> { transfer(self.build()).build() }
+    }
 }

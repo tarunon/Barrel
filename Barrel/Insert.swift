@@ -10,23 +10,22 @@ import Foundation
 import CoreData
 
 
-public struct Insert<T: NSManagedObject>: Builder {
-    internal typealias ManagedObjectBuilder = () -> T
-    internal let builder: ManagedObjectBuilder
+public struct Insert<T: NSManagedObject> {
+    internal let builder: Builder<T>
     private let context: NSManagedObjectContext
     
     private init(context: NSManagedObjectContext) {
         self.context = context
-        builder = { T(entity: context.entityDescription(T)!, insertIntoManagedObjectContext: context) }
+        builder = Builder{ T(entity: context.entityDescription(T)!, insertIntoManagedObjectContext: context) }
     }
     
-    private init(context: NSManagedObjectContext, builder: ManagedObjectBuilder) {
+    private init(context: NSManagedObjectContext, builder: Builder<T>) {
         self.context = context
         self.builder = builder
     }
     
     func build() -> T {
-        return builder()
+        return builder.build()
     }
 }
 
@@ -56,14 +55,14 @@ extension Insert {
 // MARK: setup methods
 public extension Insert {
     public func setValue(value: AnyObject, forKey key: String) -> Insert {
-        return Insert(context: context, builder: builder >>> { (object: T) -> T in
+        return Insert(context: context, builder: builder.map { (object: T) -> T in
             object.setPrimitiveValue(value, forKey: key)
             return object
             })
     }
     
     public func setValues(values: [AnyObject], forKeys keys: [String]) -> Insert {
-        return Insert(context: context, builder: builder >>> { (object: T) -> T in
+        return Insert(context: context, builder: builder.map { (object: T) -> T in
             for i in 0..<keys.count {
                 object.setPrimitiveValue(values[i], forKey: keys[i])
             }
@@ -72,7 +71,7 @@ public extension Insert {
     }
     
     public func setKeyedValues(keyedValues: [String: AnyObject]) -> Insert {
-        return Insert(context: context, builder: builder >>> { (object: T) -> T in
+        return Insert(context: context, builder: builder.map { (object: T) -> T in
             for e in keyedValues {
                 object.setPrimitiveValue(e.1, forKey: e.0)
             }
@@ -95,7 +94,7 @@ public extension NSManagedObjectContext {
 // MARK: setup methods via attribute
 public extension Insert {
     public func setValues(atObject:(T) -> ()) -> Insert {
-        return Insert(context: context, builder: builder >>> { (object: T) -> T in
+        return Insert(context: context, builder: builder.map { (object: T) -> T in
             atObject(object)
             return object
             })

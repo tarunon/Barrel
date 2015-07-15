@@ -11,32 +11,26 @@ import CoreData
 
 public struct Aggregate<T: NSManagedObject> {
     internal let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
-    internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
         self.context = context
-        self.builder = builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+        self.builder = builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
             fetchRequest.resultType = .DictionaryResultType
             fetchRequest.propertiesToFetch = [expressionDescription()]
             return fetchRequest
         }
     }
     
-    private init(context: NSManagedObjectContext, builder: RequestBuilder) {
+    private init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>) {
         self.context = context
         self.builder = builder
     }
 }
 
-extension Aggregate: Builder {
-    func build() -> NSFetchRequest {
-        let fetchRequest = builder()
-        fetchRequest.resultType = .DictionaryResultType
-        return fetchRequest
-    }
-    
+extension Aggregate {
     public func fetchRequest() -> NSFetchRequest {
-        return build()
+        return builder.build()
     }
 }
 
@@ -53,7 +47,7 @@ extension Aggregate: Executable {
 // MARK: aggregate methods
 public extension Aggregate {
     func aggregate(@autoclosure(escaping) expression: () -> NSExpressionDescription) -> Aggregate {
-        return Aggregate(context: context, builder: builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
+        return Aggregate(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
             fetchRequest.propertiesToFetch = fetchRequest.propertiesToFetch! + [expression()]
             return fetchRequest
             })
