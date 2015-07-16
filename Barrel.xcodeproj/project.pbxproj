@@ -152,7 +152,7 @@
 				D2BA97171B18C8D100F85AA1 /* Supporting Files */,
 			);
 			path = BarrelTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D2BA97171B18C8D100F85AA1 /* Supporting Files */ = {
 			isa = PBXGroup;

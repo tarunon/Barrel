@@ -172,22 +172,26 @@ public func /<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNum
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 
-public func max<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Max)
+extension ExpressionType where ValueType == NSNumber {
+    public func max() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Max)
+    }
+
+    public func min() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Min)
+    }
+
+    public func sum() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Sum)
+    }
+
+    public func average() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Average)
+    }
 }
 
-public func min<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Min)
-}
-
-public func sum<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Sum)
-}
-
-public func average<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Average)
-}
-
-public func count<E: ExpressionType, V: ExpressionType where E.ValueType == V>(hs: E?) -> Expression<V> {
-    return Expression(hs: Expression.createExpression(hs), type: .Count)
+extension ExpressionType where ValueType == Self {
+    public func count() -> Expression<Self> {
+        return Expression(hs: Expression.createExpression(self), type: .Count)
+    }
 }
