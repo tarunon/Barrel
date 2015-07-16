@@ -81,7 +81,7 @@ class InsertTest: XCTestCase {
     }
     
     func testPerformanceUseInsertObject() {
-        measureBlock { () -> Void in
+        measureBlock {
             for i in 0..<1000 {
                 let person = self.context.insert(Person).setValues{
                     $0.name = "Harry"
@@ -92,7 +92,7 @@ class InsertTest: XCTestCase {
     }
     
     func testPerformanceNoUseInsertObject() {
-        measureBlock { () -> Void in
+        measureBlock {
             for i in 0..<1000 {
                 let person = NSEntityDescription.insertNewObjectForEntityForName("PersonEntity", inManagedObjectContext: self.context) as! Person
                 person.name = "Harry"

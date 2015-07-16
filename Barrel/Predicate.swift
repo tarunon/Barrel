@@ -9,23 +9,26 @@
 import Foundation
 import CoreData
 
-internal typealias PredicateBuilder = () -> NSPredicate
-
-public struct Predicate: Builder {
-    internal let builder: PredicateBuilder
-    private init(builder: PredicateBuilder) {
+public struct Predicate {
+    internal let builder: Builder<NSPredicate>
+    
+    internal init() {
+        self.builder = Builder{ NSPredicate(value: true) }
+    }
+    
+    private init(builder: Builder<NSPredicate>) {
         self.builder = builder
     }
     
     public func predicate() -> NSPredicate {
-        return builder()
+        return builder.build()
     }
 }
 
 // MARK: compariison operation
 private extension Predicate {
     init<E1: ExpressionType, E2: ExpressionType>(lhs: E1?, rhs: E2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
-        builder = { NSComparisonPredicate(leftExpression: Expression.createExpression(lhs).expression(), rightExpression: Expression.createExpression(rhs).expression(), modifier: .DirectPredicateModifier, type: type, options: options) }
+        builder = Builder { NSComparisonPredicate(leftExpression: Expression.createExpression(lhs).expression(), rightExpression: Expression.createExpression(rhs).expression(), modifier: .DirectPredicateModifier, type: type, options: options) }
     }
 }
 
@@ -98,15 +101,15 @@ public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
 // MARK: logical operation
 private extension Predicate {
     func and(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.predicate()]) })
+        return Predicate(builder: builder.map { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func or(other: Predicate) -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.predicate()]) })
+        return Predicate(builder: builder.map { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.predicate()]) })
     }
     
     func not() -> Predicate {
-        return Predicate(builder: builder >>> { NSCompoundPredicate(type: .NotPredicateType, subpredicates: [$0]) })
+        return Predicate(builder: builder.map { NSCompoundPredicate(type: .NotPredicateType, subpredicates: [$0]) })
     }
 }
 

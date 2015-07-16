@@ -9,13 +9,11 @@
 import Foundation
 import CoreData
 
-internal typealias ExpressionDescriptionBuilder = () -> NSExpressionDescription
-
-internal struct ExpressionDescription<T: NSManagedObject>: Builder {
-    internal let builder: ExpressionDescriptionBuilder
+internal struct ExpressionDescription<T: NSManagedObject> {
+    internal let builder: Builder<NSExpressionDescription>
     
     internal init<V>(argument: Expression<V>) {
-        builder = { () -> NSExpressionDescription in
+        builder = Builder {
             let expressionDescription = NSExpressionDescription()
             expressionDescription.expression = argument.expression()
             expressionDescription.name = argument.name()
@@ -25,6 +23,6 @@ internal struct ExpressionDescription<T: NSManagedObject>: Builder {
     }
 
     internal func expressionDescription() -> NSExpressionDescription {
-        return builder()
+        return builder.build()
     }
 }

@@ -9,9 +9,6 @@
 import Foundation
 import CoreData
 
-internal typealias ExpressionBuilder = () -> NSExpression
-internal typealias NameBuilder = () -> String
-
 public protocol ExpressionType {
     typealias ValueType: ExpressionType
 }
@@ -104,42 +101,42 @@ enum ExpressionFunctionType {
     }
 }
 
-public struct Expression<V: ExpressionType>: Builder, ExpressionType {
+public struct Expression<V: ExpressionType>: ExpressionType {
     typealias ValueType = V.ValueType
-    internal let builder: ExpressionBuilder
-    internal let nameBuilder: NameBuilder
+    internal let builder: Builder<NSExpression>
+    internal let nameBuilder: Builder<String>
 
     private init(value: V?) {
         let attributeType = Attribute(value: value)
         switch attributeType {
         case .This:
-            builder = { NSExpression.expressionForEvaluatedObject() }
-            nameBuilder = { "self" }
+            builder = Builder { NSExpression.expressionForEvaluatedObject() }
+            nameBuilder = Builder { "self" }
         case .KeyPath(let keyPath):
-            builder = { NSExpression(forKeyPath: keyPath) }
-            nameBuilder = { keyPath }
+            builder = Builder { NSExpression(forKeyPath: keyPath) }
+            nameBuilder = Builder { keyPath }
         case .Value(let value):
-            builder = { NSExpression(forConstantValue: value) }
-            nameBuilder = { "\(value)" }
+            builder = Builder { NSExpression(forConstantValue: value) }
+            nameBuilder = Builder { "\(value)" }
         case .Null:
             // unsupported at swift 1.2
-            builder = { NSExpression(forConstantValue: NSNull()) }
-            nameBuilder = { "nil" }
+            builder = Builder { NSExpression(forConstantValue: NSNull()) }
+            nameBuilder = Builder { "nil" }
         case .Unsupported:
             // TODO: throw exception
-            builder = { NSExpression() }
-            nameBuilder = { "unsupported value" }
+            builder = Builder { NSExpression() }
+            nameBuilder = Builder { "unsupported value" }
         }
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = { NSExpression(forFunction: type.function(), arguments: [lhs.expression(), rhs.expression()]) }
-        nameBuilder = { type.name([lhs, rhs]) }
+        builder = Builder { NSExpression(forFunction: type.function(), arguments: [lhs.expression(), rhs.expression()]) }
+        nameBuilder = Builder { type.name([lhs, rhs]) }
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
-        builder = { NSExpression(forFunction: type.function(), arguments: [hs.expression()]) }
-        nameBuilder = { type.name([hs]) }
+        builder = Builder { NSExpression(forFunction: type.function(), arguments: [hs.expression()]) }
+        nameBuilder = Builder { type.name([hs]) }
     }
     
     static func createExpression<E: ExpressionType where E.ValueType == V>(value: E?) -> Expression {
@@ -151,11 +148,11 @@ public struct Expression<V: ExpressionType>: Builder, ExpressionType {
     }
     
     public func expression() -> NSExpression {
-        return builder()
+        return builder.build()
     }
     
     public func name() -> String {
-        return nameBuilder()
+        return nameBuilder.build()
     }
 }
 

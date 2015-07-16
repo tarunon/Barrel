@@ -11,32 +11,26 @@ import CoreData
 
 public struct Aggregate<T: NSManagedObject> {
     internal let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
-    internal init(context: NSManagedObjectContext, builder: RequestBuilder, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
         self.context = context
-        self.builder = builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.resultType = .DictionaryResultType
-            fetchRequest.propertiesToFetch = [expressionDescription()]
-            return fetchRequest
+        self.builder = builder.map {
+            $0.resultType = .DictionaryResultType
+            $0.propertiesToFetch = [expressionDescription()]
+            return $0
         }
     }
     
-    private init(context: NSManagedObjectContext, builder: RequestBuilder) {
+    private init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>) {
         self.context = context
         self.builder = builder
     }
 }
 
-extension Aggregate: Builder {
-    func build() -> NSFetchRequest {
-        let fetchRequest = builder()
-        fetchRequest.resultType = .DictionaryResultType
-        return fetchRequest
-    }
-    
+extension Aggregate {
     public func fetchRequest() -> NSFetchRequest {
-        return build()
+        return builder.build()
     }
 }
 
@@ -53,9 +47,9 @@ extension Aggregate: Executable {
 // MARK: aggregate methods
 public extension Aggregate {
     func aggregate(@autoclosure(escaping) expression: () -> NSExpressionDescription) -> Aggregate {
-        return Aggregate(context: context, builder: builder >>> { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.propertiesToFetch = fetchRequest.propertiesToFetch! + [expression()]
-            return fetchRequest
+        return Aggregate(context: context, builder: builder.map {
+            $0.propertiesToFetch = $0.propertiesToFetch! + [expression()]
+            return $0
             })
     }
 }
@@ -70,9 +64,7 @@ public extension Aggregate {
 // MARK: aggregate methods via attribute
 public extension Aggregate {
     public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate {
-        return aggregate({ () -> NSExpressionDescription in
-            return ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription()
-            }())
+        return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
     
     public func groupBy<E: ExpressionType>(argument: (T) -> E) -> Group<T> {
