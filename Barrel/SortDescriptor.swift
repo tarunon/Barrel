@@ -8,10 +8,8 @@
 
 import Foundation
 
-internal typealias SortDescriptorBuilder = () -> NSSortDescriptor
-
-public struct SortDescriptor: Builder {
-    internal let builder: SortDescriptorBuilder
+public struct SortDescriptor {
+    internal let builder: Builder<NSSortDescriptor>
     private init<T>(lhs: T?, rhs: T?, ascending: Bool) {
         if case .KeyPath(let keyPath) = Attribute(value: lhs) {
             builder = { NSSortDescriptor(key: keyPath, ascending: ascending) }
@@ -23,7 +21,7 @@ public struct SortDescriptor: Builder {
     }
     
     public func sortDescriptor() -> NSSortDescriptor {
-        return builder()
+        return builder.build()
     }
 }
 

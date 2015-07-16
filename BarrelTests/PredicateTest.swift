@@ -33,9 +33,9 @@ class PredicateTest: XCTestCase {
         try! context.fetch(Person).filter{ (person: Person) -> Predicate in
             let p1: Predicate = person.age == 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age == %i", 20), "Pass")
-            let p2: Predicate = person.name == "John"
+            let p2: Predicate = $0.name == "John"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name ==[cd] %@", "John"), "Pass")
-            let p3: Predicate = person.name === "John"
+            let p3: Predicate = $0.name === "John"
             XCTAssertEqual(p3.predicate(), NSPredicate(format: "name == %@", "John"), "Pass")
             return p1
             }.get()
@@ -45,9 +45,9 @@ class PredicateTest: XCTestCase {
         try! context.fetch(Person).filter{ (person: Person) -> Predicate in
             let p1: Predicate = person.age != 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age != %i", 20), "Pass")
-            let p2: Predicate = person.name != "John"
+            let p2: Predicate = $0.name != "John"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name !=[cd] %@", "John"), "Pass")
-            let p3: Predicate = person.name !== "John"
+            let p3: Predicate = $0.name !== "John"
             XCTAssertEqual(p3.predicate(), NSPredicate(format: "name != %@", "John"), "Pass")
             return p1
             }.get()
@@ -57,7 +57,7 @@ class PredicateTest: XCTestCase {
         try! context.fetch(Person).filter{ (person: Person) -> Predicate in
             let p1: Predicate = person.name ~= "^J.*n$"
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "name MATCHES[cd] %@", "^J.*n$"), "Pass")
-            let p2: Predicate = person.name ~== "^J.*n$"
+            let p2: Predicate = $0.name ~== "^J.*n$"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name MATCHES %@", "^J.*n$"), "Pass")
             return p1
             }.get()
@@ -99,7 +99,7 @@ class PredicateTest: XCTestCase {
         try! context.fetch(Person).filter{ (person: Person) -> Predicate in
             let p1: Predicate = person.age << [19, 20, 21]
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age IN %@", [19, 20, 21]), "Pass")
-            let p2: Predicate = person.name << ["John", "Michael", "Harry"]
+            let p2: Predicate = $0.name << ["John", "Michael", "Harry"]
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name IN %@", ["John", "Michael", "Harry"]), "Pass")
             return p1
             }.get()
