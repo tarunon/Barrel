@@ -12,7 +12,7 @@ import CoreData
 public struct Predicate {
     internal let builder: Builder<NSPredicate>
     
-    private init() {
+    internal init() {
         self.builder = Builder{ NSPredicate(value: true) }
     }
     

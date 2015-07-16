@@ -15,10 +15,10 @@ public struct Group<T: NSManagedObject> {
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) keyPath: () -> String) {
         self.context = context
-        self.builder = builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.propertiesToGroupBy = [keyPath()]
-            fetchRequest.havingPredicate = NSPredicate(value: true)
-            return fetchRequest
+        self.builder = builder.map {
+            $0.propertiesToGroupBy = [keyPath()]
+            $0.havingPredicate = NSPredicate(value: true)
+            return $0
         }
     }
     
@@ -45,16 +45,16 @@ extension Group: Executable {
 // MARK: group methods
 public extension Group {
     func groupBy(@autoclosure(escaping) keyPath: () -> String) -> Group {
-        return Group(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.propertiesToGroupBy = fetchRequest.propertiesToGroupBy! + [keyPath()]
-            return fetchRequest
-            })
+        return Group(context: context, builder: builder.map {
+            $0.propertiesToGroupBy = $0.propertiesToGroupBy! + [keyPath()]
+            return $0
+        })
     }
     func having(@autoclosure(escaping) predicate: () -> NSPredicate) -> Group {
-        return Group(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.havingPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [fetchRequest.havingPredicate!, predicate()])
-            return fetchRequest
-            })
+        return Group(context: context, builder: builder.map {
+            $0.havingPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0.havingPredicate!, predicate()])
+            return $0
+        })
     }
 }
 

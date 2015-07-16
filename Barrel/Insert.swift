@@ -55,28 +55,28 @@ extension Insert {
 // MARK: setup methods
 public extension Insert {
     public func setValue(value: AnyObject, forKey key: String) -> Insert {
-        return Insert(context: context, builder: builder.map { (object: T) -> T in
-            object.setPrimitiveValue(value, forKey: key)
-            return object
-            })
+        return Insert(context: context, builder: builder.map {
+            $0.setPrimitiveValue(value, forKey: key)
+            return $0
+        })
     }
     
     public func setValues(values: [AnyObject], forKeys keys: [String]) -> Insert {
-        return Insert(context: context, builder: builder.map { (object: T) -> T in
+        return Insert(context: context, builder: builder.map {
             for i in 0..<keys.count {
-                object.setPrimitiveValue(values[i], forKey: keys[i])
+                $0.setPrimitiveValue(values[i], forKey: keys[i])
             }
-            return object
-            })
+            return $0
+        })
     }
     
     public func setKeyedValues(keyedValues: [String: AnyObject]) -> Insert {
-        return Insert(context: context, builder: builder.map { (object: T) -> T in
+        return Insert(context: context, builder: builder.map {
             for e in keyedValues {
-                object.setPrimitiveValue(e.1, forKey: e.0)
+                $0.setPrimitiveValue(e.1, forKey: e.0)
             }
-            return object
-            })
+            return $0
+        })
     }
 }
 
@@ -94,9 +94,9 @@ public extension NSManagedObjectContext {
 // MARK: setup methods via attribute
 public extension Insert {
     public func setValues(atObject:(T) -> ()) -> Insert {
-        return Insert(context: context, builder: builder.map { (object: T) -> T in
-            atObject(object)
-            return object
-            })
+        return Insert(context: context, builder: builder.map {
+            atObject($0)
+            return $0
+        })
     }
 }

@@ -15,9 +15,9 @@ public struct Fetch<T: NSManagedObject> {
     
     internal init(context: NSManagedObjectContext) {
         self.context = context
-        builder = Builder { () -> NSFetchRequest in
+        builder = Builder { 
             let fetchRequest = NSFetchRequest(entityName: context.entityName(T)!)
-            fetchRequest.predicate = NSPredicate(value: true)
+            fetchRequest.predicate = Predicate().predicate()
             fetchRequest.sortDescriptors = []
             return fetchRequest
         }
@@ -57,31 +57,31 @@ public extension Fetch {
 // MARK: fetch methods
 public extension Fetch {
     public func filter(@autoclosure(escaping) predicate: () -> NSPredicate) -> Fetch {
-        return Fetch(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [fetchRequest.predicate!, predicate()])
-            return fetchRequest
-            })
+        return Fetch(context: context, builder: builder.map {
+            $0.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0.predicate!, predicate()])
+            return $0
+        })
     }
     
     public func orderBy(@autoclosure(escaping) sortDescriptor: () -> NSSortDescriptor) -> Fetch {
-        return Fetch(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.sortDescriptors = fetchRequest.sortDescriptors! + [sortDescriptor()]
-            return fetchRequest
-            })
+        return Fetch(context: context, builder: builder.map {
+            $0.sortDescriptors = $0.sortDescriptors! + [sortDescriptor()]
+            return $0
+        })
     }
     
     public func limit(limit: Int) -> Fetch {
-        return Fetch(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.fetchLimit = limit
-            return fetchRequest
-            })
+        return Fetch(context: context, builder: builder.map {
+            $0.fetchLimit = limit
+            return $0
+        })
     }
     
     public func offset(offset: Int) -> Fetch {
-        return Fetch(context: context, builder: builder.map { (fetchRequest: NSFetchRequest) -> NSFetchRequest in
-            fetchRequest.fetchOffset = offset
-            return fetchRequest
-            })
+        return Fetch(context: context, builder: builder.map {
+            $0.fetchOffset = offset
+            return $0
+        })
     }
 }
 
@@ -98,8 +98,8 @@ public extension NSManagedObjectContext {
 
 // MARK: to aggregate
 public extension Fetch {
-    public func aggregate(expressionDescription: NSExpressionDescription) -> Aggregate<T> {
-        return Aggregate(context: context, builder: builder, expressionDescription: expressionDescription)
+    public func aggregate(@autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) -> Aggregate<T> {
+        return Aggregate(context: context, builder: builder, expressionDescription: expressionDescription())
     }
 }
 
@@ -114,8 +114,6 @@ public extension Fetch {
     }
     
     public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate<T> {
-        return aggregate({ () -> NSExpressionDescription in
-            return ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription()
-            }())
+        return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
 }

@@ -13,7 +13,7 @@ internal struct ExpressionDescription<T: NSManagedObject> {
     internal let builder: Builder<NSExpressionDescription>
     
     internal init<V>(argument: Expression<V>) {
-        builder = Builder { () -> NSExpressionDescription in
+        builder = Builder {
             let expressionDescription = NSExpressionDescription()
             expressionDescription.expression = argument.expression()
             expressionDescription.name = argument.name()

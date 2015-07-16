@@ -30,120 +30,120 @@ class PredicateTest: XCTestCase {
     }
     
     func testEqualTo() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age == 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age == 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age == %i", 20), "Pass")
-            let p2: Predicate = person.name == "John"
+            let p2: Predicate = $0.name == "John"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name ==[cd] %@", "John"), "Pass")
-            let p3: Predicate = person.name === "John"
+            let p3: Predicate = $0.name === "John"
             XCTAssertEqual(p3.predicate(), NSPredicate(format: "name == %@", "John"), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
 
     func testNotEqualTo() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age != 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age != 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age != %i", 20), "Pass")
-            let p2: Predicate = person.name != "John"
+            let p2: Predicate = $0.name != "John"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name !=[cd] %@", "John"), "Pass")
-            let p3: Predicate = person.name !== "John"
+            let p3: Predicate = $0.name !== "John"
             XCTAssertEqual(p3.predicate(), NSPredicate(format: "name != %@", "John"), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testMatches() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.name ~= "^J.*n$"
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.name ~= "^J.*n$"
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "name MATCHES[cd] %@", "^J.*n$"), "Pass")
-            let p2: Predicate = person.name ~== "^J.*n$"
+            let p2: Predicate = $0.name ~== "^J.*n$"
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name MATCHES %@", "^J.*n$"), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testGreaterThan() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age > 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age > 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age > %i", 20), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testGreaterThanOrEqualTo() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age >= 20
+        context.fetch(Person).filter{
+            let p1: Predicate = $0.age >= 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age >= %i", 20), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testLessThan() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age < 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age < 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age < %i", 20), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testLessThanOrEqualTo() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age <= 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age <= 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age <= %i", 20), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testIn() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.age << [19, 20, 21]
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.age << [19, 20, 21]
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "age IN %@", [19, 20, 21]), "Pass")
-            let p2: Predicate = person.name << ["John", "Michael", "Harry"]
+            let p2: Predicate = $0.name << ["John", "Michael", "Harry"]
             XCTAssertEqual(p2.predicate(), NSPredicate(format: "name IN %@", ["John", "Michael", "Harry"]), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
 
 //unsupported at swift1.2
 //    func testBetween() {
-//        context.fetch(Person).filter{ (person: Person) -> Predicate in
-//            let p1: Predicate = person.age << (19..<21)
+//        context.fetch(Person).filter {
+//            let p1: Predicate = $0.age << (19..<21)
 //            XCTAssertEqual(p1.predicate(), NSPredicate(format: "age BETWEEN %@", [19, 21]), "Pass")
 //            return p1
-//            }.execute()
+//        }.execute()
 //    }
     
     func testContains() {
         let child = context.insert(Person).insert()
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.children >> child
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.children >> child
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "children CONTAINS %@", child), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testAnd() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.name ~= "^J.*" && person.age >= 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.name ~= "^J.*" && $0.age >= 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "name MATCHES[cd] %@ AND age >= %i", "^J.*", 20), "Pass")
             return p1
         }.execute()
     }
     
     func testOr() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = person.name ~= "^J.*" || person.age >= 20
+        context.fetch(Person).filter {
+            let p1: Predicate = $0.name ~= "^J.*" || $0.age >= 20
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "name MATCHES[cd] %@ OR age >= %i", "^J.*", 20), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
     
     func testNot() {
-        context.fetch(Person).filter{ (person: Person) -> Predicate in
-            let p1: Predicate = !(person.name ~= "^J.*")
+        context.fetch(Person).filter {
+            let p1: Predicate = !($0.name ~= "^J.*")
             XCTAssertEqual(p1.predicate(), NSPredicate(format: "NOT (name MATCHES[cd] %@)", "^J.*"), "Pass")
             return p1
-            }.execute()
+        }.execute()
     }
 }
