@@ -189,11 +189,11 @@ In aggregate can use arithmetic operations, and in groupBy can use filter operat
 ###Aggregate functions.
 |Operation|Supported Type|Description|
 |---|---|---|
-|max(A)|NSNumber|Number of maximum A.|
-|min(A)|NSNumber|Number of minimum A.|
-|sum(A)|NSNumber|Number of sum A.|
-|average(A)|NSNumber|Number of average A.|
-|count(A)|AnyObject|Number of count A.|
+|A.max()|NSNumber|Number of maximum A.|
+|A.min()|NSNumber|Number of minimum A.|
+|A.sum()|NSNumber|Number of sum A.|
+|A.average()|NSNumber|Number of average A.|
+|A.count()|AnyObject|Number of count A.|
 
 
 ###ResultsController
