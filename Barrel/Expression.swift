@@ -119,8 +119,9 @@ public struct Expression<V: ExpressionType>: ExpressionType {
             builder = Builder { NSExpression(forConstantValue: value) }
             nameBuilder = Builder { "\(value)" }
         case .Null:
-            builder = { NSExpression(forConstantValue: nil) }
-            nameBuilder = { "nil" }
+            // unsupported at swift 1.2
+            builder = Builder { NSExpression(forConstantValue: nil) }
+            nameBuilder = Builder { "nil" }
         case .Unsupported:
             // TODO: throw exception
             builder = Builder { NSExpression() }

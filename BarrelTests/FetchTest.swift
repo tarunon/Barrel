@@ -72,15 +72,15 @@ class FetchTest: XCTestCase {
     }
     
     func testPerformanceUseFetchObject() {
-        measureBlock { () -> Void in
+        measureBlock {
             for _ in 0..<1000 {
-                try! self.context.fetch(Person).filter{ $0.name !== "John" }.orderBy{ $0.age > $1.age }.all()
+                _ = try! self.context.fetch(Person).filter{ $0.name !== "John" }.orderBy{ $0.age > $1.age }.all()
             }
         }
     }
     
     func testPerformanceNoUseFetchObject() {
-        measureBlock { () -> Void in
+        measureBlock {
             for _ in 0..<1000 {
                 let fetchRequest = NSFetchRequest(entityName: "PersonEntity")
                 fetchRequest.predicate = NSPredicate(format: "name != %@", "John")

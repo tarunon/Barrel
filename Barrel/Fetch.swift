@@ -9,11 +9,9 @@
 import Foundation
 import CoreData
 
-internal typealias RequestBuilder = () -> NSFetchRequest
-
-public struct Fetch<T: NSManagedObject>: Builder {
+public struct Fetch<T: NSManagedObject> {
     public let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext) {
         self.context = context

@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-public struct Group<T: NSManagedObject>: Builder {
+public struct Group<T: NSManagedObject> {
     public let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) keyPath: () -> String) {
         self.context = context

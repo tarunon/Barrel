@@ -29,57 +29,57 @@ class ExpressionTest: XCTestCase {
         super.tearDown()
     }
 
-    func testAdd() {
-        try! context.fetch(Person).filter{ (p: Person) -> Predicate in
-            let e1: Expression<NSNumber> = p.age + 1
+    func testAdd()  {
+        try! context.fetch(Person).filter {
+            let e1: Expression<NSNumber> = $0.age + 1
             XCTAssertEqual(e1.name(), "add_age_to_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
             let e2: Expression<NSNumber> = $0.age + $0.age
             XCTAssertEqual(e2.name(), "add_age_to_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-            }.get()
+        }.get()
     }
     
-    func testSubtract() {
-        try! context.fetch(Person).filter{ (p: Person) -> Predicate in
-            let e1: Expression<NSNumber> = p.age - 1
+    func testSubtract()  {
+        try! context.fetch(Person).filter {
+            let e1: Expression<NSNumber> = $0.age - 1
             XCTAssertEqual(e1.name(), "from_age_subtract_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "from:subtract:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
             let e2: Expression<NSNumber> = $0.age - $0.age
             XCTAssertEqual(e2.name(), "from_age_subtract_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "from:subtract:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-            }.get()
+        }.get()
     }
     
-    func testMultiple() {
-        try! context.fetch(Person).filter{ (p: Person) -> Predicate in
-            let e1: Expression<NSNumber> = p.age * 1
+    func testMultiple()  {
+        try! context.fetch(Person).filter {
+            let e1: Expression<NSNumber> = $0.age * 1
             XCTAssertEqual(e1.name(), "multiply_age_by_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
             let e2: Expression<NSNumber> = $0.age * $0.age
             XCTAssertEqual(e2.name(), "multiply_age_by_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-            }.get()
+        }.get()
     }
     
-    func testDivide() {
-        try! context.fetch(Person).filter{ (p: Person) -> Predicate in
-            let e1: Expression<NSNumber> = p.age / 1
+    func testDivide()  {
+        try! context.fetch(Person).filter {
+            let e1: Expression<NSNumber> = $0.age / 1
             XCTAssertEqual(e1.name(), "divide_age_by_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "divide:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
             let e2: Expression<NSNumber> = $0.age / $0.age
             XCTAssertEqual(e2.name(), "divide_age_by_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "divide:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-            }.get()
+        }.get()
     }
     
-    func testComplex() {
-        try! context.fetch(Person).filter{ (p: Person) -> Predicate in
-            let e1: Expression<NSNumber> = p.age + 1 * 2
+    func testComplex()  {
+        try! context.fetch(Person).filter {
+            let e1: Expression<NSNumber> = $0.age + 1 * 2
             XCTAssertEqual(e1.name(), "add_age_to_multiply_1_by_2", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forConstantValue: 1), NSExpression(forConstantValue: 2)])]), "Pass")
             let e2: Expression<NSNumber> = $0.age * 1 + 2
@@ -89,6 +89,6 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e3.name(), "multiply_add_age_to_1_by_2", "Pass")
             XCTAssertEqual(e3.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), NSExpression(forConstantValue: 2)]), "Pass")
             return e1 < e2
-            }.get()
+        }.get()
     }
 }

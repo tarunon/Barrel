@@ -11,7 +11,7 @@ import CoreData
 
 public struct Aggregate<T: NSManagedObject> {
     public let context: NSManagedObjectContext
-    internal let builder: RequestBuilder
+    internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
         self.context = context
@@ -26,15 +26,7 @@ public struct Aggregate<T: NSManagedObject> {
         self.context = context
         self.builder = builder
     }
-}
 
-extension Aggregate: Builder {
-    public func build() -> NSFetchRequest {
-        let fetchRequest = builder()
-        fetchRequest.resultType = .DictionaryResultType
-        return fetchRequest
-    }
-    
     public func fetchRequest() -> NSFetchRequest {
         return builder.build()
     }

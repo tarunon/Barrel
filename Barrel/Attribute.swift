@@ -90,12 +90,12 @@ internal extension NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Attribute"
         entityDescription.managedObjectClassName = NSStringFromClass(AttributeManagedObject.self)
-        entityDescription.properties = properties.map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
+        entityDescription.properties = properties.map {
             let propertyDescription = NSAttributeDescription()
             let keyPath = $0.name
             propertyDescription.name = keyPath
             propertyDescription.attributeType = .TransformableAttributeType
-            if let _ = basePropertyDescription as? NSAttributeDescription {
+            if $0 is NSAttributeDescription {
                 propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
             } else if let relationshipDescription = $0 as? NSRelationshipDescription {
                 if relationshipDescription.toMany {
@@ -123,7 +123,7 @@ internal extension NSEntityDescription {
     func comparisonEntityDescription() -> NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Comparession"
-        entityDescription.properties = properties.map({ (basePropertyDescription: NSPropertyDescription) -> NSPropertyDescription in
+        entityDescription.properties = properties.map {
             let propertyDescription = NSAttributeDescription()
             propertyDescription.name = $0.name
             propertyDescription.optional = true
