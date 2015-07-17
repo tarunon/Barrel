@@ -117,11 +117,11 @@ public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
 
 // MARK: logical operation
 private extension Predicate {
-    init(lhs: Predicate, rhs: Predicate, type: PredicateCompoundType) {
+    init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
         builder = type.predicate </> lhs.builder <*> rhs.builder
     }
     
-    init(hs: Predicate, type: PredicateCompoundType) {
+    init(hs: Predicate, type: NSCompoundPredicateType) {
         builder = type.predicate </> hs.builder
     }
 }
