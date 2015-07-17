@@ -98,15 +98,15 @@ public extension Fetch {
 
 // MARK: fetch methods via attribute
 public extension Fetch {
-    public func filter(predicate: (T -> Predicate)) -> Fetch {
+    public func filter(predicate: T -> Predicate) -> Fetch {
         return filter(predicate(self.context.attribute()).predicate())
     }
     
-    public func orderBy(sortDescriptor: ((T, T) -> SortDescriptor)) -> Fetch {
+    public func orderBy(sortDescriptor: (T, T) -> SortDescriptor) -> Fetch {
         return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
-    public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate<T> {
+    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate<T> {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
 }

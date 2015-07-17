@@ -101,7 +101,7 @@ enum ExpressionFunctionType {
     }
 }
 
-public struct Expression<V: ExpressionType>: ExpressionType {
+public struct Expression<V: AttributeType>: AttributeType {
     typealias ValueType = V.ValueType
     internal let builder: Builder<NSExpression>
     internal let nameBuilder: Builder<String>
@@ -139,7 +139,7 @@ public struct Expression<V: ExpressionType>: ExpressionType {
         nameBuilder = Builder { type.name([hs]) }
     }
     
-    static func createExpression<E: ExpressionType where E.ValueType == V>(value: E?) -> Expression {
+    static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {
         if let expression = value as? Expression {
             return expression
         } else {
@@ -156,19 +156,19 @@ public struct Expression<V: ExpressionType>: ExpressionType {
     }
 }
 
-public func +<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func +<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Add)
 }
 
-public func -<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func -<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Subtract)
 }
 
-public func *<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func *<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Multiply)
 }
 
-public func /<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func /<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 

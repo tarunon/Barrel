@@ -10,19 +10,55 @@ import Foundation
 import CoreData
 
 public protocol AttributeType {
-    
+    typealias ValueType: AttributeType
 }
 
-extension NSObject: AttributeType {
-    
+extension NSNumber: AttributeType {
+    typealias ValueType = NSNumber
+}
+
+extension NSDate: AttributeType {
+    typealias ValueType = NSDate
+}
+
+extension NSData: AttributeType {
+    typealias ValueType = NSData
 }
 
 extension String: AttributeType {
-    
+    typealias ValueType = String
+}
+
+extension NSSet: AttributeType {
+    typealias ValueType = NSSet
+}
+
+extension NSManagedObject: AttributeType {
+    typealias ValueType = NSManagedObject
 }
 
 extension Set: AttributeType {
-    
+    typealias ValueType = NSSet
+}
+
+extension Array: AttributeType {
+    typealias ValueType = Array
+}
+
+internal extension NSAttributeType {
+    init<A: AttributeType>(type: A.Type) {
+        if A.ValueType.self is NSNumber.Type {
+            self = .DoubleAttributeType
+        } else if A.ValueType.self is String.Type {
+            self = .StringAttributeType
+        } else if A.ValueType.self is NSDate.Type {
+            self = .DateAttributeType
+        } else if A.ValueType.self is NSData.Type {
+            self = .BinaryDataAttributeType
+        } else {
+            self = .UndefinedAttributeType
+        }
+    }
 }
 
 internal enum Attribute {
@@ -98,11 +134,7 @@ internal extension NSEntityDescription {
             if $0 is NSAttributeDescription {
                 propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
             } else if let relationshipDescription = $0 as? NSRelationshipDescription {
-                if relationshipDescription.toMany {
-                    propertyDescription.defaultValue = Set(arrayLiteral: NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil))
-                } else {
-                    propertyDescription.defaultValue = NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)
-                }
+                propertyDescription.defaultValue = Set([NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)])
             }
             return propertyDescription
         }
