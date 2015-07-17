@@ -43,9 +43,9 @@ enum ExpressionFunctionType {
         }
     }
     
-    internal func name<T>(expressions: [Expression<T>]) -> String {
-        return "_".join(Array(zip(function().componentsSeparatedByString(":"), expressions))
-            .map{ $0.0 + "_" + $0.1.name() })
+    internal func name(argumentNames: [String]) -> String {
+        return "_".join(Array(zip(function().componentsSeparatedByString(":"), argumentNames))
+            .map{ $0.0 + "_" + $0.1 })
     }
 }
 
@@ -58,33 +58,41 @@ public struct Expression<V: AttributeType>: AttributeType {
         let attributeType = Attribute(value: value)
         switch attributeType {
         case .This:
-            builder = Builder { NSExpression.expressionForEvaluatedObject() }
-            nameBuilder = Builder { "self" }
+            builder = Builder(NSExpression.expressionForEvaluatedObject())
+            nameBuilder = Builder("self")
         case .KeyPath(let keyPath):
-            builder = Builder { NSExpression(forKeyPath: keyPath) }
-            nameBuilder = Builder { keyPath }
+            builder = Builder(NSExpression(forKeyPath: keyPath))
+            nameBuilder = Builder(keyPath)
         case .Value(let value):
-            builder = Builder { NSExpression(forConstantValue: value) }
-            nameBuilder = Builder { "\(value)" }
+            builder = Builder(NSExpression(forConstantValue: value))
+            nameBuilder = Builder("\(value)")
         case .Null:
             // unsupported at swift 1.2
-            builder = Builder { NSExpression(forConstantValue: NSNull()) }
-            nameBuilder = Builder { "nil" }
+            builder = Builder(NSExpression(forConstantValue: NSNull()))
+            nameBuilder = Builder("nil")
         case .Unsupported:
             // TODO: throw exception
-            builder = Builder { NSExpression() }
-            nameBuilder = Builder { "unsupported value" }
+            builder = Builder(NSExpression())
+            nameBuilder = Builder("unsupported value")
         }
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = Builder { NSExpression(forFunction: type.function(), arguments: [lhs.expression(), rhs.expression()]) }
-        nameBuilder = Builder { type.name([lhs, rhs]) }
+        builder = lhs.builder.flatMap { (lExpression: NSExpression) -> Builder<NSExpression> in
+            rhs.builder.map { (rExpression: NSExpression) -> NSExpression in
+                NSExpression(forFunction: type.function(), arguments: [lExpression, rExpression])
+            }
+        }
+        nameBuilder = lhs.nameBuilder.flatMap { (lName: String) -> Builder<String> in
+            rhs.nameBuilder.map { (rName: String) -> String in
+                type.name([lName, rName])
+            }
+        }
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
-        builder = Builder { NSExpression(forFunction: type.function(), arguments: [hs.expression()]) }
-        nameBuilder = Builder { type.name([hs]) }
+        builder = hs.builder.map { NSExpression(forFunction: type.function(), arguments: [$0]) }
+        nameBuilder = hs.nameBuilder.map { type.name([$0]) }
     }
     
     static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {

@@ -13,19 +13,19 @@ public struct SortDescriptor {
     private init<T: AttributeType>(lhs: T?, rhs: T?, ascending: Bool) {
         switch Attribute(value: lhs) {
         case .KeyPath(let keyPath):
-            builder = Builder { NSSortDescriptor(key: keyPath, ascending: ascending) }
+            builder = Builder(NSSortDescriptor(key: keyPath, ascending: ascending))
             return
         default:
             break
         }
         switch Attribute(value: rhs) {
         case .KeyPath(let keyPath):
-            builder = Builder { NSSortDescriptor(key: keyPath, ascending: !ascending) }
+            builder = Builder(NSSortDescriptor(key: keyPath, ascending: !ascending))
             return
         default:
             break
         }
-        builder = Builder { NSSortDescriptor() }
+        builder = Builder(NSSortDescriptor())
     }
     
     public func sortDescriptor() -> NSSortDescriptor {
