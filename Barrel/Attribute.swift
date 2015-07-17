@@ -46,14 +46,14 @@ extension Array: AttributeType {
 }
 
 internal extension NSAttributeType {
-    init<E: AttributeType>(type: E.Type) {
-        if E.ValueType.self is NSNumber.Type {
+    init<A: AttributeType>(type: A.Type) {
+        if A.ValueType.self is NSNumber.Type {
             self = .DoubleAttributeType
-        } else if E.ValueType.self is String.Type {
+        } else if A.ValueType.self is String.Type {
             self = .StringAttributeType
-        } else if E.ValueType.self is NSDate.Type {
+        } else if A.ValueType.self is NSDate.Type {
             self = .DateAttributeType
-        } else if E.ValueType.self is NSData.Type {
+        } else if A.ValueType.self is NSData.Type {
             self = .BinaryDataAttributeType
         } else {
             self = .UndefinedAttributeType

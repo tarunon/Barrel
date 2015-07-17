@@ -113,7 +113,7 @@ public extension Fetch {
         return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
-    public func aggregate<E: AttributeType>(expressionDescription: T -> E) -> Aggregate<T> {
+    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate<T> {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
 }

@@ -87,7 +87,7 @@ public struct Expression<V: AttributeType>: AttributeType {
         nameBuilder = Builder { type.name([hs]) }
     }
     
-    static func createExpression<E: AttributeType where E.ValueType == V>(value: E?) -> Expression {
+    static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {
         if let expression = value as? Expression {
             return expression
         } else {
@@ -104,38 +104,38 @@ public struct Expression<V: AttributeType>: AttributeType {
     }
 }
 
-public func +<E1: AttributeType, E2: AttributeType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func +<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Add)
 }
 
-public func -<E1: AttributeType, E2: AttributeType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func -<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Subtract)
 }
 
-public func *<E1: AttributeType, E2: AttributeType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func *<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Multiply)
 }
 
-public func /<E1: AttributeType, E2: AttributeType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func /<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 
-public func max<E: AttributeType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func max<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Max)
 }
 
-public func min<E: AttributeType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func min<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Min)
 }
 
-public func sum<E: AttributeType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func sum<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Sum)
 }
 
-public func average<E: AttributeType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func average<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Average)
 }
 
-public func count<E: AttributeType>(hs: E?) -> Expression<E.ValueType> {
+public func count<A: AttributeType>(hs: A?) -> Expression<A.ValueType> {
     return Expression(hs: Expression.createExpression(hs), type: .Count)
 }

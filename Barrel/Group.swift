@@ -64,7 +64,7 @@ public extension Group {
         return having(predicate(self.context.attribute()).predicate())
     }
     
-    public func groupBy<E: AttributeType>(argument: T -> E) -> Group {
+    public func groupBy<A: AttributeType>(argument: T -> A) -> Group {
         return groupBy(Expression.createExpression(argument(self.context.attribute())).name())
     }
 }
