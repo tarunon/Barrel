@@ -25,7 +25,7 @@ struct Builder<T>: BuilderType {
     }
     
     init<B: BuilderType where B.Result == T>(_ builder: B) {
-        self.builder = { builder.build() }
+        self.builder = builder.build
     }
     
     func build() -> T {

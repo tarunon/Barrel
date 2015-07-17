@@ -67,9 +67,8 @@ public struct Expression<V: AttributeType>: AttributeType {
             builder = Builder(NSExpression(forConstantValue: value))
             nameBuilder = Builder("\(value)")
         case .Null:
-            // unsupported at swift 1.2
-            builder = Builder { NSExpression(forConstantValue: nil) }
-            nameBuilder = Builder { "nil" }
+            builder = Builder(NSExpression(forConstantValue: nil))
+            nameBuilder = Builder("nil")
         case .Unsupported:
             // TODO: throw exception
             builder = Builder(NSExpression())
