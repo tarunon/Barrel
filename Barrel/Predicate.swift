@@ -9,24 +9,10 @@
 import Foundation
 import CoreData
 
-public enum PredicateCompoundType {
-    case And
-    case Or
-    case Not
-    
-    func compound() -> NSCompoundPredicateType {
-        switch self {
-        case .And:
-            return .AndPredicateType
-        case .Or:
-            return .OrPredicateType
-        case .Not:
-            return .NotPredicateType
-        }
-    }
+extension NSCompoundPredicateType {
     
     func predicate(s: [NSPredicate]) -> NSPredicate {
-        return NSCompoundPredicate(type: compound(), subpredicates: s)
+        return NSCompoundPredicate(type: self, subpredicates: s)
     }
     
     func predicate(x: NSPredicate) -> NSPredicate {
@@ -131,26 +117,26 @@ public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
 
 // MARK: logical operation
 private extension Predicate {
-    init(lhs: Predicate, rhs: Predicate, type: PredicateCompoundType) {
+    init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
         builder = { l in { r in type.predicate(l)(r) } }
             </> lhs.builder
             <*> rhs.builder
     }
     
-    init(hs: Predicate, type: PredicateCompoundType) {
+    init(hs: Predicate, type: NSCompoundPredicateType) {
         builder = { type.predicate($0) }
             </> hs.builder
     }
 }
 
 public func &&(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .And)
+    return Predicate(lhs: lhs, rhs: rhs, type: .AndPredicateType)
 }
 
 public func ||(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .Or)
+    return Predicate(lhs: lhs, rhs: rhs, type: .OrPredicateType)
 }
 
 public prefix func !(rhs: Predicate) -> Predicate {
-    return Predicate(hs: rhs, type: .Not)
+    return Predicate(hs: rhs, type: .NotPredicateType)
 }
