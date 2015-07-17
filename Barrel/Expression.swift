@@ -9,58 +9,6 @@
 import Foundation
 import CoreData
 
-public protocol ExpressionType {
-    typealias ValueType: ExpressionType
-}
-
-extension NSNumber: ExpressionType {
-    typealias ValueType = NSNumber
-}
-
-extension NSDate: ExpressionType {
-    typealias ValueType = NSDate
-}
-
-extension NSData: ExpressionType {
-    typealias ValueType = NSData
-}
-
-extension String: ExpressionType {
-    typealias ValueType = String
-}
-
-extension NSSet: ExpressionType {
-    typealias ValueType = NSSet
-}
-
-extension NSManagedObject: ExpressionType {
-    typealias ValueType = NSManagedObject
-}
-
-extension Set: ExpressionType {
-    typealias ValueType = NSSet
-}
-
-extension Array: ExpressionType {
-    typealias ValueType = Array
-}
-
-internal extension NSAttributeType {
-    init<E: ExpressionType>(type: E.Type) {
-        if E.ValueType.self is NSNumber.Type {
-            self = .DoubleAttributeType
-        } else if E.ValueType.self is String.Type {
-            self = .StringAttributeType
-        } else if E.ValueType.self is NSDate.Type {
-            self = .DateAttributeType
-        } else if E.ValueType.self is NSData.Type {
-            self = .BinaryDataAttributeType
-        } else {
-            self = .UndefinedAttributeType
-        }
-    }
-}
-
 enum ExpressionFunctionType {
     case Add
     case Subtract
@@ -101,7 +49,7 @@ enum ExpressionFunctionType {
     }
 }
 
-public struct Expression<V: ExpressionType>: ExpressionType {
+public struct Expression<V: AttributeType>: AttributeType {
     typealias ValueType = V.ValueType
     internal let builder: Builder<NSExpression>
     internal let nameBuilder: Builder<String>
@@ -147,7 +95,7 @@ public struct Expression<V: ExpressionType>: ExpressionType {
         nameBuilder = hs.nameBuilder.map { type.name([$0]) }
     }
     
-    static func createExpression<E: ExpressionType where E.ValueType == V>(value: E?) -> Expression {
+    static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {
         if let expression = value as? Expression {
             return expression
         } else {
@@ -164,38 +112,38 @@ public struct Expression<V: ExpressionType>: ExpressionType {
     }
 }
 
-public func +<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func +<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Add)
 }
 
-public func -<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func -<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Subtract)
 }
 
-public func *<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func *<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Multiply)
 }
 
-public func /<E1: ExpressionType, E2: ExpressionType where E1.ValueType == NSNumber, E2.ValueType == NSNumber>(lhs: E1?, rhs: E2?) -> Expression<NSNumber> {
+public func /<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumber, A2.ValueType == NSNumber>(lhs: A1?, rhs: A2?) -> Expression<NSNumber> {
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 
-public func max<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func max<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Max)
 }
 
-public func min<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func min<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Min)
 }
 
-public func sum<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func sum<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Sum)
 }
 
-public func average<E: ExpressionType where E.ValueType == NSNumber>(hs: E?) -> Expression<NSNumber> {
+public func average<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
     return Expression(hs: Expression.createExpression(hs), type: .Average)
 }
 
-public func count<E: ExpressionType>(hs: E?) -> Expression<E.ValueType> {
+public func count<A: AttributeType>(hs: A?) -> Expression<A.ValueType> {
     return Expression(hs: Expression.createExpression(hs), type: .Count)
 }

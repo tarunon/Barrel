@@ -56,7 +56,7 @@ func createPerson(name: String, age: Int) -> Person {
   return context.insert().setValues{
     $0.name = name
     $0.age = age
-    }.insert()
+  }.insert()
 }
 ```
 
@@ -147,7 +147,7 @@ Type-safe and Closure support.
 let person = context.insert(Person).setValues{
   $0.name = "John"
   $0.age = 24
-  }.insert()
+}.insert()
 ```
 
 And support getOrInsert method.
@@ -156,7 +156,7 @@ And support getOrInsert method.
 let person = context.insert(Person).setValues{
   $0.name = "John"
   $0.age = 24
-  }.getOrInsert()
+}.getOrInsert()
 ```
 
 
