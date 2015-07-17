@@ -44,7 +44,7 @@ enum ExpressionFunctionType {
     }
     
     internal func name(s: [String]) -> String {
-        return "_".join(map(zip(self.function().componentsSeparatedByString(":"), s)) { $0.0 + "_" + $0.1 })
+        return "_".join(zip(self.function().componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
     }
     
     internal func name(x: String) -> String {
@@ -96,19 +96,13 @@ public struct Expression<V: AttributeType>: AttributeType {
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = { l in { r in type.expression(l)(r) } }
-            </> lhs.builder
-            <*> rhs.builder
-        nameBuilder = { l in { r in type.name(l)(r) } }
-            </> lhs.nameBuilder
-            <*> rhs.nameBuilder
+        builder = type.expression </> lhs.builder <*> rhs.builder
+        nameBuilder = type.name </> lhs.nameBuilder <*> rhs.nameBuilder
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
-        builder = { type.expression($0) }
-            </> hs.builder
-        nameBuilder = { type.name($0) }
-            </> hs.nameBuilder
+        builder = type.expression </> hs.builder
+        nameBuilder = type.name </> hs.nameBuilder
     }
     
     static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {
