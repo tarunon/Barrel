@@ -9,24 +9,10 @@
 import Foundation
 import CoreData
 
-public enum PredicateCompoundType {
-    case And
-    case Or
-    case Not
-    
-    func compound() -> NSCompoundPredicateType {
-        switch self {
-        case .And:
-            return .AndPredicateType
-        case .Or:
-            return .OrPredicateType
-        case .Not:
-            return .NotPredicateType
-        }
-    }
+extension NSCompoundPredicateType {
     
     func predicate(s: [NSPredicate]) -> NSPredicate {
-        return NSCompoundPredicate(type: compound(), subpredicates: s)
+        return NSCompoundPredicate(type: self, subpredicates: s)
     }
     
     func predicate(x: NSPredicate) -> NSPredicate {
@@ -141,13 +127,13 @@ private extension Predicate {
 }
 
 public func &&(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .And)
+    return Predicate(lhs: lhs, rhs: rhs, type: .AndPredicateType)
 }
 
 public func ||(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .Or)
+    return Predicate(lhs: lhs, rhs: rhs, type: .OrPredicateType)
 }
 
 public prefix func !(rhs: Predicate) -> Predicate {
-    return Predicate(hs: rhs, type: .Not)
+    return Predicate(hs: rhs, type: .NotPredicateType)
 }

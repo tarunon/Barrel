@@ -9,40 +9,17 @@
 import Foundation
 import CoreData
 
-enum ExpressionFunctionType {
-    case Add
-    case Subtract
-    case Multiply
-    case Divide
-    case Max
-    case Min
-    case Sum
-    case Average
-    case Count
-    
-    internal func function() -> String {
-        switch self {
-        case .Add:
-            return "add:to:"
-        case .Subtract:
-            return "from:subtract:"
-        case .Multiply:
-            return "multiply:by:"
-        case .Divide:
-            return "divide:by:"
-        case .Max:
-            return "max:"
-        case .Min:
-            return "min:"
-        case .Count:
-            return "count:"
-        case .Sum:
-            return "sum:"
-        case .Average:
-            return "average:"
-        }
-    }
-    
+enum ExpressionFunctionType: String {
+    case Add        = "add:to:"
+    case Subtract   = "from:subtract:"
+    case Multiply   = "multiply:by:"
+    case Divide     = "divide:by:"
+    case Max        = "max:"
+    case Min        = "min:"
+    case Sum        = "sum:"
+    case Average    = "average:"
+    case Count      = "count:"
+        
     internal func name(s: [String]) -> String {
         return "_".join(zip(self.function().componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
     }
@@ -56,7 +33,7 @@ enum ExpressionFunctionType {
     }
     
     internal func expression(s: [NSExpression]) -> NSExpression {
-        return NSExpression(forFunction: self.function(), arguments: s)
+        return NSExpression(forFunction: rawValue, arguments: s)
     }
     
     internal func expression(x: NSExpression) -> NSExpression {
