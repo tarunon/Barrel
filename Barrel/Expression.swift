@@ -78,16 +78,10 @@ public struct Expression<V: AttributeType>: AttributeType {
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = lhs.builder.flatMap { (lExpression: NSExpression) -> Builder<NSExpression> in
-            rhs.builder.map { (rExpression: NSExpression) -> NSExpression in
-                NSExpression(forFunction: type.function(), arguments: [lExpression, rExpression])
-            }
-        }
-        nameBuilder = lhs.nameBuilder.flatMap { (lName: String) -> Builder<String> in
-            rhs.nameBuilder.map { (rName: String) -> String in
-                type.name([lName, rName])
-            }
-        }
+        builder = { x in { NSExpression(forFunction: type.function(), arguments: [x, $0]) } }
+            </> lhs.builder <*> rhs.builder
+        nameBuilder = { x in { type.name([x, $0]) } }
+            </> lhs.nameBuilder <*> rhs.nameBuilder
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
