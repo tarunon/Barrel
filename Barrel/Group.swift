@@ -60,11 +60,11 @@ public extension Group {
 
 // MARK: group methods via attribute
 public extension Group {
-    public func having(predicate: (T -> Predicate)) -> Group {
+    public func having(predicate: T -> Predicate) -> Group {
         return having(predicate(self.context.attribute()).predicate())
     }
     
-    public func groupBy<E: ExpressionType>(argument: (T) -> E) -> Group {
+    public func groupBy<A: AttributeType>(argument: T -> A) -> Group {
         return groupBy(Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

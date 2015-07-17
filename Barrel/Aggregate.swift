@@ -26,9 +26,7 @@ public struct Aggregate<T: NSManagedObject> {
         self.context = context
         self.builder = builder
     }
-}
 
-extension Aggregate {
     public func fetchRequest() -> NSFetchRequest {
         return builder.build()
     }
@@ -63,11 +61,11 @@ public extension Aggregate {
 
 // MARK: aggregate methods via attribute
 public extension Aggregate {
-    public func aggregate<E: ExpressionType>(expressionDescription:(T) -> E) -> Aggregate {
+    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
     
-    public func groupBy<E: ExpressionType>(argument: (T) -> E) -> Group<T> {
+    public func groupBy<A: AttributeType>(argument: T -> A) -> Group<T> {
         return Group(context: context, builder: builder, keyPath: Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 public struct SortDescriptor {
     internal let builder: Builder<NSSortDescriptor>
-    private init<T>(lhs: T?, rhs: T?, ascending: Bool) {
+    private init<T: AttributeType>(lhs: T?, rhs: T?, ascending: Bool) {
         switch Attribute(value: lhs) {
         case .KeyPath(let keyPath):
             builder = Builder { NSSortDescriptor(key: keyPath, ascending: ascending) }
