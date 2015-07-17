@@ -27,66 +27,66 @@ public struct Predicate {
 
 // MARK: compariison operation
 private extension Predicate {
-    init<E1: ExpressionType, E2: ExpressionType>(lhs: E1?, rhs: E2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
+    init<E1: AttributeType, E2: AttributeType>(lhs: E1?, rhs: E2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
         builder = Builder { NSComparisonPredicate(leftExpression: Expression.createExpression(lhs).expression(), rightExpression: Expression.createExpression(rhs).expression(), modifier: .DirectPredicateModifier, type: type, options: options) }
     }
 }
 
 infix operator ~== { associativity none precedence 130 }
 
-public func ==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ==<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
 }
 
-public func ===<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ===<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func ==<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ==<E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func !=<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !=<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
 }
 
-public func !==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !==<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func !=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !=<E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func ~=<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ~=<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
 }
 
-public func ~==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ~==<E1: AttributeType, E2: AttributeType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: .allZeros)
 }
 
-public func ><E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ><E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanPredicateOperatorType, options: .allZeros)
 }
 
-public func >=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func >=<E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanOrEqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func <<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func <<E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .LessThanPredicateOperatorType, options: .allZeros)
 }
 
-public func <=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func <=<E1: AttributeType, E2: AttributeType, V: AttributeType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType, options: .allZeros)
 }
 
-public func <<<E: ExpressionType, V: ExpressionType where E.ValueType == V>(lhs: E?, rhs: [V]) -> Predicate {
+public func <<<E: AttributeType, V: AttributeType where E.ValueType == V>(lhs: E?, rhs: [V]) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .InPredicateOperatorType, options: .allZeros)
 }
 
-public func <<<E: ExpressionType where E.ValueType == NSNumber>(lhs: E?, rhs: Range<Int>) -> Predicate {
+public func <<<E: AttributeType where E.ValueType == NSNumber>(lhs: E?, rhs: Range<Int>) -> Predicate {
     return Predicate(lhs: lhs, rhs: [NSNumber(integer: rhs.startIndex), NSNumber(integer: rhs.endIndex)], type: .BetweenPredicateOperatorType, options: .allZeros)
 }
 

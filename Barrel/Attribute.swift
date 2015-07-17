@@ -10,19 +10,55 @@ import Foundation
 import CoreData
 
 public protocol AttributeType {
-    
+    typealias ValueType: AttributeType
 }
 
-extension NSObject: AttributeType {
-    
+extension NSNumber: AttributeType {
+    typealias ValueType = NSNumber
+}
+
+extension NSDate: AttributeType {
+    typealias ValueType = NSDate
+}
+
+extension NSData: AttributeType {
+    typealias ValueType = NSData
 }
 
 extension String: AttributeType {
-    
+    typealias ValueType = String
+}
+
+extension NSSet: AttributeType {
+    typealias ValueType = NSSet
+}
+
+extension NSManagedObject: AttributeType {
+    typealias ValueType = NSManagedObject
 }
 
 extension Set: AttributeType {
-    
+    typealias ValueType = NSSet
+}
+
+extension Array: AttributeType {
+    typealias ValueType = Array
+}
+
+internal extension NSAttributeType {
+    init<E: AttributeType>(type: E.Type) {
+        if E.ValueType.self is NSNumber.Type {
+            self = .DoubleAttributeType
+        } else if E.ValueType.self is String.Type {
+            self = .StringAttributeType
+        } else if E.ValueType.self is NSDate.Type {
+            self = .DateAttributeType
+        } else if E.ValueType.self is NSData.Type {
+            self = .BinaryDataAttributeType
+        } else {
+            self = .UndefinedAttributeType
+        }
+    }
 }
 
 internal enum Attribute {
@@ -32,8 +68,8 @@ internal enum Attribute {
     case Null
     case Unsupported
     
-    init(value: Any?) {
-        if let attribute = value as? AttributeManagedObject {
+    init<T: AttributeType>(value: T?) {
+        if value is AttributeManagedObject {
             self = .This
         } else if let relationship = value as? RelationshipManagedObject {
             self = .KeyPath(relationship.property.decodingProperty()!.keyPath)
@@ -95,14 +131,10 @@ internal extension NSEntityDescription {
             let keyPath = $0.name
             propertyDescription.name = keyPath
             propertyDescription.attributeType = .TransformableAttributeType
-            if let attributeDescription = $0 as? NSAttributeDescription {
+            if $0 is NSAttributeDescription {
                 propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
             } else if let relationshipDescription = $0 as? NSRelationshipDescription {
-                if relationshipDescription.toMany {
-                    propertyDescription.defaultValue = Set(arrayLiteral: NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil))
-                } else {
-                    propertyDescription.defaultValue = NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)
-                }
+                propertyDescription.defaultValue = Set([NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)])
             }
             return propertyDescription
         }

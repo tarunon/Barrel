@@ -93,7 +93,7 @@ public extension NSManagedObjectContext {
 
 // MARK: setup methods via attribute
 public extension Insert {
-    public func setValues(atObject:(T) -> ()) -> Insert {
+    public func setValues(atObject: T -> ()) -> Insert {
         return Insert(context: context, builder: builder.map {
             atObject($0)
             return $0
