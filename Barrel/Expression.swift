@@ -43,9 +43,28 @@ enum ExpressionFunctionType {
         }
     }
     
-    internal func name(argumentNames: [String]) -> String {
-        return "_".join(Array(zip(function().componentsSeparatedByString(":"), argumentNames))
-            .map{ $0.0 + "_" + $0.1 })
+    internal func name(s: [String]) -> String {
+        return "_".join(map(zip(self.function().componentsSeparatedByString(":"), s)) { $0.0 + "_" + $0.1 })
+    }
+    
+    internal func name(x: String) -> String {
+        return name([x])
+    }
+    
+    internal func name(l: String)(_ r: String) -> String {
+        return name([l, r])
+    }
+    
+    internal func expression(s: [NSExpression]) -> NSExpression {
+        return NSExpression(forFunction: self.function(), arguments: s)
+    }
+    
+    internal func expression(x: NSExpression) -> NSExpression {
+        return expression([x])
+    }
+
+    internal func expression(l: NSExpression)(_ r: NSExpression) -> NSExpression {
+        return expression([l, r])
     }
 }
 
@@ -77,21 +96,19 @@ public struct Expression<V: AttributeType>: AttributeType {
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = lhs.builder.flatMap { (lExpression: NSExpression) -> Builder<NSExpression> in
-            rhs.builder.map { (rExpression: NSExpression) -> NSExpression in
-                NSExpression(forFunction: type.function(), arguments: [lExpression, rExpression])
-            }
-        }
-        nameBuilder = lhs.nameBuilder.flatMap { (lName: String) -> Builder<String> in
-            rhs.nameBuilder.map { (rName: String) -> String in
-                type.name([lName, rName])
-            }
-        }
+        builder = { l in { r in type.expression(l)(r) } }
+            </> lhs.builder
+            <*> rhs.builder
+        nameBuilder = { l in { r in type.name(l)(r) } }
+            </> lhs.nameBuilder
+            <*> rhs.nameBuilder
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
-        builder = hs.builder.map { NSExpression(forFunction: type.function(), arguments: [$0]) }
-        nameBuilder = hs.nameBuilder.map { type.name([$0]) }
+        builder = { type.expression($0) }
+            </> hs.builder
+        nameBuilder = { type.name($0) }
+            </> hs.nameBuilder
     }
     
     static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {

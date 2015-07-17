@@ -55,28 +55,28 @@ extension Insert {
 // MARK: setup methods
 public extension Insert {
     public func setValue(value: AnyObject, forKey key: String) -> Insert {
-        return Insert(context: context, builder: builder.map {
+        return Insert(context: context, builder: {
             $0.setPrimitiveValue(value, forKey: key)
             return $0
-        })
+        } </> builder)
     }
     
     public func setValues(values: [AnyObject], forKeys keys: [String]) -> Insert {
-        return Insert(context: context, builder: builder.map {
+        return Insert(context: context, builder: {
             for i in 0..<keys.count {
                 $0.setPrimitiveValue(values[i], forKey: keys[i])
             }
             return $0
-        })
+        } </> builder)
     }
     
     public func setKeyedValues(keyedValues: [String: AnyObject]) -> Insert {
-        return Insert(context: context, builder: builder.map {
+        return Insert(context: context, builder: {
             for e in keyedValues {
                 $0.setPrimitiveValue(e.1, forKey: e.0)
             }
             return $0
-        })
+        } </> builder)
     }
 }
 

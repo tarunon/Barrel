@@ -9,6 +9,35 @@
 import Foundation
 import CoreData
 
+public enum PredicateCompoundType {
+    case And
+    case Or
+    case Not
+    
+    func compound() -> NSCompoundPredicateType {
+        switch self {
+        case .And:
+            return .AndPredicateType
+        case .Or:
+            return .OrPredicateType
+        case .Not:
+            return .NotPredicateType
+        }
+    }
+    
+    func predicate(s: [NSPredicate]) -> NSPredicate {
+        return NSCompoundPredicate(type: compound(), subpredicates: s)
+    }
+    
+    func predicate(x: NSPredicate) -> NSPredicate {
+        return predicate([x])
+    }
+    
+    func predicate(l: NSPredicate)(_ r: NSPredicate) -> NSPredicate {
+        return predicate([l, r])
+    }
+}
+
 public struct Predicate {
     internal let builder: Builder<NSPredicate>
     
@@ -28,11 +57,9 @@ public struct Predicate {
 // MARK: compariison operation
 private extension Predicate {
     init<A1: AttributeType, A2: AttributeType>(lhs: A1?, rhs: A2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
-        builder = Expression.createExpression(lhs).builder.flatMap { (lEx: NSExpression) -> Builder<NSPredicate> in
-            Expression.createExpression(rhs).builder.map { (rEx: NSExpression) -> NSPredicate in
-                NSComparisonPredicate(leftExpression: lEx, rightExpression: rEx, modifier: .DirectPredicateModifier, type: type, options: options)
-            }
-        }
+        builder = { l in { r in NSComparisonPredicate(leftExpression: l, rightExpression: r, modifier: .DirectPredicateModifier, type: type, options: options) } }
+            </> Expression.createExpression(lhs).builder
+            <*> Expression.createExpression(rhs).builder
     }
 }
 
@@ -104,27 +131,26 @@ public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
 
 // MARK: logical operation
 private extension Predicate {
-    init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
-        builder = lhs.builder.flatMap{ (lPredicate: NSPredicate) -> Builder<NSPredicate> in
-            rhs.builder.map{ (rPredicate: NSPredicate) -> NSPredicate in
-                NSCompoundPredicate(type: type, subpredicates: [lPredicate, rPredicate])
-            }
-        }
+    init(lhs: Predicate, rhs: Predicate, type: PredicateCompoundType) {
+        builder = { l in { r in type.predicate(l)(r) } }
+            </> lhs.builder
+            <*> rhs.builder
     }
     
-    init(hs: Predicate, type: NSCompoundPredicateType) {
-        builder = hs.builder.map { NSCompoundPredicate(type: type, subpredicates: [$0]) }
+    init(hs: Predicate, type: PredicateCompoundType) {
+        builder = { type.predicate($0) }
+            </> hs.builder
     }
 }
 
 public func &&(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .AndPredicateType)
+    return Predicate(lhs: lhs, rhs: rhs, type: .And)
 }
 
 public func ||(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .OrPredicateType)
+    return Predicate(lhs: lhs, rhs: rhs, type: .Or)
 }
 
 public prefix func !(rhs: Predicate) -> Predicate {
-    return Predicate(hs: rhs, type: .NotPredicateType)
+    return Predicate(hs: rhs, type: .Not)
 }
