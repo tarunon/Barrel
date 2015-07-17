@@ -34,63 +34,63 @@ private extension Predicate {
 
 infix operator ~== { associativity none precedence 130 }
 
-public func ==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
-public func ===<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ===<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [])
 }
 
-public func ==<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ==<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [])
 }
 
-public func !=<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !=<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
-public func !==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [])
 }
 
-public func !=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func !=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [])
 }
 
-public func ~=<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ~=<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
-public func ~==<E1: ExpressionType, E2: ExpressionType where E1.ValueType == String, E2.ValueType == String>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ~==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: [])
 }
 
-public func ><E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func ><A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanPredicateOperatorType, options: [])
 }
 
-public func >=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func >=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanOrEqualToPredicateOperatorType, options: [])
 }
 
-public func <<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func <<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .LessThanPredicateOperatorType, options: [])
 }
 
-public func <=<E1: ExpressionType, E2: ExpressionType, V: ExpressionType where E1.ValueType == V, E2.ValueType == V>(lhs: E1?, rhs: E2?) -> Predicate {
+public func <=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType, options: [])
 }
 
-public func <<<E: ExpressionType, V: ExpressionType where E.ValueType == V>(lhs: E?, rhs: [V]) -> Predicate {
+public func <<<A: AttributeType, V: AttributeType where A.ValueType == V>(lhs: A?, rhs: [V]) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .InPredicateOperatorType, options: [])
 }
 
-public func <<<E: ExpressionType where E.ValueType == NSNumber>(lhs: E?, rhs: Range<Int>) -> Predicate {
+public func <<<A: AttributeType where A.ValueType == NSNumber>(lhs: A?, rhs: Range<Int>) -> Predicate {
     return Predicate(lhs: lhs, rhs: [NSNumber(integer: rhs.startIndex), NSNumber(integer: rhs.endIndex)], type: .BetweenPredicateOperatorType, options: [])
 }
 
-public func >><E: ExpressionType where E.ValueType == NSManagedObject>(lhs: Set<E>, rhs: E) -> Predicate {
+public func >><A: AttributeType where A.ValueType == NSManagedObject>(lhs: Set<A>, rhs: A) -> Predicate {
     return Predicate(lhs: lhs, rhs: rhs, type: .ContainsPredicateOperatorType, options: [])
 }
 

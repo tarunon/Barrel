@@ -68,8 +68,8 @@ internal enum Attribute {
     case Null
     case Unsupported
     
-    init(value: Any?) {
-        if let _ = value as? AttributeManagedObject {
+    init<T: AttributeType>(value: T?) {
+        if value is AttributeManagedObject {
             self = .This
         } else if let relationship = value as? RelationshipManagedObject {
             self = .KeyPath(relationship.property.decodingProperty()!.keyPath)

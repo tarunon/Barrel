@@ -9,58 +9,6 @@
 import Foundation
 import CoreData
 
-public protocol ExpressionType {
-    typealias ValueType: ExpressionType
-}
-
-extension NSNumber: ExpressionType {
-    typealias ValueType = NSNumber
-}
-
-extension NSDate: ExpressionType {
-    typealias ValueType = NSDate
-}
-
-extension NSData: ExpressionType {
-    typealias ValueType = NSData
-}
-
-extension String: ExpressionType {
-    typealias ValueType = String
-}
-
-extension NSSet: ExpressionType {
-    typealias ValueType = NSSet
-}
-
-extension NSManagedObject: ExpressionType {
-    typealias ValueType = NSManagedObject
-}
-
-extension Set: ExpressionType {
-    typealias ValueType = Set
-}
-
-extension Array: ExpressionType {
-    typealias ValueType = Array
-}
-
-internal extension NSAttributeType {
-    init<E: ExpressionType>(type: E.Type) {
-        if E.ValueType.self is NSNumber.Type {
-            self = .DoubleAttributeType
-        } else if E.ValueType.self is String.Type {
-            self = .StringAttributeType
-        } else if E.ValueType.self is NSDate.Type {
-            self = .DateAttributeType
-        } else if E.ValueType.self is NSData.Type {
-            self = .BinaryDataAttributeType
-        } else {
-            self = .UndefinedAttributeType
-        }
-    }
-}
-
 enum ExpressionFunctionType {
     case Add
     case Subtract
@@ -172,7 +120,7 @@ public func /<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumbe
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 
-extension ExpressionType where ValueType == NSNumber {
+extension AttributeType where ValueType == NSNumber {
     public func max() -> Expression<NSNumber> {
         return Expression(hs: Expression.createExpression(self), type: .Max)
     }
@@ -190,7 +138,7 @@ extension ExpressionType where ValueType == NSNumber {
     }
 }
 
-extension ExpressionType where ValueType == Self {
+extension AttributeType where ValueType == Self {
     public func count() -> Expression<Self> {
         return Expression(hs: Expression.createExpression(self), type: .Count)
     }
