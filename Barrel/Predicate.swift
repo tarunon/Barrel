@@ -13,7 +13,7 @@ public struct Predicate {
     internal let builder: Builder<NSPredicate>
     
     internal init() {
-        self.builder = Builder{ NSPredicate(value: true) }
+        self.builder = Builder(NSPredicate(value: true))
     }
     
     private init(builder: Builder<NSPredicate>) {
@@ -28,7 +28,11 @@ public struct Predicate {
 // MARK: compariison operation
 private extension Predicate {
     init<E1: ExpressionType, E2: ExpressionType>(lhs: E1?, rhs: E2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
-        builder = Builder { NSComparisonPredicate(leftExpression: Expression.createExpression(lhs).expression(), rightExpression: Expression.createExpression(rhs).expression(), modifier: .DirectPredicateModifier, type: type, options: options) }
+        builder = Expression.createExpression(lhs).builder.flatMap { (lEx: NSExpression) -> Builder<NSPredicate> in
+            Expression.createExpression(rhs).builder.map { (rEx: NSExpression) -> NSPredicate in
+                NSComparisonPredicate(leftExpression: lEx, rightExpression: rEx, modifier: .DirectPredicateModifier, type: type, options: options)
+            }
+        }
     }
 }
 
