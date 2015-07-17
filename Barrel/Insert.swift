@@ -16,7 +16,7 @@ public struct Insert<T: NSManagedObject> {
     
     private init(context: NSManagedObjectContext) {
         self.context = context
-        builder = Builder{ T(entity: context.entityDescription(T)!, insertIntoManagedObjectContext: context) }
+        builder = Builder(T(entity: context.entityDescription(T)!, insertIntoManagedObjectContext: context))
     }
     
     private init(context: NSManagedObjectContext, builder: Builder<T>) {
