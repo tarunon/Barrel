@@ -104,27 +104,27 @@ public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
 
 // MARK: logical operation
 private extension Predicate {
-    func and(other: Predicate) -> Predicate {
-        return Predicate(builder: builder.map { NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0, other.predicate()]) })
+    init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
+        builder = lhs.builder.flatMap{ (lPredicate: NSPredicate) -> Builder<NSPredicate> in
+            rhs.builder.map{ (rPredicate: NSPredicate) -> NSPredicate in
+                NSCompoundPredicate(type: type, subpredicates: [lPredicate, rPredicate])
+            }
+        }
     }
     
-    func or(other: Predicate) -> Predicate {
-        return Predicate(builder: builder.map { NSCompoundPredicate(type: .OrPredicateType, subpredicates: [$0, other.predicate()]) })
-    }
-    
-    func not() -> Predicate {
-        return Predicate(builder: builder.map { NSCompoundPredicate(type: .NotPredicateType, subpredicates: [$0]) })
+    init(hs: Predicate, type: NSCompoundPredicateType) {
+        builder = hs.builder.map { NSCompoundPredicate(type: type, subpredicates: [$0]) }
     }
 }
 
 public func &&(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return lhs.and(rhs)
+    return Predicate(lhs: lhs, rhs: rhs, type: .AndPredicateType)
 }
 
 public func ||(lhs: Predicate, rhs: Predicate) -> Predicate {
-    return lhs.or(rhs)
+    return Predicate(lhs: lhs, rhs: rhs, type: .OrPredicateType)
 }
 
 public prefix func !(rhs: Predicate) -> Predicate {
-    return rhs.not()
+    return Predicate(hs: rhs, type: .NotPredicateType)
 }
