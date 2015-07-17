@@ -40,3 +40,16 @@ struct Builder<T>: BuilderType {
         return Builder<U>(transfer(self.build()))
     }
 }
+
+infix operator </> { associativity left precedence 170 }
+infix operator <*> { associativity left precedence 150 }
+
+func </> <T, U>(lhs: T -> U, rhs: Builder<T>) -> Builder<U> {
+    return rhs.map(lhs)
+}
+
+func <*> <T, U>(lhs: Builder<T -> U>, rhs: Builder<T>) -> Builder<U> {
+    return lhs.flatMap { (f: T -> U) -> Builder<U> in
+        rhs.map { f($0) }
+    }
+}
