@@ -57,31 +57,31 @@ public extension Fetch {
 // MARK: fetch methods
 public extension Fetch {
     public func filter(@autoclosure(escaping) predicate: () -> NSPredicate) -> Fetch {
-        return Fetch(context: context, builder: builder.map {
+        return Fetch(context: context, builder: {
             $0.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0.predicate!, predicate()])
             return $0
-        })
+        } </> builder)
     }
     
     public func orderBy(@autoclosure(escaping) sortDescriptor: () -> NSSortDescriptor) -> Fetch {
-        return Fetch(context: context, builder: builder.map {
+        return Fetch(context: context, builder: {
             $0.sortDescriptors = $0.sortDescriptors! + [sortDescriptor()]
             return $0
-        })
+        } </> builder)
     }
     
     public func limit(limit: Int) -> Fetch {
-        return Fetch(context: context, builder: builder.map {
+        return Fetch(context: context, builder: {
             $0.fetchLimit = limit
             return $0
-        })
+        } </> builder)
     }
     
     public func offset(offset: Int) -> Fetch {
-        return Fetch(context: context, builder: builder.map {
+        return Fetch(context: context, builder: {
             $0.fetchOffset = offset
             return $0
-        })
+        } </> builder)
     }
 }
 

@@ -15,11 +15,11 @@ public struct Aggregate<T: NSManagedObject> {
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
         self.context = context
-        self.builder = builder.map {
+        self.builder = {
             $0.resultType = .DictionaryResultType
             $0.propertiesToFetch = [expressionDescription()]
             return $0
-        }
+        } </> builder
     }
     
     private init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>) {
@@ -45,10 +45,10 @@ extension Aggregate: Executable {
 // MARK: aggregate methods
 public extension Aggregate {
     func aggregate(@autoclosure(escaping) expression: () -> NSExpressionDescription) -> Aggregate {
-        return Aggregate(context: context, builder: builder.map {
+        return Aggregate(context: context, builder: {
             $0.propertiesToFetch = $0.propertiesToFetch! + [expression()]
             return $0
-        })
+        } </> builder)
     }
 }
 
