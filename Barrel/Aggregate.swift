@@ -42,7 +42,7 @@ public extension Aggregate {
         return Aggregate(context: context, builder: builder.map {
             $0.propertiesToFetch = $0.propertiesToFetch! + [expression()]
             return $0
-            })
+        })
     }
 }
 
