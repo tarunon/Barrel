@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D29579901B5A66D500A27A0C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295798F1B5A66D500A27A0C /* Extensions.swift */; };
 		D2BA970D1B18C8D100F85AA1 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = D2BA970C1B18C8D100F85AA1 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2BA97131B18C8D100F85AA1 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA97071B18C8D100F85AA1 /* Barrel.framework */; };
 		D2BA97281B18C8F700F85AA1 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BA97231B18C8F700F85AA1 /* Aggregate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D295798F1B5A66D500A27A0C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D2BA97071B18C8D100F85AA1 /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BA970B1B18C8D100F85AA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BA970C1B18C8D100F85AA1 /* Barrel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Barrel.h; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				EB9FF9921B1E810C0097DFD3 /* Builder.swift */,
 				EB9FF9941B1E810C0097DFD3 /* Executable.swift */,
 				D2FBB1991B23E45C002568C5 /* Attribute.swift */,
+				D295798F1B5A66D500A27A0C /* Extensions.swift */,
 				EB9FF9951B1E810C0097DFD3 /* Expression.swift */,
 				EB9FF9961B1E810C0097DFD3 /* ExpressionDescription.swift */,
 				EB9FF9971B1E810C0097DFD3 /* Predicate.swift */,
@@ -279,6 +282,7 @@
 				D2BA972C1B18C8F700F85AA1 /* ResultsController.swift in Sources */,
 				EB9FF99A1B1E810C0097DFD3 /* Entity.swift in Sources */,
 				EB9FF99E1B1E810C0097DFD3 /* Predicate.swift in Sources */,
+				D29579901B5A66D500A27A0C /* Extensions.swift in Sources */,
 				D2BA972A1B18C8F700F85AA1 /* Fetch.swift in Sources */,
 				D2BA97281B18C8F700F85AA1 /* Aggregate.swift in Sources */,
 				D2FBB19A1B23E45C002568C5 /* Attribute.swift in Sources */,
