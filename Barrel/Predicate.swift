@@ -42,7 +42,7 @@ public struct Predicate {
 
 // MARK: compariison operation
 private extension Predicate {
-    init<A1: AttributeType, A2: AttributeType>(lhs: A1?, rhs: A2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
+    init<A1: AttributeType, A2: AttributeType, V1: AttributeType, V2: AttributeType where A1.ValueType == V1, A2.ValueType == V2>(lhs: A1?, rhs: A2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
         builder = { l in { r in NSComparisonPredicate(leftExpression: l, rightExpression: r, modifier: .DirectPredicateModifier, type: type, options: options) } }
             </> Expression.createExpression(lhs).builder
             <*> Expression.createExpression(rhs).builder

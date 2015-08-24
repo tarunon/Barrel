@@ -58,33 +58,33 @@ public func >(lhs: NSNumber, rhs: NSNumber) -> Bool {
 }
 
 extension NSNumber: AttributeType {
-    typealias ValueType = NSNumber
+    public typealias ValueType = NSNumber
 }
 
 extension NSDate: AttributeType {
-    typealias ValueType = NSDate
+    public typealias ValueType = NSDate
 }
 
 extension NSData: AttributeType {
-    typealias ValueType = NSData
+    public typealias ValueType = NSData
 }
 
 extension String: AttributeType {
-    typealias ValueType = String
+    public typealias ValueType = String
 }
 
 extension NSSet: AttributeType {
-    typealias ValueType = NSSet
+    public typealias ValueType = NSSet
 }
 
 extension NSManagedObject: AttributeType {
-    typealias ValueType = NSManagedObject
+    public typealias ValueType = NSManagedObject
 }
 
 extension Set: AttributeType {
-    typealias ValueType = NSSet
+    public typealias ValueType = NSSet
 }
 
 extension Array: AttributeType {
-    typealias ValueType = Array
+    public typealias ValueType = Array
 }

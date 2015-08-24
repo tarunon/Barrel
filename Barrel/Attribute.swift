@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public protocol AttributeType {
-    typealias ValueType: AttributeType
+    typealias ValueType
 }
 
 internal extension NSAttributeType {

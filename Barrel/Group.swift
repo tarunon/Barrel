@@ -33,7 +33,7 @@ public struct Group<T: NSManagedObject> {
 }
 
 extension Group: Executable {
-    typealias Type = [String: AnyObject]
+    public typealias Type = [String: AnyObject]
 }
 
 // MARK: group methods
@@ -58,7 +58,7 @@ public extension Group {
         return having(predicate(self.context.attribute()).predicate())
     }
     
-    public func groupBy<A: AttributeType>(argument: T -> A) -> Group {
+    public func groupBy<A: AttributeType, V: AttributeType where A.ValueType == V>(argument: T -> A) -> Group {
         return groupBy(Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

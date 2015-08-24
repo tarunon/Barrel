@@ -21,7 +21,7 @@ enum ExpressionFunctionType: String {
     case Count      = "count:"
         
     internal func name(s: [String]) -> String {
-        return "_".join(zip(self.function().componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
+        return "_".join(zip(self.rawValue.componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
     }
     
     internal func name(x: String) -> String {
@@ -46,7 +46,7 @@ enum ExpressionFunctionType: String {
 }
 
 public struct Expression<V: AttributeType>: AttributeType {
-    typealias ValueType = V.ValueType
+    public typealias ValueType = V.ValueType
     internal let builder: Builder<NSExpression>
     internal let nameBuilder: Builder<String>
 

@@ -34,7 +34,7 @@ public struct Fetch<T: NSManagedObject> {
 }
 
 extension Fetch: Executable {
-    typealias Type = T
+    public typealias Type = T
     public func delete() {
         try! all().map{ self.context.deleteObject($0) }
     }
@@ -106,7 +106,7 @@ public extension Fetch {
         return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
-    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate<T> {
+    public func aggregate<A: AttributeType, V: AttributeType where A.ValueType == V>(expressionDescription: T -> A) -> Aggregate<T> {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
 }

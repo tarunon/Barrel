@@ -39,9 +39,8 @@ extension Insert {
     
     public func getOrInsert() -> T {
         let object = build()
-        var fetch = context.fetch(T).filter(NSPredicate(format: "self != %@", argumentArray: [object]))
-        for e in object.changedValues() {
-            fetch = fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: e.0 as String), rightExpression: NSExpression(forConstantValue: e.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: []))
+        let fetch = object.changedValues().reduce(context.fetch(T).filter(NSPredicate(format: "self != %@", argumentArray: [object]))) { (fetch: Fetch<T>, pair: (String, AnyObject)) -> Fetch<T> in
+            return fetch.filter(NSComparisonPredicate(leftExpression: NSExpression(forKeyPath: pair.0), rightExpression: NSExpression(forConstantValue: pair.1), modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: []))
         }
         if let object2 = try! fetch.get() {
             context.deleteObject(object)
