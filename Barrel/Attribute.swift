@@ -13,38 +13,6 @@ public protocol AttributeType {
     typealias ValueType: AttributeType
 }
 
-extension NSNumber: AttributeType {
-    typealias ValueType = NSNumber
-}
-
-extension NSDate: AttributeType {
-    typealias ValueType = NSDate
-}
-
-extension NSData: AttributeType {
-    typealias ValueType = NSData
-}
-
-extension String: AttributeType {
-    typealias ValueType = String
-}
-
-extension NSSet: AttributeType {
-    typealias ValueType = NSSet
-}
-
-extension NSManagedObject: AttributeType {
-    typealias ValueType = NSManagedObject
-}
-
-extension Set: AttributeType {
-    typealias ValueType = NSSet
-}
-
-extension Array: AttributeType {
-    typealias ValueType = Array
-}
-
 internal extension NSAttributeType {
     init<A: AttributeType>(type: A.Type) {
         if A.ValueType.self is NSNumber.Type {

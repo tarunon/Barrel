@@ -25,10 +25,10 @@ public struct SortDescriptor {
     }
 }
 
-public func ><T: AttributeType>(lhs: T?, rhs: T?) -> SortDescriptor {
+public func ><T: AttributeType where T: Comparable>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T: AttributeType>(lhs: T?, rhs: T?) -> SortDescriptor {
+public func <<T: AttributeType where T: Comparable>(lhs: T?, rhs: T?) -> SortDescriptor {
     return SortDescriptor(lhs: lhs, rhs: rhs, ascending: true)
 }
