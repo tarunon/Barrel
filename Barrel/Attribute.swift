@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public protocol AttributeType {
-    typealias ValueType: AttributeType
+    typealias ValueType
 }
 
 internal extension NSAttributeType {
@@ -94,7 +94,7 @@ internal extension NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Attribute"
         entityDescription.managedObjectClassName = NSStringFromClass(AttributeManagedObject.self)
-        entityDescription.properties = (properties as! [NSPropertyDescription]).map {
+        entityDescription.properties = properties.map {
             let propertyDescription = NSAttributeDescription()
             let keyPath = $0.name
             propertyDescription.name = keyPath
@@ -123,7 +123,7 @@ internal extension NSEntityDescription {
     func comparisonEntityDescription() -> NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Comparession"
-        entityDescription.properties = (properties as! [NSPropertyDescription]).map {
+        entityDescription.properties = properties.map {
             let propertyDescription = NSAttributeDescription()
             propertyDescription.name = $0.name
             propertyDescription.optional = true
@@ -142,7 +142,7 @@ internal extension NSManagedObjectModel {
             return associatedValueOrDefault(&attributeMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &attributeMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &attributeMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -151,7 +151,7 @@ internal extension NSManagedObjectModel {
             return associatedValueOrDefault(&comparisonMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &comparisonMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &comparisonMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

@@ -14,23 +14,23 @@ import CoreData
 class ExpressionTest: XCTestCase {
 
     var context: NSManagedObjectContext!
-    var storeURL = NSURL(fileURLWithPath: "test.db")!
+    var storeURL = NSURL(fileURLWithPath: "test.db")
     
     override func setUp() {
         super.setUp()
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
-        context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil, error: nil)
+        try! context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
     }
     
     override func tearDown() {
-        context.save(nil)
-        NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
+        try! context.save()
+        try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
         super.tearDown()
     }
 
-    func testAdd() {
-        context.fetch(Person).filter {
+    func testAdd()  {
+        try! context.fetch(Person).filter {
             let e1: Expression<NSNumber> = $0.age + 1
             XCTAssertEqual(e1.name(), "add_age_to_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
@@ -38,11 +38,11 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e2.name(), "add_age_to_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-        }.execute()
+        }.get()
     }
     
-    func testSubtract() {
-        context.fetch(Person).filter {
+    func testSubtract()  {
+        try! context.fetch(Person).filter {
             let e1: Expression<NSNumber> = $0.age - 1
             XCTAssertEqual(e1.name(), "from_age_subtract_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "from:subtract:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
@@ -50,11 +50,11 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e2.name(), "from_age_subtract_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "from:subtract:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-        }.execute()
+        }.get()
     }
     
-    func testMultiple() {
-        context.fetch(Person).filter {
+    func testMultiple()  {
+        try! context.fetch(Person).filter {
             let e1: Expression<NSNumber> = $0.age * 1
             XCTAssertEqual(e1.name(), "multiply_age_by_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
@@ -62,11 +62,11 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e2.name(), "multiply_age_by_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-        }.execute()
+        }.get()
     }
     
-    func testDivide() {
-        context.fetch(Person).filter {
+    func testDivide()  {
+        try! context.fetch(Person).filter {
             let e1: Expression<NSNumber> = $0.age / 1
             XCTAssertEqual(e1.name(), "divide_age_by_1", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "divide:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), "Pass")
@@ -74,11 +74,11 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e2.name(), "divide_age_by_age", "Pass")
             XCTAssertEqual(e2.expression(), NSExpression(forFunction: "divide:by:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forKeyPath: "age")]), "Pass")
             return e1 < e2
-        }.execute()
+        }.get()
     }
     
-    func testComplex() {
-        context.fetch(Person).filter {
+    func testComplex()  {
+        try! context.fetch(Person).filter {
             let e1: Expression<NSNumber> = $0.age + 1 * 2
             XCTAssertEqual(e1.name(), "add_age_to_multiply_1_by_2", "Pass")
             XCTAssertEqual(e1.expression(), NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forConstantValue: 1), NSExpression(forConstantValue: 2)])]), "Pass")
@@ -89,6 +89,6 @@ class ExpressionTest: XCTestCase {
             XCTAssertEqual(e3.name(), "multiply_add_age_to_1_by_2", "Pass")
             XCTAssertEqual(e3.expression(), NSExpression(forFunction: "multiply:by:", arguments: [NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "age"), NSExpression(forConstantValue: 1)]), NSExpression(forConstantValue: 2)]), "Pass")
             return e1 < e2
-        }.execute()
+        }.get()
     }
 }

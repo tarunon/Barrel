@@ -16,7 +16,7 @@ internal extension NSObject {
             return value
         } else {
             let value = defaultValue()
-            objc_setAssociatedObject(value as! AnyObject, key, self, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(value as! AnyObject, key, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return value
         }
     }
@@ -31,7 +31,7 @@ private extension NSManagedObjectModel {
             return associatedValueOrDefault(&entityMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &entityMapKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &entityMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -40,7 +40,7 @@ private extension NSManagedObjectModel {
         if let entityName = entityNames[className] {
             return entityName
         }
-        if let entity = (entities as? [NSEntityDescription])?.filter({ className == $0.managedObjectClassName }).first {
+        if let entity = entities.filter({ className == $0.managedObjectClassName }).first {
             entityNames[className] = entity.name
             return entity.name
         }
@@ -66,5 +66,15 @@ internal extension NSManagedObjectContext {
 
     internal func entityDescription(T: NSManagedObject.Type) -> NSEntityDescription? {
         return NSEntityDescription.entityForName(entityName(T)!, inManagedObjectContext: self)
+    }
+}
+
+internal extension NSAttributeType {
+    init(entityDescription: NSEntityDescription, keyPath: String) {
+        if let attribute = entityDescription.attributesByName[keyPath] {
+            self = attribute.attributeType
+        } else {
+            self = .UndefinedAttributeType
+        }
     }
 }

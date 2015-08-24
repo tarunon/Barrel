@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public struct Fetch<T: NSManagedObject> {
-    internal let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext) {
@@ -34,22 +34,15 @@ public struct Fetch<T: NSManagedObject> {
 }
 
 extension Fetch: Executable {
-    public func execute() -> ExecuteResult<T> {
-        return _execute(self)
-    }
-    
-    public func count() -> CountResult {
-        return _count(self)
-    }
-    
+    public typealias Type = T
     public func delete() {
-        execute().all().map({ self.context.delete($0) })
+        try! all().map{ self.context.deleteObject($0) }
     }
 }
 
 // MARK: results controller
 public extension Fetch {
-    public func resultsController(#sectionKeyPath: String?, cacheName: String?) -> ResultsController<T> {
+    public func resultsController(sectionKeyPath sectionKeyPath: String?, cacheName: String?) -> ResultsController<T> {
         return ResultsController(fetchRequest: fetchRequest(), context: context, sectionNameKeyPath: sectionKeyPath, cacheName: cacheName)
     }
 }
@@ -113,7 +106,7 @@ public extension Fetch {
         return orderBy(sortDescriptor(self.context.attribute(), self.context.comparison()).sortDescriptor())
     }
     
-    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate<T> {
+    public func aggregate<A: AttributeType, V: AttributeType where A.ValueType == V>(expressionDescription: T -> A) -> Aggregate<T> {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
 }

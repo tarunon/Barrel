@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public struct Group<T: NSManagedObject> {
-    internal let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) keyPath: () -> String) {
@@ -33,13 +33,7 @@ public struct Group<T: NSManagedObject> {
 }
 
 extension Group: Executable {
-    public func execute() -> ExecuteResult<[String: AnyObject]> {
-        return _execute(self)
-    }
-    
-    public func count() -> CountResult {
-        return _count(self)
-    }
+    public typealias Type = [String: AnyObject]
 }
 
 // MARK: group methods
@@ -64,7 +58,7 @@ public extension Group {
         return having(predicate(self.context.attribute()).predicate())
     }
     
-    public func groupBy<A: AttributeType>(argument: T -> A) -> Group {
+    public func groupBy<A: AttributeType, V: AttributeType where A.ValueType == V>(argument: T -> A) -> Group {
         return groupBy(Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

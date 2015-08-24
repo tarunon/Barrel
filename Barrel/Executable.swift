@@ -9,68 +9,29 @@
 import Foundation
 import CoreData
 
-public enum ExecuteResult<T> {
-    case Succeed([T])
-    case Failed(NSError)
-    
-    public func all() -> [T] {
-        switch self {
-        case .Succeed(let value):
-            return value
-        default:
-            return []
-        }
-    }
-    
-    public func get() -> T? {
-        switch self {
-        case .Succeed(let value):
-            return value.first
-        default:
-            return nil
-        }
-    }
-}
-
-public enum CountResult {
-    case Succeed(Int)
-    case Failed(NSError)
-    
-    public func count() -> Int {
-        switch self {
-        case .Succeed(let value):
-            return value
-        default:
-            return 0
-        }
-    }
-}
-
-internal protocol Executable {
-    typealias T
+public protocol Executable {
+    typealias Type
     var context: NSManagedObjectContext { get }
     func fetchRequest() -> NSFetchRequest
-    func execute() -> ExecuteResult<T>
-    func count() -> CountResult
 }
 
-internal func _execute<T, E: Executable where E.T == T>(executable: E) -> ExecuteResult<T> {
-    var error: NSError?
-    let result = executable.context.executeFetchRequest(executable.fetchRequest(), error: &error)
-    if let error = error {
-        return .Failed(error)
-    } else if let result = result?.map({ $0 as! T }) {
-        return .Succeed(result)
+public extension Executable {
+    func all() throws -> [Type] {
+        return try context.executeFetchRequest(fetchRequest()).map{ $0 as! Type }
     }
-    return .Failed(NSError())
-}
-
-internal func _count<E: Executable>(executable: E) -> CountResult {
-    var error: NSError?
-    let result = executable.context.countForFetchRequest(executable.fetchRequest(), error: &error)
-    if let error = error {
-        return .Failed(error)
-    } else {
-        return .Succeed(result)
+    
+    func get() throws -> Type? {
+        let fetchRequest = self.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        return try context.executeFetchRequest(fetchRequest).first as? Type
+    }
+    
+    func count() throws -> Int {
+        var error: NSError?
+        let count = context.countForFetchRequest(fetchRequest(), error: &error)
+        if let error = error {
+            throw error
+        }
+        return count
     }
 }

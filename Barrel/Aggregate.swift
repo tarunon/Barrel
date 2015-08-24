@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public struct Aggregate<T: NSManagedObject> {
-    internal let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest>
     
     internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) expressionDescription: () -> NSExpressionDescription) {
@@ -33,13 +33,7 @@ public struct Aggregate<T: NSManagedObject> {
 }
 
 extension Aggregate: Executable {
-    public func execute() -> ExecuteResult<[String: AnyObject]> {
-        return _execute(self)
-    }
-    
-    public func count() -> CountResult {
-        return _count(self)
-    }
+    public typealias Type = [String: AnyObject]
 }
 
 // MARK: aggregate methods
@@ -61,11 +55,11 @@ public extension Aggregate {
 
 // MARK: aggregate methods via attribute
 public extension Aggregate {
-    public func aggregate<A: AttributeType>(expressionDescription: T -> A) -> Aggregate {
+    public func aggregate<A: AttributeType, V: AttributeType where A.ValueType == V>(expressionDescription: T -> A) -> Aggregate {
         return aggregate(ExpressionDescription(argument: Expression.createExpression(expressionDescription(self.context.attribute()))).expressionDescription())
     }
     
-    public func groupBy<A: AttributeType>(argument: T -> A) -> Group<T> {
+    public func groupBy<A: AttributeType, V: AttributeType where A.ValueType == V>(argument: T -> A) -> Group<T> {
         return Group(context: context, builder: builder, keyPath: Expression.createExpression(argument(self.context.attribute())).name())
     }
 }

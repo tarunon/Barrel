@@ -42,7 +42,7 @@ public struct Predicate {
 
 // MARK: compariison operation
 private extension Predicate {
-    init<A1: AttributeType, A2: AttributeType>(lhs: A1?, rhs: A2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
+    init<A1: AttributeType, A2: AttributeType, V1: AttributeType, V2: AttributeType where A1.ValueType == V1, A2.ValueType == V2>(lhs: A1?, rhs: A2?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) {
         builder = { l in { r in NSComparisonPredicate(leftExpression: l, rightExpression: r, modifier: .DirectPredicateModifier, type: type, options: options) } }
             </> Expression.createExpression(lhs).builder
             <*> Expression.createExpression(rhs).builder
@@ -52,80 +52,77 @@ private extension Predicate {
 infix operator ~== { associativity none precedence 130 }
 
 public func ==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
+    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
 public func ===<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [])
 }
 
 public func ==<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .EqualToPredicateOperatorType, options: [])
 }
 
 public func !=<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
+    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
 public func !==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [])
 }
 
 public func !=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .NotEqualToPredicateOperatorType, options: [])
 }
 
 public func ~=<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: .CaseInsensitivePredicateOption | .DiacriticInsensitivePredicateOption)
+    return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: [.CaseInsensitivePredicateOption , .DiacriticInsensitivePredicateOption])
 }
 
 public func ~==<A1: AttributeType, A2: AttributeType where A1.ValueType == String, A2.ValueType == String>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .MatchesPredicateOperatorType, options: [])
 }
 
 public func ><A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanPredicateOperatorType, options: [])
 }
 
 public func >=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanOrEqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .GreaterThanOrEqualToPredicateOperatorType, options: [])
 }
 
 public func <<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanPredicateOperatorType, options: [])
 }
 
 public func <=<A1: AttributeType, A2: AttributeType, V: AttributeType where A1.ValueType == V, A2.ValueType == V>(lhs: A1?, rhs: A2?) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType, options: [])
 }
 
 public func <<<A: AttributeType, V: AttributeType where A.ValueType == V>(lhs: A?, rhs: [V]) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .InPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .InPredicateOperatorType, options: [])
 }
 
 public func <<<A: AttributeType where A.ValueType == NSNumber>(lhs: A?, rhs: Range<Int>) -> Predicate {
-    return Predicate(lhs: lhs, rhs: [NSNumber(integer: rhs.startIndex), NSNumber(integer: rhs.endIndex)], type: .BetweenPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: [NSNumber(integer: rhs.startIndex), NSNumber(integer: rhs.endIndex)], type: .BetweenPredicateOperatorType, options: [])
 }
 
-public func >><T: NSManagedObject>(lhs: Set<T>, rhs: T) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .ContainsPredicateOperatorType, options: .allZeros)
+public func >><A: AttributeType where A.ValueType == NSManagedObject>(lhs: Set<A>, rhs: A) -> Predicate {
+    return Predicate(lhs: lhs, rhs: rhs, type: .ContainsPredicateOperatorType, options: [])
 }
 
 public func >>(lhs: NSSet, rhs: NSManagedObject) -> Predicate {
-    return Predicate(lhs: lhs, rhs: rhs, type: .ContainsPredicateOperatorType, options: .allZeros)
+    return Predicate(lhs: lhs, rhs: rhs, type: .ContainsPredicateOperatorType, options: [])
 }
 
 // MARK: logical operation
 private extension Predicate {
     init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
-        builder = { l in { r in type.predicate(l)(r) } }
-            </> lhs.builder
-            <*> rhs.builder
+        builder = type.predicate </> lhs.builder <*> rhs.builder
     }
     
     init(hs: Predicate, type: NSCompoundPredicateType) {
-        builder = { type.predicate($0) }
-            </> hs.builder
+        builder = type.predicate </> hs.builder
     }
 }
 

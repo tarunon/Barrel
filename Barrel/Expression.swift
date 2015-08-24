@@ -21,7 +21,7 @@ enum ExpressionFunctionType: String {
     case Count      = "count:"
         
     internal func name(s: [String]) -> String {
-        return "_".join(map(zip(rawValue.componentsSeparatedByString(":"), s)) { $0.0 + "_" + $0.1 })
+        return "_".join(zip(self.rawValue.componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
     }
     
     internal func name(x: String) -> String {
@@ -46,7 +46,7 @@ enum ExpressionFunctionType: String {
 }
 
 public struct Expression<V: AttributeType>: AttributeType {
-    typealias ValueType = V.ValueType
+    public typealias ValueType = V.ValueType
     internal let builder: Builder<NSExpression>
     internal let nameBuilder: Builder<String>
 
@@ -63,8 +63,7 @@ public struct Expression<V: AttributeType>: AttributeType {
             builder = Builder(NSExpression(forConstantValue: value))
             nameBuilder = Builder("\(value)")
         case .Null:
-            // unsupported at swift 1.2
-            builder = Builder(NSExpression(forConstantValue: NSNull()))
+            builder = Builder(NSExpression(forConstantValue: nil))
             nameBuilder = Builder("nil")
         case .Unsupported:
             // TODO: throw exception
@@ -74,19 +73,13 @@ public struct Expression<V: AttributeType>: AttributeType {
     }
     
     private init(lhs: Expression, rhs: Expression, type: ExpressionFunctionType) {
-        builder = { l in { r in type.expression(l)(r) } }
-            </> lhs.builder
-            <*> rhs.builder
-        nameBuilder = { l in { r in type.name(l)(r) } }
-            </> lhs.nameBuilder
-            <*> rhs.nameBuilder
+        builder = type.expression </> lhs.builder <*> rhs.builder
+        nameBuilder = type.name </> lhs.nameBuilder <*> rhs.nameBuilder
     }
     
     private init(hs: Expression, type: ExpressionFunctionType) {
-        builder = { type.expression($0) }
-            </> hs.builder
-        nameBuilder = { type.name($0) }
-            </> hs.nameBuilder
+        builder = type.expression </> hs.builder
+        nameBuilder = type.name </> hs.nameBuilder
     }
     
     static func createExpression<A: AttributeType where A.ValueType == V>(value: A?) -> Expression {
@@ -122,22 +115,26 @@ public func /<A1: AttributeType, A2: AttributeType where A1.ValueType == NSNumbe
     return Expression(lhs: Expression.createExpression(lhs), rhs: Expression.createExpression(rhs), type: .Divide)
 }
 
-public func max<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Max)
+extension AttributeType where ValueType == NSNumber {
+    public func max() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Max)
+    }
+
+    public func min() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Min)
+    }
+
+    public func sum() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Sum)
+    }
+
+    public func average() -> Expression<NSNumber> {
+        return Expression(hs: Expression.createExpression(self), type: .Average)
+    }
 }
 
-public func min<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Min)
-}
-
-public func sum<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Sum)
-}
-
-public func average<A: AttributeType where A.ValueType == NSNumber>(hs: A?) -> Expression<NSNumber> {
-    return Expression(hs: Expression.createExpression(hs), type: .Average)
-}
-
-public func count<A: AttributeType>(hs: A?) -> Expression<A.ValueType> {
-    return Expression(hs: Expression.createExpression(hs), type: .Count)
+extension AttributeType where ValueType == Self {
+    public func count() -> Expression<Self> {
+        return Expression(hs: Expression.createExpression(self), type: .Count)
+    }
 }

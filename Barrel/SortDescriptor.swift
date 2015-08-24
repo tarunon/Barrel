@@ -11,21 +11,13 @@ import Foundation
 public struct SortDescriptor {
     internal let builder: Builder<NSSortDescriptor>
     private init<T: AttributeType>(lhs: T?, rhs: T?, ascending: Bool) {
-        switch Attribute(value: lhs) {
-        case .KeyPath(let keyPath):
+        if case .KeyPath(let keyPath) = Attribute(value: lhs) {
             builder = Builder(NSSortDescriptor(key: keyPath, ascending: ascending))
-            return
-        default:
-            break
-        }
-        switch Attribute(value: rhs) {
-        case .KeyPath(let keyPath):
+        } else if case .KeyPath(let keyPath) = Attribute(value: rhs) {
             builder = Builder(NSSortDescriptor(key: keyPath, ascending: !ascending))
-            return
-        default:
-            break
+        } else {
+            builder = Builder(NSSortDescriptor())
         }
-        builder = Builder(NSSortDescriptor())
     }
     
     public func sortDescriptor() -> NSSortDescriptor {
