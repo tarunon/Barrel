@@ -11,7 +11,7 @@ A simple type-safe CoreData library for Swift.
 platform :ios, "8.0"
 use_frameworks!
 
-pod 'Barrel', :git => 'https://github.com/tarunon/Barrel.git', :branch => 'swift2.0'
+pod 'Barrel', :git => 'https://github.com/tarunon/Barrel.git', :branch => 'master'
 ```
 
 ### Carthage
