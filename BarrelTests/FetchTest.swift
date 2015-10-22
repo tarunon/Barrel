@@ -12,12 +12,22 @@ import Barrel
 import XCTest
 
 class FetchTest: XCTestCase {
-        
+    
     var context: NSManagedObjectContext!
-    var storeURL = NSURL(fileURLWithPath: "test.db")
+    var storeDir = NSURL(fileURLWithPath: "test")
+    var storeURL: NSURL {
+        return self.storeDir.URLByAppendingPathComponent("test.db")
+    }
     
     override func setUp() {
         super.setUp()
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtURL(storeDir, withIntermediateDirectories: false, attributes: nil)
+        } catch {
+            print("please clean project")
+            XCTFail()
+            exit(-1)
+        }
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
         try! context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
@@ -30,7 +40,7 @@ class FetchTest: XCTestCase {
     
     override func tearDown() {
         try! context.save()
-        try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
+        try! NSFileManager.defaultManager().removeItemAtURL(storeDir)
         super.tearDown()
     }
     
@@ -73,7 +83,7 @@ class FetchTest: XCTestCase {
     
     func testPerformanceUseFetchObject() {
         measureBlock {
-            for _ in 0..<1000 {
+            for _ in 0..<100 {
                 _ = try! self.context.fetch(Person).filter{ $0.name !== "John" }.orderBy{ $0.age > $1.age }.all()
             }
         }
@@ -81,11 +91,11 @@ class FetchTest: XCTestCase {
     
     func testPerformanceNoUseFetchObject() {
         measureBlock {
-            for _ in 0..<1000 {
+            for _ in 0..<100 {
                 let fetchRequest = NSFetchRequest(entityName: "PersonEntity")
                 fetchRequest.predicate = NSPredicate(format: "name != %@", "John")
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "age", ascending: false)]
-                try! self.context.executeFetchRequest(fetchRequest) as? [Person] ?? []
+                try! self.context.executeFetchRequest(fetchRequest) as? [Person]
             }
         }
     }
