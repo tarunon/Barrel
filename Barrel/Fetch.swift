@@ -36,7 +36,7 @@ public struct Fetch<T: NSManagedObject> {
 extension Fetch: Executable {
     public typealias Type = T
     public func delete() {
-        try! all().map{ self.context.deleteObject($0) }
+        try! all().forEach{ self.context.deleteObject($0) }
     }
 }
 

@@ -21,7 +21,7 @@ enum ExpressionFunctionType: String {
     case Count      = "count:"
         
     internal func name(s: [String]) -> String {
-        return "_".join(zip(self.rawValue.componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 })
+        return zip(self.rawValue.componentsSeparatedByString(":"), s).map { $0.0 + "_" + $0.1 }.joinWithSeparator("_")
     }
     
     internal func name(x: String) -> String {

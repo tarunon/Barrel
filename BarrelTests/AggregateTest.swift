@@ -14,10 +14,20 @@ import Barrel
 class AggregateTest: XCTestCase {
     
     var context: NSManagedObjectContext!
-    var storeURL = NSURL(fileURLWithPath: "test.db")
+    var storeDir = NSURL(fileURLWithPath: "test")
+    var storeURL: NSURL {
+        return self.storeDir.URLByAppendingPathComponent("test.db")
+    }
     
     override func setUp() {
         super.setUp()
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtURL(storeDir, withIntermediateDirectories: false, attributes: nil)
+        } catch {
+            print("please clean project")
+            XCTFail()
+            exit(-1)
+        }
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
         try! context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
@@ -30,14 +40,14 @@ class AggregateTest: XCTestCase {
     
     override func tearDown() {
         try! context.save()
-        try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
+        try! NSFileManager.defaultManager().removeItemAtURL(storeDir)
         super.tearDown()
     }
     
     func testFetchAggregate() {
         let maxs = try! context.fetch(Person).aggregate{ $0.age.max() }.aggregate{ $0.name }.all()
         for max in maxs {
-            XCTAssertEqual(max["max_age"] as! Int, 39, "Pass")
+            XCTAssertEqual(max["max_age"] as? Int, 39, "Pass")
         }
     }
     

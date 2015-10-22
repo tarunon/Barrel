@@ -14,10 +14,20 @@ import XCTest
 class InsertTest: XCTestCase {
 
     var context: NSManagedObjectContext!
-    var storeURL = NSURL(fileURLWithPath: "test.db")
+    var storeDir = NSURL(fileURLWithPath: "test")
+    var storeURL: NSURL {
+        return self.storeDir.URLByAppendingPathComponent("test.db")
+    }
     
     override func setUp() {
         super.setUp()
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtURL(storeDir, withIntermediateDirectories: false, attributes: nil)
+        } catch {
+            print("please clean project")
+            XCTFail()
+            exit(-1)
+        }
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
         try! context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL , options: nil)
@@ -25,7 +35,7 @@ class InsertTest: XCTestCase {
     
     override func tearDown() {
         try! context.save()
-        try! NSFileManager.defaultManager().removeItemAtURL(storeURL)
+        try! NSFileManager.defaultManager().removeItemAtURL(storeDir)
         super.tearDown()
     }
     
@@ -82,7 +92,7 @@ class InsertTest: XCTestCase {
     
     func testPerformanceUseInsertObject() {
         measureBlock {
-            for _ in 0..<1000 {
+            for _ in 0..<100 {
                 _ = self.context.insert(Person).setValues{
                     $0.name = "Harry"
                     $0.age = 39
@@ -93,7 +103,7 @@ class InsertTest: XCTestCase {
     
     func testPerformanceNoUseInsertObject() {
         measureBlock {
-            for _ in 0..<1000 {
+            for _ in 0..<100 {
                 let person = NSEntityDescription.insertNewObjectForEntityForName("PersonEntity", inManagedObjectContext: self.context) as! Person
                 person.name = "Harry"
                 person.age = 39
