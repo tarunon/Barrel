@@ -24,9 +24,6 @@ class InsertTest: XCTestCase {
         do {
             try NSFileManager.defaultManager().createDirectoryAtURL(storeDir, withIntermediateDirectories: false, attributes: nil)
         } catch {
-            print("please clean project")
-            XCTFail()
-            exit(-1)
         }
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)

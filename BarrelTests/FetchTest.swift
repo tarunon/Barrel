@@ -24,9 +24,6 @@ class FetchTest: XCTestCase {
         do {
             try NSFileManager.defaultManager().createDirectoryAtURL(storeDir, withIntermediateDirectories: false, attributes: nil)
         } catch {
-            print("please clean project")
-            XCTFail()
-            exit(-1)
         }
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("Person", withExtension: "momd")!)!)
@@ -83,7 +80,7 @@ class FetchTest: XCTestCase {
     
     func testPerformanceUseFetchObject() {
         measureBlock {
-            for _ in 0..<100 {
+            for _ in 0..<1000 {
                 _ = try! self.context.fetch(Person).filter{ $0.name !== "John" }.orderBy{ $0.age > $1.age }.all()
             }
         }

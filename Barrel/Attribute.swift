@@ -89,7 +89,18 @@ extension String : PropertyCoder {
     }
 }
 
+var relationshipMapKey: Void?
+
 internal extension NSEntityDescription {
+    private var relationshipObjects: [String: NSManagedObject] {
+        get {
+            return associatedValueOrDefault(&relationshipMapKey, defaultValue: [:])
+        }
+        set {
+            objc_setAssociatedObject(self, &relationshipMapKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
     func attributeEntityDescription() -> NSEntityDescription {
         let entityDescription = NSEntityDescription()
         entityDescription.name = name! + "Attribute"
@@ -102,11 +113,20 @@ internal extension NSEntityDescription {
             if $0 is NSAttributeDescription {
                 propertyDescription.defaultValue = String.codingProperty(Property(keyPath: keyPath))
             } else if let relationshipDescription = $0 as? NSRelationshipDescription {
-                propertyDescription.defaultValue = Set([NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)])
+                propertyDescription.defaultValue = NSSet(array: [self.relationshipObject(relationshipDescription, keyPath: keyPath)])
             }
             return propertyDescription
         }
         return entityDescription
+    }
+    
+    func relationshipObject(relationshipDescription: NSRelationshipDescription, keyPath: String) -> NSManagedObject {
+        if let object = self.relationshipObjects[keyPath] {
+            return object
+        }
+        let object = NSManagedObject(entity: relationshipDescription.destinationEntity!.relationshipEntityDescription(keyPath).relationshipEntityDescription(keyPath), insertIntoManagedObjectContext: nil)
+        self.relationshipObjects[keyPath] = object
+        return object
     }
     
     func relationshipEntityDescription(keyPath: String) -> NSEntityDescription {
@@ -134,7 +154,7 @@ internal extension NSEntityDescription {
 }
 
 var attributeMapKey: Void?
-var comparisonMapKey: Void
+var comparisonMapKey: Void?
 
 internal extension NSManagedObjectModel {
     private var attributeEntityDescriptions: [String: NSManagedObject] {
@@ -142,7 +162,7 @@ internal extension NSManagedObjectModel {
             return associatedValueOrDefault(&attributeMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &attributeMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &attributeMapKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -151,7 +171,7 @@ internal extension NSManagedObjectModel {
             return associatedValueOrDefault(&comparisonMapKey, defaultValue: [:])
         }
         set {
-            objc_setAssociatedObject(self, &comparisonMapKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &comparisonMapKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
@@ -162,8 +182,8 @@ internal extension NSManagedObjectContext {
     }
     
     func attribute<T: NSManagedObject>() -> T {
-        if let object = managedObjectModel()?.attributeEntityDescriptions[NSStringFromClass(T.self)] as? T {
-            return object
+        if let object = managedObjectModel()?.attributeEntityDescriptions[NSStringFromClass(T.self)] {
+            return unsafeBitCast(object, T.self)
         }
         let object = T(entity: self.entityDescription(T)!.attributeEntityDescription(), insertIntoManagedObjectContext: nil)
         managedObjectModel()?.attributeEntityDescriptions[NSStringFromClass(T.self)] = object
@@ -175,8 +195,8 @@ internal extension NSManagedObjectContext {
     }
     
     func comparison<T: NSManagedObject>() -> T {
-        if let object = managedObjectModel()?.comparisonEntityDescriptions[NSStringFromClass(T.self)] as? T {
-            return object
+        if let object = managedObjectModel()?.comparisonEntityDescriptions[NSStringFromClass(T.self)] {
+            return unsafeBitCast(object, T.self)
         }
         let object = T(entity: self.entityDescription(T)!.comparisonEntityDescription(), insertIntoManagedObjectContext: nil)
         managedObjectModel()?.comparisonEntityDescriptions[NSStringFromClass(T.self)] = object
