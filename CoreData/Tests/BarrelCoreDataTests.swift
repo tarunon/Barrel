@@ -118,6 +118,7 @@ class BarrelCoreDataTests: XCTestCase {
         
         let planets = Planet.objects(self.context).brl_filter { $0.parent == sun }
         XCTAssertEqual(planets.underestimateCount(), 6)
+        XCTAssertEqual(planets.brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }.map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         
         let jupitersSatellites = Satellite.objects(self.context).brl_filter { $0.parent.name == "Jupiter" }
         XCTAssertEqual(jupitersSatellites.underestimateCount(), 4)
@@ -153,7 +154,23 @@ class BarrelCoreDataTests: XCTestCase {
     }
     
     func testAggregate() {
-        let aggregate = Planet.objects(self.context).brl_aggregate { $0.name.count() }
-        print(aggregate[0])
+        let planetCount = Planet.objects(self.context).brl_aggregate { $0.name.count() }[0]["count:(name)"] as? Int
+        XCTAssertEqual(planetCount, 6)
+        let maxDiameter = Planet.objects(self.context).brl_aggregate { $0.diameter.max() }[0]["max:(diameter)"] as? Double
+        XCTAssertEqual(maxDiameter, 142984)
+        let groupedMinSemiMajorAxis = Satellite.objects(self.context).brl_aggregate { $0.semiMajorAxis.min() }.brl_aggregate { $0.parent.name }.brl_groupBy { $0.parent.name }
+        XCTAssertEqual(groupedMinSemiMajorAxis.underestimateCount(), 2)
+        groupedMinSemiMajorAxis.forEach {
+            if let parentName = $0["parent.name"] as? String {
+                switch parentName {
+                case "Earth":
+                    XCTAssertEqual($0["min:(semiMajorAxis)"] as? Double, 384400)
+                case "Jupiter":
+                    XCTAssertEqual($0["min:(semiMajorAxis)"] as? Double, 421700)
+                default:
+                    break
+                }
+            }
+        }
     }
 }

@@ -12,7 +12,9 @@ import Barrel
 
 internal extension NSAttributeType {
     init<E: ExpressionType>(type: E.Type) {
-        if E.ValueType.self is NSNumber.Type {
+        if E.ValueType.self is Int.Type {
+            self = .Integer16AttributeType
+        } else if E.ValueType.self is NSNumber.Type {
             self = .DoubleAttributeType
         } else if E.ValueType.self is String.Type {
             self = .StringAttributeType
@@ -58,7 +60,11 @@ extension Aggregate: Executable {
     public typealias Type = [String: AnyObject]
     
     public func fetchRequest() -> NSFetchRequest {
-        return self.builder.build()
+        let fetchRequest = self.builder.build()
+        if Barrel.debugMode {
+            print("NSFetchRequest generated: \(fetchRequest)")
+        }
+        return fetchRequest
     }
 }
 

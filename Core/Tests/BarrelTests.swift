@@ -31,6 +31,7 @@ extension AttributeType where FieldType == TestModel {
 class BarrelTests: XCTestCase {
     
     override func setUp() {
+        Barrel.debugMode = true
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

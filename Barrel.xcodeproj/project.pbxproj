@@ -299,6 +299,9 @@
 		EB22AA7C1BF1F53A000C4F58 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/Mac/RealmSwift.framework; sourceTree = "<group>"; };
 		EB22AA801BF1F545000C4F58 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/watchOS/Realm.framework; sourceTree = "<group>"; };
 		EB22AA811BF1F545000C4F58 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/watchOS/RealmSwift.framework; sourceTree = "<group>"; };
+		EB3DFC021BF58DCB00D7BCF5 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		EB3DFC041BF5D88600D7BCF5 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = Readme.md; path = CoreData/Readme.md; sourceTree = "<group>"; };
+		EB3DFC051BF5DDCD00D7BCF5 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = Readme.md; path = Realm/Readme.md; sourceTree = "<group>"; };
 		EB85D5061BF41F1B0007F68B /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Barrel.swift; path = Core/Barrel.swift; sourceTree = "<group>"; };
 		EBA346EA1BF02FF200531940 /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA346F41BF02FF200531940 /* BarrelTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,6 +486,7 @@
 				EB22A9321BF1F1B3000C4F58 /* Protocols.swift */,
 				EB22A92E1BF1F1B3000C4F58 /* Info.plist */,
 				EB22A9581BF1F1CE000C4F58 /* Tests */,
+				EB3DFC021BF58DCB00D7BCF5 /* Readme.md */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -509,6 +513,7 @@
 				EB22A9AF1BF1F2C9000C4F58 /* ResultsController.swift */,
 				EB22A9AE1BF1F2C9000C4F58 /* Info.plist */,
 				EB22A9E11BF1F37A000C4F58 /* Tests */,
+				EB3DFC041BF5D88600D7BCF5 /* Readme.md */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 				EB22AA5A1BF1F4BB000C4F58 /* Extensions.swift */,
 				EB22AA5B1BF1F4BB000C4F58 /* Info.plist */,
 				EB22AA651BF1F4CD000C4F58 /* Tests */,
+				EB3DFC051BF5DDCD00D7BCF5 /* Readme.md */,
 			);
 			name = Realm;
 			sourceTree = "<group>";

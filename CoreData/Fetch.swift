@@ -33,7 +33,11 @@ extension Fetch: Executable {
     public typealias Type = T
     
     public func fetchRequest() -> NSFetchRequest {
-        return self.builder.build()
+        let fetchRequest = self.builder.build()
+        if Barrel.debugMode {
+            print("NSFetchRequest generated: \(fetchRequest)")
+        }
+        return fetchRequest
     }
     
     public func delete() {

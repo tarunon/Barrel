@@ -58,9 +58,34 @@ class BarrelRealmTests: XCTestCase {
                 mars.parent = sun
                 let jupiter = Planet.insert(self.realm)
                 jupiter.name = "Jupiter"
-                jupiter.diameter = 69911
+                jupiter.diameter = 142984
                 jupiter.semiMajorAxis = 778412010
                 jupiter.parent = sun
+                let io = Satellite.insert(self.realm)
+                io.name = "Io"
+                io.diameter = 3643
+                io.semiMajorAxis = 421700
+                io.parent = jupiter
+                let europa = Satellite.insert(self.realm)
+                europa.name = "Europa"
+                europa.diameter = 3122
+                europa.semiMajorAxis = 671034
+                europa.parent = jupiter
+                let ganymede = Satellite.insert(self.realm)
+                ganymede.name = "Ganymede"
+                ganymede.diameter = 5262
+                ganymede.semiMajorAxis = 1070412
+                ganymede.parent = jupiter
+                let callisto = Satellite.insert(self.realm)
+                callisto.name = "Callisto"
+                callisto.diameter = 4821
+                callisto.semiMajorAxis = 1882709
+                callisto.parent = jupiter
+                let saturn = Planet.insert(self.realm)
+                saturn.name = "Saturn"
+                saturn.diameter = 120536
+                saturn.semiMajorAxis = 1426725400
+                saturn.parent = sun
             }
         } catch {
             print(error)
@@ -73,22 +98,17 @@ class BarrelRealmTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFilter() {
+    func testExtensions() {
         let sun = Star.objects(self.realm).brl_filter { $0.name == "Sun" }[0]
         XCTAssertEqual(sun.name, "Sun")
         let planets = Planet.objects(self.realm).brl_filter { $0.parent == sun }
-        XCTAssertEqual(planets.underestimateCount(), 5)
+        XCTAssertEqual(planets.underestimateCount(), 6)
+        XCTAssertEqual(planets.brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }.map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         let moon = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Earth" }[0]
         XCTAssertEqual(moon.name, "Moon")
-        let opp = Planet.objects(self.realm).brl_filter { $0.parent.isNotNull() }
-        print(opp.map { $0.name })
+        let maxDiameter = Planet.objects(self.realm).brl_max { $0.diameter }
+        XCTAssertEqual(maxDiameter, 142984)
+        let minSemiMajorAxis = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Jupiter" }.brl_min { $0.semiMajorAxis }
+        XCTAssertEqual(minSemiMajorAxis, 421700)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

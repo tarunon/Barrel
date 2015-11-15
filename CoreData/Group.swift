@@ -28,11 +28,29 @@ public struct Group<T: NSManagedObject where T: ExpressionType> {
     }
 }
 
+extension Group {
+    public func count() throws -> Int {
+        return try self.context.executeFetchRequest(self.fetchRequest()).count
+    }
+    
+    public func underestimateCount() -> Int {
+        do {
+            return try self.count()
+        } catch {
+            return 0
+        }
+    }
+}
+
 extension Group: Executable {
     public typealias Type = [String: AnyObject]
     
     public func fetchRequest() -> NSFetchRequest {
-        return self.builder.build()
+        let fetchRequest = self.builder.build()
+        if Barrel.debugMode {
+            print("NSFetchRequest generated: \(fetchRequest)")
+        }
+        return fetchRequest
     }
 }
 

@@ -39,7 +39,7 @@ public struct OptionalAttribute<T: ExpressionType>: AttributeType {
 }
 
 public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
-    return AttributeStorage.sharedInstance.attribute(name)
+    return AttributeStorage.sharedInstance.attribute(name, parent: Optional<T>.None)
 }
 
 public func storedAttribute<T: AttributeType, U : AttributeType>(name: String?, _ parent: U) -> T {
@@ -61,10 +61,6 @@ private class AttributeStorage {
         case .KEYPATH(let keyPath):
             return keyPath
         }
-    }
-    
-    func attribute<T: AttributeType>(name: String?) -> T {
-        return self.attribute(name, parent: Optional<T>.None)
     }
     
     func attribute<T: AttributeType, U: AttributeType>(name: String?, parent: T?) -> U {
