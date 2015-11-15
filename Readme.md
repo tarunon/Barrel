@@ -38,7 +38,7 @@ var expression: Expression = attribute.number.max() // expression.value is NSExp
 ## Attribute
 
 Extend AttributeType using computed property one by one FieldType.
-Computed properties are Attribute<T>, or OptionalAttribute<T> and return "storedAttribute(__FUNCTION__, self)".
+Computed properties are Attribute<T>, or OptionalAttribute<T> and return "storedAttribute(\_\_FUNCTION\_\_, self)".
 Get Attribute instance from "storedAttribute()".
 
 ## Expression
