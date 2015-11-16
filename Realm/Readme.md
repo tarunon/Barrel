@@ -26,3 +26,11 @@ var searchPersons = Person.objects(self.context)
                         .brl_filter { $0.name.beginsWith("A") }
                         .brl_sorted { $0.age < $1.age }
 ```
+
+## Relationships
+Your model has many-relationships, use Many type in Attribute like.
+```swift
+extension AttributeType where FieldType == Planet {
+    var name: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
+    var children: Attribute<Many<Satellite>> { return storedAttribute(__FUNCTION__, self) }
+}
