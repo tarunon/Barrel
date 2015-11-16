@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="Planet" representedClassName=".Planet" syncable="YES">
+        <attribute name="diameter" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="semiMajorAxis" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="children" toMany="YES" deletionRule="Nullify" destinationEntity="Satellite" inverseName="parent" inverseEntity="Satellite" syncable="YES"/>
+        <relationship name="parent" maxCount="1" deletionRule="Nullify" destinationEntity="Star" inverseName="children" inverseEntity="Star" syncable="YES"/>
+    </entity>
+    <entity name="Satellite" representedClassName=".Satellite" syncable="YES">
+        <attribute name="diameter" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="semiMajorAxis" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="parent" maxCount="1" deletionRule="Nullify" destinationEntity="Planet" inverseName="children" inverseEntity="Planet" syncable="YES"/>
+    </entity>
+    <entity name="Star" representedClassName=".Star" syncable="YES">
+        <attribute name="diameter" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="children" toMany="YES" deletionRule="Nullify" destinationEntity="Planet" inverseName="parent" inverseEntity="Planet" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Star" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Planet" positionX="-54" positionY="9" width="128" height="120"/>
+        <element name="Satellite" positionX="-36" positionY="45" width="128" height="105"/>
+    </elements>
+</model>
