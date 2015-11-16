@@ -89,3 +89,5 @@ If you needs support more type, plese implement SelfExpression.
 ```swift
 extension Type: SelfExpression {}
 ```
+## LISENSE
+MIT
