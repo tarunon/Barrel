@@ -42,7 +42,7 @@ public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
     return AttributeStorage.sharedInstance.attribute(name, parent: Optional<T>.None)
 }
 
-public func storedAttribute<T: AttributeType, U : AttributeType>(name: String?, _ parent: U) -> T {
+public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = __FUNCTION__, parent: U) -> T {
     return AttributeStorage.sharedInstance.attribute(name, parent: parent)
 }
 

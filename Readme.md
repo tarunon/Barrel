@@ -22,9 +22,9 @@ class A: SelfExpression {
 }
 
 extension AttributeType where FieldType == A {
-    var text: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
-    var number: Attribute<Int> { return storedAttribute(__FUNCTION__, self) }
-    var option: OptionalAttribute<String> { return storedAttribute(__FUNCTION__, self) }
+    var text: Attribute<String> { return storedAttribute(parent: self) }
+    var number: Attribute<Int> { return storedAttribute(parent: self) }
+    var option: OptionalAttribute<String> { return storedAttribute(parent: self) }
 }
 ```
 
@@ -38,7 +38,7 @@ var expression: Expression = attribute.number.max() // expression.value is NSExp
 ## Attribute
 
 Extend AttributeType using computed property one by one FieldType.
-Computed properties are Attribute<T>, or OptionalAttribute<T> and return "storedAttribute(\_\_FUNCTION\_\_, self)".
+Computed properties are Attribute<T>, or OptionalAttribute<T> and return "storedAttribute(parent: self)".
 Get Attribute instance from "storedAttribute()".
 
 ## Expression
@@ -69,7 +69,7 @@ struct Many<T: ExpressionType>: ManyType {
 }
 
 extension AttributeType where FieldType == A {
-    var array: Attribute<Many<A>> { return storedAttribute(__FUNCTION__, self) }
+    var array: Attribute<Many<A>> { return storedAttribute(parent: self) }
 }
 
 var anyPredicate: Predicate = attribute.array.any { $0.number > 0 }

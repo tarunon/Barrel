@@ -11,9 +11,9 @@ import Barrel
 import Barrel_CoreData
 
 extension AttributeType where FieldType == Planet {
-    var diameter: Attribute<NSNumber> { return storedAttribute(__FUNCTION__, self) }
-    var name: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
-    var semiMajorAxis: Attribute<NSNumber> { return storedAttribute(__FUNCTION__, self) }
-    var parent: OptionalAttribute<Star> { return storedAttribute(__FUNCTION__, self) }
-    var children: Attribute<Many<Satellite>> { return storedAttribute(__FUNCTION__, self) }
+    var diameter: Attribute<NSNumber> { return storedAttribute(parent: self) }
+    var name: Attribute<String> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<NSNumber> { return storedAttribute(parent: self) }
+    var parent: OptionalAttribute<Star> { return storedAttribute(parent: self) }
+    var children: Attribute<Many<Satellite>> { return storedAttribute(parent: self) }
 }

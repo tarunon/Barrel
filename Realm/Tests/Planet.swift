@@ -24,8 +24,8 @@ class Planet: Object {
 }
 
 extension AttributeType where FieldType == Planet {
-    var name: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
-    var diameter: Attribute<Double> { return storedAttribute(__FUNCTION__, self) }
-    var semiMajorAxis: Attribute<Double> { return storedAttribute(__FUNCTION__, self) }
-    var parent: OptionalAttribute<Star> { return storedAttribute(__FUNCTION__, self) }
+    var name: Attribute<String> { return storedAttribute(parent: self) }
+    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
+    var parent: OptionalAttribute<Star> { return storedAttribute(parent: self) }
 }
