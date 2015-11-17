@@ -11,9 +11,7 @@ import RealmSwift
 import Barrel
 @testable import Barrel_Realm
 
-class Planet: Object {
-    dynamic var name: String = ""
-    dynamic var diameter: Double = 0.0
+class Planet: StarBase {
     dynamic var semiMajorAxis: Double = 0.0
     
     dynamic var parent: Star?
@@ -23,9 +21,7 @@ class Planet: Object {
     }
 }
 
-extension AttributeType where FieldType == Planet {
-    var name: Attribute<String> { return storedAttribute(parent: self) }
-    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
+extension AttributeType where FieldType: Planet {
     var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
     var parent: OptionalAttribute<Star> { return storedAttribute(parent: self) }
 }

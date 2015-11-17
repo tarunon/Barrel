@@ -10,8 +10,6 @@ import Foundation
 import Barrel
 import Barrel_CoreData
 
-extension AttributeType where FieldType == Star {
-    var diameter: Attribute<NSNumber> { return storedAttribute(parent: self) }
-    var name: Attribute<String> { return storedAttribute(parent: self) }
+extension AttributeType where FieldType: Star {
     var children: Attribute<Many<Planet>> { return storedAttribute(parent: self) }
 }

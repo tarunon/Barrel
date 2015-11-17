@@ -1,8 +1,8 @@
 //
 //  Satellite+CoreDataProperties.swift
-//  BarrelCoreData
+//  Barrel
 //
-//  Created by Nobuo Saito on 2015/11/10.
+//  Created by Nobuo Saito on 2015/11/17.
 //  Copyright © 2015年 tarunon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,8 +14,6 @@ import CoreData
 
 extension Satellite {
 
-    @NSManaged var name: String
-    @NSManaged var diameter: NSNumber
     @NSManaged var semiMajorAxis: NSNumber
     @NSManaged var parent: Planet?
 

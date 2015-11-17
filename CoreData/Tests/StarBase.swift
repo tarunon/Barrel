@@ -1,5 +1,5 @@
 //
-//  Star.swift
+//  StarBase.swift
 //  Barrel
 //
 //  Created by Nobuo Saito on 2015/11/17.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Star: StarBase {
+class StarBase: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
