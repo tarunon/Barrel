@@ -20,8 +20,8 @@ class Satellite: Object {
 }
 
 extension AttributeType where FieldType == Satellite {
-    var name: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
-    var diameter: Attribute<Double> { return storedAttribute(__FUNCTION__, self) }
-    var semiMajorAxis: Attribute<Double> { return storedAttribute(__FUNCTION__, self) }
-    var parent: OptionalAttribute<Planet> { return storedAttribute(__FUNCTION__, self) }
+    var name: Attribute<String> { return storedAttribute(parent: self) }
+    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
+    var parent: OptionalAttribute<Planet> { return storedAttribute(parent: self) }
 }

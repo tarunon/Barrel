@@ -20,6 +20,6 @@ class Star: Object {
 }
 
 extension AttributeType where FieldType == Star {
-    var name: Attribute<String> { return storedAttribute(__FUNCTION__, self) }
-    var diameter: Attribute<Double> { return storedAttribute(__FUNCTION__, self) }
+    var name: Attribute<String> { return storedAttribute(parent: self) }
+    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
 }
