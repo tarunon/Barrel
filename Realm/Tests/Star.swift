@@ -11,15 +11,11 @@ import RealmSwift
 import Barrel
 @testable import Barrel_Realm
 
-class Star: Object {
-    dynamic var name: String = ""
-    dynamic var diameter: Double = 0.0
+class Star: StarBase {
     var children: [Planet] {
         return self.linkingObjects(Planet.self, forProperty: "parent")
     }
 }
 
-extension AttributeType where FieldType == Star {
-    var name: Attribute<String> { return storedAttribute(parent: self) }
-    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
+extension AttributeType where FieldType: Star {
 }

@@ -21,7 +21,7 @@ class A: SelfExpression {
     var option: String?
 }
 
-extension AttributeType where FieldType == A {
+extension AttributeType where FieldType: A {
     var text: Attribute<String> { return storedAttribute(parent: self) }
     var number: Attribute<Int> { return storedAttribute(parent: self) }
     var option: OptionalAttribute<String> { return storedAttribute(parent: self) }

@@ -84,36 +84,18 @@
 		EB22A9EF1BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E21BF1F38B000C4F58 /* BarrelCoreDataTests.swift */; };
 		EB22A9F01BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E21BF1F38B000C4F58 /* BarrelCoreDataTests.swift */; };
 		EB22A9F11BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E21BF1F38B000C4F58 /* BarrelCoreDataTests.swift */; };
-		EB22A9F51BF1F38B000C4F58 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E41BF1F38B000C4F58 /* Planet.swift */; };
-		EB22A9F61BF1F38B000C4F58 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E41BF1F38B000C4F58 /* Planet.swift */; };
-		EB22A9F71BF1F38B000C4F58 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E41BF1F38B000C4F58 /* Planet.swift */; };
 		EB22A9F81BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */; };
 		EB22A9F91BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */; };
 		EB22A9FA1BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */; };
-		EB22A9FB1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E61BF1F38B000C4F58 /* Planet+CoreDataProperties.swift */; };
-		EB22A9FC1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E61BF1F38B000C4F58 /* Planet+CoreDataProperties.swift */; };
-		EB22A9FD1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E61BF1F38B000C4F58 /* Planet+CoreDataProperties.swift */; };
-		EB22A9FE1BF1F38B000C4F58 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E71BF1F38B000C4F58 /* Satellite.swift */; };
-		EB22A9FF1BF1F38B000C4F58 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E71BF1F38B000C4F58 /* Satellite.swift */; };
-		EB22AA001BF1F38B000C4F58 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E71BF1F38B000C4F58 /* Satellite.swift */; };
 		EB22AA011BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */; };
 		EB22AA021BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */; };
 		EB22AA031BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */; };
-		EB22AA041BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E91BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift */; };
-		EB22AA051BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E91BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift */; };
-		EB22AA061BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9E91BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift */; };
 		EB22AA071BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EA1BF1F38B000C4F58 /* SolerSystem.xcdatamodeld */; };
 		EB22AA081BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EA1BF1F38B000C4F58 /* SolerSystem.xcdatamodeld */; };
 		EB22AA091BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EA1BF1F38B000C4F58 /* SolerSystem.xcdatamodeld */; };
-		EB22AA0A1BF1F38B000C4F58 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EC1BF1F38B000C4F58 /* Star.swift */; };
-		EB22AA0B1BF1F38B000C4F58 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EC1BF1F38B000C4F58 /* Star.swift */; };
-		EB22AA0C1BF1F38B000C4F58 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EC1BF1F38B000C4F58 /* Star.swift */; };
 		EB22AA0D1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */; };
 		EB22AA0E1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */; };
 		EB22AA0F1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */; };
-		EB22AA101BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EE1BF1F38B000C4F58 /* Star+CoreDataProperties.swift */; };
-		EB22AA111BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EE1BF1F38B000C4F58 /* Star+CoreDataProperties.swift */; };
-		EB22AA121BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22A9EE1BF1F38B000C4F58 /* Star+CoreDataProperties.swift */; };
 		EB22AA221BF1F419000C4F58 /* Barrel_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22AA181BF1F418000C4F58 /* Barrel_Realm.framework */; };
 		EB22AA3E1BF1F43C000C4F58 /* Barrel_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22AA341BF1F43C000C4F58 /* Barrel_Realm.framework */; };
 		EB22AA5C1BF1F4BB000C4F58 /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EB22AA591BF1F4BB000C4F58 /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -150,6 +132,35 @@
 		EBA346F51BF02FF200531940 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA346EA1BF02FF200531940 /* Barrel.framework */; };
 		EBA347131BF0300F00531940 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA347091BF0300F00531940 /* Barrel.framework */; };
 		EBA347581BF0305700531940 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA3474E1BF0305700531940 /* Barrel.framework */; };
+		EBB5E5651BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55D1BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift */; };
+		EBB5E5661BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55D1BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift */; };
+		EBB5E5671BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55D1BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift */; };
+		EBB5E5681BFAFBB300E28A52 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55E1BFAFBB300E28A52 /* Satellite.swift */; };
+		EBB5E5691BFAFBB300E28A52 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55E1BFAFBB300E28A52 /* Satellite.swift */; };
+		EBB5E56A1BFAFBB300E28A52 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55E1BFAFBB300E28A52 /* Satellite.swift */; };
+		EBB5E56B1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55F1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift */; };
+		EBB5E56C1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55F1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift */; };
+		EBB5E56D1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E55F1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift */; };
+		EBB5E56E1BFAFBB300E28A52 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5601BFAFBB300E28A52 /* StarBase.swift */; };
+		EBB5E56F1BFAFBB300E28A52 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5601BFAFBB300E28A52 /* StarBase.swift */; };
+		EBB5E5701BFAFBB300E28A52 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5601BFAFBB300E28A52 /* StarBase.swift */; };
+		EBB5E5711BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5611BFAFBB300E28A52 /* Planet+CoreDataProperties.swift */; };
+		EBB5E5721BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5611BFAFBB300E28A52 /* Planet+CoreDataProperties.swift */; };
+		EBB5E5731BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5611BFAFBB300E28A52 /* Planet+CoreDataProperties.swift */; };
+		EBB5E5741BFAFBB300E28A52 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5621BFAFBB300E28A52 /* Planet.swift */; };
+		EBB5E5751BFAFBB300E28A52 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5621BFAFBB300E28A52 /* Planet.swift */; };
+		EBB5E5761BFAFBB300E28A52 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5621BFAFBB300E28A52 /* Planet.swift */; };
+		EBB5E5771BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5631BFAFBB300E28A52 /* Star+CoreDataProperties.swift */; };
+		EBB5E5781BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5631BFAFBB300E28A52 /* Star+CoreDataProperties.swift */; };
+		EBB5E5791BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5631BFAFBB300E28A52 /* Star+CoreDataProperties.swift */; };
+		EBB5E57A1BFAFBB300E28A52 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5641BFAFBB300E28A52 /* Star.swift */; };
+		EBB5E57B1BFAFBB300E28A52 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5641BFAFBB300E28A52 /* Star.swift */; };
+		EBB5E57C1BFAFBB300E28A52 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5641BFAFBB300E28A52 /* Star.swift */; };
+		EBB5E57E1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E57D1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift */; };
+		EBB5E57F1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E57D1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift */; };
+		EBB5E5801BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E57D1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift */; };
+		EBB5E5821BFAFD7100E28A52 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5811BFAFD7100E28A52 /* StarBase.swift */; };
+		EBB5E5831BFAFD7100E28A52 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5E5811BFAFD7100E28A52 /* StarBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,16 +281,10 @@
 		EB22A9DE1BF1F309000C4F58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		EB22A9E21BF1F38B000C4F58 /* BarrelCoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelCoreDataTests.swift; path = CoreData/Tests/BarrelCoreDataTests.swift; sourceTree = "<group>"; };
 		EB22A9E31BF1F38B000C4F58 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CoreData/Tests/Info.plist; sourceTree = "<group>"; };
-		EB22A9E41BF1F38B000C4F58 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet.swift; path = CoreData/Tests/Planet.swift; sourceTree = "<group>"; };
 		EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+BarrelAttribute.swift"; path = "CoreData/Tests/Planet+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EB22A9E61BF1F38B000C4F58 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+CoreDataProperties.swift"; path = "CoreData/Tests/Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EB22A9E71BF1F38B000C4F58 /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Satellite.swift; path = CoreData/Tests/Satellite.swift; sourceTree = "<group>"; };
 		EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Satellite+BarrelAttribute.swift"; path = "CoreData/Tests/Satellite+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EB22A9E91BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Satellite+CoreDataProperties.swift"; path = "CoreData/Tests/Satellite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EB22A9EB1BF1F38B000C4F58 /* SolerSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SolerSystem.xcdatamodel; sourceTree = "<group>"; };
-		EB22A9EC1BF1F38B000C4F58 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Star.swift; path = CoreData/Tests/Star.swift; sourceTree = "<group>"; };
 		EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Star+BarrelAttribute.swift"; path = "CoreData/Tests/Star+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EB22A9EE1BF1F38B000C4F58 /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Star+CoreDataProperties.swift"; path = "CoreData/Tests/Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EB22AA181BF1F418000C4F58 /* Barrel_Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel_Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB22AA211BF1F419000C4F58 /* Barrel_RealmTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Barrel_RealmTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB22AA341BF1F43C000C4F58 /* Barrel_Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel_Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +314,16 @@
 		EBA347121BF0300F00531940 /* BarrelTests_Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelTests_Mac.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA3474E1BF0305700531940 /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA347571BF0305700531940 /* BarrelTests_TV.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelTests_TV.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBB5E55D1BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Satellite+CoreDataProperties.swift"; path = "CoreData/Tests/Satellite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB5E55E1BFAFBB300E28A52 /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Satellite.swift; path = CoreData/Tests/Satellite.swift; sourceTree = "<group>"; };
+		EBB5E55F1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StarBase+CoreDataProperties.swift"; path = "CoreData/Tests/StarBase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB5E5601BFAFBB300E28A52 /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarBase.swift; path = CoreData/Tests/StarBase.swift; sourceTree = "<group>"; };
+		EBB5E5611BFAFBB300E28A52 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+CoreDataProperties.swift"; path = "CoreData/Tests/Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB5E5621BFAFBB300E28A52 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet.swift; path = CoreData/Tests/Planet.swift; sourceTree = "<group>"; };
+		EBB5E5631BFAFBB300E28A52 /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Star+CoreDataProperties.swift"; path = "CoreData/Tests/Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB5E5641BFAFBB300E28A52 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Star.swift; path = CoreData/Tests/Star.swift; sourceTree = "<group>"; };
+		EBB5E57D1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StarBase+BarrelAttribute.swift"; path = "CoreData/Tests/StarBase+BarrelAttribute.swift"; sourceTree = "<group>"; };
+		EBB5E5811BFAFD7100E28A52 /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarBase.swift; path = Realm/Tests/StarBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,16 +554,19 @@
 			isa = PBXGroup;
 			children = (
 				EB22A9E21BF1F38B000C4F58 /* BarrelCoreDataTests.swift */,
-				EB22A9E41BF1F38B000C4F58 /* Planet.swift */,
-				EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */,
-				EB22A9E61BF1F38B000C4F58 /* Planet+CoreDataProperties.swift */,
-				EB22A9E71BF1F38B000C4F58 /* Satellite.swift */,
-				EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */,
-				EB22A9E91BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift */,
-				EB22A9EC1BF1F38B000C4F58 /* Star.swift */,
-				EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */,
-				EB22A9EE1BF1F38B000C4F58 /* Star+CoreDataProperties.swift */,
 				EB22A9EA1BF1F38B000C4F58 /* SolerSystem.xcdatamodeld */,
+				EB22A9E81BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift */,
+				EBB5E55D1BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift */,
+				EBB5E55E1BFAFBB300E28A52 /* Satellite.swift */,
+				EBB5E57D1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift */,
+				EBB5E55F1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift */,
+				EBB5E5601BFAFBB300E28A52 /* StarBase.swift */,
+				EB22A9E51BF1F38B000C4F58 /* Planet+BarrelAttribute.swift */,
+				EBB5E5611BFAFBB300E28A52 /* Planet+CoreDataProperties.swift */,
+				EBB5E5621BFAFBB300E28A52 /* Planet.swift */,
+				EB22A9ED1BF1F38B000C4F58 /* Star+BarrelAttribute.swift */,
+				EBB5E5631BFAFBB300E28A52 /* Star+CoreDataProperties.swift */,
+				EBB5E5641BFAFBB300E28A52 /* Star.swift */,
 				EB22A9E31BF1F38B000C4F58 /* Info.plist */,
 			);
 			name = Tests;
@@ -571,6 +589,7 @@
 			children = (
 				EB22AA661BF1F4DD000C4F58 /* BarrelRealmTests.swift */,
 				EB22AA671BF1F4DD000C4F58 /* Info.plist */,
+				EBB5E5811BFAFD7100E28A52 /* StarBase.swift */,
 				EB22AA681BF1F4DD000C4F58 /* Planet.swift */,
 				EB22AA691BF1F4DD000C4F58 /* Satellite.swift */,
 				EB22AA6A1BF1F4DD000C4F58 /* Star.swift */,
@@ -1326,17 +1345,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB22AA0A1BF1F38B000C4F58 /* Star.swift in Sources */,
 				EB22AA011BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */,
 				EB22A9EF1BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */,
-				EB22AA101BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */,
 				EB22AA071BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */,
-				EB22A9FE1BF1F38B000C4F58 /* Satellite.swift in Sources */,
-				EB22A9FB1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5651BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E56B1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBB5E57A1BFAFBB300E28A52 /* Star.swift in Sources */,
+				EBB5E5741BFAFBB300E28A52 /* Planet.swift in Sources */,
 				EB22AA0D1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */,
-				EB22AA041BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E56E1BFAFBB300E28A52 /* StarBase.swift in Sources */,
+				EBB5E5711BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5771BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */,
+				EBB5E57E1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */,
 				EB22A9F81BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */,
-				EB22A9F51BF1F38B000C4F58 /* Planet.swift in Sources */,
+				EBB5E5681BFAFBB300E28A52 /* Satellite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1358,17 +1380,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB22AA0B1BF1F38B000C4F58 /* Star.swift in Sources */,
 				EB22AA021BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */,
 				EB22A9F01BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */,
-				EB22AA111BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */,
 				EB22AA081BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */,
-				EB22A9FF1BF1F38B000C4F58 /* Satellite.swift in Sources */,
-				EB22A9FC1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5661BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E56C1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBB5E57B1BFAFBB300E28A52 /* Star.swift in Sources */,
+				EBB5E5751BFAFBB300E28A52 /* Planet.swift in Sources */,
 				EB22AA0E1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */,
-				EB22AA051BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E56F1BFAFBB300E28A52 /* StarBase.swift in Sources */,
+				EBB5E5721BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5781BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */,
+				EBB5E57F1BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */,
 				EB22A9F91BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */,
-				EB22A9F61BF1F38B000C4F58 /* Planet.swift in Sources */,
+				EBB5E5691BFAFBB300E28A52 /* Satellite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,17 +1415,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB22AA0C1BF1F38B000C4F58 /* Star.swift in Sources */,
 				EB22AA031BF1F38B000C4F58 /* Satellite+BarrelAttribute.swift in Sources */,
 				EB22A9F11BF1F38B000C4F58 /* BarrelCoreDataTests.swift in Sources */,
-				EB22AA121BF1F38B000C4F58 /* Star+CoreDataProperties.swift in Sources */,
 				EB22AA091BF1F38B000C4F58 /* SolerSystem.xcdatamodeld in Sources */,
-				EB22AA001BF1F38B000C4F58 /* Satellite.swift in Sources */,
-				EB22A9FD1BF1F38B000C4F58 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5671BFAFBB300E28A52 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E56D1BFAFBB300E28A52 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBB5E57C1BFAFBB300E28A52 /* Star.swift in Sources */,
+				EBB5E5761BFAFBB300E28A52 /* Planet.swift in Sources */,
 				EB22AA0F1BF1F38B000C4F58 /* Star+BarrelAttribute.swift in Sources */,
-				EB22AA061BF1F38B000C4F58 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBB5E5701BFAFBB300E28A52 /* StarBase.swift in Sources */,
+				EBB5E5731BFAFBB300E28A52 /* Planet+CoreDataProperties.swift in Sources */,
+				EBB5E5791BFAFBB300E28A52 /* Star+CoreDataProperties.swift in Sources */,
+				EBB5E5801BFAFBF400E28A52 /* StarBase+BarrelAttribute.swift in Sources */,
 				EB22A9FA1BF1F38B000C4F58 /* Planet+BarrelAttribute.swift in Sources */,
-				EB22A9F71BF1F38B000C4F58 /* Planet.swift in Sources */,
+				EBB5E56A1BFAFBB300E28A52 /* Satellite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1430,6 +1458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB5E5821BFAFD7100E28A52 /* StarBase.swift in Sources */,
 				EB22AA6B1BF1F4DD000C4F58 /* BarrelRealmTests.swift in Sources */,
 				EB22AA6F1BF1F4DD000C4F58 /* Planet.swift in Sources */,
 				EB22AA711BF1F4DD000C4F58 /* Satellite.swift in Sources */,
@@ -1449,6 +1478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB5E5831BFAFD7100E28A52 /* StarBase.swift in Sources */,
 				EB22AA6C1BF1F4DD000C4F58 /* BarrelRealmTests.swift in Sources */,
 				EB22AA701BF1F4DD000C4F58 /* Planet.swift in Sources */,
 				EB22AA721BF1F4DD000C4F58 /* Satellite.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Star+CoreDataProperties.swift
+//  StarBase+CoreDataProperties.swift
 //  Barrel
 //
 //  Created by Nobuo Saito on 2015/11/17.
@@ -12,8 +12,9 @@
 import Foundation
 import CoreData
 
-extension Star {
+extension StarBase {
 
-    @NSManaged var children: Set<Planet>
+    @NSManaged var name: String
+    @NSManaged var diameter: NSNumber
 
 }
