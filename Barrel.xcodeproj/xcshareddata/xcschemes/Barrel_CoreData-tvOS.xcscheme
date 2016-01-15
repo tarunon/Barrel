@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBA346E91BF02FF200531940"
-               BuildableName = "Barrel.framework"
-               BlueprintName = "Barrel_iOS"
+               BlueprintIdentifier = "EBF7FB111C488840004D17EE"
+               BuildableName = "Barrel_CoreData.framework"
+               BlueprintName = "Barrel_CoreData-tvOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBA346F31BF02FF200531940"
-               BuildableName = "BarrelTests_iOS.xctest"
-               BlueprintName = "BarrelTests_iOS"
+               BlueprintIdentifier = "EBF7FB1A1C488840004D17EE"
+               BuildableName = "Barrel_CoreDataTests-tvOS.xctest"
+               BlueprintName = "Barrel_CoreDataTests-tvOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBA346E91BF02FF200531940"
-            BuildableName = "Barrel.framework"
-            BlueprintName = "Barrel_iOS"
+            BlueprintIdentifier = "EBF7FB111C488840004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBA346E91BF02FF200531940"
-            BuildableName = "Barrel.framework"
-            BlueprintName = "Barrel_iOS"
+            BlueprintIdentifier = "EBF7FB111C488840004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBA346E91BF02FF200531940"
-            BuildableName = "Barrel.framework"
-            BlueprintName = "Barrel_iOS"
+            BlueprintIdentifier = "EBF7FB111C488840004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

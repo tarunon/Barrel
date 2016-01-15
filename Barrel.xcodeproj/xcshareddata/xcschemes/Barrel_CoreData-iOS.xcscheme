@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22AA171BF1F418000C4F58"
-               BuildableName = "Barrel_Realm.framework"
-               BlueprintName = "Barrel_Realm_iOS"
+               BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
+               BuildableName = "Barrel_CoreData.framework"
+               BlueprintName = "Barrel_CoreData-iOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22AA201BF1F419000C4F58"
-               BuildableName = "Barrel_RealmTests_iOS.xctest"
-               BlueprintName = "Barrel_RealmTests_iOS"
+               BlueprintIdentifier = "EBF7FAC61C4887F5004D17EE"
+               BuildableName = "Barrel_CoreDataTests-iOS.xctest"
+               BlueprintName = "Barrel_CoreDataTests-iOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22AA171BF1F418000C4F58"
-            BuildableName = "Barrel_Realm.framework"
-            BlueprintName = "Barrel_Realm_iOS"
+            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22AA171BF1F418000C4F58"
-            BuildableName = "Barrel_Realm.framework"
-            BlueprintName = "Barrel_Realm_iOS"
+            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22AA171BF1F418000C4F58"
-            BuildableName = "Barrel_Realm.framework"
-            BlueprintName = "Barrel_Realm_iOS"
+            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
+            BuildableName = "Barrel_CoreData.framework"
+            BlueprintName = "Barrel_CoreData-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
