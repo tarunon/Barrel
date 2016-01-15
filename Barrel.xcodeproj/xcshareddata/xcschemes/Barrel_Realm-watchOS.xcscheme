@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22A90A1BF1F0F4000C4F58"
-               BuildableName = "Barrel_CoreData.framework"
-               BlueprintName = "Barrel_CoreData_iOS"
+               BlueprintIdentifier = "EBF7FBD71C488988004D17EE"
+               BuildableName = "Barrel_Realm.framework"
+               BlueprintName = "Barrel_Realm-watchOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22A9131BF1F0F4000C4F58"
-               BuildableName = "Barrel_CoreDataTests_iOS.xctest"
-               BlueprintName = "Barrel_CoreDataTests_iOS"
-               ReferencedContainer = "container:Barrel.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A90A1BF1F0F4000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_iOS"
-            ReferencedContainer = "container:Barrel.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A90A1BF1F0F4000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_iOS"
+            BlueprintIdentifier = "EBF7FBD71C488988004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-watchOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A90A1BF1F0F4000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_iOS"
+            BlueprintIdentifier = "EBF7FBD71C488988004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-watchOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

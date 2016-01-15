@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22A9661BF1F251000C4F58"
-               BuildableName = "Barrel_CoreData.framework"
-               BlueprintName = "Barrel_CoreData_Mac"
+               BlueprintIdentifier = "EBF7FBBB1C488973004D17EE"
+               BuildableName = "Barrel_Realm.framework"
+               BlueprintName = "Barrel_Realm-tvOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB22A96F1BF1F251000C4F58"
-               BuildableName = "Barrel_CoreDataTests_Mac.xctest"
-               BlueprintName = "Barrel_CoreDataTests_Mac"
+               BlueprintIdentifier = "EBF7FBC41C488973004D17EE"
+               BuildableName = "Barrel_RealmTests-tvOS.xctest"
+               BlueprintName = "Barrel_RealmTests-tvOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A9661BF1F251000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_Mac"
+            BlueprintIdentifier = "EBF7FBBB1C488973004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A9661BF1F251000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_Mac"
+            BlueprintIdentifier = "EBF7FBBB1C488973004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB22A9661BF1F251000C4F58"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData_Mac"
+            BlueprintIdentifier = "EBF7FBBB1C488973004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-tvOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
