@@ -1,0 +1,24 @@
+matrix:
+  include:
+    - os: osx
+      language: objective-c
+      osx_image: xcode7.3
+before_install:
+  - brew update
+  - brew upgrade xctool
+  - brew install carthage
+  - carthage bootstrap --verbose
+script:
+  - set -o pipefail
+  - xcodebuild test -scheme Barrel-Mac -configuration Debug | xcpretty -c
+  - xcodebuild test -scheme Barrel-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+  - xcodebuild test -scheme Barrel-tvOS -configuration Debug -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c
+  - xcodebuild build -scheme Barrel-watchOS -configuration Debug -sdk watchsimulator -destination "platform=watchOS Simulator,name=Apple Watch - 38mm" | xcpretty -c
+  - xcodebuild test -scheme Barrel_CoreData-Mac -configuration Debug | xcpretty -c
+  - xcodebuild test -scheme Barrel_CoreData-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+  - xcodebuild test -scheme Barrel_CoreData-tvOS -configuration Debug -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c
+  - xcodebuild build -scheme Barrel_CoreData-watchOS -configuration Debug -sdk watchsimulator -destination "platform=watchOS Simulator,name=Apple Watch - 38mm" | xcpretty -c
+  - xcodebuild test -scheme Barrel_Realm-Mac -configuration Debug | xcpretty -c
+  - xcodebuild test -scheme Barrel_Realm-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+  - xcodebuild test -scheme Barrel_Realm-tvOS -configuration Debug -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c
+  - xcodebuild build -scheme Barrel_Realm-watchOS -configuration Debug -sdk watchsimulator -destination "platform=watchOS Simulator,name=Apple Watch - 38mm" | xcpretty -c
