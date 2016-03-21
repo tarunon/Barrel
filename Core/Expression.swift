@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol ExpressionType {
-    typealias ValueType
+    associatedtype ValueType
 }
 
 enum ExpressionFunction: String {

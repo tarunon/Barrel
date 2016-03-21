@@ -138,7 +138,7 @@ class BarrelCoreDataTests: XCTestCase {
         XCTAssertEqual(fetch.filter { $0.diameter > 100000 }.count, 2)
         var i = 0
         fetch.forEach {
-            i++
+            i += 1
             XCTAssert($0.isKindOfClass(Planet.self))
         }
         XCTAssertEqual(i, 6)

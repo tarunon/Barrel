@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 public protocol Executable: CollectionType, Indexable {
-    typealias Type
-    typealias GeneratorType = AnyGenerator<Type>
-    typealias SubSquence = ArraySlice<Type>
-    typealias Index = Int
+    associatedtype Type
+    associatedtype GeneratorType = AnyGenerator<Type>
+    associatedtype SubSquence = ArraySlice<Type>
+    associatedtype Index = Int
     var context: NSManagedObjectContext { get }
     func fetchRequest() -> NSFetchRequest
 }
@@ -63,13 +63,14 @@ extension Executable {
 extension Executable {
     public func generate() -> AnyGenerator<Type> {
         var count = 0
-        return anyGenerator({ () -> Type? in
+        return AnyGenerator { () -> Type? in
             do {
-                return try self.get(count++)
+                count += 1
+                return try self.get(count)
             } catch {
                 return nil
             }
-        })
+        }
     }
     
     public func underestimateCount() -> Int {

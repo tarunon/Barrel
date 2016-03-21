@@ -21,11 +21,11 @@ struct Many<T: ExpressionType>: ManyType {
     typealias ElementType = T
 }
 
-extension AttributeType where FieldType == TestModel {
+extension AttributeType where ValueType == TestModel {
     var text: Attribute<String> { return storedAttribute(parent: self) }
     var number: Attribute<Int> { return storedAttribute(parent: self) }
     var array: Attribute<Many<Int>> { return storedAttribute(parent: self) }
-    var option: OptionalAttribute<Int> { return storedAttribute(parent: self) }
+    var option: Attribute<Optional<Int>> { return storedAttribute(parent: self) }
 }
 
 class BarrelTests: XCTestCase {

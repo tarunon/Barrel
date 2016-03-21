@@ -12,7 +12,7 @@ var fetches = Person.objects(self.context)
 
 Plese write AttributeType extensions.
 ```swift
-extension AttributeType where FieldType: Person {
+extension AttributeType where ValueType: Person {
     var name: Attribute<String> { return storedAttribute(parent: self) }
     var age: Attribute<Int> { return storedAttribute(parent: self) }
 }
@@ -45,7 +45,7 @@ var maxAgeGroupByName = Person.objects(self.context)
 ## Relationships
 Your model has many-relationships, use Many type in Attribute like.
 ```swift
-extension AttributeType where FieldType: Planet {
+extension AttributeType where ValueType: Planet {
     var name: Attribute<String> { return storedAttribute(parent: self) }
     var children: Attribute<Many<Satellite>> { return storedAttribute(parent: self) }
 }

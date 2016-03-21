@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BuilderType {
-    typealias Result
+    associatedtype Result
     func build() -> Result
 }
 
