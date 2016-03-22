@@ -11,6 +11,6 @@ import Barrel
 import Barrel_CoreData
 
 extension AttributeType where ValueType: Satellite {
-    var semiMajorAxis: Attribute<NSNumber> { return storedAttribute(parent: self) }
-    var parent: Attribute<Optional<Planet>> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<NSNumber> { return attribute() }
+    var parent: Attribute<Optional<Planet>> { return attribute() }
 }

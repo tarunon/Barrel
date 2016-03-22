@@ -11,6 +11,6 @@ import Barrel
 import Barrel_CoreData
 
 extension AttributeType where ValueType: StarBase {
-    var diameter: Attribute<NSNumber> { return storedAttribute(parent: self) }
-    var name: Attribute<String> { return storedAttribute(parent: self) }
+    var diameter: Attribute<NSNumber> { return attribute() }
+    var name: Attribute<String> { return attribute() }
 }

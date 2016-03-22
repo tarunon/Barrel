@@ -22,6 +22,6 @@ class Planet: StarBase {
 }
 
 extension AttributeType where ValueType: Planet {
-    var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
-    var parent: Attribute<Optional<Star>> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<Double> { return attribute() }
+    var parent: Attribute<Optional<Star>> { return attribute() }
 }

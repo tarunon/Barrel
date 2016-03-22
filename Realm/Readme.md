@@ -13,8 +13,8 @@ var results = Person.objects(self.realm)
 Plese write AttributeType extensions.
 ```swift
 extension AttributeType where ValueType: Person {
-    var name: Attribute<String> { return storedAttribute(parent: self) }
-    var age: Attribute<Int> { return storedAttribute(parent: self) }
+    var name: Attribute<String> { return attribute() }
+    var age: Attribute<Int> { return attribute() }
 }
 ```
 
@@ -31,6 +31,6 @@ var searchPersons = Person.objects(self.context)
 Your model has many-relationships, use Many type in Attribute like.
 ```swift
 extension AttributeType where ValueType: Planet {
-    var name: Attribute<String> { return storedAttribute(parent: self) }
-    var children: Attribute<Many<Satellite>> { return storedAttribute(parent: self) }
+    var name: Attribute<String> { return attribute() }
+    var children: Attribute<Many<Satellite>> { return attribute() }
 }

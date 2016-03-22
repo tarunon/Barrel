@@ -22,10 +22,10 @@ struct Many<T: ExpressionType>: ManyType {
 }
 
 extension AttributeType where ValueType == TestModel {
-    var text: Attribute<String> { return storedAttribute(parent: self) }
-    var number: Attribute<Int> { return storedAttribute(parent: self) }
-    var array: Attribute<Many<Int>> { return storedAttribute(parent: self) }
-    var option: Attribute<Optional<Int>> { return storedAttribute(parent: self) }
+    var text: Attribute<String> { return attribute() }
+    var number: Attribute<Int> { return attribute() }
+    var array: Attribute<Many<Int>> { return attribute() }
+    var option: Attribute<Optional<Int>> { return attribute() }
 }
 
 class BarrelTests: XCTestCase {
