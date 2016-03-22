@@ -9,7 +9,7 @@
 import XCTest
 import CoreData
 import Barrel
-@testable import Barrel_CoreData
+import Barrel_CoreData
 
 var token1: dispatch_once_t = 0
 var token2: dispatch_once_t = 0
