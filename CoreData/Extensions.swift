@@ -76,13 +76,9 @@ public struct Many<T: NSManagedObject where T: ExpressionType>: ExpressionType, 
     public typealias ElementType = T
 }
 
-public protocol ManagedObjectType: ExpressionType {
-    typealias ValueType = Self
-}
-
-extension NSManagedObject: ManagedObjectType {}
-
-public extension ManagedObjectType where Self: NSManagedObject {
+extension ExpressionType where Self: NSManagedObject {
+    public typealias ValueType = Self
+    
     static func objects(context: NSManagedObjectContext) -> Fetch<Self> {
         return Fetch(context: context)
     }
@@ -90,4 +86,8 @@ public extension ManagedObjectType where Self: NSManagedObject {
     static func insert(context: NSManagedObjectContext) -> Self {
         return Self(entity: context.entityDescription(Self)!, insertIntoManagedObjectContext: context)
     }
+}
+
+extension NSManagedObject: ExpressionType {
+    public typealias ValueType = NSManagedObject
 }

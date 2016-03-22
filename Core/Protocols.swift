@@ -31,7 +31,7 @@ public func ><C: NSComparable>(lhs: C, rhs: C) -> Bool {
 }
 
 public protocol SelfExpression : ExpressionType {
-    typealias ValueType = Self
+    associatedtype ValueType = Self
 }
 
 extension Double : SelfExpression, NumberType {}

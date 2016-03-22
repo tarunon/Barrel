@@ -17,5 +17,5 @@ class Star: StarBase {
     }
 }
 
-extension AttributeType where FieldType: Star {
+extension AttributeType where ValueType: Star {
 }

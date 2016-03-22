@@ -10,12 +10,12 @@ import Foundation
 import RealmSwift
 import Barrel
 
-extension Object : ExpressionType {
+extension Object: ExpressionType {
     public typealias ValueType = Object
 }
 
-public struct Many<T: Object where T: ExpressionType>: ExpressionType, ManyType {
-    public typealias ValueType = List<T>
+extension List: ExpressionType, ManyType {
+    public typealias ValueType = List
     public typealias ElementType = T
 }
 
@@ -31,11 +31,8 @@ public extension Realm {
     }
 }
 
-public protocol ObjectType {}
-
-extension Object: ObjectType {}
-
-public extension ObjectType where Self: Object {
+public extension ExpressionType where Self: Object {
+    public typealias ValueType = Self
     static func objects(realm: Realm) -> Results<Self> {
         return realm.objects()
     }

@@ -9,14 +9,15 @@
 import Foundation
 
 public protocol AttributeType: ExpressionType {
-    typealias FieldType
+    associatedtype SourceType: ExpressionType
+    associatedtype ValueType = SourceType.ValueType
     var keyPath: KeyPath { get }
     init(name: String?, parentName: String?)
 }
 
 public struct Attribute<T: ExpressionType>: AttributeType {
-    public typealias FieldType = T
-    public typealias ValueType = T.ValueType
+    public typealias SourceType = T
+    public typealias ValueType = SourceType.ValueType
     
     public let keyPath: KeyPath
     
@@ -26,23 +27,15 @@ public struct Attribute<T: ExpressionType>: AttributeType {
     }
 }
 
-public struct OptionalAttribute<T: ExpressionType>: AttributeType {
-    public typealias FieldType = T
-    public typealias ValueType = T.ValueType
-    
-    public let keyPath: KeyPath
-    
-    @available(*, unavailable)
-    public init(name: String? = nil, parentName: String? = nil) {
-        self.keyPath = KeyPath(name, parentName: parentName)
-    }
+extension Optional: ExpressionType {
+    public typealias ValueType = Wrapped
 }
 
 public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
     return AttributeStorage.sharedInstance.attribute(name, parent: Optional<T>.None)
 }
 
-public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = __FUNCTION__, parent: U) -> T {
+public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = #function, parent: U) -> T {
     return AttributeStorage.sharedInstance.attribute(name, parent: parent)
 }
 

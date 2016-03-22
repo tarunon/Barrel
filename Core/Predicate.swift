@@ -129,7 +129,7 @@ public prefix func !(hs: PredicateType) -> Predicate {
     return Predicate(hs: hs, type: .NotPredicateType)
 }
 
-extension AttributeType where ValueType == String, FieldType == String {
+extension AttributeType where ValueType == String {
     public func contains<E: ExpressionType, P: PredicateType where E.ValueType == String>(other: E) -> P {
         return P(lhs: self, rhs: other, type: .ContainsPredicateOperatorType, options: [])
     }
@@ -152,26 +152,26 @@ extension AttributeType where ValueType == String, FieldType == String {
 }
 
 public protocol ManyType: ExpressionType {
-    typealias ElementType: ExpressionType
+    associatedtype ElementType: ExpressionType
 }
 
-extension AttributeType where FieldType: ManyType {
-    public func any(f: Attribute<FieldType.ElementType> -> AnyPredicate) -> Predicate {
+extension AttributeType where SourceType: ManyType {
+    public func any(f: Attribute<SourceType.ElementType> -> AnyPredicate) -> Predicate {
         return Predicate(f(storedAttribute(self.keyPath.string)).value)
     }
     
-    public func all(f: Attribute<FieldType.ElementType> -> AllPredicate) -> Predicate {
+    public func all(f: Attribute<SourceType.ElementType> -> AllPredicate) -> Predicate {
         return Predicate(f(storedAttribute(self.keyPath.string)).value)
     }
 }
 
-extension OptionalAttribute where T.ValueType: ExpressionType {
+extension AttributeType where ValueType: ExpressionType, SourceType == Optional<ValueType> {
     public func isNull<P: PredicateType>() -> P {
-        return P(lhs: self, rhs: Expression<T>(NSExpression(forConstantValue: nil)), type: .EqualToPredicateOperatorType, options: [])
+        return P(lhs: self, rhs: Expression<SourceType>(NSExpression(forConstantValue: nil)), type: .EqualToPredicateOperatorType, options: [])
     }
     
     public func isNotNull<P: PredicateType>() -> P {
-        return P(lhs: self, rhs: Expression<T>(NSExpression(forConstantValue: nil)), type: .NotEqualToPredicateOperatorType, options: [])
+        return P(lhs: self, rhs: Expression<SourceType>(NSExpression(forConstantValue: nil)), type: .NotEqualToPredicateOperatorType, options: [])
     }
 }
 

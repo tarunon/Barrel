@@ -17,7 +17,7 @@ class Satellite: StarBase {
     dynamic var parent: Planet?
 }
 
-extension AttributeType where FieldType: Satellite {
+extension AttributeType where ValueType: Satellite {
     var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
-    var parent: OptionalAttribute<Planet> { return storedAttribute(parent: self) }
+    var parent: Attribute<Optional<Planet>> { return storedAttribute(parent: self) }
 }
