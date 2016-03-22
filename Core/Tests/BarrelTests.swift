@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Barrel
+import Barrel
 
 struct TestModel: SelfExpression {
     var text: String = ""

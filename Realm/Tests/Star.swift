@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 import Barrel
-@testable import Barrel_Realm
+import Barrel_Realm
 
 class Star: StarBase {
     var children: [Planet] {

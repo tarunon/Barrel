@@ -9,7 +9,7 @@
 import XCTest
 import Barrel
 import RealmSwift
-@testable import Barrel_Realm
+import Barrel_Realm
 
 class BarrelRealmTests: XCTestCase {
     
