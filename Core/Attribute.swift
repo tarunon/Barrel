@@ -15,6 +15,12 @@ public protocol AttributeType: ExpressionType {
     init(name: String?, parentName: String?)
 }
 
+public extension AttributeType {
+    func attribute<T: ExpressionType>(name: String = #function) -> Attribute<T> {
+        return storedAttribute(name, parent: self)
+    }
+}
+
 public struct Attribute<T: ExpressionType>: AttributeType {
     public typealias SourceType = T
     public typealias ValueType = SourceType.ValueType

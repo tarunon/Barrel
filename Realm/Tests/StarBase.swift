@@ -17,6 +17,6 @@ class StarBase: Object {
 }
 
 extension AttributeType where ValueType: StarBase {
-    var name: Attribute<String> { return storedAttribute(parent: self) }
-    var diameter: Attribute<Double> { return storedAttribute(parent: self) }
+    var name: Attribute<String> { return attribute() }
+    var diameter: Attribute<Double> { return attribute() }
 }

@@ -11,5 +11,5 @@ import Barrel
 import Barrel_CoreData
 
 extension AttributeType where ValueType: Star {
-    var children: Attribute<Many<Planet>> { return storedAttribute(parent: self) }
+    var children: Attribute<Many<Planet>> { return attribute() }
 }

@@ -18,6 +18,6 @@ class Satellite: StarBase {
 }
 
 extension AttributeType where ValueType: Satellite {
-    var semiMajorAxis: Attribute<Double> { return storedAttribute(parent: self) }
-    var parent: Attribute<Optional<Planet>> { return storedAttribute(parent: self) }
+    var semiMajorAxis: Attribute<Double> { return attribute() }
+    var parent: Attribute<Optional<Planet>> { return attribute() }
 }
