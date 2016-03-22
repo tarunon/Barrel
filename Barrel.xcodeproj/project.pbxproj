@@ -1983,7 +1983,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -1995,7 +1995,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
@@ -2207,7 +2207,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -2219,7 +2219,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
@@ -2475,7 +2475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -2491,7 +2491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
