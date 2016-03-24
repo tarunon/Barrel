@@ -16,7 +16,7 @@ public protocol AttributeBase {
 public protocol AttributeType: ExpressionType, AttributeBase {
     associatedtype SourceType: ExpressionType
     associatedtype ValueType = SourceType.ValueType
-    init(name: String?, parentName: String?)
+    init<A: AttributeType>(name: String?, parent: A?)
 }
 
 public extension AttributeType {
@@ -31,8 +31,8 @@ public struct Attribute<T: ExpressionType>: AttributeType {
     public let keyPath: KeyPath
     
     @available(*, unavailable)
-    public init(name: String?, parentName: String?) {
-        self.keyPath = KeyPath(name, parentName: parentName)
+    public init<A: AttributeType>(name: String?, parent: A?) {
+        self.keyPath = KeyPath(name, parent: parent?.keyPath)
     }
 }
 
@@ -80,7 +80,7 @@ private class AttributeStorage {
         if let attribute = self.storage[key] as? U {
             return attribute
         } else {
-            let attribute = U(name: name, parentName: attributeName(parent))
+            let attribute = U(name: name, parent: parent)
             self.storage[key] = attribute
             return attribute
         }
