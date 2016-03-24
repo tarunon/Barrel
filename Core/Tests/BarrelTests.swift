@@ -42,7 +42,7 @@ class BarrelTests: XCTestCase {
     }
     
     func testExpression() {
-        let attribute: Attribute<TestModel> = storedAttribute()
+        let attribute = Attribute<TestModel>()
         
         let addToExpression = attribute.number + 1
         XCTAssertEqual(addToExpression.value, NSExpression(forFunction: "add:to:", arguments: [NSExpression(forKeyPath: "number"), NSExpression(forConstantValue: 1)]))
@@ -73,7 +73,7 @@ class BarrelTests: XCTestCase {
     }
     
     func testPredicate() {
-        let attribute: Attribute<TestModel> = storedAttribute()
+        let attribute = Attribute<TestModel>()
         
         let equalToPredicate: Predicate = (attribute.text == "TEST")
         XCTAssertEqual(equalToPredicate.value, NSPredicate(format: "text == %@", "TEST"))
@@ -138,8 +138,8 @@ class BarrelTests: XCTestCase {
     }
     
     func testSortDescriptors() {
-        let attribute: Attribute<TestModel> = storedAttribute()
-        let sortAttr: Attribute<TestModel> = storedAttribute("sort")
+        let attribute = Attribute<TestModel>()
+        let sortAttr = Attribute<TestModel>(name: "sort")
         
         let ascendingSortDescriptors: SortDescriptors = (attribute.number < sortAttr.number)
         let ascendingSortDescriptors2: SortDescriptors = (sortAttr.number > attribute.number)

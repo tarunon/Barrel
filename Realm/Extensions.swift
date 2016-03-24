@@ -46,30 +46,30 @@ public extension ExpressionType where Self: Object {
 
 public extension RealmCollectionType where Element: ExpressionType {
     func brl_filter(f: Attribute<Element> -> Predicate) -> Results<Element> {
-        return self.filter(f(storedAttribute()).value)
+        return self.filter(f(Attribute()).value)
     }
     
     func brl_indexOf(f: Attribute<Element> -> Predicate) -> Int? {
-        return self.indexOf(f(storedAttribute()).value)
+        return self.indexOf(f(Attribute()).value)
     }
     
     func brl_sorted(f: (Attribute<Element>, Attribute<Element>) -> SortDescriptors) -> Results<Element> {
-        return self.sorted(f(storedAttribute(), storedAttribute("sort")).value.map { $0.toRealmObject() })
+        return self.sorted(f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() })
     }
     
     func brl_min<U: MinMaxType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.min(f(storedAttribute()).keyPath.string)
+        return self.min(f(Attribute()).keyPath.string)
     }
     
     func brl_max<U: MinMaxType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.max(f(storedAttribute()).keyPath.string)
+        return self.max(f(Attribute()).keyPath.string)
     }
     
     func brl_sum<U: AddableType>(f: Attribute<Element> -> Attribute<U>) -> U {
-        return self.sum(f(storedAttribute()).keyPath.string)
+        return self.sum(f(Attribute()).keyPath.string)
     }
     
     func brl_average<U: AddableType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.average(f(storedAttribute()).keyPath.string)
+        return self.average(f(Attribute()).keyPath.string)
     }
 }

@@ -157,11 +157,11 @@ public protocol ManyType: ExpressionType {
 
 extension AttributeType where SourceType: ManyType {
     public func any(f: Attribute<SourceType.ElementType> -> AnyPredicate) -> Predicate {
-        return Predicate(f(storedAttribute(self.keyPath.string)).value)
+        return Predicate(f(Attribute(name: self.keyPath.string)).value)
     }
     
     public func all(f: Attribute<SourceType.ElementType> -> AllPredicate) -> Predicate {
-        return Predicate(f(storedAttribute(self.keyPath.string)).value)
+        return Predicate(f(Attribute(name: self.keyPath.string)).value)
     }
 }
 

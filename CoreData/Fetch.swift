@@ -77,10 +77,10 @@ public extension Fetch {
 
 public extension Fetch {
     public func brl_filter(f: Attribute<T> -> Predicate) -> Fetch {
-        return self.filter(f(storedAttribute()).value)
+        return self.filter(f(Attribute()).value)
     }
     
     public func brl_sorted(f: (Attribute<T>, Attribute<T>) -> SortDescriptors) -> Fetch {
-        return self.sorted(f(storedAttribute(), storedAttribute("sort")).value)
+        return self.sorted(f(Attribute(), Attribute(name: "sort")).value)
     }
 }
