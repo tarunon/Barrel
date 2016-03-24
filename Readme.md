@@ -30,7 +30,7 @@ extension AttributeType where ValueType: A {
 
 Make NSPredicate and NSExpression from Attribute<A>.
 ```swift
-var attribute: Attribute<A> = storedAttribute()
+var attribute = Attribute<A>()
 var predicate: Predicate = (attribute.text == "TEXT") // predicate.value is NSPredicate
 var expression: Expression = attribute.number.max() // expression.value is NSExpression
 ```
@@ -39,7 +39,6 @@ var expression: Expression = attribute.number.max() // expression.value is NSExp
 
 Extend AttributeType using computed property one by one ValueType.
 Computed properties are Attribute<T> and return "attribute()".
-Get Attribute instance from "storedAttribute()".
 
 ## Expression
 
