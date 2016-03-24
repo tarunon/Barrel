@@ -140,11 +140,11 @@ public protocol ManyType: ExpressionType {
 
 extension AttributeType where SourceType: ManyType {
     public func any(f: Attribute<SourceType.ElementType> -> ComparisonPredicate) -> Predicate {
-        return ComparisonPredicate(generator: f(storedAttribute(self.keyPath.string)).generator, modifier: .AnyPredicateModifier)
+        return ComparisonPredicate(generator: f(Attribute(name:self.keyPath.string)).generator, modifier: .AnyPredicateModifier)
     }
     
     public func all(f: Attribute<SourceType.ElementType> -> ComparisonPredicate) -> Predicate {
-        return ComparisonPredicate(generator: f(storedAttribute(self.keyPath.string)).generator, modifier: .AllPredicateModifier)
+        return ComparisonPredicate(generator: f(Attribute(name:self.keyPath.string)).generator, modifier: .AllPredicateModifier)
     }
 }
 

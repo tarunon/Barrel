@@ -30,7 +30,7 @@ extension AttributeType where ValueType: A {
 
 Make NSPredicate and NSExpression from Attribute<A>.
 ```swift
-var attribute: Attribute<A> = storedAttribute()
+var attribute = Attribute<A>()
 var predicate = attribute.text == "TEXT" // predicate.value is NSPredicate
 var expression = attribute.number.max() // expression.value is NSExpression
 ```
