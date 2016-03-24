@@ -8,10 +8,14 @@
 
 import Foundation
 
-public protocol AttributeType: ExpressionType {
+public protocol AttributeBase {
+    var keyPath: KeyPath { get }
+    
+}
+
+public protocol AttributeType: ExpressionType, AttributeBase {
     associatedtype SourceType: ExpressionType
     associatedtype ValueType = SourceType.ValueType
-    var keyPath: KeyPath { get }
     init(name: String?, parentName: String?)
 }
 
@@ -23,7 +27,6 @@ public extension AttributeType {
 
 public struct Attribute<T: ExpressionType>: AttributeType {
     public typealias SourceType = T
-    public typealias ValueType = SourceType.ValueType
     
     public let keyPath: KeyPath
     
