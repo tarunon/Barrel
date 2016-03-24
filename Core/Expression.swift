@@ -40,8 +40,8 @@ public struct Expression<T: ExpressionType>: ExpressionType {
     }
 
     internal init<E: ExpressionType where E.ValueType == T>(_ value: E) {
-        if let keyPath = Mirror(reflecting: value).descendant("keyPath") as? KeyPath {
-            self.init(NSExpression(forKeyPath: keyPath.string))
+        if let attribute = value as? AttributeBase {
+            self.init(NSExpression(forKeyPath: attribute.keyPath.string))
         } else if let expression = value as? Expression<T> {
             self.init(expression.value)
         } else if let list = value as? Values<T> {

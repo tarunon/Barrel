@@ -12,12 +12,12 @@ public enum KeyPath {
     case SELF
     case KEYPATH(String)
     
-    internal init(_ name: String?, parentName: String?) {
+    internal init(_ name: String?, parent: KeyPath?) {
         guard let name = name else {
             self = .SELF
             return
         }
-        guard let parentName = parentName else {
+        guard let parent = parent, case .KEYPATH(let parentName) = parent else {
             self = .KEYPATH(name)
             return
         }

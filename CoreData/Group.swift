@@ -72,11 +72,11 @@ public extension Group {
 
 public extension Group {
     func brl_groupBy<E: ExpressionType>(f: Attribute<T> -> Attribute<E>) -> Group {
-        return self.groupBy(f(storedAttribute()).keyPath)
+        return self.groupBy(f(Attribute()).keyPath)
     }
     
     func brl_having(f: Attribute<T> -> Predicate) -> Group {
-        return self.having(f(storedAttribute()).value)
+        return self.having(f(Attribute()).value)
     }
 }
 
@@ -88,6 +88,6 @@ public extension Aggregate {
 
 public extension Aggregate {
     func brl_groupBy<E: ExpressionType>(f: Attribute<T> -> Attribute<E>) -> Group<T> {
-        return self.groupBy(f(storedAttribute()).keyPath)
+        return self.groupBy(f(Attribute()).keyPath)
     }
 }

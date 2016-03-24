@@ -39,7 +39,6 @@ var expression = attribute.number.max() // expression.value is NSExpression
 
 Extend AttributeType using computed property one by one ValueType.
 Computed properties are Attribute<T> and return "attribute()".
-Get Attribute instance from "storedAttribute()".
 
 ## Expression
 
