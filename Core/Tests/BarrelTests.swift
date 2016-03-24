@@ -75,55 +75,55 @@ class BarrelTests: XCTestCase {
     func testPredicate() {
         let attribute: Attribute<TestModel> = storedAttribute()
         
-        let equalToPredicate: Predicate = (attribute.text == "TEST")
+        let equalToPredicate = attribute.text == "TEST"
         XCTAssertEqual(equalToPredicate.value, NSPredicate(format: "text == %@", "TEST"))
         
-        let graterThanPredicate: Predicate = (attribute.number > 0)
+        let graterThanPredicate = attribute.number > 0
         XCTAssertEqual(graterThanPredicate.value, NSPredicate(format: "number > %i", 0))
         
-        let graterThanOrEqualToPredicate: Predicate = (attribute.number >= 1)
+        let graterThanOrEqualToPredicate = attribute.number >= 1
         XCTAssertEqual(graterThanOrEqualToPredicate.value, NSPredicate(format: "number >= %i", 1))
         
-        let lessThanPredicate: Predicate = (attribute.number < 10)
+        let lessThanPredicate = attribute.number < 10
         XCTAssertEqual(lessThanPredicate.value, NSPredicate(format: "number < %i", 10))
         
-        let lessThanOrEqualToPredicate: Predicate = (attribute.number <= 9)
+        let lessThanOrEqualToPredicate = attribute.number <= 9
         XCTAssertEqual(lessThanOrEqualToPredicate.value, NSPredicate(format: "number <= %i", 9))
         
-        let notEqualToPredicate: Predicate = (attribute.text != "TEST")
+        let notEqualToPredicate = attribute.text != "TEST"
         XCTAssertEqual(notEqualToPredicate.value, NSPredicate(format: "text != %@", "TEST"))
         
-        let betweenPredicate: Predicate = (attribute.number << (0..<9))
+        let betweenPredicate = attribute.number << (0..<9)
         XCTAssertEqual(betweenPredicate.value, NSPredicate(format: "number BETWEEN %@", [0, 9]))
         
-        let inPredicate: Predicate = (attribute.text << ["A", "B", "C"])
+        let inPredicate = attribute.text << ["A", "B", "C"]
         XCTAssertEqual(inPredicate.value, NSPredicate(format: "text IN %@", ["A", "B", "C"]))
         
-        let containsPredicate: Predicate = attribute.text.contains("AAA")
+        let containsPredicate = attribute.text.contains("AAA")
         XCTAssertEqual(containsPredicate.value, NSPredicate(format: "text CONTAINS %@", "AAA"))
         
-        let beginsWithPredicate: Predicate = attribute.text.beginsWith("ABC")
+        let beginsWithPredicate = attribute.text.beginsWith("ABC")
         XCTAssertEqual(beginsWithPredicate.value, NSPredicate(format: "text BEGINSWITH %@", "ABC"))
         
-        let endsWithPredicate: Predicate = attribute.text.endsWith("XYZ")
+        let endsWithPredicate = attribute.text.endsWith("XYZ")
         XCTAssertEqual(endsWithPredicate.value, NSPredicate(format: "text ENDSWITH %@", "XYZ"))
         
-        let likePredicate: Predicate = attribute.text.like("BBB")
+        let likePredicate = attribute.text.like("BBB")
         XCTAssertEqual(likePredicate.value, NSPredicate(format: "text LIKE %@", "BBB"))
         
-        let matchesPredicate: Predicate = attribute.text.matches("^ABC.*XYZ$")
+        let matchesPredicate = attribute.text.matches("^ABC.*XYZ$")
         XCTAssertEqual(matchesPredicate.value, NSPredicate(format: "text MATCHES %@", "^ABC.*XYZ$"))
         
-        let anyPredicate: Predicate = attribute.array.any { $0 > 0 }
+        let anyPredicate = attribute.array.any { $0 > 0 }
         XCTAssertEqual(anyPredicate.value, NSPredicate(format: "ANY array > %i", 0))
         
-        let allPredicate: Predicate = attribute.array.all { $0 < 0 }
+        let allPredicate = attribute.array.all { $0 < 0 }
         XCTAssertEqual(allPredicate.value, NSPredicate(format: "ALL array < %i", 0))
         
-        let isNullPredicate: Predicate = attribute.option.isNull()
+        let isNullPredicate = attribute.option.isNull()
         XCTAssertEqual(isNullPredicate.value, NSPredicate(format: "option == nil"))
 
-        let isNotNullPredicate: Predicate = attribute.option.isNotNull()
+        let isNotNullPredicate = attribute.option.isNotNull()
         XCTAssertEqual(isNotNullPredicate.value, NSPredicate(format: "option != nil"))
 
         
