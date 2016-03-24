@@ -41,48 +41,9 @@ extension Optional: ExpressionType {
 }
 
 public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
-    return AttributeStorage.sharedInstance.attribute(name, parent: Optional<T>.None)
+    return T(name: name, parent: Optional<T>.None)
 }
 
 public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = #function, parent: U) -> T {
-    return AttributeStorage.sharedInstance.attribute(name, parent: parent)
-}
-
-private class AttributeStorage {
-    var storage: [String: Any] = [:]
-    
-    static let sharedInstance = AttributeStorage()
-    
-    func attributeName<T: AttributeType>(attribute: T?) -> String? {
-        guard let attribute = attribute else {
-            return nil
-        }
-        switch attribute.keyPath {
-        case .SELF:
-            return nil
-        case .KEYPATH(let keyPath):
-            return keyPath
-        }
-    }
-    
-    func attribute<T: AttributeType, U: AttributeType>(name: String?, parent: T?) -> U {
-        let key: String
-        let parentName = self.attributeName(parent)
-        if let name = name {
-            if let parentName = parentName {
-                key = "\(parentName).\(name).\(U.self)"
-            } else {
-                key = "\(name).\(U.self)"
-            }
-        } else {
-            key = "\(U.self)"
-        }
-        if let attribute = self.storage[key] as? U {
-            return attribute
-        } else {
-            let attribute = U(name: name, parent: parent)
-            self.storage[key] = attribute
-            return attribute
-        }
-    }
+    return T(name: name, parent: parent)
 }
