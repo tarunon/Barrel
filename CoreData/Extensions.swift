@@ -79,11 +79,11 @@ public struct Many<T: NSManagedObject where T: ExpressionType>: ExpressionType, 
 extension ExpressionType where Self: NSManagedObject {
     public typealias ValueType = Self
     
-    static func objects(context: NSManagedObjectContext) -> Fetch<Self> {
+    public static func objects(context: NSManagedObjectContext) -> Fetch<Self> {
         return Fetch(context: context)
     }
     
-    static func insert(context: NSManagedObjectContext) -> Self {
+    public static func insert(context: NSManagedObjectContext) -> Self {
         return Self(entity: context.entityDescription(Self)!, insertIntoManagedObjectContext: context)
     }
 }
