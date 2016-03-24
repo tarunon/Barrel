@@ -33,11 +33,11 @@ public extension Realm {
 
 public extension ExpressionType where Self: Object {
     public typealias ValueType = Self
-    static func objects(realm: Realm) -> Results<Self> {
+    public static func objects(realm: Realm) -> Results<Self> {
         return realm.objects()
     }
     
-    static func insert(realm: Realm) -> Self {
+    public static func insert(realm: Realm) -> Self {
         let object = Self()
         realm.add(object)
         return object
