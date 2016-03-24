@@ -16,12 +16,11 @@ public protocol AttributeBase {
 public protocol AttributeType: ExpressionType, AttributeBase {
     associatedtype SourceType: ExpressionType
     associatedtype ValueType = SourceType.ValueType
-    init<A: AttributeType>(name: String?, parent: A?)
 }
 
 public extension AttributeType {
     func attribute<T: ExpressionType>(name: String = #function) -> Attribute<T> {
-        return storedAttribute(name, parent: self)
+        return Attribute(name: name, parent: self)
     }
 }
 
@@ -30,7 +29,10 @@ public struct Attribute<T: ExpressionType>: AttributeType {
     
     public let keyPath: KeyPath
     
-    @available(*, unavailable)
+    public init(name: String? = nil) {
+        self.keyPath = KeyPath(name, parent: nil)
+    }
+    
     public init<A: AttributeType>(name: String?, parent: A?) {
         self.keyPath = KeyPath(name, parent: parent?.keyPath)
     }
@@ -40,10 +42,12 @@ extension Optional: ExpressionType {
     public typealias ValueType = Wrapped
 }
 
+@available(*, unavailable, renamed="Attribute")
 public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
-    return T(name: name, parent: Optional<T>.None)
+    fatalError()
 }
 
+@available(*, unavailable, renamed="Attribute")
 public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = #function, parent: U) -> T {
-    return T(name: name, parent: parent)
+    fatalError()
 }
