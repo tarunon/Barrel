@@ -8,12 +8,6 @@
 
 import Foundation
 
-extension NSCompoundPredicateType {
-    func predicate(s: [NSPredicate]) -> NSPredicate {
-        return NSCompoundPredicate(type: self, subpredicates: s)
-    }
-}
-
 public protocol Predicate {
     var value: NSPredicate { get }
 }
@@ -89,12 +83,20 @@ public func <<<E: ExpressionType, T: ExpressionType where E.ValueType == T>(lhs:
 
 public struct CompoundPredicate: Predicate {
     public let value: NSPredicate
+    
+    init(predicate: NSPredicate) {
+        if Barrel.debugMode {
+            print("NSPredicate generated: \(predicate)")
+        }
+        value = predicate
+    }
+    
     init(lhs: Predicate, rhs: Predicate, type: NSCompoundPredicateType) {
-        value = type.predicate([lhs.value, rhs.value])
+        self.init(predicate: NSCompoundPredicate(type: type, subpredicates: [lhs.value, rhs.value]))
     }
     
     init(hs: Predicate, type: NSCompoundPredicateType) {
-        value = type.predicate([hs.value])
+        self.init(predicate: NSCompoundPredicate(type: type, subpredicates: [hs.value]))
     }
 }
 
