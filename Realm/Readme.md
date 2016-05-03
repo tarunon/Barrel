@@ -28,9 +28,11 @@ var searchPersons = Person.objects(self.context)
 ```
 
 ## Relationships
-Your model has many-relationships, use Many type in Attribute like.
+Your model has many-relationships, use List type in Attribute.
+If your model has inverse-relationships, use LinkingObjects type in Attribute.
 ```swift
-extension AttributeType where ValueType: Planet {
+extension AttributeType where ValueType: Person {
     var name: Attribute<String> { return attribute() }
-    var children: Attribute<Many<Satellite>> { return attribute() }
+    var children: Attribute<List<Satellite>> { return attribute() }
+    var parents: Attribute<LinkingObjects<Satellite>> { return attribute() }
 }

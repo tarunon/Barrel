@@ -19,6 +19,11 @@ extension List: ExpressionType, ManyType {
     public typealias ElementType = T
 }
 
+extension LinkingObjects: ExpressionType, ManyType {
+    public typealias ValueType = LinkingObjects
+    public typealias ElementType = T
+}
+
 private extension NSSortDescriptor {
     func toRealmObject() -> SortDescriptor {
         return SortDescriptor(property: self.key!, ascending: self.ascending)

@@ -12,10 +12,9 @@ import Barrel
 import Barrel_Realm
 
 class Star: StarBase {
-    var children: [Planet] {
-        return self.linkingObjects(Planet.self, forProperty: "parent")
-    }
+    let children: LinkingObjects<Planet> = LinkingObjects(fromType: Planet.self, property: "parent")
 }
 
 extension AttributeType where ValueType: Star {
+    var children: Attribute<LinkingObjects<Planet>> { return attribute() }
 }

@@ -21,7 +21,7 @@ class BarrelRealmTests: XCTestCase {
         Barrel.debugMode = true
         
         do {
-            if let path = Realm.Configuration.defaultConfiguration.path {
+            if let url = Realm.Configuration.defaultConfiguration.fileURL, path = url.path {
                 if NSFileManager.defaultManager().fileExistsAtPath(path) {
                     try NSFileManager.defaultManager().removeItemAtPath(path)
                 }
@@ -110,5 +110,7 @@ class BarrelRealmTests: XCTestCase {
         XCTAssertEqual(maxDiameter, 142984)
         let minSemiMajorAxis = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Jupiter" }.brl_min { $0.semiMajorAxis }
         XCTAssertEqual(minSemiMajorAxis, 421700)
+        let earth = Planet.objects(self.realm).brl_filter { $0.children.any { $0.name == "Moon" } }[0]
+        XCTAssertEqual(earth.name, "Earth")
     }
 }
