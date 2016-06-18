@@ -10,25 +10,25 @@ import Foundation
 
 public protocol NumberType {}
 
-public protocol NSComparable: Comparable {
-    func compare(other: Self) -> NSComparisonResult
-}
-
-public func <<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) == .OrderedAscending
-}
-
-public func <=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) != .OrderedDescending
-}
-
-public func >=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) != .OrderedAscending
-}
-
-public func ><C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) == .OrderedDescending
-}
+//public protocol NSComparable: Comparable {
+//    func compare(_ other: Self) -> ComparisonResult
+//}
+//
+//public func <<C: NSComparable>(lhs: C, rhs: C) -> Bool {
+//    return lhs.compare(rhs) == .orderedAscending
+//}
+//
+//public func <=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
+//    return lhs.compare(rhs) != .orderedDescending
+//}
+//
+//public func >=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
+//    return lhs.compare(rhs) != .orderedAscending
+//}
+//
+//public func ><C: NSComparable>(lhs: C, rhs: C) -> Bool {
+//    return lhs.compare(rhs) == .orderedDescending
+//}
 
 public protocol SelfExpression : ExpressionType {
     associatedtype ValueType = Self
@@ -50,7 +50,7 @@ extension Int : SelfExpression , NumberType {
     public typealias ValueType = Int
 }
 
-extension NSDate : SelfExpression, NSComparable {}
+extension NSDate : SelfExpression {}
 
 extension String : SelfExpression {
     public typealias ValueType = String
@@ -58,7 +58,7 @@ extension String : SelfExpression {
 
 extension NSData : SelfExpression {}
 
-extension NSNumber: SelfExpression, NSComparable, NumberType {}
+extension NSNumber: SelfExpression, NumberType {}
 
 extension Array: SelfExpression {}
 

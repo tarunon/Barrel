@@ -42,12 +42,12 @@ extension Optional: ExpressionType {
     public typealias ValueType = Wrapped
 }
 
-@available(*, unavailable, renamed="Attribute")
+@available(*, unavailable, renamed:"Attribute")
 public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
     fatalError()
 }
 
-@available(*, unavailable, renamed="Attribute")
+@available(*, unavailable, renamed:"Attribute")
 public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = #function, parent: U) -> T {
     fatalError()
 }
