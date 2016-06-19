@@ -9,34 +9,29 @@
 import Foundation
 import CoreData
 
-public protocol Executable: CollectionType, Indexable {
-    associatedtype Type
-    associatedtype GeneratorType = AnyGenerator<Type>
-    associatedtype SubSquence = ArraySlice<Type>
+public protocol Executable: Collection, Indexable {
+    associatedtype ElementType: NSFetchRequestResult
+    associatedtype GeneratorType = AnyIterator<ElementType>
+    associatedtype SubSquence = ArraySlice<ElementType>
     associatedtype Index = Int
     var context: NSManagedObjectContext { get }
-    func fetchRequest() -> NSFetchRequest
+    func fetchRequest() -> NSFetchRequest<ElementType>
 }
 
 extension Executable {
-    public func all() throws -> [Type] {
-        return try self.context.executeFetchRequest(self.fetchRequest()).map { $0 as! Type }
+    public func all() throws -> [ElementType] {
+        return try self.context.fetch(self.fetchRequest())
     }
     
-    public func get(offset: Int = 0) throws -> Type? {
+    public func get(_ offset: Int = 0) throws -> ElementType? {
         let fetchRequest = self.fetchRequest()
         fetchRequest.fetchLimit = 1
         fetchRequest.fetchOffset = offset
-        return try self.context.executeFetchRequest(fetchRequest).first as? Type
+        return try self.context.fetch(fetchRequest).first 
     }
     
     public func count() throws -> Int {
-        var error: NSError?
-        let count = self.context.countForFetchRequest(self.fetchRequest(), error: &error)
-        if let error = error {
-            throw error
-        }
-        return count
+        return try self.context.count(for: self.fetchRequest())
     }
 }
 
@@ -54,16 +49,20 @@ extension Executable {
         }
     }
     
-    public subscript (position: Int) -> Type {
+    public subscript (position: Int) -> ElementType {
         return try! self.get(position)!
+    }
+
+    public func index(after i: Int) -> Int {
+        return i
     }
 }
 
 // CollectionType
 extension Executable {
-    public func generate() -> AnyGenerator<Type> {
+    public func generate() -> AnyIterator<ElementType> {
         var count = 0
-        return AnyGenerator { () -> Type? in
+        return AnyIterator { () -> ElementType? in
             do {
                 count += 1
                 return try self.get(count)
@@ -80,8 +79,8 @@ extension Executable {
             return 0
         }
     }
-    
-    public func map<T>(@noescape transform: (Type) throws -> T) rethrows -> [T] {
+
+    public func map<T>(_ transform: @noescape(ElementType) throws -> T) rethrows -> [T] {
         do {
             return try self.all().map(transform)
         } catch {
@@ -89,7 +88,7 @@ extension Executable {
         }
     }
     
-    public func filter(@noescape includeElement: (Type) throws -> Bool) rethrows -> [Type] {
+    public func filter(_ includeElement: @noescape(ElementType) throws -> Bool) rethrows -> [ElementType] {
         do {
             return try self.all().filter(includeElement)
         } catch {
@@ -97,7 +96,7 @@ extension Executable {
         }
     }
     
-    public func forEach(@noescape body: (Type) throws -> ()) rethrows {
+    public func forEach(_ body: @noescape(ElementType) throws -> ()) rethrows {
         do {
             return try self.all().forEach(body)
         } catch {
@@ -105,49 +104,49 @@ extension Executable {
         }
     }
     
-    public func dropFirst(n: Int) -> ArraySlice<Type> {
+    public func dropFirst(_ n: Int) -> ArraySlice<ElementType> {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = n
-            return ArraySlice(try self.context.executeFetchRequest(fetchRequest).map { $0 as! Type })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
     }
     
-    public func dropLast(n: Int) -> ArraySlice<Type> {
+    public func dropLast(_ n: Int) -> ArraySlice<ElementType> {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = self.underestimateCount() - n
-            return ArraySlice(try self.context.executeFetchRequest(fetchRequest).map { $0 as! Type })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
     }
     
-    public func prefix(maxLength: Int) -> ArraySlice<Type> {
+    public func prefix(_ maxLength: Int) -> ArraySlice<ElementType> {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = maxLength
-            return ArraySlice(try self.context.executeFetchRequest(fetchRequest).map { $0 as! Type })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
     }
     
-    public func suffix(maxLength: Int) -> ArraySlice<Type> {
+    public func suffix(_ maxLength: Int) -> ArraySlice<ElementType> {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = self.underestimateCount() - maxLength
-            return ArraySlice(try self.context.executeFetchRequest(fetchRequest).map { $0 as! Type })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
     }
-    
-    public func split(maxSplit: Int, allowEmptySlices: Bool, @noescape isSeparator: (Type) throws -> Bool) rethrows -> [ArraySlice<Type>] {
+
+    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, isSeparator: @noescape (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
         do {
-            return try self.all().split(maxSplit, allowEmptySlices: allowEmptySlices, isSeparator: isSeparator)
+            return try self.all().split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, isSeparator: isSeparator)
         } catch {
             return []
         }

@@ -9,26 +9,26 @@
 import Foundation
 
 public enum KeyPath {
-    case SELF
-    case KEYPATH(String)
+    case `self`
+    case keypath(String)
     
     internal init(_ name: String?, parent: KeyPath?) {
         guard let name = name else {
-            self = .SELF
+            self = .`self`
             return
         }
-        guard let parent = parent, case .KEYPATH(let parentName) = parent else {
-            self = .KEYPATH(name)
+        guard let parent = parent, case .keypath(let parentName) = parent else {
+            self = .keypath(name)
             return
         }
-        self = .KEYPATH(parentName + "." + name)
+        self = .keypath(parentName + "." + name)
     }
     
     public var string: String {
         switch self {
-        case .SELF:
+        case .`self`:
             return "self"
-        case .KEYPATH(let keyPath):
+        case .keypath(let keyPath):
             return keyPath
         }
     }

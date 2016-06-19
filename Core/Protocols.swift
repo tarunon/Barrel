@@ -50,13 +50,13 @@ extension Int : SelfExpression , NumberType {
     public typealias ValueType = Int
 }
 
-extension NSDate : SelfExpression {}
+extension Date : SelfExpression {}
 
 extension String : SelfExpression {
     public typealias ValueType = String
 }
 
-extension NSData : SelfExpression {}
+extension Data : SelfExpression {}
 
 extension NSNumber: SelfExpression, NumberType {}
 

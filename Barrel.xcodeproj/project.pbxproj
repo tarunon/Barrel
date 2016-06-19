@@ -1162,6 +1162,7 @@
 					};
 					EBF7FA761C4886E0004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					EBF7FA7F1C4886E0004D17EE = {
 						CreatedOnToolsVersion = 7.2;
@@ -1171,9 +1172,11 @@
 					};
 					EBF7FABD1C4887F5004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					EBF7FAC61C4887F5004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					EBF7FAD91C488810004D17EE = {
 						CreatedOnToolsVersion = 7.2;
@@ -1956,6 +1959,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
@@ -1976,6 +1980,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
@@ -2058,6 +2063,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreData";
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2074,6 +2080,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreData";
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -2084,6 +2091,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2094,6 +2102,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

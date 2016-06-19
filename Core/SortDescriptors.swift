@@ -19,9 +19,9 @@ public struct _SortDescriptors {
     }
     
     private init<T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A, ascending: Bool) {
-        if case .KEYPATH(let keyPath) = lhs.keyPath where !keyPath.contains(".") {
+        if case .keypath(let keyPath) = lhs.keyPath where !keyPath.contains(".") {
             self.init([SortDescriptor(key: keyPath, ascending: ascending)])
-        } else if case .KEYPATH(let keyPath) = rhs.keyPath where !keyPath.contains(".") {
+        } else if case .keypath(let keyPath) = rhs.keyPath where !keyPath.contains(".") {
             self.init([SortDescriptor(key: keyPath, ascending: !ascending)])
         } else {
             self.init([])

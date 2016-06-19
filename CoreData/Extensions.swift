@@ -12,7 +12,7 @@ import Barrel
 
 // MARK: associated util
 internal extension NSObject {
-    internal func associatedValueOrDefault<T>(key: UnsafePointer<Void>, @autoclosure defaultValue: () -> T) -> T {
+    internal func associatedValueOrDefault<T>(_ key: UnsafePointer<Void>, defaultValue: @autoclosure() -> T) -> T {
         if let value = objc_getAssociatedObject(self, key) as? T {
             return value
         } else {
@@ -36,7 +36,7 @@ private extension NSManagedObjectModel {
         }
     }
     
-    private func entityName(T: NSManagedObject.Type) -> String? {
+    private func entityName(_ T: NSManagedObject.Type) -> String? {
         let className = NSStringFromClass(T)
         if let entityName = entityNames[className] {
             return entityName
@@ -54,20 +54,20 @@ internal extension NSManagedObjectContext {
     internal func managedObjectModel() -> NSManagedObjectModel? {
         if let coordinator = persistentStoreCoordinator {
             return coordinator.managedObjectModel
-        } else if let parentContext = parentContext {
-            return parentContext.managedObjectModel()
+        } else if let parent = parent {
+            return parent.managedObjectModel()
         }
         return nil
     }
 }
 
 internal extension NSManagedObjectContext {
-    internal func entityName(T: NSManagedObject.Type) -> String? {
+    internal func entityName(_ T: NSManagedObject.Type) -> String? {
         return managedObjectModel()?.entityName(T)
     }
     
-    internal func entityDescription(T: NSManagedObject.Type) -> NSEntityDescription? {
-        return NSEntityDescription.entityForName(entityName(T)!, inManagedObjectContext: self)
+    internal func entityDescription(_ T: NSManagedObject.Type) -> NSEntityDescription? {
+        return NSEntityDescription.entity(forEntityName: entityName(T)!, in: self)
     }
 }
 
@@ -79,12 +79,12 @@ public struct Many<T: NSManagedObject where T: ExpressionType>: ExpressionType, 
 extension ExpressionType where Self: NSManagedObject {
     public typealias ValueType = Self
     
-    public static func objects(context: NSManagedObjectContext) -> Fetch<Self> {
+    public static func objects(_ context: NSManagedObjectContext) -> Fetch<Self> {
         return Fetch(context: context)
     }
     
-    public static func insert(context: NSManagedObjectContext) -> Self {
-        return Self(entity: context.entityDescription(Self)!, insertIntoManagedObjectContext: context)
+    public static func insert(_ context: NSManagedObjectContext) -> Self {
+        return Self(entity: context.entityDescription(Self)!, insertInto: context)
     }
 }
 

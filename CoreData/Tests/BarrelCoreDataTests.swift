@@ -11,39 +11,13 @@ import CoreData
 import Barrel
 import Barrel_CoreData
 
-var token1: dispatch_once_t = 0
-var token2: dispatch_once_t = 0
+var token1: Int = 0
+var token2: Int = 0
 
 
 class BarrelCoreDataTests: XCTestCase {
     
-    var context: NSManagedObjectContext!
-    var storeDir = NSURL(fileURLWithPath: "test")
-    var storeURL: NSURL {
-        return self.storeDir.URLByAppendingPathComponent("test.db")
-    }
-    
-    override func setUp() {
-        super.setUp()
-
-        Barrel.debugMode = true
-
-        dispatch_once(&token1) {
-            do {
-                try NSFileManager.defaultManager().createDirectoryAtURL(self.storeDir, withIntermediateDirectories: false, attributes: nil)
-            } catch {
-            }
-            do {
-                try NSFileManager.defaultManager().removeItemAtURL(self.storeURL)
-            } catch {
-            }
-        }
-
-        context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOfURL: NSBundle(forClass: self.classForCoder).URLForResource("SolerSystem", withExtension: "momd")!)!)
-        
-        try! self.context.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:self.storeURL , options: nil)
-        dispatch_once(&token2) {
+    private static var __once1: () = {
             let sun = Star.insert(self.context)
             sun.name = "Sun"
             sun.diameter = 1392000
@@ -102,8 +76,38 @@ class BarrelCoreDataTests: XCTestCase {
             saturn.diameter = 120536
             saturn.semiMajorAxis = 1426725400
             saturn.parent = sun
-            try! self.context.save()
-        }
+            try! BarrelCoreDataTests.context.save()
+        }()
+    
+    private static var __once: () = {
+            do {
+                try FileManager.default().createDirectory(at: BarrelCoreDataTests.storeDir, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+            }
+            do {
+                try FileManager.default().removeItem(at: BarrelCoreDataTests.storeURL)
+            } catch {
+            }
+        }()
+    
+    var context: NSManagedObjectContext!
+    var storeDir = URL(fileURLWithPath: "test")
+    var storeURL: URL {
+        return try! self.storeDir.appendingPathComponent("test.db")
+    }
+    
+    override func setUp() {
+        super.setUp()
+
+        Barrel.debugMode = true
+
+        _ = BarrelCoreDataTests.__once
+
+        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOf: Bundle(for: self.classForCoder).urlForResource("SolerSystem", withExtension: "momd")!)!)
+        
+        try! self.context.persistentStoreCoordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at:self.storeURL , options: nil)
+        _ = BarrelCoreDataTests.__once1
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

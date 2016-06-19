@@ -60,7 +60,7 @@ public struct _Expression<T: ExpressionType>: ExpressionType {
     }
 }
 
-public func unwrapExpression<E: ExpressionType, T: ExpressionType where E.ValueType == T>(value: E) -> _Expression<T> {
+public func unwrapExpression<E: ExpressionType, T: ExpressionType where E.ValueType == T>(_ value: E) -> _Expression<T> {
     return _Expression(value)
 }
 
