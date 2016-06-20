@@ -12,16 +12,16 @@ import Barrel
 
 public struct Fetch<T: NSManagedObject where T: ExpressionType> {
     public let context: NSManagedObjectContext
-    internal let builder: Builder<NSFetchRequest<T>>
+    internal let builder: Builder<NSFetchRequest<NSManagedObject>>
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<T>>) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSManagedObject>>) {
         self.context = context
         self.builder = builder
     }
     
     internal init(context: NSManagedObjectContext) {
         self.init(context: context, builder: Builder {
-            let fetchRequest = NSFetchRequest<T>(entityName: context.entityName(T)!)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: context.entityName(T)!)
             fetchRequest.predicate = Predicate(value: true)
             fetchRequest.sortDescriptors = []
             return fetchRequest
@@ -32,7 +32,7 @@ public struct Fetch<T: NSManagedObject where T: ExpressionType> {
 extension Fetch: Executable {
     public typealias ElementType = T
     
-    public func fetchRequest() -> NSFetchRequest<T> {
+    public func fetchRequest() -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = self.builder.build()
         if Barrel.debugMode {
             print("NSFetchRequest generated: \(fetchRequest)")

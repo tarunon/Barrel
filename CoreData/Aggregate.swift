@@ -89,21 +89,25 @@ public extension Aggregate {
     }
 }
 
-//public extension Fetch {
-//    func aggregate(_ expressionDescription: @autoclosure(escaping) () -> NSExpressionDescription) -> Aggregate<T> {
-//        return Aggregate(context: context, builder: {
-//            let newRequest = NSFetchRequest<NSDictionary>(entityName: $0.entityName!)
-//            newRequest.predicate = $0.predicate
-//            newRequest.sortDescriptors = $0.sortDescriptors
-//            newRequest.fetchLimit = $0.fetchLimit
-//            newRequest.fetchOffset = $0.fetchOffset
-//            return newRequest
-//        } </> builder, expressionDescription: expressionDescription)
-//    }
-//}
+public extension Fetch {
+    func aggregate(_ expressionDescription: @autoclosure(escaping) () -> NSExpressionDescription) -> Aggregate<T> {
+        return Aggregate(
+            context: context,
+            builder: builder.map {
+                let newRequest = NSFetchRequest<NSDictionary>(entityName: $0.entityName!)
+                newRequest.predicate = $0.predicate
+                newRequest.sortDescriptors = $0.sortDescriptors
+                newRequest.fetchLimit = $0.fetchLimit
+                newRequest.fetchOffset = $0.fetchOffset
+                return newRequest
+            },
+            expressionDescription: expressionDescription
+        )
+    }
+}
 
-//public extension Fetch {
-//    func brl_aggregate<E: ExpressionType, V: ExpressionType where E.ValueType == V>(_ f: (Attribute<T>) -> E) -> Aggregate<T> {
-//        return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
-//    }
-//}
+public extension Fetch {
+    func brl_aggregate<E: ExpressionType, V: ExpressionType where E.ValueType == V>(_ f: (Attribute<T>) -> E) -> Aggregate<T> {
+        return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
+    }
+}
