@@ -26,7 +26,7 @@ internal extension NSObject {
 // MARK: get entity name
 var entityMapKey: Void?
 
-private extension NSManagedObjectModel {
+fileprivate extension NSManagedObjectModel {
     private var entityNames: [String: String] {
         get {
             return associatedValueOrDefault(&entityMapKey, defaultValue: [:])
@@ -36,7 +36,7 @@ private extension NSManagedObjectModel {
         }
     }
     
-    private func entityName(_ T: NSManagedObject.Type) -> String? {
+    fileprivate func entityName(_ T: NSManagedObject.Type) -> String? {
         let className = NSStringFromClass(T)
         if let entityName = entityNames[className] {
             return entityName
@@ -71,7 +71,7 @@ internal extension NSManagedObjectContext {
     }
 }
 
-public struct Many<T: NSManagedObject where T: ExpressionType>: ExpressionType, ManyType {
+public struct Many<T: NSManagedObject>: ExpressionType, ManyType where T: ExpressionType {
     public typealias ValueType = Set<T>
     public typealias ElementType = T
 }
@@ -84,7 +84,7 @@ extension ExpressionType where Self: NSManagedObject {
     }
     
     public static func insert(_ context: NSManagedObjectContext) -> Self {
-        return Self(entity: context.entityDescription(Self)!, insertInto: context)
+        return Self(entity: context.entityDescription(Self.self)!, insertInto: context)
     }
 }
 

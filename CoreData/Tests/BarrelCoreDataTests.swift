@@ -19,11 +19,11 @@ class BarrelCoreDataTests: XCTestCase {
 
     private static var context: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOf: Bundle(for: BarrelCoreDataTests.self).urlForResource("SolerSystem", withExtension: "momd")!)!)
+        context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOf: Bundle(for: BarrelCoreDataTests.self).url(forResource: "SolerSystem", withExtension: "momd")!)!)
 
         
-        _ = try? FileManager.default().createDirectory(at: BarrelCoreDataTests.storeDir, withIntermediateDirectories: false, attributes: nil)
-        _ = try? FileManager.default().removeItem(at: BarrelCoreDataTests.storeURL)
+        _ = try? FileManager.default.createDirectory(at: BarrelCoreDataTests.storeDir, withIntermediateDirectories: false, attributes: nil)
+        _ = try? FileManager.default.removeItem(at: BarrelCoreDataTests.storeURL)
         try! context.persistentStoreCoordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: BarrelCoreDataTests.storeURL , options: nil)
 
         let sun = Star.insert(context)

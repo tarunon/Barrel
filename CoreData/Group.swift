@@ -19,7 +19,7 @@ public struct Group<T: NSManagedObject where T: ExpressionType> {
         self.builder = builder
     }
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, keyPath: @autoclosure(escaping) () -> KeyPath) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, keyPath: @autoclosure @escaping () -> KeyPath) {
         self.init(
             context: context,
             builder: builder.map {
@@ -58,7 +58,7 @@ extension Group: Executable {
 }
 
 public extension Group {
-    func groupBy(_ keyPath: @autoclosure(escaping) () -> KeyPath) -> Group {
+    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group {
         return Group(
             context: self.context,
             builder: self.builder.map {
@@ -68,7 +68,7 @@ public extension Group {
         )
     }
     
-    func having(_ predicate: @autoclosure(escaping) () -> Predicate) -> Group {
+    func having(_ predicate: @autoclosure @escaping () -> Predicate) -> Group {
         return Group(
             context: self.context,
             builder: self.builder.map {
@@ -80,23 +80,23 @@ public extension Group {
 }
 
 public extension Group {
-    func brl_groupBy<E: ExpressionType>(_ f: (Attribute<T>) -> Attribute<E>) -> Group {
+    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group {
         return self.groupBy(f(Attribute()).keyPath)
     }
     
-    func brl_having(_ f: (Attribute<T>) -> _Predicate) -> Group {
+    func brl_having(_ f: @escaping (Attribute<T>) -> _Predicate) -> Group {
         return self.having(f(Attribute()).value)
     }
 }
 
 public extension Aggregate {
-    func groupBy(_ keyPath: @autoclosure(escaping) () -> KeyPath) -> Group<T> {
+    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group<T> {
         return Group(context: self.context, builder: self.builder, keyPath: keyPath)
     }
 }
 
 public extension Aggregate {
-    func brl_groupBy<E: ExpressionType>(_ f: (Attribute<T>) -> Attribute<E>) -> Group<T> {
+    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group<T> {
         return self.groupBy(f(Attribute()).keyPath)
     }
 }

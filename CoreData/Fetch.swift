@@ -46,7 +46,7 @@ extension Fetch: Executable {
 }
 
 public extension Fetch {
-    public func filter(_ predicate: @autoclosure(escaping) () -> Predicate) -> Fetch {
+    public func filter(_ predicate: @autoclosure @escaping () -> Predicate) -> Fetch {
         return Fetch(
             context: self.context,
             builder: self.builder.map {
@@ -56,7 +56,7 @@ public extension Fetch {
         )
     }
     
-    public func sorted(_ sortDescriptor: @autoclosure(escaping) () -> [SortDescriptor]) -> Fetch {
+    public func sorted(_ sortDescriptor: @autoclosure @escaping () -> [SortDescriptor]) -> Fetch {
         return Fetch(
             context: self.context,
             builder: self.builder.map {
@@ -88,11 +88,11 @@ public extension Fetch {
 }
 
 public extension Fetch {
-    public func brl_filter(_ f: (Attribute<T>) -> _Predicate) -> Fetch {
+    public func brl_filter(_ f: @escaping (Attribute<T>) -> _Predicate) -> Fetch {
         return self.filter(f(Attribute()).value)
     }
     
-    public func brl_sorted(_ f: (Attribute<T>, Attribute<T>) -> _SortDescriptors) -> Fetch {
+    public func brl_sorted(_ f: @escaping (Attribute<T>, Attribute<T>) -> _SortDescriptors) -> Fetch {
         return self.sorted(f(Attribute(), Attribute(name: "sort")).value)
     }
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias SortDescriptor = NSSortDescriptor
+
 public struct _SortDescriptors {
     public let value: [SortDescriptor]
     
@@ -18,26 +20,26 @@ public struct _SortDescriptors {
         self.value = value
     }
     
-    private init<T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A, ascending: Bool) {
-        if case .keypath(let keyPath) = lhs.keyPath where !keyPath.contains(".") {
+    fileprivate init<T: Comparable, A: AttributeType>(lhs: A, rhs: A, ascending: Bool) where A.ValueType == T {
+        if case .keypath(let keyPath) = lhs.keyPath, !keyPath.contains(".") {
             self.init([SortDescriptor(key: keyPath, ascending: ascending)])
-        } else if case .keypath(let keyPath) = rhs.keyPath where !keyPath.contains(".") {
+        } else if case .keypath(let keyPath) = rhs.keyPath, !keyPath.contains(".") {
             self.init([SortDescriptor(key: keyPath, ascending: !ascending)])
         } else {
             self.init([])
         }
     }
     
-    private init(lhs: _SortDescriptors, rhs: _SortDescriptors) {
+    fileprivate init(lhs: _SortDescriptors, rhs: _SortDescriptors) {
         self.init(lhs.value + rhs.value)
     }
 }
 
-public func ><T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A) -> _SortDescriptors {
+public func ><T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> _SortDescriptors where A.ValueType == T {
     return _SortDescriptors(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A) -> _SortDescriptors {
+public func <<T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> _SortDescriptors where A.ValueType == T {
     return _SortDescriptors(lhs: lhs, rhs: rhs, ascending: true)
 }
 

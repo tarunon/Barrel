@@ -16,27 +16,27 @@ protocol BuilderType {
 struct Builder<T>: BuilderType {
     var builder: () -> T
     
-    init(_ result: @autoclosure(escaping) () -> T) {
+    init(_ result: @autoclosure @escaping () -> T) {
         builder = result
     }
-    
-    init(_ builder: () -> T) {
+
+    init(_ builder: @escaping () -> T) {
         self.builder = builder
     }
-    
-    init<B: BuilderType where B.Result == T>(_ builder: B) {
+
+    init<B: BuilderType>(_ builder: B) where B.Result == T {
         self.builder = builder.build
     }
-    
+
     func build() -> T {
         return builder()
     }
-    
-    func map<U>(_ f: (T) -> U) -> Builder<U> {
+
+    func map<U>(_ f: @escaping (T) -> U) -> Builder<U> {
         return Builder<U>(f(self.build()))
     }
     
-    func flatMap<B: BuilderType, U where B.Result == U>(_ f: (T) -> B) -> Builder<U> {
+    func flatMap<B: BuilderType, U>(_ f: (T) -> B) -> Builder<U> where B.Result == U {
         return Builder<U>(f(self.build()))
     }
 }

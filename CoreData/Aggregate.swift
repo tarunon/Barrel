@@ -42,12 +42,12 @@ public struct Aggregate<T: NSManagedObject where T: ExpressionType> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
-    private init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>) {
+    fileprivate init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>) {
         self.context = context
         self.builder = builder
     }
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, expressionDescription: @autoclosure(escaping) () -> NSExpressionDescription) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) {
         self.init(
             context: context,
             builder: builder.map {
@@ -72,7 +72,7 @@ extension Aggregate: Executable {
 }
 
 public extension Aggregate {
-    func aggregate(_ expressionDescription: @autoclosure(escaping) () -> NSExpressionDescription) -> Aggregate {
+    func aggregate(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> Aggregate {
         return Aggregate(
             context: context,
             builder: self.builder.map {
@@ -84,13 +84,13 @@ public extension Aggregate {
 }
 
 public extension Aggregate {
-    func brl_aggregate<E: ExpressionType, V: ExpressionType where E.ValueType == V>(_ f: (Attribute<T>) -> E) -> Aggregate {
+    func brl_aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate where E.ValueType == V {
         return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
     }
 }
 
 public extension Fetch {
-    func aggregate(_ expressionDescription: @autoclosure(escaping) () -> NSExpressionDescription) -> Aggregate<T> {
+    func aggregate(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> Aggregate<T> {
         return Aggregate(
             context: context,
             builder: builder.map {
@@ -107,7 +107,7 @@ public extension Fetch {
 }
 
 public extension Fetch {
-    func brl_aggregate<E: ExpressionType, V: ExpressionType where E.ValueType == V>(_ f: (Attribute<T>) -> E) -> Aggregate<T> {
+    func brl_aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate<T> where E.ValueType == V {
         return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
     }
 }

@@ -39,44 +39,45 @@ public struct _Expression<T: ExpressionType>: ExpressionType {
         self.value = value
     }
 
-    internal init<E: ExpressionType where E.ValueType == T>(_ value: E) {
+    internal init<E: ExpressionType>(_ value: E) where E.ValueType == T {
+        print(value)
         if let attribute = value as? AttributeBase {
             self.init(NSExpression(forKeyPath: attribute.keyPath.string))
         } else if let expression = value as? _Expression<T> {
             self.init(expression.value)
         } else if let list = value as? Values<T> {
-            self.init(NSExpression(forConstantValue: list.value as? AnyObject))
+            self.init(NSExpression(forConstantValue: list.value))
         } else {
-            self.init(NSExpression(forConstantValue: value as? AnyObject))
+            self.init(NSExpression(forConstantValue: value as? NSObject))
         }
     }
     
-    private init<L: ExpressionType, R: ExpressionType where L.ValueType == T, R.ValueType == T>(lhs: L, rhs: R, function: ExpressionFunction) {
+    fileprivate init<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R, function: ExpressionFunction) where L.ValueType == T, R.ValueType == T {
         self.init(function.expression([_Expression(lhs).value, _Expression(rhs).value]))
     }
     
-    private init<E: ExpressionType where E.ValueType == T>(hs: E, function: ExpressionFunction) {
+    fileprivate init<E: ExpressionType>(hs: E, function: ExpressionFunction) where E.ValueType == T {
         self.init(function.expression([_Expression<T>(hs).value]))
     }
 }
 
-public func unwrapExpression<E: ExpressionType, T: ExpressionType where E.ValueType == T>(_ value: E) -> _Expression<T> {
+public func unwrapExpression<E: ExpressionType, T: ExpressionType>(_ value: E) -> _Expression<T> where E.ValueType == T {
     return _Expression(value)
 }
 
-public func +<L: ExpressionType, R: ExpressionType, T: ExpressionType where L.ValueType == T, R.ValueType == T>(lhs: L, rhs: R) -> _Expression<T> {
+public func +<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
     return _Expression(lhs: lhs, rhs: rhs, function: .add)
 }
 
-public func -<L: ExpressionType, R: ExpressionType, T: ExpressionType where L.ValueType == T, R.ValueType == T>(lhs: L, rhs: R) -> _Expression<T> {
+public func -<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
     return _Expression(lhs: lhs, rhs: rhs, function: .subtract)
 }
 
-public func *<L: ExpressionType, R: ExpressionType, T: ExpressionType where L.ValueType == T, R.ValueType == T>(lhs: L, rhs: R) -> _Expression<T> {
+public func *<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
     return _Expression(lhs: lhs, rhs: rhs, function: .multiply)
 }
 
-public func /<L: ExpressionType, R: ExpressionType, T: ExpressionType where L.ValueType == T, R.ValueType == T>(lhs: L, rhs: R) -> _Expression<T> {
+public func /<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
     return _Expression(lhs: lhs, rhs: rhs, function: .divide)
 }
 

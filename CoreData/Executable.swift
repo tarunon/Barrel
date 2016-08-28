@@ -145,9 +145,9 @@ extension Executable {
         }
     }
 
-    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, isSeparator: @noescape (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
+    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, whereSeparator: @noescape (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
         do {
-            return try self.all().split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, isSeparator: isSeparator)
+            return try self.all().split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: whereSeparator)
         } catch {
             return []
         }
