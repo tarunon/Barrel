@@ -28,7 +28,7 @@ enum ExpressionFunction: String {
     }
 }
 
-public struct _Expression<T: ExpressionType>: ExpressionType {
+public struct Expression<T: ExpressionType>: ExpressionType {
     public typealias ValueType = T.ValueType
     public let value: NSExpression
     
@@ -43,7 +43,7 @@ public struct _Expression<T: ExpressionType>: ExpressionType {
         print(value)
         if let attribute = value as? AttributeBase {
             self.init(NSExpression(forKeyPath: attribute.keyPath.string))
-        } else if let expression = value as? _Expression<T> {
+        } else if let expression = value as? Expression<T> {
             self.init(expression.value)
         } else if let list = value as? Values<T> {
             self.init(NSExpression(forConstantValue: list.value))
@@ -53,56 +53,56 @@ public struct _Expression<T: ExpressionType>: ExpressionType {
     }
     
     fileprivate init<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R, function: ExpressionFunction) where L.ValueType == T, R.ValueType == T {
-        self.init(function.expression([_Expression(lhs).value, _Expression(rhs).value]))
+        self.init(function.expression([Expression(lhs).value, Expression(rhs).value]))
     }
     
     fileprivate init<E: ExpressionType>(hs: E, function: ExpressionFunction) where E.ValueType == T {
-        self.init(function.expression([_Expression<T>(hs).value]))
+        self.init(function.expression([Expression<T>(hs).value]))
     }
 }
 
-public func unwrapExpression<E: ExpressionType, T: ExpressionType>(_ value: E) -> _Expression<T> where E.ValueType == T {
-    return _Expression(value)
+public func unwrapExpression<E: ExpressionType, T: ExpressionType>(_ value: E) -> Expression<T> where E.ValueType == T {
+    return Expression(value)
 }
 
-public func +<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
-    return _Expression(lhs: lhs, rhs: rhs, function: .add)
+public func +<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+    return Expression(lhs: lhs, rhs: rhs, function: .add)
 }
 
-public func -<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
-    return _Expression(lhs: lhs, rhs: rhs, function: .subtract)
+public func -<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+    return Expression(lhs: lhs, rhs: rhs, function: .subtract)
 }
 
-public func *<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
-    return _Expression(lhs: lhs, rhs: rhs, function: .multiply)
+public func *<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+    return Expression(lhs: lhs, rhs: rhs, function: .multiply)
 }
 
-public func /<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> _Expression<T> where L.ValueType == T, R.ValueType == T {
-    return _Expression(lhs: lhs, rhs: rhs, function: .divide)
+public func /<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+    return Expression(lhs: lhs, rhs: rhs, function: .divide)
 }
 
 extension AttributeType where ValueType: Comparable, ValueType: ExpressionType {
-    public func max() -> _Expression<ValueType> {
-        return _Expression(hs: self, function: .max)
+    public func max() -> Expression<ValueType> {
+        return Expression(hs: self, function: .max)
     }
     
-    public func min() -> _Expression<ValueType> {
-        return _Expression(hs: self, function: .min)
+    public func min() -> Expression<ValueType> {
+        return Expression(hs: self, function: .min)
     }
 }
 
 extension AttributeType where ValueType: NumberType, ValueType: ExpressionType {
-    public func sum() -> _Expression<ValueType> {
-        return _Expression(hs: self, function: .sum)
+    public func sum() -> Expression<ValueType> {
+        return Expression(hs: self, function: .sum)
     }
 
-    public func average() -> _Expression<ValueType> {
-        return _Expression(hs: self, function: .average)
+    public func average() -> Expression<ValueType> {
+        return Expression(hs: self, function: .average)
     }
 }
 
 extension AttributeType where ValueType: ExpressionType {
-    public func count() -> _Expression<Int> {
-        return _Expression(_Expression(hs: self, function: .count).value)
+    public func count() -> Expression<Int> {
+        return Expression(Expression(hs: self, function: .count).value)
     }
 }

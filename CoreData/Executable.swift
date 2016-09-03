@@ -81,7 +81,7 @@ extension Executable {
         }
     }
 
-    public func map<T>(_ transform: @noescape(ElementType) throws -> T) rethrows -> [T] {
+    public func map<T>(_ transform: (ElementType) throws -> T) rethrows -> [T] {
         do {
             return try self.all().map(transform)
         } catch {
@@ -89,7 +89,7 @@ extension Executable {
         }
     }
     
-    public func filter(_ includeElement: @noescape(ElementType) throws -> Bool) rethrows -> [ElementType] {
+    public func filter(_ includeElement: (ElementType) throws -> Bool) rethrows -> [ElementType] {
         do {
             return try self.all().filter(includeElement)
         } catch {
@@ -97,7 +97,7 @@ extension Executable {
         }
     }
     
-    public func forEach(_ body: @noescape(ElementType) throws -> ()) rethrows {
+    public func forEach(_ body: (ElementType) throws -> ()) rethrows {
         do {
             return try self.all().forEach(body)
         } catch {
@@ -145,7 +145,7 @@ extension Executable {
         }
     }
 
-    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, whereSeparator: @noescape (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
+    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, whereSeparator: (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
         do {
             return try self.all().split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: whereSeparator)
         } catch {

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Fetch<T: NSManagedObject where T: ExpressionType> {
+public struct Fetch<T: NSManagedObject> where T: ExpressionType {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSManagedObject>>
     
@@ -21,8 +21,8 @@ public struct Fetch<T: NSManagedObject where T: ExpressionType> {
     
     internal init(context: NSManagedObjectContext) {
         self.init(context: context, builder: Builder {
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: context.entityName(T)!)
-            fetchRequest.predicate = Predicate(value: true)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: context.entityName(T.self)!)
+            fetchRequest.predicate = NSPredicate(value: true)
             fetchRequest.sortDescriptors = []
             return fetchRequest
         })
@@ -46,17 +46,17 @@ extension Fetch: Executable {
 }
 
 public extension Fetch {
-    public func filter(_ predicate: @autoclosure @escaping () -> Predicate) -> Fetch {
+    public func filter(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Fetch {
         return Fetch(
             context: self.context,
             builder: self.builder.map {
-                $0.predicate = CompoundPredicate(type: .and, subpredicates: [$0.predicate!, predicate()])
+                $0.predicate = NSCompoundPredicate(type: .and, subpredicates: [$0.predicate!, predicate()])
                 return $0
             }
         )
     }
     
-    public func sorted(_ sortDescriptor: @autoclosure @escaping () -> [SortDescriptor]) -> Fetch {
+    public func sorted(_ sortDescriptor: @autoclosure @escaping () -> [NSSortDescriptor]) -> Fetch {
         return Fetch(
             context: self.context,
             builder: self.builder.map {
@@ -88,11 +88,11 @@ public extension Fetch {
 }
 
 public extension Fetch {
-    public func brl_filter(_ f: @escaping (Attribute<T>) -> _Predicate) -> Fetch {
+    public func brl_filter(_ f: @escaping (Attribute<T>) -> Predicate) -> Fetch {
         return self.filter(f(Attribute()).value)
     }
     
-    public func brl_sorted(_ f: @escaping (Attribute<T>, Attribute<T>) -> _SortDescriptors) -> Fetch {
+    public func brl_sorted(_ f: @escaping (Attribute<T>, Attribute<T>) -> SortDescriptors) -> Fetch {
         return self.sorted(f(Attribute(), Attribute(name: "sort")).value)
     }
 }

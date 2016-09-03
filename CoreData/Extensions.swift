@@ -12,12 +12,12 @@ import Barrel
 
 // MARK: associated util
 internal extension NSObject {
-    internal func associatedValueOrDefault<T>(_ key: UnsafePointer<Void>, defaultValue: @autoclosure() -> T) -> T {
+    internal func associatedValueOrDefault<T>(_ key: UnsafeRawPointer, defaultValue: @autoclosure() -> T) -> T {
         if let value = objc_getAssociatedObject(self, key) as? T {
             return value
         } else {
             let value = defaultValue()
-            objc_setAssociatedObject(value as! AnyObject, key, self, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(value as AnyObject, key, self, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return value
         }
     }

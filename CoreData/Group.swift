@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Group<T: NSManagedObject where T: ExpressionType> {
+public struct Group<T: NSManagedObject> where T: ExpressionType {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
@@ -24,7 +24,7 @@ public struct Group<T: NSManagedObject where T: ExpressionType> {
             context: context,
             builder: builder.map {
                 $0.propertiesToGroupBy = [keyPath().string]
-                $0.havingPredicate = Predicate(value: true)
+                $0.havingPredicate = NSPredicate(value: true)
                 return $0
             }
         )
@@ -68,11 +68,11 @@ public extension Group {
         )
     }
     
-    func having(_ predicate: @autoclosure @escaping () -> Predicate) -> Group {
+    func having(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Group {
         return Group(
             context: self.context,
             builder: self.builder.map {
-                $0.havingPredicate = CompoundPredicate(type: .and, subpredicates: [$0.havingPredicate!, predicate()])
+                $0.havingPredicate = NSCompoundPredicate(type: .and, subpredicates: [$0.havingPredicate!, predicate()])
                 return $0
             }
         )
@@ -84,7 +84,7 @@ public extension Group {
         return self.groupBy(f(Attribute()).keyPath)
     }
     
-    func brl_having(_ f: @escaping (Attribute<T>) -> _Predicate) -> Group {
+    func brl_having(_ f: @escaping (Attribute<T>) -> Predicate) -> Group {
         return self.having(f(Attribute()).value)
     }
 }

@@ -90,7 +90,7 @@ class BarrelCoreDataTests: XCTestCase {
 
     static var storeDir = URL(fileURLWithPath: "test")
     static var storeURL: URL {
-        return try! self.storeDir.appendingPathComponent("test.db")
+        return self.storeDir.appendingPathComponent("test.db")
     }
 
     var context: NSManagedObjectContext!

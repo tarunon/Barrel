@@ -76,83 +76,83 @@ class BarrelTests: XCTestCase {
         let attribute = Attribute<TestModel>()
         
         let equalToPredicate = attribute.text == "TEST"
-        XCTAssertEqual(equalToPredicate.value, Predicate(format: "text == %@", "TEST"))
+        XCTAssertEqual(equalToPredicate.value, NSPredicate(format: "text == %@", "TEST"))
         
         let graterThanPredicate = attribute.number > 0
-        XCTAssertEqual(graterThanPredicate.value, Predicate(format: "number > %i", 0))
+        XCTAssertEqual(graterThanPredicate.value, NSPredicate(format: "number > %i", 0))
         
         let graterThanOrEqualToPredicate = attribute.number >= 1
-        XCTAssertEqual(graterThanOrEqualToPredicate.value, Predicate(format: "number >= %i", 1))
+        XCTAssertEqual(graterThanOrEqualToPredicate.value, NSPredicate(format: "number >= %i", 1))
         
         let lessThanPredicate = attribute.number < 10
-        XCTAssertEqual(lessThanPredicate.value, Predicate(format: "number < %i", 10))
+        XCTAssertEqual(lessThanPredicate.value, NSPredicate(format: "number < %i", 10))
         
         let lessThanOrEqualToPredicate = attribute.number <= 9
-        XCTAssertEqual(lessThanOrEqualToPredicate.value, Predicate(format: "number <= %i", 9))
+        XCTAssertEqual(lessThanOrEqualToPredicate.value, NSPredicate(format: "number <= %i", 9))
         
         let notEqualToPredicate = attribute.text != "TEST"
-        XCTAssertEqual(notEqualToPredicate.value, Predicate(format: "text != %@", "TEST"))
+        XCTAssertEqual(notEqualToPredicate.value, NSPredicate(format: "text != %@", "TEST"))
         
         let betweenPredicate = attribute.number << (0..<9)
-        XCTAssertEqual(betweenPredicate.value, Predicate(format: "number BETWEEN %@", [0, 9]))
+        XCTAssertEqual(betweenPredicate.value, NSPredicate(format: "number BETWEEN %@", [0, 9]))
         
         let inPredicate = attribute.text << ["A", "B", "C"]
-        XCTAssertEqual(inPredicate.value, Predicate(format: "text IN %@", ["A", "B", "C"]))
+        XCTAssertEqual(inPredicate.value, NSPredicate(format: "text IN %@", ["A", "B", "C"]))
         
         let contaiPredicate = attribute.text.contains("AAA")
-        XCTAssertEqual(contaiPredicate.value, Predicate(format: "text CONTAINS %@", "AAA"))
+        XCTAssertEqual(contaiPredicate.value, NSPredicate(format: "text CONTAINS %@", "AAA"))
         
         let begiWithPredicate = attribute.text.beginsWith("ABC")
-        XCTAssertEqual(begiWithPredicate.value, Predicate(format: "text BEGINSWITH %@", "ABC"))
+        XCTAssertEqual(begiWithPredicate.value, NSPredicate(format: "text BEGINSWITH %@", "ABC"))
         
         let endsWithPredicate = attribute.text.endsWith("XYZ")
-        XCTAssertEqual(endsWithPredicate.value, Predicate(format: "text ENDSWITH %@", "XYZ"))
+        XCTAssertEqual(endsWithPredicate.value, NSPredicate(format: "text ENDSWITH %@", "XYZ"))
         
         let likePredicate = attribute.text.like("BBB")
-        XCTAssertEqual(likePredicate.value, Predicate(format: "text LIKE %@", "BBB"))
+        XCTAssertEqual(likePredicate.value, NSPredicate(format: "text LIKE %@", "BBB"))
         
         let matchesPredicate = attribute.text.matches("^ABC.*XYZ$")
-        XCTAssertEqual(matchesPredicate.value, Predicate(format: "text MATCHES %@", "^ABC.*XYZ$"))
+        XCTAssertEqual(matchesPredicate.value, NSPredicate(format: "text MATCHES %@", "^ABC.*XYZ$"))
         
         let anyPredicate = attribute.array.any { $0 > 0 }
-        XCTAssertEqual(anyPredicate.value, Predicate(format: "ANY array > %i", 0))
+        XCTAssertEqual(anyPredicate.value, NSPredicate(format: "ANY array > %i", 0))
         
         let allPredicate = attribute.array.all { $0 < 0 }
-        XCTAssertEqual(allPredicate.value, Predicate(format: "ALL array < %i", 0))
+        XCTAssertEqual(allPredicate.value, NSPredicate(format: "ALL array < %i", 0))
         
         let isNullPredicate = attribute.option.isNull()
-        XCTAssertEqual(isNullPredicate.value, Predicate(format: "option == nil"))
+        XCTAssertEqual(isNullPredicate.value, NSPredicate(format: "option == nil"))
 
         let isNotNullPredicate = attribute.option.isNotNull()
-        XCTAssertEqual(isNotNullPredicate.value, Predicate(format: "option != nil"))
+        XCTAssertEqual(isNotNullPredicate.value, NSPredicate(format: "option != nil"))
 
         
         let andPredicate = equalToPredicate && allPredicate
-        XCTAssertEqual(andPredicate.value, Predicate(format: "text == %@ AND ALL array < %i", "TEST", 0))
+        XCTAssertEqual(andPredicate.value, NSPredicate(format: "text == %@ AND ALL array < %i", "TEST", 0))
         
         let orPredicate = notEqualToPredicate || graterThanPredicate
-        XCTAssertEqual(orPredicate.value, Predicate(format: "text != %@ OR number > %i", "TEST", 0))
+        XCTAssertEqual(orPredicate.value, NSPredicate(format: "text != %@ OR number > %i", "TEST", 0))
         
         let notPredicate = !likePredicate
-        XCTAssertEqual(notPredicate.value, Predicate(format: "NOT text LIKE %@", "BBB"))
+        XCTAssertEqual(notPredicate.value, NSPredicate(format: "NOT text LIKE %@", "BBB"))
     }
     
     func testSortDescriptors() {
         let attribute = Attribute<TestModel>()
         let sortAttr = Attribute<TestModel>(name: "sort")
         
-        let ascendingSortDescriptors: _SortDescriptors = (attribute.number < sortAttr.number)
-        let ascendingSortDescriptors2: _SortDescriptors = (sortAttr.number > attribute.number)
-        let ascendingSortDescriptors3: _SortDescriptors = (attribute.option < sortAttr.option)
-        XCTAssertEqual(ascendingSortDescriptors.value, [SortDescriptor(key: "number", ascending: true)])
-        XCTAssertEqual(ascendingSortDescriptors2.value, [SortDescriptor(key: "number", ascending: true)])
-        XCTAssertEqual(ascendingSortDescriptors3.value, [SortDescriptor(key: "option", ascending: true)])
+        let ascendingSortDescriptors: SortDescriptors = (attribute.number < sortAttr.number)
+        let ascendingSortDescriptors2: SortDescriptors = (sortAttr.number > attribute.number)
+        let ascendingSortDescriptors3: SortDescriptors = (attribute.option < sortAttr.option)
+        XCTAssertEqual(ascendingSortDescriptors.value, [NSSortDescriptor(key: "number", ascending: true)])
+        XCTAssertEqual(ascendingSortDescriptors2.value, [NSSortDescriptor(key: "number", ascending: true)])
+        XCTAssertEqual(ascendingSortDescriptors3.value, [NSSortDescriptor(key: "option", ascending: true)])
         
-        let descendingSortDescriptors: _SortDescriptors = (attribute.number > sortAttr.number)
-        let descendingSortDescriptors2: _SortDescriptors = (sortAttr.number < attribute.number)
-        let descendingSortDescriptors3: _SortDescriptors = (attribute.option > sortAttr.option)
-        XCTAssertEqual(descendingSortDescriptors.value, [SortDescriptor(key: "number", ascending: false)])
-        XCTAssertEqual(descendingSortDescriptors2.value, [SortDescriptor(key: "number", ascending: false)])
-        XCTAssertEqual(descendingSortDescriptors3.value, [SortDescriptor(key: "option", ascending: false)])
+        let descendingSortDescriptors: SortDescriptors = (attribute.number > sortAttr.number)
+        let descendingSortDescriptors2: SortDescriptors = (sortAttr.number < attribute.number)
+        let descendingSortDescriptors3: SortDescriptors = (attribute.option > sortAttr.option)
+        XCTAssertEqual(descendingSortDescriptors.value, [NSSortDescriptor(key: "number", ascending: false)])
+        XCTAssertEqual(descendingSortDescriptors2.value, [NSSortDescriptor(key: "number", ascending: false)])
+        XCTAssertEqual(descendingSortDescriptors3.value, [NSSortDescriptor(key: "option", ascending: false)])
     }
 }

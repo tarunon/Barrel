@@ -1,5 +1,5 @@
 //
-//  SortDescriptor.swift
+//  NSSortDescriptor.swift
 //  Barrel
 //
 //  Created by Nobuo Saito on 2015/11/09.
@@ -8,12 +8,10 @@
 
 import Foundation
 
-public typealias SortDescriptor = NSSortDescriptor
-
-public struct _SortDescriptors {
-    public let value: [SortDescriptor]
+public struct SortDescriptors {
+    public let value: [NSSortDescriptor]
     
-    private init(_ value: [SortDescriptor]) {
+    private init(_ value: [NSSortDescriptor]) {
         if Barrel.debugMode {
             print("Array of NSSortDescriptor generated: \(value)")
         }
@@ -22,27 +20,27 @@ public struct _SortDescriptors {
     
     fileprivate init<T: Comparable, A: AttributeType>(lhs: A, rhs: A, ascending: Bool) where A.ValueType == T {
         if case .keypath(let keyPath) = lhs.keyPath, !keyPath.contains(".") {
-            self.init([SortDescriptor(key: keyPath, ascending: ascending)])
+            self.init([NSSortDescriptor(key: keyPath, ascending: ascending)])
         } else if case .keypath(let keyPath) = rhs.keyPath, !keyPath.contains(".") {
-            self.init([SortDescriptor(key: keyPath, ascending: !ascending)])
+            self.init([NSSortDescriptor(key: keyPath, ascending: !ascending)])
         } else {
             self.init([])
         }
     }
     
-    fileprivate init(lhs: _SortDescriptors, rhs: _SortDescriptors) {
+    fileprivate init(lhs: SortDescriptors, rhs: SortDescriptors) {
         self.init(lhs.value + rhs.value)
     }
 }
 
-public func ><T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> _SortDescriptors where A.ValueType == T {
-    return _SortDescriptors(lhs: lhs, rhs: rhs, ascending: false)
+public func ><T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> SortDescriptors where A.ValueType == T {
+    return SortDescriptors(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> _SortDescriptors where A.ValueType == T {
-    return _SortDescriptors(lhs: lhs, rhs: rhs, ascending: true)
+public func <<T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> SortDescriptors where A.ValueType == T {
+    return SortDescriptors(lhs: lhs, rhs: rhs, ascending: true)
 }
 
-public func &(lhs: _SortDescriptors, rhs: _SortDescriptors) -> _SortDescriptors {
-    return _SortDescriptors(lhs: lhs, rhs: rhs)
+public func &(lhs: SortDescriptors, rhs: SortDescriptors) -> SortDescriptors {
+    return SortDescriptors(lhs: lhs, rhs: rhs)
 }

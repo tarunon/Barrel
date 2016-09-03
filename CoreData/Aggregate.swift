@@ -28,7 +28,7 @@ internal extension NSAttributeType {
     }
 }
 
-internal extension _Expression {
+internal extension Expression {
     func expressionDescription() -> NSExpressionDescription {
         let expressionDescription = NSExpressionDescription()
         expressionDescription.expression = self.value
@@ -38,7 +38,7 @@ internal extension _Expression {
     }
 }
 
-public struct Aggregate<T: NSManagedObject where T: ExpressionType> {
+public struct Aggregate<T: NSManagedObject> where T: ExpressionType {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
