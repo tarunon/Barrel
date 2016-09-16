@@ -21,7 +21,7 @@ public struct ComparisonPredicate: Predicate {
     let generator: Generator
     let modifier: NSComparisonPredicate.Modifier
     
-    fileprivate init(generator: Generator, modifier: NSComparisonPredicate.Modifier) {
+    fileprivate init(generator: @escaping Generator, modifier: NSComparisonPredicate.Modifier) {
         if Barrel.debugMode {
             print("NSPredicate generated: \(generator(modifier))")
         }
