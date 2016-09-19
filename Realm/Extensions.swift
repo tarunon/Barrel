@@ -26,7 +26,7 @@ extension LinkingObjects: ExpressionType, ManyType {
 
 private extension NSSortDescriptor {
     func toRealmObject() -> SortDescriptor {
-        return SortDescriptor(property: self.key!, ascending: self.ascending)
+        return SortDescriptor(property: self.key!, ascending: ascending)
     }
 }
 
@@ -38,43 +38,43 @@ public extension Realm {
 
 public extension ExpressionType where Self: Object {
     public typealias ValueType = Self
-    public static func objects(realm: Realm) -> Results<Self> {
+    public static func objects(_ realm: Realm) -> Results<Self> {
         return realm.objects()
     }
     
-    public static func insert(realm: Realm) -> Self {
+    public static func insert(_ realm: Realm) -> Self {
         let object = Self()
         realm.add(object)
         return object
     }
 }
 
-public extension RealmCollectionType where Element: ExpressionType {
-    func brl_filter(f: Attribute<Element> -> Predicate) -> Results<Element> {
+public extension RealmCollection where Element: ExpressionType {
+    func brl_filter(_ f: (Attribute<Element>) -> Predicate) -> Results<Element> {
         return self.filter(f(Attribute()).value)
     }
-    
-    func brl_indexOf(f: Attribute<Element> -> Predicate) -> Int? {
-        return self.indexOf(f(Attribute()).value)
+
+    func brl_indexOf(_ f: (Attribute<Element>) -> Predicate) -> Int? {
+        return self.index(matching: f(Attribute()).value)
     }
     
-    func brl_sorted(f: (Attribute<Element>, Attribute<Element>) -> SortDescriptors) -> Results<Element> {
-        return self.sorted(f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() })
+    func brl_sorted(_ f: (Attribute<Element>, Attribute<Element>) -> SortDescriptors) -> Results<Element> {
+        return self.sorted(by: f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() })
     }
     
-    func brl_min<U: MinMaxType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.min(f(Attribute()).keyPath.string)
+    func brl_min<U: MinMaxType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
+        return self.min(ofProperty: f(Attribute()).keyPath.string)
     }
     
-    func brl_max<U: MinMaxType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.max(f(Attribute()).keyPath.string)
+    func brl_max<U: MinMaxType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
+        return self.max(ofProperty: f(Attribute()).keyPath.string)
     }
     
-    func brl_sum<U: AddableType>(f: Attribute<Element> -> Attribute<U>) -> U {
-        return self.sum(f(Attribute()).keyPath.string)
+    func brl_sum<U: AddableType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U {
+        return self.sum(ofProperty: f(Attribute()).keyPath.string)
     }
     
-    func brl_average<U: AddableType>(f: Attribute<Element> -> Attribute<U>) -> U? {
-        return self.average(f(Attribute()).keyPath.string)
+    func brl_average<U: AddableType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
+        return self.average(ofProperty: f(Attribute()).keyPath.string)
     }
 }

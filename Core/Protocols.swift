@@ -11,23 +11,23 @@ import Foundation
 public protocol NumberType {}
 
 public protocol NSComparable: Comparable {
-    func compare(other: Self) -> NSComparisonResult
+    func compare(_ other: Self) -> ComparisonResult
 }
 
 public func <<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) == .OrderedAscending
+    return lhs.compare(rhs) == .orderedAscending
 }
 
 public func <=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) != .OrderedDescending
+    return lhs.compare(rhs) != .orderedDescending
 }
 
 public func >=<C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) != .OrderedAscending
+    return lhs.compare(rhs) != .orderedAscending
 }
 
 public func ><C: NSComparable>(lhs: C, rhs: C) -> Bool {
-    return lhs.compare(rhs) == .OrderedDescending
+    return lhs.compare(rhs) == .orderedDescending
 }
 
 public protocol SelfExpression : ExpressionType {
@@ -50,13 +50,13 @@ extension Int : SelfExpression , NumberType {
     public typealias ValueType = Int
 }
 
-extension NSDate : SelfExpression, NSComparable {}
+extension Date : SelfExpression, NSComparable {}
 
 extension String : SelfExpression {
     public typealias ValueType = String
 }
 
-extension NSData : SelfExpression {}
+extension Data : SelfExpression {}
 
 extension NSNumber: SelfExpression, NSComparable, NumberType {}
 

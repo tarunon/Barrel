@@ -21,10 +21,8 @@ class BarrelRealmTests: XCTestCase {
         Barrel.debugMode = true
         
         do {
-            if let url = Realm.Configuration.defaultConfiguration.fileURL, path = url.path {
-                if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                    try NSFileManager.defaultManager().removeItemAtPath(path)
-                }
+            if let url = Realm.Configuration.defaultConfiguration.fileURL {
+                try? FileManager.default.removeItem(at: url)
             }
             try realm = Realm()
             try realm.write {
@@ -102,7 +100,7 @@ class BarrelRealmTests: XCTestCase {
         let sun = Star.objects(self.realm).brl_filter { $0.name == "Sun" }[0]
         XCTAssertEqual(sun.name, "Sun")
         let planets = Planet.objects(self.realm).brl_filter { $0.parent == sun }
-        XCTAssertEqual(planets.underestimateCount(), 6)
+        XCTAssertEqual(planets.underestimatedCount, 6)
         XCTAssertEqual(planets.brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }.map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         let moon = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Earth" }[0]
         XCTAssertEqual(moon.name, "Moon")

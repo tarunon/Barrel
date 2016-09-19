@@ -1,5 +1,5 @@
 //
-//  SortDescriptor.swift
+//  NSSortDescriptor.swift
 //  Barrel
 //
 //  Created by Nobuo Saito on 2015/11/09.
@@ -18,26 +18,26 @@ public struct SortDescriptors {
         self.value = value
     }
     
-    private init<T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A, ascending: Bool) {
-        if case .KEYPATH(let keyPath) = lhs.keyPath where !keyPath.containsString(".") {
+    fileprivate init<T: Comparable, A: AttributeType>(lhs: A, rhs: A, ascending: Bool) where A.ValueType == T {
+        if case .keypath(let keyPath) = lhs.keyPath, !keyPath.contains(".") {
             self.init([NSSortDescriptor(key: keyPath, ascending: ascending)])
-        } else if case .KEYPATH(let keyPath) = rhs.keyPath where !keyPath.containsString(".") {
+        } else if case .keypath(let keyPath) = rhs.keyPath, !keyPath.contains(".") {
             self.init([NSSortDescriptor(key: keyPath, ascending: !ascending)])
         } else {
             self.init([])
         }
     }
     
-    private init(lhs: SortDescriptors, rhs: SortDescriptors) {
+    fileprivate init(lhs: SortDescriptors, rhs: SortDescriptors) {
         self.init(lhs.value + rhs.value)
     }
 }
 
-public func ><T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A) -> SortDescriptors {
+public func ><T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> SortDescriptors where A.ValueType == T {
     return SortDescriptors(lhs: lhs, rhs: rhs, ascending: false)
 }
 
-public func <<T: Comparable, A: AttributeType where A.ValueType == T>(lhs: A, rhs: A) -> SortDescriptors {
+public func <<T: Comparable, A: AttributeType>(lhs: A, rhs: A) -> SortDescriptors where A.ValueType == T {
     return SortDescriptors(lhs: lhs, rhs: rhs, ascending: true)
 }
 

@@ -19,7 +19,7 @@ public protocol AttributeType: ExpressionType, AttributeBase {
 }
 
 public extension AttributeType {
-    func attribute<T: ExpressionType>(name: String = #function) -> Attribute<T> {
+    func attribute<T: ExpressionType>(_ name: String = #function) -> Attribute<T> {
         return Attribute(name: name, parent: self)
     }
 }
@@ -42,12 +42,12 @@ extension Optional: ExpressionType {
     public typealias ValueType = Wrapped
 }
 
-@available(*, unavailable, renamed="Attribute")
-public func storedAttribute<T: AttributeType>(name: String? = nil) -> T {
+@available(*, unavailable, renamed : "Attribute")
+public func storedAttribute<T: AttributeType>(_ name: String? = nil) -> T {
     fatalError()
 }
 
-@available(*, unavailable, renamed="Attribute")
-public func storedAttribute<T: AttributeType, U : AttributeType>(name: String = #function, parent: U) -> T {
+@available(*, unavailable, renamed : "Attribute")
+public func storedAttribute<T: AttributeType, U : AttributeType>(_ name: String = #function, parent: U) -> T {
     fatalError()
 }

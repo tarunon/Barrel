@@ -99,11 +99,11 @@ class BarrelTests: XCTestCase {
         let inPredicate = attribute.text << ["A", "B", "C"]
         XCTAssertEqual(inPredicate.value, NSPredicate(format: "text IN %@", ["A", "B", "C"]))
         
-        let containsPredicate = attribute.text.contains("AAA")
-        XCTAssertEqual(containsPredicate.value, NSPredicate(format: "text CONTAINS %@", "AAA"))
+        let contaiPredicate = attribute.text.contains("AAA")
+        XCTAssertEqual(contaiPredicate.value, NSPredicate(format: "text CONTAINS %@", "AAA"))
         
-        let beginsWithPredicate = attribute.text.beginsWith("ABC")
-        XCTAssertEqual(beginsWithPredicate.value, NSPredicate(format: "text BEGINSWITH %@", "ABC"))
+        let begiWithPredicate = attribute.text.beginsWith("ABC")
+        XCTAssertEqual(begiWithPredicate.value, NSPredicate(format: "text BEGINSWITH %@", "ABC"))
         
         let endsWithPredicate = attribute.text.endsWith("XYZ")
         XCTAssertEqual(endsWithPredicate.value, NSPredicate(format: "text ENDSWITH %@", "XYZ"))

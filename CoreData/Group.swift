@@ -10,27 +10,30 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Group<T: NSManagedObject where T: ExpressionType> {
+public struct Group<T: NSManagedObject> where T: ExpressionType {
     public let context: NSManagedObjectContext
-    internal let builder: Builder<NSFetchRequest>
+    internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>) {
         self.context = context
         self.builder = builder
     }
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest>, @autoclosure(escaping) keyPath: () -> KeyPath) {
-        self.init(context: context, builder: {
-            $0.propertiesToGroupBy = [keyPath().string]
-            $0.havingPredicate = NSPredicate(value: true)
-            return $0
-        } </> builder)
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, keyPath: @autoclosure @escaping () -> KeyPath) {
+        self.init(
+            context: context,
+            builder: builder.map {
+                $0.propertiesToGroupBy = [keyPath().string]
+                $0.havingPredicate = NSPredicate(value: true)
+                return $0
+            }
+        )
     }
 }
 
 extension Group {
     public func count() throws -> Int {
-        return try self.context.executeFetchRequest(self.fetchRequest()).count
+        return try self.context.fetch(self.fetchRequest()).count
     }
     
     public func underestimateCount() -> Int {
@@ -43,9 +46,9 @@ extension Group {
 }
 
 extension Group: Executable {
-    public typealias Type = [String: AnyObject]
+    public typealias ElementType = NSDictionary
     
-    public func fetchRequest() -> NSFetchRequest {
+    public func fetchRequest() -> NSFetchRequest<NSDictionary> {
         let fetchRequest = self.builder.build()
         if Barrel.debugMode {
             print("NSFetchRequest generated: \(fetchRequest)")
@@ -55,39 +58,45 @@ extension Group: Executable {
 }
 
 public extension Group {
-    func groupBy(@autoclosure(escaping) keyPath: () -> KeyPath) -> Group {
-        return Group(context: self.context, builder: {
-            $0.propertiesToGroupBy = $0.propertiesToGroupBy! + [keyPath().string]
-            return $0
-        } </> self.builder)
+    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group {
+        return Group(
+            context: self.context,
+            builder: self.builder.map {
+                $0.propertiesToGroupBy = $0.propertiesToGroupBy! + [keyPath().string]
+                return $0
+            }
+        )
     }
     
-    func having(@autoclosure(escaping) predicate: () -> NSPredicate) -> Group {
-        return Group(context: self.context, builder: {
-            $0.havingPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [$0.havingPredicate!, predicate()])
-            return $0
-        } </> self.builder)
+    func having(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Group {
+        return Group(
+            context: self.context,
+            builder: self.builder.map {
+                $0.havingPredicate = NSCompoundPredicate(type: .and, subpredicates: [$0.havingPredicate!, predicate()])
+                return $0
+            }
+        )
     }
 }
 
 public extension Group {
-    func brl_groupBy<E: ExpressionType>(f: Attribute<T> -> Attribute<E>) -> Group {
+    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group {
         return self.groupBy(f(Attribute()).keyPath)
     }
     
-    func brl_having(f: Attribute<T> -> Predicate) -> Group {
+    func brl_having(_ f: @escaping (Attribute<T>) -> Predicate) -> Group {
         return self.having(f(Attribute()).value)
     }
 }
 
 public extension Aggregate {
-    func groupBy(@autoclosure(escaping) keyPath: () -> KeyPath) -> Group<T> {
+    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group<T> {
         return Group(context: self.context, builder: self.builder, keyPath: keyPath)
     }
 }
 
 public extension Aggregate {
-    func brl_groupBy<E: ExpressionType>(f: Attribute<T> -> Attribute<E>) -> Group<T> {
+    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group<T> {
         return self.groupBy(f(Attribute()).keyPath)
     }
 }
