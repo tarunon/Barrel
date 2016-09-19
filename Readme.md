@@ -1,7 +1,6 @@
 # Barrel
 [![Build Status](https://travis-ci.org/tarunon/Illuso.svg?branch=master)](https://travis-ci.org/tarunon/Barrel)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-=================
 
 A simple type-safe library for NSPredicate and NSExpresion.
 
