@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public protocol Executable: Collection, Indexable {
+public protocol Executable: Collection {
     associatedtype ElementType: NSFetchRequestResult
     associatedtype FetchType: NSFetchRequestResult
     associatedtype GeneratorType = AnyIterator<ElementType>

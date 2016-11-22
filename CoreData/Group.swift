@@ -47,6 +47,7 @@ extension Group {
 
 extension Group: Executable {
     public typealias ElementType = NSDictionary
+    public typealias FetchType = NSDictionary
     
     public func fetchRequest() -> NSFetchRequest<NSDictionary> {
         let fetchRequest = self.builder.build()
@@ -77,10 +78,12 @@ public extension Group {
 }
 
 public extension Group {
+    @available(*, renamed: "brl.groupBy")
     func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group {
         return self.groupBy(f(Attribute()).keyPath)
     }
-    
+
+    @available(*, renamed: "brl.having")
     func brl_having(_ f: @escaping (Attribute<T>) -> Predicate) -> Group {
         return self.having(f(Attribute()).value)
     }
@@ -93,6 +96,7 @@ public extension Aggregate {
 }
 
 public extension Aggregate {
+    @available(*, renamed: "brl.groupBy")
     func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group<T> {
         return self.groupBy(f(Attribute()).keyPath)
     }

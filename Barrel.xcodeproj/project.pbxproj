@@ -19,6 +19,10 @@
 		EB853C241C488E2D00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB853C251C488E3100BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
 		EB853C261C488E3A00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA931C4886F2004D17EE /* Barrel.framework */; };
+		EBD35D621DE3FA8100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D601DE3FA6700E27F78 /* Barrel.swift */; };
+		EBD35D631DE3FA8100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D601DE3FA6700E27F78 /* Barrel.swift */; };
+		EBD35D641DE3FA8200E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D601DE3FA6700E27F78 /* Barrel.swift */; };
+		EBD35D651DE3FA8300E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D601DE3FA6700E27F78 /* Barrel.swift */; };
 		EBF7F9C51C4885E1004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7F9BA1C4885E1004D17EE /* Barrel.framework */; };
 		EBF7FA651C4886CF004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EBF7FA811C4886E0004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
@@ -249,6 +253,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EBD35D601DE3FA6700E27F78 /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barrel.swift; sourceTree = "<group>"; };
 		EBF7F9BA1C4885E1004D17EE /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7F9C41C4885E1004D17EE /* BarrelTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BarrelTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7F9D71C48860D004D17EE /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attribute.swift; path = Core/Attribute.swift; sourceTree = "<group>"; };
@@ -578,6 +583,7 @@
 			children = (
 				EBF7F9EF1C488633004D17EE /* Aggregate.swift */,
 				EBF7F9F01C488633004D17EE /* BarrelCoreData.h */,
+				EBD35D601DE3FA6700E27F78 /* Barrel.swift */,
 				EBF7F9F11C488633004D17EE /* Builder.swift */,
 				EBF7F9F21C488633004D17EE /* Executable.swift */,
 				EBF7F9F31C488633004D17EE /* Extensions.swift */,
@@ -1491,6 +1497,7 @@
 				EBF7FB3A1C488891004D17EE /* Fetch.swift in Sources */,
 				EBF7FB3B1C488891004D17EE /* Group.swift in Sources */,
 				EBF7FB3C1C488891004D17EE /* ResultsController.swift in Sources */,
+				EBD35D621DE3FA8100E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1525,6 +1532,7 @@
 				EBF7FB411C488894004D17EE /* Fetch.swift in Sources */,
 				EBF7FB421C488894004D17EE /* Group.swift in Sources */,
 				EBF7FB431C488894004D17EE /* ResultsController.swift in Sources */,
+				EBD35D631DE3FA8100E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,6 +1567,7 @@
 				EBF7FB481C488897004D17EE /* Fetch.swift in Sources */,
 				EBF7FB491C488897004D17EE /* Group.swift in Sources */,
 				EBF7FB4A1C488897004D17EE /* ResultsController.swift in Sources */,
+				EBD35D641DE3FA8200E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1593,6 +1602,7 @@
 				EBF7FB4F1C48889A004D17EE /* Fetch.swift in Sources */,
 				EBF7FB501C48889A004D17EE /* Group.swift in Sources */,
 				EBF7FB511C48889A004D17EE /* ResultsController.swift in Sources */,
+				EBD35D651DE3FA8300E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

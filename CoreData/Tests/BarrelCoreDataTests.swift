@@ -108,25 +108,25 @@ class BarrelCoreDataTests: XCTestCase {
     }
     
     func testFetch() {
-        let sun = Star.objects(self.context).brl_filter { $0.name == "Sun" }[0]
+        let sun = Star.objects(self.context).brl.filter { $0.name == "Sun" }.confirm()[0]
         XCTAssertEqual(sun.name, "Sun")
         
-        let planets = Planet.objects(self.context).brl_filter { $0.parent == sun }
+        let planets = Planet.objects(self.context).brl.filter { $0.parent == sun }.confirm()
         XCTAssertEqual(planets.underestimateCount(), 6)
-        XCTAssertEqual(planets.brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }.map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
+        XCTAssertEqual(planets.brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm().map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         
-        let jupitersSatellites = Satellite.objects(self.context).brl_filter { $0.parent.name == "Jupiter" }
+        let jupitersSatellites = Satellite.objects(self.context).brl.filter { $0.parent.name == "Jupiter" }.confirm()
         XCTAssertEqual(jupitersSatellites.underestimateCount(), 4)
         
-        let biggestPlanet = Planet.objects(self.context).brl_sorted { $0.diameter > $1.diameter }[0]
+        let biggestPlanet = Planet.objects(self.context).brl.sorted { $0.diameter > $1.diameter }.confirm()[0]
         XCTAssertEqual(biggestPlanet.name, "Jupiter")
         
-        let sun2 = Star.objects(self.context).brl_filter { $0.children.any { $0.name == "Earth" } }[0]
+        let sun2 = Star.objects(self.context).brl.filter { $0.children.any { $0.name == "Earth" } }.confirm()[0]
         XCTAssertEqual(sun, sun2)
     }
     
     func testSequenceExtensions() {
-        let fetch = Planet.objects(self.context).brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }
+        let fetch = Planet.objects(self.context).brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm()
         XCTAssertEqual(fetch.underestimateCount(), 6)
         
         XCTAssertEqual(fetch.map { $0.name }[0], "Mercury")
@@ -149,11 +149,11 @@ class BarrelCoreDataTests: XCTestCase {
     }
     
     func testAggregate() {
-        let planetCount = Planet.objects(self.context).brl_aggregate { $0.name.count() }[0]["count:(name)"] as? Int
+        let planetCount = Planet.objects(self.context).brl.aggregate { $0.name.count() }.confirm()[0]["count:(name)"] as? Int
         XCTAssertEqual(planetCount, 6)
-        let maxDiameter = Planet.objects(self.context).brl_aggregate { $0.diameter.max() }[0]["max:(diameter)"] as? Double
+        let maxDiameter = Planet.objects(self.context).brl.aggregate { $0.diameter.max() }.confirm()[0]["max:(diameter)"] as? Double
         XCTAssertEqual(maxDiameter, 142984)
-        let groupedMinSemiMajorAxis = Satellite.objects(self.context).brl_aggregate { $0.semiMajorAxis.min() }.brl_aggregate { $0.parent.name }.brl_groupBy { $0.parent.name }
+        let groupedMinSemiMajorAxis = Satellite.objects(self.context).brl.aggregate { $0.semiMajorAxis.min() }.aggregate { $0.parent.name }.groupBy { $0.parent.name }.confirm()
         XCTAssertEqual(groupedMinSemiMajorAxis.underestimateCount(), 2)
         groupedMinSemiMajorAxis.forEach {
             if let parentName = $0["parent.name"] as? String {
