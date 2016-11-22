@@ -34,9 +34,6 @@ extension Fetch: Executable {
     
     public func fetchRequest() -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = self.builder.build()
-        if Barrel.debugMode {
-            print("NSFetchRequest generated: \(fetchRequest)")
-        }
         return fetchRequest
     }
     
@@ -45,7 +42,7 @@ extension Fetch: Executable {
     }
 }
 
-public extension Fetch {
+extension Fetch {
     public func filter(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Fetch {
         return Fetch(
             context: self.context,
@@ -88,10 +85,12 @@ public extension Fetch {
 }
 
 public extension Fetch {
+    @available(*, renamed: "brl.filter")
     public func brl_filter(_ f: @escaping (Attribute<T>) -> Predicate) -> Fetch {
         return self.filter(f(Attribute()).value)
     }
     
+    @available(*, renamed: "brl.sorted")
     public func brl_sorted(_ f: @escaping (Attribute<T>, Attribute<T>) -> SortDescriptors) -> Fetch {
         return self.sorted(f(Attribute(), Attribute(name: "sort")).value)
     }

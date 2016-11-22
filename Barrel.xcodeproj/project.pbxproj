@@ -19,140 +19,150 @@
 		EB853C241C488E2D00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB853C251C488E3100BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
 		EB853C261C488E3A00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA931C4886F2004D17EE /* Barrel.framework */; };
+		EBD35D731DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
+		EBD35D741DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
+		EBD35D751DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
+		EBD35D761DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
+		EBD35D771DE4245400E27F78 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D6C1DE4245400E27F78 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35D781DE4245400E27F78 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D6C1DE4245400E27F78 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35D791DE4245400E27F78 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D6C1DE4245400E27F78 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35D7A1DE4245400E27F78 /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D6C1DE4245400E27F78 /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35D7B1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
+		EBD35D7C1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
+		EBD35D7D1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
+		EBD35D7E1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
+		EBD35D831DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
+		EBD35D841DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
+		EBD35D851DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
+		EBD35D861DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
+		EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
+		EBD35D881DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
+		EBD35D891DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
+		EBD35D8A1DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
+		EBD35D8B1DE4245400E27F78 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D711DE4245400E27F78 /* Protocols.swift */; };
+		EBD35D8C1DE4245400E27F78 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D711DE4245400E27F78 /* Protocols.swift */; };
+		EBD35D8D1DE4245400E27F78 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D711DE4245400E27F78 /* Protocols.swift */; };
+		EBD35D8E1DE4245400E27F78 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D711DE4245400E27F78 /* Protocols.swift */; };
+		EBD35D8F1DE4245400E27F78 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D721DE4245400E27F78 /* SortDescriptors.swift */; };
+		EBD35D901DE4245400E27F78 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D721DE4245400E27F78 /* SortDescriptors.swift */; };
+		EBD35D911DE4245400E27F78 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D721DE4245400E27F78 /* SortDescriptors.swift */; };
+		EBD35D921DE4245400E27F78 /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D721DE4245400E27F78 /* SortDescriptors.swift */; };
+		EBD35D9E1DE4248100E27F78 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D931DE4248100E27F78 /* Aggregate.swift */; };
+		EBD35D9F1DE4248100E27F78 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D931DE4248100E27F78 /* Aggregate.swift */; };
+		EBD35DA01DE4248100E27F78 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D931DE4248100E27F78 /* Aggregate.swift */; };
+		EBD35DA11DE4248100E27F78 /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D931DE4248100E27F78 /* Aggregate.swift */; };
+		EBD35DA21DE4248100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D941DE4248100E27F78 /* Barrel.swift */; };
+		EBD35DA31DE4248100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D941DE4248100E27F78 /* Barrel.swift */; };
+		EBD35DA41DE4248100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D941DE4248100E27F78 /* Barrel.swift */; };
+		EBD35DA51DE4248100E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D941DE4248100E27F78 /* Barrel.swift */; };
+		EBD35DA61DE4248100E27F78 /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D951DE4248100E27F78 /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35DA71DE4248100E27F78 /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D951DE4248100E27F78 /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35DA81DE4248100E27F78 /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D951DE4248100E27F78 /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35DA91DE4248100E27F78 /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35D951DE4248100E27F78 /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35DAA1DE4248100E27F78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D961DE4248100E27F78 /* Builder.swift */; };
+		EBD35DAB1DE4248100E27F78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D961DE4248100E27F78 /* Builder.swift */; };
+		EBD35DAC1DE4248100E27F78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D961DE4248100E27F78 /* Builder.swift */; };
+		EBD35DAD1DE4248100E27F78 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D961DE4248100E27F78 /* Builder.swift */; };
+		EBD35DAE1DE4248100E27F78 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D971DE4248100E27F78 /* Executable.swift */; };
+		EBD35DAF1DE4248100E27F78 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D971DE4248100E27F78 /* Executable.swift */; };
+		EBD35DB01DE4248100E27F78 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D971DE4248100E27F78 /* Executable.swift */; };
+		EBD35DB11DE4248100E27F78 /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D971DE4248100E27F78 /* Executable.swift */; };
+		EBD35DB21DE4248100E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D981DE4248100E27F78 /* Extensions.swift */; };
+		EBD35DB31DE4248100E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D981DE4248100E27F78 /* Extensions.swift */; };
+		EBD35DB41DE4248100E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D981DE4248100E27F78 /* Extensions.swift */; };
+		EBD35DB51DE4248100E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D981DE4248100E27F78 /* Extensions.swift */; };
+		EBD35DB61DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
+		EBD35DB71DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
+		EBD35DB81DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
+		EBD35DB91DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
+		EBD35DBA1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
+		EBD35DBB1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
+		EBD35DBC1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
+		EBD35DBD1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
+		EBD35DC61DE4248100E27F78 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9D1DE4248100E27F78 /* ResultsController.swift */; };
+		EBD35DC71DE4248100E27F78 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9D1DE4248100E27F78 /* ResultsController.swift */; };
+		EBD35DC81DE4248100E27F78 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9D1DE4248100E27F78 /* ResultsController.swift */; };
+		EBD35DC91DE4248100E27F78 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9D1DE4248100E27F78 /* ResultsController.swift */; };
+		EBD35DCC1DE424E100E27F78 /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DCA1DE424E100E27F78 /* BarrelTests.swift */; };
+		EBD35DCD1DE424E100E27F78 /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DCA1DE424E100E27F78 /* BarrelTests.swift */; };
+		EBD35DCE1DE424E100E27F78 /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DCA1DE424E100E27F78 /* BarrelTests.swift */; };
+		EBD35DE21DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD21DE4250800E27F78 /* BarrelCoreDataTests.swift */; };
+		EBD35DE31DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD21DE4250800E27F78 /* BarrelCoreDataTests.swift */; };
+		EBD35DE41DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD21DE4250800E27F78 /* BarrelCoreDataTests.swift */; };
+		EBD35DE81DE4250800E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD41DE4250800E27F78 /* Planet.swift */; };
+		EBD35DE91DE4250800E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD41DE4250800E27F78 /* Planet.swift */; };
+		EBD35DEA1DE4250800E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD41DE4250800E27F78 /* Planet.swift */; };
+		EBD35DEB1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD51DE4250800E27F78 /* Planet+BarrelAttribute.swift */; };
+		EBD35DEC1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD51DE4250800E27F78 /* Planet+BarrelAttribute.swift */; };
+		EBD35DED1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD51DE4250800E27F78 /* Planet+BarrelAttribute.swift */; };
+		EBD35DEE1DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD61DE4250800E27F78 /* Planet+CoreDataProperties.swift */; };
+		EBD35DEF1DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD61DE4250800E27F78 /* Planet+CoreDataProperties.swift */; };
+		EBD35DF01DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD61DE4250800E27F78 /* Planet+CoreDataProperties.swift */; };
+		EBD35DF11DE4250800E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD71DE4250800E27F78 /* Satellite.swift */; };
+		EBD35DF21DE4250800E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD71DE4250800E27F78 /* Satellite.swift */; };
+		EBD35DF31DE4250800E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD71DE4250800E27F78 /* Satellite.swift */; };
+		EBD35DF41DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD81DE4250800E27F78 /* Satellite+BarrelAttribute.swift */; };
+		EBD35DF51DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD81DE4250800E27F78 /* Satellite+BarrelAttribute.swift */; };
+		EBD35DF61DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD81DE4250800E27F78 /* Satellite+BarrelAttribute.swift */; };
+		EBD35DF71DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD91DE4250800E27F78 /* Satellite+CoreDataProperties.swift */; };
+		EBD35DF81DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD91DE4250800E27F78 /* Satellite+CoreDataProperties.swift */; };
+		EBD35DF91DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DD91DE4250800E27F78 /* Satellite+CoreDataProperties.swift */; };
+		EBD35DFA1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDA1DE4250800E27F78 /* SolerSystem.xcdatamodeld */; };
+		EBD35DFB1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDA1DE4250800E27F78 /* SolerSystem.xcdatamodeld */; };
+		EBD35DFC1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDA1DE4250800E27F78 /* SolerSystem.xcdatamodeld */; };
+		EBD35DFD1DE4250800E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDC1DE4250800E27F78 /* Star.swift */; };
+		EBD35DFE1DE4250800E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDC1DE4250800E27F78 /* Star.swift */; };
+		EBD35DFF1DE4250800E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDC1DE4250800E27F78 /* Star.swift */; };
+		EBD35E001DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDD1DE4250800E27F78 /* Star+BarrelAttribute.swift */; };
+		EBD35E011DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDD1DE4250800E27F78 /* Star+BarrelAttribute.swift */; };
+		EBD35E021DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDD1DE4250800E27F78 /* Star+BarrelAttribute.swift */; };
+		EBD35E031DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDE1DE4250800E27F78 /* Star+CoreDataProperties.swift */; };
+		EBD35E041DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDE1DE4250800E27F78 /* Star+CoreDataProperties.swift */; };
+		EBD35E051DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDE1DE4250800E27F78 /* Star+CoreDataProperties.swift */; };
+		EBD35E061DE4250800E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDF1DE4250800E27F78 /* StarBase.swift */; };
+		EBD35E071DE4250800E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDF1DE4250800E27F78 /* StarBase.swift */; };
+		EBD35E081DE4250800E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DDF1DE4250800E27F78 /* StarBase.swift */; };
+		EBD35E091DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE01DE4250800E27F78 /* StarBase+BarrelAttribute.swift */; };
+		EBD35E0A1DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE01DE4250800E27F78 /* StarBase+BarrelAttribute.swift */; };
+		EBD35E0B1DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE01DE4250800E27F78 /* StarBase+BarrelAttribute.swift */; };
+		EBD35E0C1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE11DE4250800E27F78 /* StarBase+CoreDataProperties.swift */; };
+		EBD35E0D1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE11DE4250800E27F78 /* StarBase+CoreDataProperties.swift */; };
+		EBD35E0E1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35DE11DE4250800E27F78 /* StarBase+CoreDataProperties.swift */; };
+		EBD35E151DE4254000E27F78 /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E0F1DE4254000E27F78 /* BarrelRealmTests.swift */; };
+		EBD35E161DE4254000E27F78 /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E0F1DE4254000E27F78 /* BarrelRealmTests.swift */; };
+		EBD35E171DE4254000E27F78 /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E0F1DE4254000E27F78 /* BarrelRealmTests.swift */; };
+		EBD35E1B1DE4254000E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E111DE4254000E27F78 /* Planet.swift */; };
+		EBD35E1C1DE4254000E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E111DE4254000E27F78 /* Planet.swift */; };
+		EBD35E1D1DE4254100E27F78 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E111DE4254000E27F78 /* Planet.swift */; };
+		EBD35E1E1DE4254100E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E121DE4254000E27F78 /* Satellite.swift */; };
+		EBD35E1F1DE4254100E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E121DE4254000E27F78 /* Satellite.swift */; };
+		EBD35E201DE4254100E27F78 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E121DE4254000E27F78 /* Satellite.swift */; };
+		EBD35E211DE4254100E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E131DE4254000E27F78 /* Star.swift */; };
+		EBD35E221DE4254100E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E131DE4254000E27F78 /* Star.swift */; };
+		EBD35E231DE4254100E27F78 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E131DE4254000E27F78 /* Star.swift */; };
+		EBD35E241DE4254100E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E141DE4254000E27F78 /* StarBase.swift */; };
+		EBD35E251DE4254100E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E141DE4254000E27F78 /* StarBase.swift */; };
+		EBD35E261DE4254100E27F78 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E141DE4254000E27F78 /* StarBase.swift */; };
+		EBD35E2B1DE4255300E27F78 /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35E271DE4255300E27F78 /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35E2C1DE4255300E27F78 /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35E271DE4255300E27F78 /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35E2D1DE4255300E27F78 /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35E271DE4255300E27F78 /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35E2E1DE4255300E27F78 /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD35E271DE4255300E27F78 /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD35E2F1DE4255300E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E281DE4255300E27F78 /* Extensions.swift */; };
+		EBD35E301DE4255300E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E281DE4255300E27F78 /* Extensions.swift */; };
+		EBD35E311DE4255300E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E281DE4255300E27F78 /* Extensions.swift */; };
+		EBD35E321DE4255300E27F78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E281DE4255300E27F78 /* Extensions.swift */; };
+		EBD35E3C1DE4256700E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E3B1DE4256700E27F78 /* Barrel.swift */; };
+		EBD35E3D1DE4256700E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E3B1DE4256700E27F78 /* Barrel.swift */; };
+		EBD35E3E1DE4256700E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E3B1DE4256700E27F78 /* Barrel.swift */; };
+		EBD35E3F1DE4256700E27F78 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35E3B1DE4256700E27F78 /* Barrel.swift */; };
 		EBF7F9C51C4885E1004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7F9BA1C4885E1004D17EE /* Barrel.framework */; };
 		EBF7FA651C4886CF004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EBF7FA811C4886E0004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
-		EBF7FA9B1C48872A004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FA9C1C48872A004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
-		EBF7FA9D1C48872A004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
-		EBF7FA9E1C48872A004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
-		EBF7FA9F1C48872A004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
-		EBF7FAA01C48872A004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
-		EBF7FAA11C48872A004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
-		EBF7FAA21C48872C004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAA31C48872C004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
-		EBF7FAA41C48872C004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
-		EBF7FAA51C48872C004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
-		EBF7FAA61C48872C004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
-		EBF7FAA71C48872C004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
-		EBF7FAA81C48872C004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
-		EBF7FAA91C48872F004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAAA1C48872F004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
-		EBF7FAAB1C48872F004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
-		EBF7FAAC1C48872F004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
-		EBF7FAAD1C48872F004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
-		EBF7FAAE1C48872F004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
-		EBF7FAAF1C48872F004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
-		EBF7FAB01C488731004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAB11C488731004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
-		EBF7FAB21C488731004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
-		EBF7FAB31C488731004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
-		EBF7FAB41C488731004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
-		EBF7FAB51C488731004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
-		EBF7FAB61C488731004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
-		EBF7FAB71C488737004D17EE /* Barrel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7F9D81C48860D004D17EE /* Barrel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FAB81C4887BE004D17EE /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EA1C488619004D17EE /* BarrelTests.swift */; };
 		EBF7FAC81C4887F5004D17EE /* Barrel_CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FABE1C4887F5004D17EE /* Barrel_CoreData.framework */; };
 		EBF7FAE41C488810004D17EE /* Barrel_CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FADA1C488810004D17EE /* Barrel_CoreData.framework */; };
 		EBF7FB1C1C488840004D17EE /* Barrel_CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FB121C488840004D17EE /* Barrel_CoreData.framework */; };
-		EBF7FB361C488891004D17EE /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EF1C488633004D17EE /* Aggregate.swift */; };
-		EBF7FB371C488891004D17EE /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F11C488633004D17EE /* Builder.swift */; };
-		EBF7FB381C488891004D17EE /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F21C488633004D17EE /* Executable.swift */; };
-		EBF7FB391C488891004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F31C488633004D17EE /* Extensions.swift */; };
-		EBF7FB3A1C488891004D17EE /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F41C488633004D17EE /* Fetch.swift */; };
-		EBF7FB3B1C488891004D17EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F51C488633004D17EE /* Group.swift */; };
-		EBF7FB3C1C488891004D17EE /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F81C488633004D17EE /* ResultsController.swift */; };
-		EBF7FB3D1C488894004D17EE /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EF1C488633004D17EE /* Aggregate.swift */; };
-		EBF7FB3E1C488894004D17EE /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F11C488633004D17EE /* Builder.swift */; };
-		EBF7FB3F1C488894004D17EE /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F21C488633004D17EE /* Executable.swift */; };
-		EBF7FB401C488894004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F31C488633004D17EE /* Extensions.swift */; };
-		EBF7FB411C488894004D17EE /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F41C488633004D17EE /* Fetch.swift */; };
-		EBF7FB421C488894004D17EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F51C488633004D17EE /* Group.swift */; };
-		EBF7FB431C488894004D17EE /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F81C488633004D17EE /* ResultsController.swift */; };
-		EBF7FB441C488897004D17EE /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EF1C488633004D17EE /* Aggregate.swift */; };
-		EBF7FB451C488897004D17EE /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F11C488633004D17EE /* Builder.swift */; };
-		EBF7FB461C488897004D17EE /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F21C488633004D17EE /* Executable.swift */; };
-		EBF7FB471C488897004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F31C488633004D17EE /* Extensions.swift */; };
-		EBF7FB481C488897004D17EE /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F41C488633004D17EE /* Fetch.swift */; };
-		EBF7FB491C488897004D17EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F51C488633004D17EE /* Group.swift */; };
-		EBF7FB4A1C488897004D17EE /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F81C488633004D17EE /* ResultsController.swift */; };
-		EBF7FB4B1C48889A004D17EE /* Aggregate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EF1C488633004D17EE /* Aggregate.swift */; };
-		EBF7FB4C1C48889A004D17EE /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F11C488633004D17EE /* Builder.swift */; };
-		EBF7FB4D1C48889A004D17EE /* Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F21C488633004D17EE /* Executable.swift */; };
-		EBF7FB4E1C48889A004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F31C488633004D17EE /* Extensions.swift */; };
-		EBF7FB4F1C48889A004D17EE /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F41C488633004D17EE /* Fetch.swift */; };
-		EBF7FB501C48889A004D17EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F51C488633004D17EE /* Group.swift */; };
-		EBF7FB511C48889A004D17EE /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9F81C488633004D17EE /* ResultsController.swift */; };
-		EBF7FB521C4888A4004D17EE /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7F9F01C488633004D17EE /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FB531C4888A9004D17EE /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7F9F01C488633004D17EE /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FB541C4888B1004D17EE /* BarrelCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7F9F01C488633004D17EE /* BarrelCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FB551C4888C5004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA061C488646004D17EE /* Planet.swift */; };
-		EBF7FB561C4888C5004D17EE /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA071C488646004D17EE /* Planet+BarrelAttribute.swift */; };
-		EBF7FB571C4888C5004D17EE /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA081C488646004D17EE /* Planet+CoreDataProperties.swift */; };
-		EBF7FB581C4888C5004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA091C488646004D17EE /* Satellite.swift */; };
-		EBF7FB591C4888C5004D17EE /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0A1C488646004D17EE /* Satellite+BarrelAttribute.swift */; };
-		EBF7FB5A1C4888C5004D17EE /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0B1C488646004D17EE /* Satellite+CoreDataProperties.swift */; };
-		EBF7FB5B1C4888C5004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0E1C488646004D17EE /* Star.swift */; };
-		EBF7FB5C1C4888C5004D17EE /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0F1C488646004D17EE /* Star+BarrelAttribute.swift */; };
-		EBF7FB5D1C4888C5004D17EE /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA101C488646004D17EE /* Star+CoreDataProperties.swift */; };
-		EBF7FB5E1C4888C5004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA111C488646004D17EE /* StarBase.swift */; };
-		EBF7FB5F1C4888C5004D17EE /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA121C488646004D17EE /* StarBase+BarrelAttribute.swift */; };
-		EBF7FB601C4888C5004D17EE /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA131C488646004D17EE /* StarBase+CoreDataProperties.swift */; };
-		EBF7FB611C4888C8004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA061C488646004D17EE /* Planet.swift */; };
-		EBF7FB621C4888C8004D17EE /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA071C488646004D17EE /* Planet+BarrelAttribute.swift */; };
-		EBF7FB631C4888C8004D17EE /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA081C488646004D17EE /* Planet+CoreDataProperties.swift */; };
-		EBF7FB641C4888C8004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA091C488646004D17EE /* Satellite.swift */; };
-		EBF7FB651C4888C8004D17EE /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0A1C488646004D17EE /* Satellite+BarrelAttribute.swift */; };
-		EBF7FB661C4888C8004D17EE /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0B1C488646004D17EE /* Satellite+CoreDataProperties.swift */; };
-		EBF7FB671C4888C8004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0E1C488646004D17EE /* Star.swift */; };
-		EBF7FB681C4888C8004D17EE /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0F1C488646004D17EE /* Star+BarrelAttribute.swift */; };
-		EBF7FB691C4888C8004D17EE /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA101C488646004D17EE /* Star+CoreDataProperties.swift */; };
-		EBF7FB6A1C4888C8004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA111C488646004D17EE /* StarBase.swift */; };
-		EBF7FB6B1C4888C8004D17EE /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA121C488646004D17EE /* StarBase+BarrelAttribute.swift */; };
-		EBF7FB6C1C4888C8004D17EE /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA131C488646004D17EE /* StarBase+CoreDataProperties.swift */; };
-		EBF7FB6D1C4888CB004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA061C488646004D17EE /* Planet.swift */; };
-		EBF7FB6E1C4888CB004D17EE /* Planet+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA071C488646004D17EE /* Planet+BarrelAttribute.swift */; };
-		EBF7FB6F1C4888CB004D17EE /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA081C488646004D17EE /* Planet+CoreDataProperties.swift */; };
-		EBF7FB701C4888CB004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA091C488646004D17EE /* Satellite.swift */; };
-		EBF7FB711C4888CB004D17EE /* Satellite+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0A1C488646004D17EE /* Satellite+BarrelAttribute.swift */; };
-		EBF7FB721C4888CB004D17EE /* Satellite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0B1C488646004D17EE /* Satellite+CoreDataProperties.swift */; };
-		EBF7FB731C4888CB004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0E1C488646004D17EE /* Star.swift */; };
-		EBF7FB741C4888CB004D17EE /* Star+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA0F1C488646004D17EE /* Star+BarrelAttribute.swift */; };
-		EBF7FB751C4888CB004D17EE /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA101C488646004D17EE /* Star+CoreDataProperties.swift */; };
-		EBF7FB761C4888CB004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA111C488646004D17EE /* StarBase.swift */; };
-		EBF7FB771C4888CB004D17EE /* StarBase+BarrelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA121C488646004D17EE /* StarBase+BarrelAttribute.swift */; };
-		EBF7FB781C4888CB004D17EE /* StarBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA131C488646004D17EE /* StarBase+CoreDataProperties.swift */; };
-		EBF7FB791C4888D2004D17EE /* SolerSystem.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = EBF7FA0C1C488646004D17EE /* SolerSystem.xcdatamodeld */; };
-		EBF7FB7A1C4888D5004D17EE /* SolerSystem.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = EBF7FA0C1C488646004D17EE /* SolerSystem.xcdatamodeld */; };
-		EBF7FB7B1C4888D8004D17EE /* SolerSystem.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = EBF7FA0C1C488646004D17EE /* SolerSystem.xcdatamodeld */; };
-		EBF7FB7C1C48892B004D17EE /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA041C488646004D17EE /* BarrelCoreDataTests.swift */; };
-		EBF7FB7D1C488930004D17EE /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA041C488646004D17EE /* BarrelCoreDataTests.swift */; };
-		EBF7FB7E1C488935004D17EE /* BarrelCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA041C488646004D17EE /* BarrelCoreDataTests.swift */; };
 		EBF7FB8E1C488958004D17EE /* Barrel_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FB841C488957004D17EE /* Barrel_Realm.framework */; };
 		EBF7FBAA1C488965004D17EE /* Barrel_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBA01C488965004D17EE /* Barrel_Realm.framework */; };
-		EBF7FBE01C488A08004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA251C488664004D17EE /* Extensions.swift */; };
-		EBF7FBE11C488A0B004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA251C488664004D17EE /* Extensions.swift */; };
-		EBF7FBE21C488A0D004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA251C488664004D17EE /* Extensions.swift */; };
-		EBF7FBE31C488A11004D17EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA251C488664004D17EE /* Extensions.swift */; };
-		EBF7FBE41C488A15004D17EE /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7FA241C488664004D17EE /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FBE51C488A19004D17EE /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7FA241C488664004D17EE /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FBE61C488A1D004D17EE /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7FA241C488664004D17EE /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FBE71C488A20004D17EE /* BarrelRealm.h in Headers */ = {isa = PBXBuildFile; fileRef = EBF7FA241C488664004D17EE /* BarrelRealm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBF7FBE81C488A2E004D17EE /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2D1C488672004D17EE /* BarrelRealmTests.swift */; };
-		EBF7FBE91C488A2E004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2F1C488672004D17EE /* Planet.swift */; };
-		EBF7FBEA1C488A2E004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA301C488672004D17EE /* Satellite.swift */; };
-		EBF7FBEB1C488A2E004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA311C488672004D17EE /* Star.swift */; };
-		EBF7FBEC1C488A2E004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA321C488672004D17EE /* StarBase.swift */; };
-		EBF7FBED1C488A31004D17EE /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2D1C488672004D17EE /* BarrelRealmTests.swift */; };
-		EBF7FBEE1C488A31004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2F1C488672004D17EE /* Planet.swift */; };
-		EBF7FBEF1C488A31004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA301C488672004D17EE /* Satellite.swift */; };
-		EBF7FBF01C488A31004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA311C488672004D17EE /* Star.swift */; };
-		EBF7FBF11C488A31004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA321C488672004D17EE /* StarBase.swift */; };
-		EBF7FBF21C488A34004D17EE /* BarrelRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2D1C488672004D17EE /* BarrelRealmTests.swift */; };
-		EBF7FBF31C488A34004D17EE /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA2F1C488672004D17EE /* Planet.swift */; };
-		EBF7FBF41C488A34004D17EE /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA301C488672004D17EE /* Satellite.swift */; };
-		EBF7FBF51C488A34004D17EE /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA311C488672004D17EE /* Star.swift */; };
-		EBF7FBF61C488A34004D17EE /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7FA321C488672004D17EE /* StarBase.swift */; };
 		EBF7FBF91C488A4C004D17EE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBF71C488A4C004D17EE /* Realm.framework */; };
 		EBF7FBFA1C488A4C004D17EE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBF81C488A4C004D17EE /* RealmSwift.framework */; };
 		EBF7FBFD1C488A59004D17EE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBFB1C488A59004D17EE /* Realm.framework */; };
@@ -168,8 +178,6 @@
 		EBF7FC191C488C4D004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EBF7FC1B1C488CA3004D17EE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBFB1C488A59004D17EE /* Realm.framework */; };
 		EBF7FC1C1C488CA3004D17EE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FBFC1C488A59004D17EE /* RealmSwift.framework */; };
-		EBF7FC1D1C488D09004D17EE /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EA1C488619004D17EE /* BarrelTests.swift */; };
-		EBF7FC1E1C488D20004D17EE /* BarrelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9EA1C488619004D17EE /* BarrelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,54 +261,55 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EBD35D6B1DE4245400E27F78 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		EBD35D6C1DE4245400E27F78 /* Barrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barrel.h; sourceTree = "<group>"; };
+		EBD35D6D1DE4245400E27F78 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		EBD35D6E1DE4245400E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35D6F1DE4245400E27F78 /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
+		EBD35D701DE4245400E27F78 /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
+		EBD35D711DE4245400E27F78 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		EBD35D721DE4245400E27F78 /* SortDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
+		EBD35D931DE4248100E27F78 /* Aggregate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aggregate.swift; sourceTree = "<group>"; };
+		EBD35D941DE4248100E27F78 /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barrel.swift; sourceTree = "<group>"; };
+		EBD35D951DE4248100E27F78 /* BarrelCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrelCoreData.h; sourceTree = "<group>"; };
+		EBD35D961DE4248100E27F78 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		EBD35D971DE4248100E27F78 /* Executable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executable.swift; sourceTree = "<group>"; };
+		EBD35D981DE4248100E27F78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EBD35D991DE4248100E27F78 /* Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
+		EBD35D9A1DE4248100E27F78 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		EBD35D9B1DE4248100E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35D9C1DE4248100E27F78 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		EBD35D9D1DE4248100E27F78 /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		EBD35DCA1DE424E100E27F78 /* BarrelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarrelTests.swift; sourceTree = "<group>"; };
+		EBD35DCB1DE424E100E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35DD21DE4250800E27F78 /* BarrelCoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarrelCoreDataTests.swift; sourceTree = "<group>"; };
+		EBD35DD31DE4250800E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35DD41DE4250800E27F78 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		EBD35DD51DE4250800E27F78 /* Planet+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+BarrelAttribute.swift"; sourceTree = "<group>"; };
+		EBD35DD61DE4250800E27F78 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBD35DD71DE4250800E27F78 /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
+		EBD35DD81DE4250800E27F78 /* Satellite+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Satellite+BarrelAttribute.swift"; sourceTree = "<group>"; };
+		EBD35DD91DE4250800E27F78 /* Satellite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Satellite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBD35DDB1DE4250800E27F78 /* SolerSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SolerSystem.xcdatamodel; sourceTree = "<group>"; };
+		EBD35DDC1DE4250800E27F78 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		EBD35DDD1DE4250800E27F78 /* Star+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Star+BarrelAttribute.swift"; sourceTree = "<group>"; };
+		EBD35DDE1DE4250800E27F78 /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBD35DDF1DE4250800E27F78 /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarBase.swift; sourceTree = "<group>"; };
+		EBD35DE01DE4250800E27F78 /* StarBase+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StarBase+BarrelAttribute.swift"; sourceTree = "<group>"; };
+		EBD35DE11DE4250800E27F78 /* StarBase+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StarBase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBD35E0F1DE4254000E27F78 /* BarrelRealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarrelRealmTests.swift; sourceTree = "<group>"; };
+		EBD35E101DE4254000E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35E111DE4254000E27F78 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		EBD35E121DE4254000E27F78 /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
+		EBD35E131DE4254000E27F78 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		EBD35E141DE4254000E27F78 /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarBase.swift; sourceTree = "<group>"; };
+		EBD35E271DE4255300E27F78 /* BarrelRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrelRealm.h; sourceTree = "<group>"; };
+		EBD35E281DE4255300E27F78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EBD35E291DE4255300E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBD35E2A1DE4255300E27F78 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		EBD35E3B1DE4256700E27F78 /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barrel.swift; sourceTree = "<group>"; };
 		EBF7F9BA1C4885E1004D17EE /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7F9C41C4885E1004D17EE /* BarrelTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BarrelTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBF7F9D71C48860D004D17EE /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attribute.swift; path = Core/Attribute.swift; sourceTree = "<group>"; };
-		EBF7F9D81C48860D004D17EE /* Barrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Barrel.h; path = Core/Barrel.h; sourceTree = "<group>"; };
-		EBF7F9D91C48860D004D17EE /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Barrel.swift; path = Core/Barrel.swift; sourceTree = "<group>"; };
-		EBF7F9DA1C48860D004D17EE /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Core/Expression.swift; sourceTree = "<group>"; };
-		EBF7F9DB1C48860D004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Core/Info.plist; sourceTree = "<group>"; };
-		EBF7F9DC1C48860D004D17EE /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyPath.swift; path = Core/KeyPath.swift; sourceTree = "<group>"; };
-		EBF7F9DD1C48860D004D17EE /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Core/Predicate.swift; sourceTree = "<group>"; };
-		EBF7F9DE1C48860D004D17EE /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
-		EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortDescriptors.swift; path = Core/SortDescriptors.swift; sourceTree = "<group>"; };
-		EBF7F9EA1C488619004D17EE /* BarrelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelTests.swift; path = Core/Tests/BarrelTests.swift; sourceTree = "<group>"; };
-		EBF7F9EB1C488619004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Core/Tests/Info.plist; sourceTree = "<group>"; };
-		EBF7F9EF1C488633004D17EE /* Aggregate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Aggregate.swift; path = CoreData/Aggregate.swift; sourceTree = "<group>"; };
-		EBF7F9F01C488633004D17EE /* BarrelCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarrelCoreData.h; path = CoreData/BarrelCoreData.h; sourceTree = "<group>"; };
-		EBF7F9F11C488633004D17EE /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = CoreData/Builder.swift; sourceTree = "<group>"; };
-		EBF7F9F21C488633004D17EE /* Executable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Executable.swift; path = CoreData/Executable.swift; sourceTree = "<group>"; };
-		EBF7F9F31C488633004D17EE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = CoreData/Extensions.swift; sourceTree = "<group>"; };
-		EBF7F9F41C488633004D17EE /* Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetch.swift; path = CoreData/Fetch.swift; sourceTree = "<group>"; };
-		EBF7F9F51C488633004D17EE /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = CoreData/Group.swift; sourceTree = "<group>"; };
-		EBF7F9F61C488633004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CoreData/Info.plist; sourceTree = "<group>"; };
-		EBF7F9F71C488633004D17EE /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = Readme.md; path = CoreData/Readme.md; sourceTree = "<group>"; };
-		EBF7F9F81C488633004D17EE /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsController.swift; path = CoreData/ResultsController.swift; sourceTree = "<group>"; };
-		EBF7FA041C488646004D17EE /* BarrelCoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelCoreDataTests.swift; path = CoreData/Tests/BarrelCoreDataTests.swift; sourceTree = "<group>"; };
-		EBF7FA051C488646004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CoreData/Tests/Info.plist; sourceTree = "<group>"; };
-		EBF7FA061C488646004D17EE /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet.swift; path = CoreData/Tests/Planet.swift; sourceTree = "<group>"; };
-		EBF7FA071C488646004D17EE /* Planet+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+BarrelAttribute.swift"; path = "CoreData/Tests/Planet+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EBF7FA081C488646004D17EE /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+CoreDataProperties.swift"; path = "CoreData/Tests/Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBF7FA091C488646004D17EE /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Satellite.swift; path = CoreData/Tests/Satellite.swift; sourceTree = "<group>"; };
-		EBF7FA0A1C488646004D17EE /* Satellite+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Satellite+BarrelAttribute.swift"; path = "CoreData/Tests/Satellite+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EBF7FA0B1C488646004D17EE /* Satellite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Satellite+CoreDataProperties.swift"; path = "CoreData/Tests/Satellite+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBF7FA0D1C488646004D17EE /* SolerSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SolerSystem.xcdatamodel; sourceTree = "<group>"; };
-		EBF7FA0E1C488646004D17EE /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Star.swift; path = CoreData/Tests/Star.swift; sourceTree = "<group>"; };
-		EBF7FA0F1C488646004D17EE /* Star+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Star+BarrelAttribute.swift"; path = "CoreData/Tests/Star+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EBF7FA101C488646004D17EE /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Star+CoreDataProperties.swift"; path = "CoreData/Tests/Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBF7FA111C488646004D17EE /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarBase.swift; path = CoreData/Tests/StarBase.swift; sourceTree = "<group>"; };
-		EBF7FA121C488646004D17EE /* StarBase+BarrelAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StarBase+BarrelAttribute.swift"; path = "CoreData/Tests/StarBase+BarrelAttribute.swift"; sourceTree = "<group>"; };
-		EBF7FA131C488646004D17EE /* StarBase+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StarBase+CoreDataProperties.swift"; path = "CoreData/Tests/StarBase+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBF7FA241C488664004D17EE /* BarrelRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarrelRealm.h; path = Realm/BarrelRealm.h; sourceTree = "<group>"; };
-		EBF7FA251C488664004D17EE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Realm/Extensions.swift; sourceTree = "<group>"; };
-		EBF7FA261C488664004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Realm/Info.plist; sourceTree = "<group>"; };
-		EBF7FA271C488664004D17EE /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = Readme.md; path = Realm/Readme.md; sourceTree = "<group>"; };
-		EBF7FA2D1C488672004D17EE /* BarrelRealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelRealmTests.swift; path = Realm/Tests/BarrelRealmTests.swift; sourceTree = "<group>"; };
-		EBF7FA2E1C488672004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Realm/Tests/Info.plist; sourceTree = "<group>"; };
-		EBF7FA2F1C488672004D17EE /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet.swift; path = Realm/Tests/Planet.swift; sourceTree = "<group>"; };
-		EBF7FA301C488672004D17EE /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Satellite.swift; path = Realm/Tests/Satellite.swift; sourceTree = "<group>"; };
-		EBF7FA311C488672004D17EE /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Star.swift; path = Realm/Tests/Star.swift; sourceTree = "<group>"; };
-		EBF7FA321C488672004D17EE /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarBase.swift; path = Realm/Tests/StarBase.swift; sourceTree = "<group>"; };
 		EBF7FA5B1C4886CF004D17EE /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7FA641C4886CF004D17EE /* BarrelTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BarrelTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7FA771C4886E0004D17EE /* Barrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,92 +565,93 @@
 		EBF7F9D61C488603004D17EE /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7F9D71C48860D004D17EE /* Attribute.swift */,
-				EBF7F9D81C48860D004D17EE /* Barrel.h */,
-				EBF7F9D91C48860D004D17EE /* Barrel.swift */,
-				EBF7F9DA1C48860D004D17EE /* Expression.swift */,
-				EBF7F9DB1C48860D004D17EE /* Info.plist */,
-				EBF7F9DC1C48860D004D17EE /* KeyPath.swift */,
-				EBF7F9DD1C48860D004D17EE /* Predicate.swift */,
-				EBF7F9DE1C48860D004D17EE /* Protocols.swift */,
-				EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */,
+				EBD35D6B1DE4245400E27F78 /* Attribute.swift */,
+				EBD35D6C1DE4245400E27F78 /* Barrel.h */,
+				EBD35D6D1DE4245400E27F78 /* Expression.swift */,
+				EBD35D6E1DE4245400E27F78 /* Info.plist */,
+				EBD35D6F1DE4245400E27F78 /* KeyPath.swift */,
+				EBD35D701DE4245400E27F78 /* Predicate.swift */,
+				EBD35D711DE4245400E27F78 /* Protocols.swift */,
+				EBD35D721DE4245400E27F78 /* SortDescriptors.swift */,
 				EBF7F9E91C488610004D17EE /* Tests */,
 			);
-			name = Core;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		EBF7F9E91C488610004D17EE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7F9EA1C488619004D17EE /* BarrelTests.swift */,
-				EBF7F9EB1C488619004D17EE /* Info.plist */,
+				EBD35DCA1DE424E100E27F78 /* BarrelTests.swift */,
+				EBD35DCB1DE424E100E27F78 /* Info.plist */,
 			);
-			name = Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		EBF7F9EE1C488628004D17EE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7F9EF1C488633004D17EE /* Aggregate.swift */,
-				EBF7F9F01C488633004D17EE /* BarrelCoreData.h */,
-				EBF7F9F11C488633004D17EE /* Builder.swift */,
-				EBF7F9F21C488633004D17EE /* Executable.swift */,
-				EBF7F9F31C488633004D17EE /* Extensions.swift */,
-				EBF7F9F41C488633004D17EE /* Fetch.swift */,
-				EBF7F9F51C488633004D17EE /* Group.swift */,
-				EBF7F9F61C488633004D17EE /* Info.plist */,
-				EBF7F9F71C488633004D17EE /* Readme.md */,
-				EBF7F9F81C488633004D17EE /* ResultsController.swift */,
+				EBD35D931DE4248100E27F78 /* Aggregate.swift */,
+				EBD35D941DE4248100E27F78 /* Barrel.swift */,
+				EBD35D951DE4248100E27F78 /* BarrelCoreData.h */,
+				EBD35D961DE4248100E27F78 /* Builder.swift */,
+				EBD35D971DE4248100E27F78 /* Executable.swift */,
+				EBD35D981DE4248100E27F78 /* Extensions.swift */,
+				EBD35D991DE4248100E27F78 /* Fetch.swift */,
+				EBD35D9A1DE4248100E27F78 /* Group.swift */,
+				EBD35D9B1DE4248100E27F78 /* Info.plist */,
+				EBD35D9C1DE4248100E27F78 /* Readme.md */,
+				EBD35D9D1DE4248100E27F78 /* ResultsController.swift */,
 				EBF7FA031C488637004D17EE /* Tests */,
 			);
-			name = CoreData;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		EBF7FA031C488637004D17EE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7FA041C488646004D17EE /* BarrelCoreDataTests.swift */,
-				EBF7FA051C488646004D17EE /* Info.plist */,
-				EBF7FA061C488646004D17EE /* Planet.swift */,
-				EBF7FA071C488646004D17EE /* Planet+BarrelAttribute.swift */,
-				EBF7FA081C488646004D17EE /* Planet+CoreDataProperties.swift */,
-				EBF7FA091C488646004D17EE /* Satellite.swift */,
-				EBF7FA0A1C488646004D17EE /* Satellite+BarrelAttribute.swift */,
-				EBF7FA0B1C488646004D17EE /* Satellite+CoreDataProperties.swift */,
-				EBF7FA0C1C488646004D17EE /* SolerSystem.xcdatamodeld */,
-				EBF7FA0E1C488646004D17EE /* Star.swift */,
-				EBF7FA0F1C488646004D17EE /* Star+BarrelAttribute.swift */,
-				EBF7FA101C488646004D17EE /* Star+CoreDataProperties.swift */,
-				EBF7FA111C488646004D17EE /* StarBase.swift */,
-				EBF7FA121C488646004D17EE /* StarBase+BarrelAttribute.swift */,
-				EBF7FA131C488646004D17EE /* StarBase+CoreDataProperties.swift */,
+				EBD35DD21DE4250800E27F78 /* BarrelCoreDataTests.swift */,
+				EBD35DD31DE4250800E27F78 /* Info.plist */,
+				EBD35DD41DE4250800E27F78 /* Planet.swift */,
+				EBD35DD51DE4250800E27F78 /* Planet+BarrelAttribute.swift */,
+				EBD35DD61DE4250800E27F78 /* Planet+CoreDataProperties.swift */,
+				EBD35DD71DE4250800E27F78 /* Satellite.swift */,
+				EBD35DD81DE4250800E27F78 /* Satellite+BarrelAttribute.swift */,
+				EBD35DD91DE4250800E27F78 /* Satellite+CoreDataProperties.swift */,
+				EBD35DDA1DE4250800E27F78 /* SolerSystem.xcdatamodeld */,
+				EBD35DDC1DE4250800E27F78 /* Star.swift */,
+				EBD35DDD1DE4250800E27F78 /* Star+BarrelAttribute.swift */,
+				EBD35DDE1DE4250800E27F78 /* Star+CoreDataProperties.swift */,
+				EBD35DDF1DE4250800E27F78 /* StarBase.swift */,
+				EBD35DE01DE4250800E27F78 /* StarBase+BarrelAttribute.swift */,
+				EBD35DE11DE4250800E27F78 /* StarBase+CoreDataProperties.swift */,
 			);
-			name = Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		EBF7FA231C488656004D17EE /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7FA241C488664004D17EE /* BarrelRealm.h */,
-				EBF7FA251C488664004D17EE /* Extensions.swift */,
-				EBF7FA261C488664004D17EE /* Info.plist */,
-				EBF7FA271C488664004D17EE /* Readme.md */,
+				EBD35E271DE4255300E27F78 /* BarrelRealm.h */,
+				EBD35E3B1DE4256700E27F78 /* Barrel.swift */,
+				EBD35E281DE4255300E27F78 /* Extensions.swift */,
+				EBD35E291DE4255300E27F78 /* Info.plist */,
+				EBD35E2A1DE4255300E27F78 /* Readme.md */,
 				EBF7FA2C1C48866C004D17EE /* Tests */,
 			);
-			name = Realm;
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		EBF7FA2C1C48866C004D17EE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EBF7FA2D1C488672004D17EE /* BarrelRealmTests.swift */,
-				EBF7FA2E1C488672004D17EE /* Info.plist */,
-				EBF7FA2F1C488672004D17EE /* Planet.swift */,
-				EBF7FA301C488672004D17EE /* Satellite.swift */,
-				EBF7FA311C488672004D17EE /* Star.swift */,
-				EBF7FA321C488672004D17EE /* StarBase.swift */,
+				EBD35E0F1DE4254000E27F78 /* BarrelRealmTests.swift */,
+				EBD35E101DE4254000E27F78 /* Info.plist */,
+				EBD35E111DE4254000E27F78 /* Planet.swift */,
+				EBD35E121DE4254000E27F78 /* Satellite.swift */,
+				EBD35E131DE4254000E27F78 /* Star.swift */,
+				EBD35E141DE4254000E27F78 /* StarBase.swift */,
 			);
-			name = Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		EBF7FC0D1C488AE3004D17EE /* Frameworks */ = {
@@ -666,7 +676,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FAB71C488737004D17EE /* Barrel.h in Headers */,
+				EBD35D771DE4245400E27F78 /* Barrel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +684,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD35D781DE4245400E27F78 /* Barrel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +692,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD35D791DE4245400E27F78 /* Barrel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +700,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD35D7A1DE4245400E27F78 /* Barrel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +708,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD35DA61DE4248100E27F78 /* BarrelCoreData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +716,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB521C4888A4004D17EE /* BarrelCoreData.h in Headers */,
+				EBD35DA71DE4248100E27F78 /* BarrelCoreData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +724,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB531C4888A9004D17EE /* BarrelCoreData.h in Headers */,
+				EBD35DA81DE4248100E27F78 /* BarrelCoreData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,7 +732,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB541C4888B1004D17EE /* BarrelCoreData.h in Headers */,
+				EBD35DA91DE4248100E27F78 /* BarrelCoreData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,7 +740,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE71C488A20004D17EE /* BarrelRealm.h in Headers */,
+				EBD35E2B1DE4255300E27F78 /* BarrelRealm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +748,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE61C488A1D004D17EE /* BarrelRealm.h in Headers */,
+				EBD35E2C1DE4255300E27F78 /* BarrelRealm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +756,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE51C488A19004D17EE /* BarrelRealm.h in Headers */,
+				EBD35E2D1DE4255300E27F78 /* BarrelRealm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +764,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE41C488A15004D17EE /* BarrelRealm.h in Headers */,
+				EBD35E2E1DE4255300E27F78 /* BarrelRealm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,7 +1157,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = tarunon;
 				TargetAttributes = {
 					EBF7F9B91C4885E1004D17EE = {
@@ -1173,26 +1187,31 @@
 					};
 					EBF7FABD1C4887F5004D17EE = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FAC61C4887F5004D17EE = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FAD91C488810004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FAE21C488810004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FB111C488840004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FB1A1C488840004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FB2D1C488852004D17EE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					EBF7FB831C488957004D17EE = {
 						CreatedOnToolsVersion = 7.2;
@@ -1317,7 +1336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB791C4888D2004D17EE /* SolerSystem.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1332,7 +1350,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB7A1C4888D5004D17EE /* SolerSystem.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,7 +1364,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB7B1C4888D8004D17EE /* SolerSystem.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,13 +1430,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FA9B1C48872A004D17EE /* Attribute.swift in Sources */,
-				EBF7FA9C1C48872A004D17EE /* Barrel.swift in Sources */,
-				EBF7FA9D1C48872A004D17EE /* Expression.swift in Sources */,
-				EBF7FA9E1C48872A004D17EE /* KeyPath.swift in Sources */,
-				EBF7FA9F1C48872A004D17EE /* Predicate.swift in Sources */,
-				EBF7FAA01C48872A004D17EE /* Protocols.swift in Sources */,
-				EBF7FAA11C48872A004D17EE /* SortDescriptors.swift in Sources */,
+				EBD35D8B1DE4245400E27F78 /* Protocols.swift in Sources */,
+				EBD35D831DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D7B1DE4245400E27F78 /* Expression.swift in Sources */,
+				EBD35D731DE4245400E27F78 /* Attribute.swift in Sources */,
+				EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */,
+				EBD35D8F1DE4245400E27F78 /* SortDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1428,7 +1443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FAB81C4887BE004D17EE /* BarrelTests.swift in Sources */,
+				EBD35DCC1DE424E100E27F78 /* BarrelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,13 +1451,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FAA21C48872C004D17EE /* Attribute.swift in Sources */,
-				EBF7FAA31C48872C004D17EE /* Barrel.swift in Sources */,
-				EBF7FAA41C48872C004D17EE /* Expression.swift in Sources */,
-				EBF7FAA51C48872C004D17EE /* KeyPath.swift in Sources */,
-				EBF7FAA61C48872C004D17EE /* Predicate.swift in Sources */,
-				EBF7FAA71C48872C004D17EE /* Protocols.swift in Sources */,
-				EBF7FAA81C48872C004D17EE /* SortDescriptors.swift in Sources */,
+				EBD35D8C1DE4245400E27F78 /* Protocols.swift in Sources */,
+				EBD35D841DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D7C1DE4245400E27F78 /* Expression.swift in Sources */,
+				EBD35D741DE4245400E27F78 /* Attribute.swift in Sources */,
+				EBD35D881DE4245400E27F78 /* Predicate.swift in Sources */,
+				EBD35D901DE4245400E27F78 /* SortDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,7 +1464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FC1D1C488D09004D17EE /* BarrelTests.swift in Sources */,
+				EBD35DCD1DE424E100E27F78 /* BarrelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1458,13 +1472,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FAA91C48872F004D17EE /* Attribute.swift in Sources */,
-				EBF7FAAA1C48872F004D17EE /* Barrel.swift in Sources */,
-				EBF7FAAB1C48872F004D17EE /* Expression.swift in Sources */,
-				EBF7FAAC1C48872F004D17EE /* KeyPath.swift in Sources */,
-				EBF7FAAD1C48872F004D17EE /* Predicate.swift in Sources */,
-				EBF7FAAE1C48872F004D17EE /* Protocols.swift in Sources */,
-				EBF7FAAF1C48872F004D17EE /* SortDescriptors.swift in Sources */,
+				EBD35D8D1DE4245400E27F78 /* Protocols.swift in Sources */,
+				EBD35D851DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D7D1DE4245400E27F78 /* Expression.swift in Sources */,
+				EBD35D751DE4245400E27F78 /* Attribute.swift in Sources */,
+				EBD35D891DE4245400E27F78 /* Predicate.swift in Sources */,
+				EBD35D911DE4245400E27F78 /* SortDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,7 +1485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FC1E1C488D20004D17EE /* BarrelTests.swift in Sources */,
+				EBD35DCE1DE424E100E27F78 /* BarrelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1480,13 +1493,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FAB01C488731004D17EE /* Attribute.swift in Sources */,
-				EBF7FAB11C488731004D17EE /* Barrel.swift in Sources */,
-				EBF7FAB21C488731004D17EE /* Expression.swift in Sources */,
-				EBF7FAB31C488731004D17EE /* KeyPath.swift in Sources */,
-				EBF7FAB41C488731004D17EE /* Predicate.swift in Sources */,
-				EBF7FAB51C488731004D17EE /* Protocols.swift in Sources */,
-				EBF7FAB61C488731004D17EE /* SortDescriptors.swift in Sources */,
+				EBD35D8E1DE4245400E27F78 /* Protocols.swift in Sources */,
+				EBD35D861DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D7E1DE4245400E27F78 /* Expression.swift in Sources */,
+				EBD35D761DE4245400E27F78 /* Attribute.swift in Sources */,
+				EBD35D8A1DE4245400E27F78 /* Predicate.swift in Sources */,
+				EBD35D921DE4245400E27F78 /* SortDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,13 +1506,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB361C488891004D17EE /* Aggregate.swift in Sources */,
-				EBF7FB371C488891004D17EE /* Builder.swift in Sources */,
-				EBF7FB381C488891004D17EE /* Executable.swift in Sources */,
-				EBF7FB391C488891004D17EE /* Extensions.swift in Sources */,
-				EBF7FB3A1C488891004D17EE /* Fetch.swift in Sources */,
-				EBF7FB3B1C488891004D17EE /* Group.swift in Sources */,
-				EBF7FB3C1C488891004D17EE /* ResultsController.swift in Sources */,
+				EBD35DBA1DE4248100E27F78 /* Group.swift in Sources */,
+				EBD35DB61DE4248100E27F78 /* Fetch.swift in Sources */,
+				EBD35DB21DE4248100E27F78 /* Extensions.swift in Sources */,
+				EBD35D9E1DE4248100E27F78 /* Aggregate.swift in Sources */,
+				EBD35DAE1DE4248100E27F78 /* Executable.swift in Sources */,
+				EBD35DA21DE4248100E27F78 /* Barrel.swift in Sources */,
+				EBD35DAA1DE4248100E27F78 /* Builder.swift in Sources */,
+				EBD35DC61DE4248100E27F78 /* ResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1508,19 +1521,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB7C1C48892B004D17EE /* BarrelCoreDataTests.swift in Sources */,
-				EBF7FB551C4888C5004D17EE /* Planet.swift in Sources */,
-				EBF7FB561C4888C5004D17EE /* Planet+BarrelAttribute.swift in Sources */,
-				EBF7FB571C4888C5004D17EE /* Planet+CoreDataProperties.swift in Sources */,
-				EBF7FB581C4888C5004D17EE /* Satellite.swift in Sources */,
-				EBF7FB591C4888C5004D17EE /* Satellite+BarrelAttribute.swift in Sources */,
-				EBF7FB5A1C4888C5004D17EE /* Satellite+CoreDataProperties.swift in Sources */,
-				EBF7FB5B1C4888C5004D17EE /* Star.swift in Sources */,
-				EBF7FB5C1C4888C5004D17EE /* Star+BarrelAttribute.swift in Sources */,
-				EBF7FB5D1C4888C5004D17EE /* Star+CoreDataProperties.swift in Sources */,
-				EBF7FB5E1C4888C5004D17EE /* StarBase.swift in Sources */,
-				EBF7FB5F1C4888C5004D17EE /* StarBase+BarrelAttribute.swift in Sources */,
-				EBF7FB601C4888C5004D17EE /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35E0C1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35DFD1DE4250800E27F78 /* Star.swift in Sources */,
+				EBD35DF41DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */,
+				EBD35DE21DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */,
+				EBD35E031DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */,
+				EBD35DFA1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */,
+				EBD35E091DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */,
+				EBD35DF11DE4250800E27F78 /* Satellite.swift in Sources */,
+				EBD35E061DE4250800E27F78 /* StarBase.swift in Sources */,
+				EBD35DEE1DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */,
+				EBD35E001DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */,
+				EBD35DF71DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBD35DEB1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */,
+				EBD35DE81DE4250800E27F78 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,13 +1542,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB3D1C488894004D17EE /* Aggregate.swift in Sources */,
-				EBF7FB3E1C488894004D17EE /* Builder.swift in Sources */,
-				EBF7FB3F1C488894004D17EE /* Executable.swift in Sources */,
-				EBF7FB401C488894004D17EE /* Extensions.swift in Sources */,
-				EBF7FB411C488894004D17EE /* Fetch.swift in Sources */,
-				EBF7FB421C488894004D17EE /* Group.swift in Sources */,
-				EBF7FB431C488894004D17EE /* ResultsController.swift in Sources */,
+				EBD35DBB1DE4248100E27F78 /* Group.swift in Sources */,
+				EBD35DB71DE4248100E27F78 /* Fetch.swift in Sources */,
+				EBD35DB31DE4248100E27F78 /* Extensions.swift in Sources */,
+				EBD35D9F1DE4248100E27F78 /* Aggregate.swift in Sources */,
+				EBD35DAF1DE4248100E27F78 /* Executable.swift in Sources */,
+				EBD35DA31DE4248100E27F78 /* Barrel.swift in Sources */,
+				EBD35DAB1DE4248100E27F78 /* Builder.swift in Sources */,
+				EBD35DC71DE4248100E27F78 /* ResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1542,19 +1557,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB7D1C488930004D17EE /* BarrelCoreDataTests.swift in Sources */,
-				EBF7FB611C4888C8004D17EE /* Planet.swift in Sources */,
-				EBF7FB621C4888C8004D17EE /* Planet+BarrelAttribute.swift in Sources */,
-				EBF7FB631C4888C8004D17EE /* Planet+CoreDataProperties.swift in Sources */,
-				EBF7FB641C4888C8004D17EE /* Satellite.swift in Sources */,
-				EBF7FB651C4888C8004D17EE /* Satellite+BarrelAttribute.swift in Sources */,
-				EBF7FB661C4888C8004D17EE /* Satellite+CoreDataProperties.swift in Sources */,
-				EBF7FB671C4888C8004D17EE /* Star.swift in Sources */,
-				EBF7FB681C4888C8004D17EE /* Star+BarrelAttribute.swift in Sources */,
-				EBF7FB691C4888C8004D17EE /* Star+CoreDataProperties.swift in Sources */,
-				EBF7FB6A1C4888C8004D17EE /* StarBase.swift in Sources */,
-				EBF7FB6B1C4888C8004D17EE /* StarBase+BarrelAttribute.swift in Sources */,
-				EBF7FB6C1C4888C8004D17EE /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35E0D1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35DFE1DE4250800E27F78 /* Star.swift in Sources */,
+				EBD35DF51DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */,
+				EBD35DE31DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */,
+				EBD35E041DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */,
+				EBD35DFB1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */,
+				EBD35E0A1DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */,
+				EBD35DF21DE4250800E27F78 /* Satellite.swift in Sources */,
+				EBD35E071DE4250800E27F78 /* StarBase.swift in Sources */,
+				EBD35DEF1DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */,
+				EBD35E011DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */,
+				EBD35DF81DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBD35DEC1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */,
+				EBD35DE91DE4250800E27F78 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,13 +1578,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB441C488897004D17EE /* Aggregate.swift in Sources */,
-				EBF7FB451C488897004D17EE /* Builder.swift in Sources */,
-				EBF7FB461C488897004D17EE /* Executable.swift in Sources */,
-				EBF7FB471C488897004D17EE /* Extensions.swift in Sources */,
-				EBF7FB481C488897004D17EE /* Fetch.swift in Sources */,
-				EBF7FB491C488897004D17EE /* Group.swift in Sources */,
-				EBF7FB4A1C488897004D17EE /* ResultsController.swift in Sources */,
+				EBD35DBC1DE4248100E27F78 /* Group.swift in Sources */,
+				EBD35DB81DE4248100E27F78 /* Fetch.swift in Sources */,
+				EBD35DB41DE4248100E27F78 /* Extensions.swift in Sources */,
+				EBD35DA01DE4248100E27F78 /* Aggregate.swift in Sources */,
+				EBD35DB01DE4248100E27F78 /* Executable.swift in Sources */,
+				EBD35DA41DE4248100E27F78 /* Barrel.swift in Sources */,
+				EBD35DAC1DE4248100E27F78 /* Builder.swift in Sources */,
+				EBD35DC81DE4248100E27F78 /* ResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1576,19 +1593,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB7E1C488935004D17EE /* BarrelCoreDataTests.swift in Sources */,
-				EBF7FB6D1C4888CB004D17EE /* Planet.swift in Sources */,
-				EBF7FB6E1C4888CB004D17EE /* Planet+BarrelAttribute.swift in Sources */,
-				EBF7FB6F1C4888CB004D17EE /* Planet+CoreDataProperties.swift in Sources */,
-				EBF7FB701C4888CB004D17EE /* Satellite.swift in Sources */,
-				EBF7FB711C4888CB004D17EE /* Satellite+BarrelAttribute.swift in Sources */,
-				EBF7FB721C4888CB004D17EE /* Satellite+CoreDataProperties.swift in Sources */,
-				EBF7FB731C4888CB004D17EE /* Star.swift in Sources */,
-				EBF7FB741C4888CB004D17EE /* Star+BarrelAttribute.swift in Sources */,
-				EBF7FB751C4888CB004D17EE /* Star+CoreDataProperties.swift in Sources */,
-				EBF7FB761C4888CB004D17EE /* StarBase.swift in Sources */,
-				EBF7FB771C4888CB004D17EE /* StarBase+BarrelAttribute.swift in Sources */,
-				EBF7FB781C4888CB004D17EE /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35E0E1DE4250800E27F78 /* StarBase+CoreDataProperties.swift in Sources */,
+				EBD35DFF1DE4250800E27F78 /* Star.swift in Sources */,
+				EBD35DF61DE4250800E27F78 /* Satellite+BarrelAttribute.swift in Sources */,
+				EBD35DE41DE4250800E27F78 /* BarrelCoreDataTests.swift in Sources */,
+				EBD35E051DE4250800E27F78 /* Star+CoreDataProperties.swift in Sources */,
+				EBD35DFC1DE4250800E27F78 /* SolerSystem.xcdatamodeld in Sources */,
+				EBD35E0B1DE4250800E27F78 /* StarBase+BarrelAttribute.swift in Sources */,
+				EBD35DF31DE4250800E27F78 /* Satellite.swift in Sources */,
+				EBD35E081DE4250800E27F78 /* StarBase.swift in Sources */,
+				EBD35DF01DE4250800E27F78 /* Planet+CoreDataProperties.swift in Sources */,
+				EBD35E021DE4250800E27F78 /* Star+BarrelAttribute.swift in Sources */,
+				EBD35DF91DE4250800E27F78 /* Satellite+CoreDataProperties.swift in Sources */,
+				EBD35DED1DE4250800E27F78 /* Planet+BarrelAttribute.swift in Sources */,
+				EBD35DEA1DE4250800E27F78 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1596,13 +1614,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FB4B1C48889A004D17EE /* Aggregate.swift in Sources */,
-				EBF7FB4C1C48889A004D17EE /* Builder.swift in Sources */,
-				EBF7FB4D1C48889A004D17EE /* Executable.swift in Sources */,
-				EBF7FB4E1C48889A004D17EE /* Extensions.swift in Sources */,
-				EBF7FB4F1C48889A004D17EE /* Fetch.swift in Sources */,
-				EBF7FB501C48889A004D17EE /* Group.swift in Sources */,
-				EBF7FB511C48889A004D17EE /* ResultsController.swift in Sources */,
+				EBD35DBD1DE4248100E27F78 /* Group.swift in Sources */,
+				EBD35DB91DE4248100E27F78 /* Fetch.swift in Sources */,
+				EBD35DB51DE4248100E27F78 /* Extensions.swift in Sources */,
+				EBD35DA11DE4248100E27F78 /* Aggregate.swift in Sources */,
+				EBD35DB11DE4248100E27F78 /* Executable.swift in Sources */,
+				EBD35DA51DE4248100E27F78 /* Barrel.swift in Sources */,
+				EBD35DAD1DE4248100E27F78 /* Builder.swift in Sources */,
+				EBD35DC91DE4248100E27F78 /* ResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,7 +1629,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE01C488A08004D17EE /* Extensions.swift in Sources */,
+				EBD35E2F1DE4255300E27F78 /* Extensions.swift in Sources */,
+				EBD35E3C1DE4256700E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1618,11 +1638,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE81C488A2E004D17EE /* BarrelRealmTests.swift in Sources */,
-				EBF7FBE91C488A2E004D17EE /* Planet.swift in Sources */,
-				EBF7FBEA1C488A2E004D17EE /* Satellite.swift in Sources */,
-				EBF7FBEB1C488A2E004D17EE /* Star.swift in Sources */,
-				EBF7FBEC1C488A2E004D17EE /* StarBase.swift in Sources */,
+				EBD35E241DE4254100E27F78 /* StarBase.swift in Sources */,
+				EBD35E211DE4254100E27F78 /* Star.swift in Sources */,
+				EBD35E1E1DE4254100E27F78 /* Satellite.swift in Sources */,
+				EBD35E1B1DE4254000E27F78 /* Planet.swift in Sources */,
+				EBD35E151DE4254000E27F78 /* BarrelRealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,7 +1650,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE11C488A0B004D17EE /* Extensions.swift in Sources */,
+				EBD35E301DE4255300E27F78 /* Extensions.swift in Sources */,
+				EBD35E3D1DE4256700E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,11 +1659,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBED1C488A31004D17EE /* BarrelRealmTests.swift in Sources */,
-				EBF7FBEE1C488A31004D17EE /* Planet.swift in Sources */,
-				EBF7FBEF1C488A31004D17EE /* Satellite.swift in Sources */,
-				EBF7FBF01C488A31004D17EE /* Star.swift in Sources */,
-				EBF7FBF11C488A31004D17EE /* StarBase.swift in Sources */,
+				EBD35E251DE4254100E27F78 /* StarBase.swift in Sources */,
+				EBD35E221DE4254100E27F78 /* Star.swift in Sources */,
+				EBD35E1F1DE4254100E27F78 /* Satellite.swift in Sources */,
+				EBD35E1C1DE4254000E27F78 /* Planet.swift in Sources */,
+				EBD35E161DE4254000E27F78 /* BarrelRealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1650,7 +1671,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE21C488A0D004D17EE /* Extensions.swift in Sources */,
+				EBD35E311DE4255300E27F78 /* Extensions.swift in Sources */,
+				EBD35E3E1DE4256700E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1658,11 +1680,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBF21C488A34004D17EE /* BarrelRealmTests.swift in Sources */,
-				EBF7FBF31C488A34004D17EE /* Planet.swift in Sources */,
-				EBF7FBF41C488A34004D17EE /* Satellite.swift in Sources */,
-				EBF7FBF51C488A34004D17EE /* Star.swift in Sources */,
-				EBF7FBF61C488A34004D17EE /* StarBase.swift in Sources */,
+				EBD35E261DE4254100E27F78 /* StarBase.swift in Sources */,
+				EBD35E231DE4254100E27F78 /* Star.swift in Sources */,
+				EBD35E201DE4254100E27F78 /* Satellite.swift in Sources */,
+				EBD35E1D1DE4254100E27F78 /* Planet.swift in Sources */,
+				EBD35E171DE4254000E27F78 /* BarrelRealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1670,7 +1692,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF7FBE31C488A11004D17EE /* Extensions.swift in Sources */,
+				EBD35E321DE4255300E27F78 /* Extensions.swift in Sources */,
+				EBD35E3F1DE4256700E27F78 /* Barrel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1837,7 +1860,7 @@
 				PRODUCT_NAME = Barrel;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1858,7 +1881,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.Barrel;
 				PRODUCT_NAME = Barrel;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1869,7 +1892,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1880,7 +1903,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1903,7 +1926,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1926,7 +1949,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1941,7 +1964,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1956,7 +1979,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1976,7 +1999,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1998,7 +2021,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2012,7 +2035,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2025,7 +2048,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2046,7 +2069,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2068,7 +2091,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2077,6 +2100,7 @@
 		EBF7FAD01C4887F5004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2089,13 +2113,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreData";
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		EBF7FAD11C4887F5004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2108,35 +2134,41 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreData";
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		EBF7FAD31C4887F5004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		EBF7FAD41C4887F5004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		EBF7FAEC1C488810004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -2152,13 +2184,15 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		EBF7FAED1C488810004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -2174,13 +2208,15 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		EBF7FAEF1C488810004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
@@ -2189,13 +2225,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		EBF7FAF01C488810004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
@@ -2204,13 +2243,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		EBF7FB241C488840004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2223,7 +2263,8 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2232,6 +2273,7 @@
 		EBF7FB251C488840004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2244,7 +2286,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2253,12 +2295,15 @@
 		EBF7FB271C488840004D17EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2266,12 +2311,14 @@
 		EBF7FB281C488840004D17EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoreData/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2280,6 +2327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2292,7 +2340,8 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2302,6 +2351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2314,7 +2364,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2339,7 +2389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-Realm";
 				PRODUCT_NAME = Barrel_Realm;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -2362,7 +2412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-Realm";
 				PRODUCT_NAME = Barrel_Realm;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -2377,7 +2427,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -2392,7 +2442,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -2418,7 +2468,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -2444,7 +2494,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -2463,7 +2513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -2482,7 +2532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -2505,7 +2555,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2530,7 +2580,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2548,7 +2598,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2565,7 +2615,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2590,7 +2640,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2616,7 +2666,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2826,14 +2876,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EBF7FA0C1C488646004D17EE /* SolerSystem.xcdatamodeld */ = {
+		EBD35DDA1DE4250800E27F78 /* SolerSystem.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EBF7FA0D1C488646004D17EE /* SolerSystem.xcdatamodel */,
+				EBD35DDB1DE4250800E27F78 /* SolerSystem.xcdatamodel */,
 			);
-			currentVersion = EBF7FA0D1C488646004D17EE /* SolerSystem.xcdatamodel */;
-			name = SolerSystem.xcdatamodeld;
-			path = CoreData/Tests/SolerSystem.xcdatamodeld;
+			currentVersion = EBD35DDB1DE4250800E27F78 /* SolerSystem.xcdatamodel */;
+			path = SolerSystem.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

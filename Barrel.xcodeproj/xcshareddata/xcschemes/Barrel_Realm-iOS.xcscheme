@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
-               BuildableName = "Barrel_CoreData.framework"
-               BlueprintName = "Barrel_CoreData-iOS"
+               BlueprintIdentifier = "EBF7FB831C488957004D17EE"
+               BuildableName = "Barrel_Realm.framework"
+               BlueprintName = "Barrel_Realm-iOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBF7FAC61C4887F5004D17EE"
-               BuildableName = "Barrel_CoreDataTests-iOS.xctest"
-               BlueprintName = "Barrel_CoreDataTests-iOS"
+               BlueprintIdentifier = "EBF7FB8C1C488958004D17EE"
+               BuildableName = "Barrel_RealmTests-iOS.xctest"
+               BlueprintName = "Barrel_RealmTests-iOS"
                ReferencedContainer = "container:Barrel.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData-iOS"
+            BlueprintIdentifier = "EBF7FB831C488957004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData-iOS"
+            BlueprintIdentifier = "EBF7FB831C488957004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBF7FABD1C4887F5004D17EE"
-            BuildableName = "Barrel_CoreData.framework"
-            BlueprintName = "Barrel_CoreData-iOS"
+            BlueprintIdentifier = "EBF7FB831C488957004D17EE"
+            BuildableName = "Barrel_Realm.framework"
+            BlueprintName = "Barrel_Realm-iOS"
             ReferencedContainer = "container:Barrel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

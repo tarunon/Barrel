@@ -12,9 +12,6 @@ public struct SortDescriptors {
     public let value: [NSSortDescriptor]
     
     private init(_ value: [NSSortDescriptor]) {
-        if Barrel.debugMode {
-            print("Array of NSSortDescriptor generated: \(value)")
-        }
         self.value = value
     }
     

@@ -33,9 +33,6 @@ public struct Expression<T: ExpressionType>: ExpressionType {
     public let value: NSExpression
     
     internal init(_ value: NSExpression) {
-        if Barrel.debugMode {
-            print("NSExpression generated: \(value)")
-        }
         self.value = value
     }
 

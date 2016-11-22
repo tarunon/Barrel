@@ -24,7 +24,7 @@ extension LinkingObjects: ExpressionType, ManyType {
     public typealias ElementType = T
 }
 
-private extension NSSortDescriptor {
+internal extension NSSortDescriptor {
     func toRealmObject() -> SortDescriptor {
         return SortDescriptor(property: self.key!, ascending: ascending)
     }
@@ -50,30 +50,37 @@ public extension ExpressionType where Self: Object {
 }
 
 public extension RealmCollection where Element: ExpressionType {
+    @available(*, renamed: "brl.filter")
     func brl_filter(_ f: (Attribute<Element>) -> Predicate) -> Results<Element> {
         return self.filter(f(Attribute()).value)
     }
 
+    @available(*, renamed: "brl.indexOf")
     func brl_indexOf(_ f: (Attribute<Element>) -> Predicate) -> Int? {
         return self.index(matching: f(Attribute()).value)
     }
-    
+
+    @available(*, renamed: "brl.sorted")
     func brl_sorted(_ f: (Attribute<Element>, Attribute<Element>) -> SortDescriptors) -> Results<Element> {
         return self.sorted(by: f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() })
     }
-    
+
+    @available(*, renamed: "brl.min")
     func brl_min<U: MinMaxType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
         return self.min(ofProperty: f(Attribute()).keyPath.string)
     }
-    
+
+    @available(*, renamed: "brl.max")
     func brl_max<U: MinMaxType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
         return self.max(ofProperty: f(Attribute()).keyPath.string)
     }
-    
+
+    @available(*, renamed: "brl.sum")
     func brl_sum<U: AddableType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U {
         return self.sum(ofProperty: f(Attribute()).keyPath.string)
     }
-    
+
+    @available(*, renamed: "brl.average")
     func brl_average<U: AddableType>(_ f: (Attribute<Element>) -> Attribute<U>) -> U? {
         return self.average(ofProperty: f(Attribute()).keyPath.string)
     }
