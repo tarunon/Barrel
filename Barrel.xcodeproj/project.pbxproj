@@ -23,28 +23,24 @@
 		EBF7FA651C4886CF004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EBF7FA811C4886E0004D17EE /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
 		EBF7FA9B1C48872A004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FA9C1C48872A004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
 		EBF7FA9D1C48872A004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
 		EBF7FA9E1C48872A004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
 		EBF7FA9F1C48872A004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
 		EBF7FAA01C48872A004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
 		EBF7FAA11C48872A004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
 		EBF7FAA21C48872C004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAA31C48872C004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
 		EBF7FAA41C48872C004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
 		EBF7FAA51C48872C004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
 		EBF7FAA61C48872C004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
 		EBF7FAA71C48872C004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
 		EBF7FAA81C48872C004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
 		EBF7FAA91C48872F004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAAA1C48872F004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
 		EBF7FAAB1C48872F004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
 		EBF7FAAC1C48872F004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
 		EBF7FAAD1C48872F004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
 		EBF7FAAE1C48872F004D17EE /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DE1C48860D004D17EE /* Protocols.swift */; };
 		EBF7FAAF1C48872F004D17EE /* SortDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DF1C48860D004D17EE /* SortDescriptors.swift */; };
 		EBF7FAB01C488731004D17EE /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D71C48860D004D17EE /* Attribute.swift */; };
-		EBF7FAB11C488731004D17EE /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9D91C48860D004D17EE /* Barrel.swift */; };
 		EBF7FAB21C488731004D17EE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DA1C48860D004D17EE /* Expression.swift */; };
 		EBF7FAB31C488731004D17EE /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DC1C48860D004D17EE /* KeyPath.swift */; };
 		EBF7FAB41C488731004D17EE /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7F9DD1C48860D004D17EE /* Predicate.swift */; };
@@ -257,7 +253,6 @@
 		EBF7F9C41C4885E1004D17EE /* BarrelTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BarrelTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF7F9D71C48860D004D17EE /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attribute.swift; path = Core/Attribute.swift; sourceTree = "<group>"; };
 		EBF7F9D81C48860D004D17EE /* Barrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Barrel.h; path = Core/Barrel.h; sourceTree = "<group>"; };
-		EBF7F9D91C48860D004D17EE /* Barrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Barrel.swift; path = Core/Barrel.swift; sourceTree = "<group>"; };
 		EBF7F9DA1C48860D004D17EE /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Core/Expression.swift; sourceTree = "<group>"; };
 		EBF7F9DB1C48860D004D17EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Core/Info.plist; sourceTree = "<group>"; };
 		EBF7F9DC1C48860D004D17EE /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyPath.swift; path = Core/KeyPath.swift; sourceTree = "<group>"; };
@@ -558,7 +553,6 @@
 			children = (
 				EBF7F9D71C48860D004D17EE /* Attribute.swift */,
 				EBF7F9D81C48860D004D17EE /* Barrel.h */,
-				EBF7F9D91C48860D004D17EE /* Barrel.swift */,
 				EBF7F9DA1C48860D004D17EE /* Expression.swift */,
 				EBF7F9DB1C48860D004D17EE /* Info.plist */,
 				EBF7F9DC1C48860D004D17EE /* KeyPath.swift */,
@@ -1415,7 +1409,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF7FA9B1C48872A004D17EE /* Attribute.swift in Sources */,
-				EBF7FA9C1C48872A004D17EE /* Barrel.swift in Sources */,
 				EBF7FA9D1C48872A004D17EE /* Expression.swift in Sources */,
 				EBF7FA9E1C48872A004D17EE /* KeyPath.swift in Sources */,
 				EBF7FA9F1C48872A004D17EE /* Predicate.swift in Sources */,
@@ -1437,7 +1430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF7FAA21C48872C004D17EE /* Attribute.swift in Sources */,
-				EBF7FAA31C48872C004D17EE /* Barrel.swift in Sources */,
 				EBF7FAA41C48872C004D17EE /* Expression.swift in Sources */,
 				EBF7FAA51C48872C004D17EE /* KeyPath.swift in Sources */,
 				EBF7FAA61C48872C004D17EE /* Predicate.swift in Sources */,
@@ -1459,7 +1451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF7FAA91C48872F004D17EE /* Attribute.swift in Sources */,
-				EBF7FAAA1C48872F004D17EE /* Barrel.swift in Sources */,
 				EBF7FAAB1C48872F004D17EE /* Expression.swift in Sources */,
 				EBF7FAAC1C48872F004D17EE /* KeyPath.swift in Sources */,
 				EBF7FAAD1C48872F004D17EE /* Predicate.swift in Sources */,
@@ -1481,7 +1472,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF7FAB01C488731004D17EE /* Attribute.swift in Sources */,
-				EBF7FAB11C488731004D17EE /* Barrel.swift in Sources */,
 				EBF7FAB21C488731004D17EE /* Expression.swift in Sources */,
 				EBF7FAB31C488731004D17EE /* KeyPath.swift in Sources */,
 				EBF7FAB41C488731004D17EE /* Predicate.swift in Sources */,

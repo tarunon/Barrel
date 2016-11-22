@@ -18,8 +18,6 @@ class BarrelRealmTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        Barrel.debugMode = true
-        
         do {
             if let url = Realm.Configuration.defaultConfiguration.fileURL {
                 try? FileManager.default.removeItem(at: url)

@@ -34,9 +34,6 @@ extension Fetch: Executable {
     
     public func fetchRequest() -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = self.builder.build()
-        if Barrel.debugMode {
-            print("NSFetchRequest generated: \(fetchRequest)")
-        }
         return fetchRequest
     }
     

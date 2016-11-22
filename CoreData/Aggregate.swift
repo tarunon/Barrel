@@ -64,9 +64,6 @@ extension Aggregate: Executable {
     
     public func fetchRequest() -> NSFetchRequest<NSDictionary> {
         let fetchRequest = self.builder.build()
-        if Barrel.debugMode {
-            print("NSFetchRequest generated: \(fetchRequest)")
-        }
         return fetchRequest
     }
 }

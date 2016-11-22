@@ -98,8 +98,6 @@ class BarrelCoreDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        Barrel.debugMode = true
-
         self.context = BarrelCoreDataTests.context
 
         // Put setup code here. This method is called before the invocation of each test method in the class.
