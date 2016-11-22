@@ -10,7 +10,7 @@ import Foundation
 import Barrel
 import Barrel_CoreData
 
-extension AttributeType where ValueType: Satellite {
+extension Attribute where T: Satellite {
     var semiMajorAxis: Attribute<NSNumber> { return attribute() }
     var parent: Attribute<Optional<Planet>> { return attribute() }
 }

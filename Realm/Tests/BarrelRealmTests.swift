@@ -95,18 +95,18 @@ class BarrelRealmTests: XCTestCase {
     }
     
     func testExtensions() {
-        let sun = Star.objects(self.realm).brl_filter { $0.name == "Sun" }[0]
+        let sun = Star.objects(self.realm).brl.filter { $0.name == "Sun" }.confirm()[0]
         XCTAssertEqual(sun.name, "Sun")
-        let planets = Planet.objects(self.realm).brl_filter { $0.parent == sun }
+        let planets = Planet.objects(self.realm).brl.filter { $0.parent == sun }.confirm()
         XCTAssertEqual(planets.underestimatedCount, 6)
-        XCTAssertEqual(planets.brl_sorted { $0.semiMajorAxis < $1.semiMajorAxis }.map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
-        let moon = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Earth" }[0]
+        XCTAssertEqual(planets.brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm().map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
+        let moon = Satellite.objects(self.realm).brl.filter { $0.parent.name == "Earth" }.confirm()[0]
         XCTAssertEqual(moon.name, "Moon")
-        let maxDiameter = Planet.objects(self.realm).brl_max { $0.diameter }
+        let maxDiameter = Planet.objects(self.realm).brl.max { $0.diameter }
         XCTAssertEqual(maxDiameter, 142984)
-        let minSemiMajorAxis = Satellite.objects(self.realm).brl_filter { $0.parent.name == "Jupiter" }.brl_min { $0.semiMajorAxis }
+        let minSemiMajorAxis = Satellite.objects(self.realm).brl.filter { $0.parent.name == "Jupiter" }.min { $0.semiMajorAxis }
         XCTAssertEqual(minSemiMajorAxis, 421700)
-        let earth = Planet.objects(self.realm).brl_filter { $0.children.any { $0.name == "Moon" } }[0]
+        let earth = Planet.objects(self.realm).brl.filter { $0.children.any { $0.name == "Moon" } }.confirm()[0]
         XCTAssertEqual(earth.name, "Earth")
     }
 }
