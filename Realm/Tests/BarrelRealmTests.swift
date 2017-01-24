@@ -102,6 +102,8 @@ class BarrelRealmTests: XCTestCase {
         XCTAssertEqual(planets.brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm().map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         let moon = Satellite.objects(self.realm).brl.filter { $0.parent.name == "Earth" }.confirm()[0]
         XCTAssertEqual(moon.name, "Moon")
+        let europa = Satellite.objects(self.realm).brl.sorted { $0.parent.diameter > $1.parent.diameter }.sorted { $0.diameter < $1.diameter }.confirm()[0]
+        XCTAssertEqual(europa.name, "Europa")
         let maxDiameter = Planet.objects(self.realm).brl.max { $0.diameter }
         XCTAssertEqual(maxDiameter, 142984)
         let minSemiMajorAxis = Satellite.objects(self.realm).brl.filter { $0.parent.name == "Jupiter" }.min { $0.semiMajorAxis }

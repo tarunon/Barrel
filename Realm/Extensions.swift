@@ -26,7 +26,7 @@ extension LinkingObjects: ExpressionType, ManyType {
 
 internal extension NSSortDescriptor {
     func toRealmObject() -> SortDescriptor {
-        return SortDescriptor(property: self.key!, ascending: ascending)
+        return SortDescriptor(keyPath: self.key!, ascending: ascending)
     }
 }
 
@@ -62,7 +62,7 @@ public extension RealmCollection where Element: ExpressionType {
 
     @available(*, renamed: "brl.sorted")
     func brl_sorted(_ f: (Attribute<Element>, Attribute<Element>) -> SortDescriptors) -> Results<Element> {
-        return self.sorted(by: f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() })
+        return self.sorted(by: f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value.map { $0.toRealmObject() })
     }
 
     @available(*, renamed: "brl.min")

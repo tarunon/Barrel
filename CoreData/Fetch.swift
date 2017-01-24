@@ -92,6 +92,6 @@ public extension Fetch {
     
     @available(*, renamed: "brl.sorted")
     public func brl_sorted(_ f: @escaping (Attribute<T>, Attribute<T>) -> SortDescriptors) -> Fetch {
-        return self.sorted(f(Attribute(), Attribute(name: "sort")).value)
+        return self.sorted(f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value)
     }
 }

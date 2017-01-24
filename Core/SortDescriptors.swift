@@ -16,10 +16,10 @@ public struct SortDescriptors {
     }
     
     fileprivate init<T: Comparable, A: AttributeType>(lhs: A, rhs: A, ascending: Bool) where A.ValueType == T {
-        if case .keypath(let keyPath) = lhs.keyPath, !keyPath.contains(".") {
-            self.init([NSSortDescriptor(key: keyPath, ascending: ascending)])
-        } else if case .keypath(let keyPath) = rhs.keyPath, !keyPath.contains(".") {
-            self.init([NSSortDescriptor(key: keyPath, ascending: !ascending)])
+        if rhs.keyPath.string.hasPrefix("_.") {
+            self.init([NSSortDescriptor(key: lhs.keyPath.string, ascending: ascending)])
+        } else if lhs.keyPath.string.hasPrefix("_.") {
+            self.init([NSSortDescriptor(key: rhs.keyPath.string, ascending: !ascending)])
         } else {
             self.init([])
         }
@@ -27,6 +27,16 @@ public struct SortDescriptors {
     
     fileprivate init(lhs: SortDescriptors, rhs: SortDescriptors) {
         self.init(lhs.value + rhs.value)
+    }
+}
+
+extension Attribute {
+    public static func sortAttributeFirst() -> Attribute {
+        return Attribute()
+    }
+
+    public static func sortAttributeSecond() -> Attribute {
+        return Attribute(name: "_")
     }
 }
 

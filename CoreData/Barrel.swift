@@ -79,7 +79,7 @@ extension BarrelType where Base: FetchType, Base.AttributeSourceType: NSManagedO
     }
 
     public func sorted(_ f: @escaping (Attribute<Base.AttributeSourceType>, Attribute<Base.AttributeSourceType>) -> SortDescriptors) -> Barrel<Base> {
-        return Barrel(base: base.sorted(f(Attribute(), Attribute(name: "sort")).value))
+        return Barrel(base: base.sorted(f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value))
     }
 
     public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> where E.ValueType == V {
