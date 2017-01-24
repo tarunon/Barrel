@@ -137,19 +137,19 @@ class BarrelTests: XCTestCase {
     }
     
     func testSortDescriptors() {
-        let attribute = Attribute<TestModel>()
-        let sortAttr = Attribute<TestModel>(name: "sort")
+        let attr1 = Attribute<TestModel>.sortAttributeFirst()
+        let attr2 = Attribute<TestModel>.sortAttributeSecond()
         
-        let ascendingSortDescriptors: SortDescriptors = (attribute.number < sortAttr.number)
-        let ascendingSortDescriptors2: SortDescriptors = (sortAttr.number > attribute.number)
-        let ascendingSortDescriptors3: SortDescriptors = (attribute.option < sortAttr.option)
+        let ascendingSortDescriptors: SortDescriptors = (attr1.number < attr2.number)
+        let ascendingSortDescriptors2: SortDescriptors = (attr2.number > attr1.number)
+        let ascendingSortDescriptors3: SortDescriptors = (attr1.option < attr2.option)
         XCTAssertEqual(ascendingSortDescriptors.value, [NSSortDescriptor(key: "number", ascending: true)])
         XCTAssertEqual(ascendingSortDescriptors2.value, [NSSortDescriptor(key: "number", ascending: true)])
         XCTAssertEqual(ascendingSortDescriptors3.value, [NSSortDescriptor(key: "option", ascending: true)])
         
-        let descendingSortDescriptors: SortDescriptors = (attribute.number > sortAttr.number)
-        let descendingSortDescriptors2: SortDescriptors = (sortAttr.number < attribute.number)
-        let descendingSortDescriptors3: SortDescriptors = (attribute.option > sortAttr.option)
+        let descendingSortDescriptors: SortDescriptors = (attr1.number > attr2.number)
+        let descendingSortDescriptors2: SortDescriptors = (attr2.number < attr1.number)
+        let descendingSortDescriptors3: SortDescriptors = (attr1.option > attr2.option)
         XCTAssertEqual(descendingSortDescriptors.value, [NSSortDescriptor(key: "number", ascending: false)])
         XCTAssertEqual(descendingSortDescriptors2.value, [NSSortDescriptor(key: "number", ascending: false)])
         XCTAssertEqual(descendingSortDescriptors3.value, [NSSortDescriptor(key: "option", ascending: false)])

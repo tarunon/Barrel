@@ -10,7 +10,6 @@ import Foundation
 
 public protocol AttributeBase {
     var keyPath: KeyPath { get }
-    
 }
 
 public protocol AttributeType: ExpressionType, AttributeBase {

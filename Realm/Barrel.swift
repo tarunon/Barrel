@@ -39,7 +39,7 @@ public extension BarrelType where Base: RealmCollection, Base.Element: Expressio
     }
 
     func sorted(_ f: (Attribute<Base.Element>, Attribute<Base.Element>) -> SortDescriptors) -> Barrel<Results<Base.Element>> {
-        return Barrel(base: base.sorted(by: f(Attribute(), Attribute(name: "sort")).value.map { $0.toRealmObject() }))
+        return Barrel(base: base.sorted(by: f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value.map { $0.toRealmObject() }))
     }
 
     func min<U: MinMaxType>(_ f: (Attribute<Base.Element>) -> Attribute<U>) -> U? {
