@@ -11,26 +11,21 @@ import CoreData
 
 public protocol Executable: LazyCollectionProtocol {
     associatedtype ElementType: NSFetchRequestResult
-    associatedtype FetchType: NSFetchRequestResult
     typealias Elements = [ElementType]
     typealias Iterator = Array<ElementType>.Iterator
     typealias SubSequence = Array<ElementType>.SubSequence
 
     var context: NSManagedObjectContext { get }
-    func fetchRequest() -> NSFetchRequest<FetchType>
+    func fetchRequest() -> NSFetchRequest<ElementType>
 }
 
 extension Executable {
-    fileprivate func _fetchRequest() -> NSFetchRequest<ElementType> {
-        return fetchRequest() as! NSFetchRequest<ElementType>
-    }
-
     public func all() throws -> [ElementType] {
-        return try self.context.fetch(self._fetchRequest())
+        return try self.context.fetch(self.fetchRequest())
     }
     
     public func get(_ offset: Int = 0) throws -> ElementType? {
-        let fetchRequest = self._fetchRequest()
+        let fetchRequest = self.fetchRequest()
         fetchRequest.fetchLimit = 1
         fetchRequest.fetchOffset = offset
         return try self.context.fetch(fetchRequest).first
@@ -80,7 +75,7 @@ extension Executable {
     
     public func dropFirst(_ n: Int) -> ArraySlice<ElementType> {
         do {
-            let fetchRequest = self._fetchRequest()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = n
             return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
@@ -90,7 +85,7 @@ extension Executable {
     
     public func dropLast(_ n: Int) -> ArraySlice<ElementType> {
         do {
-            let fetchRequest = self._fetchRequest()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = self.underestimateCount() - n
             return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
@@ -100,7 +95,7 @@ extension Executable {
     
     public func prefix(_ maxLength: Int) -> ArraySlice<ElementType> {
         do {
-            let fetchRequest = self._fetchRequest()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = maxLength
             return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
@@ -110,7 +105,7 @@ extension Executable {
     
     public func suffix(_ maxLength: Int) -> ArraySlice<ElementType> {
         do {
-            let fetchRequest = self._fetchRequest()
+            let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = self.underestimateCount() - maxLength
             return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
