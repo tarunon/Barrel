@@ -13,11 +13,11 @@ import Barrel_Realm
 
 class Satellite: StarBase {
     dynamic var semiMajorAxis: Double = 0.0
-    
+
     dynamic var parent: Planet?
 }
 
-extension AttributeType where ValueType: Satellite {
+extension Attribute where ValueType: Satellite {
     var semiMajorAxis: Attribute<Double> { return attribute() }
     var parent: Attribute<Optional<Planet>> { return attribute() }
 }

@@ -23,38 +23,38 @@ public struct Barrel<R: RealmCollection>: BarrelType {
     }
 }
 
-extension RealmCollection where Element: ExpressionType {
+extension RealmCollection {
     public var brl: Barrel<Self> {
         return Barrel(base: self)
     }
 }
 
-public extension BarrelType where Base: RealmCollection, Base.Element: ExpressionType {
-    func filter(_ f: (Attribute<Base.Element>) -> Predicate) -> Barrel<Results<Base.Element>> {
+public extension BarrelType where Base: RealmCollection {
+    func filter(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Predicate) -> Barrel<Results<Base.Element>> {
         return Barrel(base: base.filter(f(Attribute()).value))
     }
 
-    func indexOf(_ f: (Attribute<Base.Element>) -> Predicate) -> Int? {
+    func indexOf(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Predicate) -> Int? {
         return base.index(matching: f(Attribute()).value)
     }
 
-    func sorted(_ f: (Attribute<Base.Element>, Attribute<Base.Element>) -> SortDescriptors) -> Barrel<Results<Base.Element>> {
+    func sorted(_ f: (Attribute<ExpressionWrapper<Base.Element>>, Attribute<ExpressionWrapper<Base.Element>>) -> SortDescriptors) -> Barrel<Results<Base.Element>> {
         return Barrel(base: base.sorted(by: f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value.map { $0.toRealmObject() }))
     }
 
-    func min<U: MinMaxType>(_ f: (Attribute<Base.Element>) -> Attribute<U>) -> U? {
+    func min<U: MinMaxType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> U? {
         return base.min(ofProperty: f(Attribute()).keyPath.string)
     }
 
-    func max<U: MinMaxType>(_ f: (Attribute<Base.Element>) -> Attribute<U>) -> U? {
+    func max<U: MinMaxType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> U? {
         return base.max(ofProperty: f(Attribute()).keyPath.string)
     }
 
-    func sum<U: AddableType>(_ f: (Attribute<Base.Element>) -> Attribute<U>) -> U {
+    func sum<U: AddableType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> U {
         return base.sum(ofProperty: f(Attribute()).keyPath.string)
     }
 
-    func average<U: AddableType>(_ f: (Attribute<Base.Element>) -> Attribute<U>) -> U? {
+    func average<U: AddableType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> U? {
         return base.average(ofProperty: f(Attribute()).keyPath.string)
     }
 }

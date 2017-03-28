@@ -12,6 +12,17 @@ public protocol ExpressionType {
     associatedtype ValueType
 }
 
+public struct ExpressionWrapper<V: ExpressionType>: ExpressionType {
+    public typealias ValueType = V
+    var value: V
+}
+
+prefix operator *
+
+public prefix func * <E: ExpressionType>(_ arg: E) -> ExpressionWrapper<E> {
+    return ExpressionWrapper(value: arg)
+}
+
 enum ExpressionFunction: String {
     case add        = "add:to:"
     case subtract   = "from:subtract:"
@@ -43,6 +54,8 @@ public struct Expression<T: ExpressionType>: ExpressionType {
             self.init(expression.value)
         } else if let list = value as? Values<T> {
             self.init(NSExpression(forConstantValue: list.value))
+        } else if let wrapper = value as? ExpressionWrapper<T> {
+            self.init(NSExpression(forConstantValue: wrapper.value))
         } else {
             self.init(NSExpression(forConstantValue: value as? NSObject))
         }
