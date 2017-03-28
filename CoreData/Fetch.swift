@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Fetch<T: NSManagedObject> where T: ExpressionType {
+public struct Fetch<T: NSManagedObject> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSManagedObject>>
     
@@ -30,8 +30,10 @@ public struct Fetch<T: NSManagedObject> where T: ExpressionType {
 }
 
 extension Fetch: Executable {
+
     public typealias ElementType = T
-    
+    public typealias FetchType = NSManagedObject
+
     public func fetchRequest() -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = self.builder.build()
         return fetchRequest

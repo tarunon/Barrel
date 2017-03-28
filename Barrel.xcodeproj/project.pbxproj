@@ -19,6 +19,7 @@
 		EB853C241C488E2D00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB853C251C488E3100BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
 		EB853C261C488E3A00BDE9CD /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA931C4886F2004D17EE /* Barrel.framework */; };
+		EB93DDAD1E8A5D9E00D940C7 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
 		EBD35D731DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
 		EBD35D741DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
 		EBD35D751DE4245400E27F78 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6B1DE4245400E27F78 /* Attribute.swift */; };
@@ -75,7 +76,6 @@
 		EBD35DB71DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
 		EBD35DB81DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
 		EBD35DB91DE4248100E27F78 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D991DE4248100E27F78 /* Fetch.swift */; };
-		EBD35DBA1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
 		EBD35DBB1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
 		EBD35DBC1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
 		EBD35DBD1DE4248100E27F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D9A1DE4248100E27F78 /* Group.swift */; };
@@ -1506,10 +1506,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBD35DBA1DE4248100E27F78 /* Group.swift in Sources */,
 				EBD35DB61DE4248100E27F78 /* Fetch.swift in Sources */,
 				EBD35DB21DE4248100E27F78 /* Extensions.swift in Sources */,
 				EBD35D9E1DE4248100E27F78 /* Aggregate.swift in Sources */,
+				EB93DDAD1E8A5D9E00D940C7 /* Group.swift in Sources */,
 				EBD35DAE1DE4248100E27F78 /* Executable.swift in Sources */,
 				EBD35DA21DE4248100E27F78 /* Barrel.swift in Sources */,
 				EBD35DAA1DE4248100E27F78 /* Builder.swift in Sources */,

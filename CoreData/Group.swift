@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Group<T: NSManagedObject> where T: ExpressionType {
+public struct Group<T: NSManagedObject> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     

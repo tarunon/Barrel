@@ -111,10 +111,10 @@ class BarrelCoreDataTests: XCTestCase {
         let sun = Star.objects(self.context).brl.filter { $0.name == "Sun" }.confirm()[0]
         XCTAssertEqual(sun.name, "Sun")
         
-        let planets = Planet.objects(self.context).brl.filter { $0.parent == sun }.confirm()
+        let planets = Planet.objects(self.context).brl.filter { $0.parent == *sun }.confirm()
         XCTAssertEqual(planets.underestimateCount(), 6)
         XCTAssertEqual(planets.brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm().map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
-        
+
         let jupitersSatellites = Satellite.objects(self.context).brl.filter { $0.parent.name == "Jupiter" }.confirm()
         XCTAssertEqual(jupitersSatellites.underestimateCount(), 4)
         
@@ -130,7 +130,7 @@ class BarrelCoreDataTests: XCTestCase {
         XCTAssertEqual(fetch.underestimateCount(), 6)
         
         XCTAssertEqual(fetch.map { $0.name }[0], "Mercury")
-        XCTAssertEqual(fetch.filter { $0.diameter > 100000 }.count, 2)
+        XCTAssertEqual((fetch.filter { $0.diameter > 100000 } as [Planet]).count, 2)
         var i = 0
         fetch.forEach {
             i += 1

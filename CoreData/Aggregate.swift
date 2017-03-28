@@ -38,7 +38,7 @@ internal extension Expression {
     }
 }
 
-public struct Aggregate<T: NSManagedObject> where T: ExpressionType {
+public struct Aggregate<T: NSManagedObject> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     

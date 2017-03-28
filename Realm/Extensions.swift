@@ -36,7 +36,15 @@ public extension Realm {
     }
 }
 
-public extension ThreadConfined where Self: RealmSwift.Object {
+public protocol RealmObjectType {
+
+}
+
+extension Object: RealmObjectType {
+
+}
+
+public extension RealmObjectType where Self: Object {
     public static func objects(_ realm: Realm) -> Results<Self> {
         return realm.objects()
     }
