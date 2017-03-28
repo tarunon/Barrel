@@ -9,26 +9,26 @@
 import Foundation
 import CoreData
 
-public protocol Executable: Collection {
+public protocol Executable: LazyCollectionProtocol {
     associatedtype ElementType: NSFetchRequestResult
-    associatedtype FetchType: NSFetchRequestResult
-    associatedtype GeneratorType = AnyIterator<ElementType>
-    associatedtype SubSquence = ArraySlice<ElementType>
-    associatedtype Index = Int
+    typealias Elements = [ElementType]
+    typealias Iterator = Array<ElementType>.Iterator
+    typealias SubSequence = Array<ElementType>.SubSequence
+
     var context: NSManagedObjectContext { get }
-    func fetchRequest() -> NSFetchRequest<FetchType>
+    func fetchRequest() -> NSFetchRequest<ElementType>
 }
 
 extension Executable {
     public func all() throws -> [ElementType] {
-        return try self.context.fetch(self.fetchRequest()).map { $0 as! ElementType }
+        return try self.context.fetch(self.fetchRequest())
     }
     
     public func get(_ offset: Int = 0) throws -> ElementType? {
         let fetchRequest = self.fetchRequest()
         fetchRequest.fetchLimit = 1
         fetchRequest.fetchOffset = offset
-        return try self.context.fetch(fetchRequest).first as? ElementType
+        return try self.context.fetch(fetchRequest).first
     }
     
     public func count() throws -> Int {
@@ -36,7 +36,6 @@ extension Executable {
     }
 }
 
-// Indexable
 extension Executable {
     public var startIndex: Int {
         return 0
@@ -55,22 +54,15 @@ extension Executable {
     }
 
     public func index(after i: Int) -> Int {
-        return i
+        return i + 1
     }
-}
 
-// CollectionType
-extension Executable {
-    public func generate() -> AnyIterator<ElementType> {
-        var count = 0
-        return AnyIterator { () -> ElementType? in
-            do {
-                count += 1
-                return try self.get(count)
-            } catch {
-                return nil
-            }
-        }
+    public var elements: [ElementType] {
+        return (try? all()) ?? []
+    }
+
+    public func makeIterator() -> Array<ElementType>.Iterator {
+        return ((try? all()) ?? []).makeIterator()
     }
     
     public func underestimateCount() -> Int {
@@ -80,36 +72,12 @@ extension Executable {
             return 0
         }
     }
-
-    public func map<T>(_ transform: (ElementType) throws -> T) rethrows -> [T] {
-        do {
-            return try self.all().map(transform)
-        } catch {
-            return []
-        }
-    }
-    
-    public func filter(_ includeElement: (ElementType) throws -> Bool) rethrows -> [ElementType] {
-        do {
-            return try self.all().filter(includeElement)
-        } catch {
-            return []
-        }
-    }
-    
-    public func forEach(_ body: (ElementType) throws -> ()) rethrows {
-        do {
-            return try self.all().forEach(body)
-        } catch {
-            
-        }
-    }
     
     public func dropFirst(_ n: Int) -> ArraySlice<ElementType> {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = n
-            return ArraySlice(try self.context.fetch(fetchRequest).map { $0 as! ElementType })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
@@ -119,7 +87,7 @@ extension Executable {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = self.underestimateCount() - n
-            return ArraySlice(try self.context.fetch(fetchRequest).map { $0 as! ElementType })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
@@ -129,7 +97,7 @@ extension Executable {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchLimit = maxLength
-            return ArraySlice(try self.context.fetch(fetchRequest).map { $0 as! ElementType })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }
@@ -139,7 +107,7 @@ extension Executable {
         do {
             let fetchRequest = self.fetchRequest()
             fetchRequest.fetchOffset = self.underestimateCount() - maxLength
-            return ArraySlice(try self.context.fetch(fetchRequest).map { $0 as! ElementType })
+            return ArraySlice(try self.context.fetch(fetchRequest))
         } catch {
             return []
         }

@@ -10,18 +10,18 @@ import Foundation
 import CoreData
 import Barrel
 
-public struct Fetch<T: NSManagedObject> where T: ExpressionType {
+public struct Fetch<T: NSManagedObject> {
     public let context: NSManagedObjectContext
-    internal let builder: Builder<NSFetchRequest<NSManagedObject>>
+    internal let builder: Builder<NSFetchRequest<T>>
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSManagedObject>>) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<T>>) {
         self.context = context
         self.builder = builder
     }
     
     internal init(context: NSManagedObjectContext) {
         self.init(context: context, builder: Builder {
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: context.entityName(T.self)!)
+            let fetchRequest = NSFetchRequest<T>(entityName: context.entityName(T.self)!)
             fetchRequest.predicate = NSPredicate(value: true)
             fetchRequest.sortDescriptors = []
             return fetchRequest
@@ -31,8 +31,8 @@ public struct Fetch<T: NSManagedObject> where T: ExpressionType {
 
 extension Fetch: Executable {
     public typealias ElementType = T
-    
-    public func fetchRequest() -> NSFetchRequest<NSManagedObject> {
+
+    public func fetchRequest() -> NSFetchRequest<T> {
         let fetchRequest = self.builder.build()
         return fetchRequest
     }

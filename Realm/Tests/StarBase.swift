@@ -16,7 +16,7 @@ class StarBase: Object {
     dynamic var diameter: Double = 0.0
 }
 
-extension AttributeType where ValueType: StarBase {
+extension Attribute where ValueType: StarBase {
     var name: Attribute<String> { return attribute() }
     var diameter: Attribute<Double> { return attribute() }
 }

@@ -38,7 +38,7 @@ internal extension Expression {
     }
 }
 
-public struct Aggregate<T: NSManagedObject> where T: ExpressionType {
+public struct Aggregate<T: NSManagedObject> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
@@ -61,7 +61,6 @@ public struct Aggregate<T: NSManagedObject> where T: ExpressionType {
 
 extension Aggregate: Executable {
     public typealias ElementType = NSDictionary
-    public typealias FetchType = NSDictionary
     
     public func fetchRequest() -> NSFetchRequest<NSDictionary> {
         let fetchRequest = self.builder.build()

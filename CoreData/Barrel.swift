@@ -73,36 +73,36 @@ extension Executable {
     }
 }
 
-extension BarrelType where Base: FetchType, Base.AttributeSourceType: NSManagedObject, Base.AttributeSourceType: ExpressionType {
-    public func filter(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> Predicate) -> Barrel<Base> {
+extension BarrelType where Base: FetchType, Base.AttributeSourceType: NSManagedObject {
+    public func filter(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel<Base> {
         return Barrel(base: base.filter(f(Attribute()).value))
     }
 
-    public func sorted(_ f: @escaping (Attribute<Base.AttributeSourceType>, Attribute<Base.AttributeSourceType>) -> SortDescriptors) -> Barrel<Base> {
+    public func sorted(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>, Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> SortDescriptors) -> Barrel<Base> {
         return Barrel(base: base.sorted(f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value))
     }
 
-    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> where E.ValueType == V {
+    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> where E.ValueType == V {
         return Barrel(base: base._aggregate(unwrapExpression(f(Attribute())).expressionDescription()))
     }
 }
 
-extension BarrelType where Base: AggregateType, Base.AttributeSourceType: NSManagedObject, Base.AttributeSourceType: ExpressionType {
-    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> E) -> Barrel<Base> where E.ValueType == V {
+extension BarrelType where Base: AggregateType, Base.AttributeSourceType: NSManagedObject {
+    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Base> where E.ValueType == V {
         return Barrel(base: base.aggregate(unwrapExpression(f(Attribute())).expressionDescription()))
     }
 
-    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> Attribute<E>) -> Barrel<Group<Base.AttributeSourceType>> {
+    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Group<Base.AttributeSourceType>> {
         return Barrel(base: base._groupBy(f(Attribute()).keyPath))
     }
 }
 
-extension BarrelType where Base: GroupType, Base.AttributeSourceType: NSManagedObject, Base.AttributeSourceType: ExpressionType {
-    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> Attribute<E>) -> Barrel<Base> {
+extension BarrelType where Base: GroupType, Base.AttributeSourceType: NSManagedObject {
+    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Base> {
         return Barrel(base: base.groupBy(f(Attribute()).keyPath))
     }
 
-    public func having(_ f: @escaping (Attribute<Base.AttributeSourceType>) -> Predicate) -> Barrel<Base> {
+    public func having(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel<Base> {
         return Barrel(base: base.having(f(Attribute()).value))
     }
 }

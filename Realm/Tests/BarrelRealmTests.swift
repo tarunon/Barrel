@@ -97,7 +97,7 @@ class BarrelRealmTests: XCTestCase {
     func testExtensions() {
         let sun = Star.objects(self.realm).brl.filter { $0.name == "Sun" }.confirm()[0]
         XCTAssertEqual(sun.name, "Sun")
-        let planets = Planet.objects(self.realm).brl.filter { $0.parent == sun }.confirm()
+        let planets = Planet.objects(self.realm).brl.filter { $0.parent == *sun }.confirm()
         XCTAssertEqual(planets.underestimatedCount, 6)
         XCTAssertEqual(planets.brl.sorted { $0.semiMajorAxis < $1.semiMajorAxis }.confirm().map { $0.name }, ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"])
         let moon = Satellite.objects(self.realm).brl.filter { $0.parent.name == "Earth" }.confirm()[0]

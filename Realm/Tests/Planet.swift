@@ -19,7 +19,7 @@ class Planet: StarBase {
     let children: LinkingObjects<Satellite> = LinkingObjects(fromType: Satellite.self, property: "parent")
 }
 
-extension Attribute where T: Planet {
+extension AttributeType where ValueType: Planet {
     var semiMajorAxis: Attribute<Double> { return attribute() }
     var parent: Attribute<Optional<Star>> { return attribute() }
     var children: Attribute<LinkingObjects<Satellite>> { return attribute() }

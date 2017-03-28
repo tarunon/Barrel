@@ -16,7 +16,7 @@ github "tarunon/Barrel"
 
 Extend your class/struct A and AttributeType like.
 ```swift
-class A: SelfExpression {
+struct A: SelfExpression {
     var text: String
     var number: Int
     var option: String?
@@ -89,5 +89,20 @@ If you needs support more type, plese implement SelfExpression.
 ```swift
 extension Type: SelfExpression {}
 ```
+
+## Class support
+We cannot an associatedtype conform to Self in class after Swift 3.1.
+ExpressionWrapper is workaround that instead of conform to Self.
+Write `*` before use class value in query.
+```swift
+var predicate = attribute.someClassField == *classValue
+```
+And define attribute value surround ExpressionWrapper.
+```swift
+extension AttributeType where ValueType: SomeClass {
+  var someClassField: Attribute<ExpressionWrapper<SomeFieldClass>> { return attribute() }
+}
+```
+
 ## LISENSE
 MIT

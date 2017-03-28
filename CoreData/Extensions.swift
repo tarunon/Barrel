@@ -71,23 +71,29 @@ internal extension NSManagedObjectContext {
     }
 }
 
-public struct Many<T: NSManagedObject>: ExpressionType, ManyType where T: ExpressionType {
-    public typealias ValueType = Set<T>
-    public typealias ElementType = T
+extension NSManagedObject: ExpressionType {
+    public typealias ValueType = NSManagedObject
 }
 
-extension ExpressionType where Self: NSManagedObject {
-    public typealias ValueType = Self
-    
+public struct Many<T: NSManagedObject>: ExpressionType, ManyType {
+    public typealias ValueType = Set<T>
+    public typealias ElementType = ExpressionWrapper<T>
+}
+
+public protocol ManagedObjectType {
+
+}
+
+extension NSManagedObject: ManagedObjectType {
+
+}
+
+extension ManagedObjectType where Self: NSManagedObject {
     public static func objects(_ context: NSManagedObjectContext) -> Fetch<Self> {
         return Fetch(context: context)
     }
-    
+
     public static func insert(_ context: NSManagedObjectContext) -> Self {
         return Self(entity: context.entityDescription(Self.self)!, insertInto: context)
     }
-}
-
-extension NSManagedObject: ExpressionType {
-    public typealias ValueType = NSManagedObject
 }

@@ -15,6 +15,6 @@ class Star: StarBase {
     let children: LinkingObjects<Planet> = LinkingObjects(fromType: Planet.self, property: "parent")
 }
 
-extension AttributeType where ValueType: Star {
+extension Attribute where ValueType: Star {
     var children: Attribute<LinkingObjects<Planet>> { return attribute() }
 }
