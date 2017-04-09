@@ -47,7 +47,7 @@ public struct Expression<T: ExpressionType>: ExpressionType {
         self.value = value
     }
 
-    internal init<E: ExpressionType>(_ value: E) where E.ValueType == T {
+    public init<E: ExpressionType>(_ value: E) where E.ValueType == T {
         if let attribute = value as? AttributeBase {
             self.init(NSExpression(forKeyPath: attribute.keyPath.string))
         } else if let expression = value as? Expression<T> {

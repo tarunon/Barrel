@@ -10,9 +10,8 @@ import Foundation
 import CoreData
 import Barrel
 
-public protocol GroupType: Executable {
-    typealias ElementType = NSDictionary
-    associatedtype AttributeSourceType
+public protocol GroupType {
+    associatedtype AttributeSourceType: NSManagedObject
     func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Self
     func having(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Self
 }
@@ -21,48 +20,32 @@ extension Group: GroupType {
     public typealias AttributeSourceType = T
 }
 
-public protocol AggregateType: Executable {
-    typealias ElementType = NSDictionary
-    associatedtype AttributeSourceType
+public protocol AggregateType {
+    associatedtype AttributeSourceType: NSManagedObject
     func aggregate(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> Self
-    func _groupBy<G: GroupType>(_ keyPath: @autoclosure @escaping () -> KeyPath) -> G where G.AttributeSourceType == AttributeSourceType
+    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group<AttributeSourceType>
 }
 
 extension Aggregate: AggregateType {
     public typealias AttributeSourceType = T
-    public func _groupBy<G: GroupType>(_ keyPath: @autoclosure @escaping () -> KeyPath) -> G where G.AttributeSourceType == AttributeSourceType {
-        return self.groupBy(keyPath) as! G
-    }
 }
 
-public protocol FetchType: Executable {
-    associatedtype ElementType: ExpressionType
-    associatedtype AttributeSourceType
+public protocol FetchType {
+    associatedtype AttributeSourceType: NSManagedObject
     func filter(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Self
     func sorted(_ sortDescriptor: @autoclosure @escaping () -> [NSSortDescriptor]) -> Self
     func limit(_ limit: Int) -> Self
     func offset(_ offset: Int) -> Self
-    func _aggregate<A: AggregateType>(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> A where A.AttributeSourceType == AttributeSourceType
+    func aggregate(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> Aggregate<AttributeSourceType>
 }
 
 extension Fetch: FetchType {
     public typealias AttributeSourceType = T
-    public func _aggregate<A: AggregateType>(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> A where A.AttributeSourceType == AttributeSourceType {
-        return self.aggregate(expressionDescription()) as! A
-    }
 }
 
-
-
-public protocol BarrelType {
-    associatedtype Base: Executable
-    var base: Base { get }
-}
-
-public struct Barrel<E: Executable>: BarrelType {
-    public typealias Base = E
-    public let base: E
-    public func confirm() -> E {
+public struct Barrel<Base: Executable> {
+    public let base: Base
+    public func confirm() -> Base {
         return base
     }
 }
@@ -73,36 +56,36 @@ extension Executable {
     }
 }
 
-extension BarrelType where Base: FetchType, Base.AttributeSourceType: NSManagedObject {
-    public func filter(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel<Base> {
+extension Barrel where Base: FetchType, Base.AttributeSourceType: ExpressionType {
+    public func filter(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel {
         return Barrel(base: base.filter(f(Attribute()).value))
     }
 
-    public func sorted(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>, Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> SortDescriptors) -> Barrel<Base> {
+    public func sorted(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>, Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> SortDescriptors) -> Barrel {
         return Barrel(base: base.sorted(f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value))
     }
 
     public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> where E.ValueType == V {
-        return Barrel(base: base._aggregate(unwrapExpression(f(Attribute())).expressionDescription()))
+        return Barrel<Aggregate<Base.AttributeSourceType>>(base: base.aggregate(Expression(f(Attribute())).expressionDescription()))
     }
 }
 
-extension BarrelType where Base: AggregateType, Base.AttributeSourceType: NSManagedObject {
-    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Base> where E.ValueType == V {
-        return Barrel(base: base.aggregate(unwrapExpression(f(Attribute())).expressionDescription()))
+extension Barrel where Base: AggregateType, Base.AttributeSourceType: ExpressionType {
+    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel where E.ValueType == V {
+        return Barrel(base: base.aggregate(Expression(f(Attribute())).expressionDescription()))
     }
 
     public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Group<Base.AttributeSourceType>> {
-        return Barrel(base: base._groupBy(f(Attribute()).keyPath))
+        return Barrel<Group<Base.AttributeSourceType>>(base: base.groupBy(f(Attribute()).keyPath))
     }
 }
 
-extension BarrelType where Base: GroupType, Base.AttributeSourceType: NSManagedObject {
-    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Base> {
+extension Barrel where Base: GroupType, Base.AttributeSourceType: ExpressionType {
+    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel {
         return Barrel(base: base.groupBy(f(Attribute()).keyPath))
     }
 
-    public func having(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel<Base> {
+    public func having(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel {
         return Barrel(base: base.having(f(Attribute()).value))
     }
 }
