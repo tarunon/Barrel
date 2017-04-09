@@ -29,7 +29,7 @@ extension RealmCollection {
     }
 }
 
-public extension BarrelType where Base: RealmCollection {
+public extension BarrelType where Base: RealmCollection, Base.Element: ExpressionType {
     func filter(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Predicate) -> Barrel<Results<Base.Element>> {
         return Barrel(base: base.filter(f(Attribute()).value))
     }
