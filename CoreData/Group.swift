@@ -19,7 +19,7 @@ public struct Group<T: NSManagedObject> {
         self.builder = builder
     }
     
-    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, keyPath: @autoclosure @escaping () -> KeyPath) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>, keyPath: @autoclosure @escaping () -> AttributeName) {
         self.init(
             context: context,
             builder: builder.map {
@@ -55,7 +55,7 @@ extension Group: Executable {
 }
 
 public extension Group {
-    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group {
+    func groupBy(_ keyPath: @autoclosure @escaping () -> AttributeName) -> Group {
         return Group(
             context: self.context,
             builder: self.builder.map {
@@ -78,7 +78,7 @@ public extension Group {
 
 public extension Group {
     @available(*, renamed: "brl.groupBy")
-    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group {
+    func brl_groupBy<E>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group {
         return self.groupBy(f(Attribute()).keyPath)
     }
 
@@ -89,14 +89,14 @@ public extension Group {
 }
 
 public extension Aggregate {
-    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group<T> {
+    func groupBy(_ keyPath: @autoclosure @escaping () -> AttributeName) -> Group<T> {
         return Group(context: self.context, builder: self.builder, keyPath: keyPath)
     }
 }
 
 public extension Aggregate {
     @available(*, renamed: "brl.groupBy")
-    func brl_groupBy<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group<T> {
+    func brl_groupBy<E>(_ f: @escaping (Attribute<T>) -> Attribute<E>) -> Group<T> {
         return self.groupBy(f(Attribute()).keyPath)
     }
 }

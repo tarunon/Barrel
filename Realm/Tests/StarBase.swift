@@ -12,8 +12,8 @@ import Barrel
 import Barrel_Realm
 
 class StarBase: Object {
-    dynamic var name: String = ""
-    dynamic var diameter: Double = 0.0
+    @objc dynamic var name: String = ""
+    @objc dynamic var diameter: Double = 0.0
 }
 
 extension Attribute where ValueType: StarBase {

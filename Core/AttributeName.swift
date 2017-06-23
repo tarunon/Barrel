@@ -8,12 +8,12 @@
 
 import Foundation
 
-public indirect enum KeyPath {
+public indirect enum AttributeName {
     case `self`
     case keypath(String)
-    case subKeypath(String, KeyPath)
+    case subKeypath(String, AttributeName)
     
-    internal init(_ name: String?, parent: KeyPath?) {
+    internal init(_ name: String?, parent: AttributeName?) {
         guard let name = name else {
             self = .self
             return
@@ -37,8 +37,8 @@ public indirect enum KeyPath {
     }
 }
 
-extension KeyPath: Equatable {
-    public static func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
+extension AttributeName: Equatable {
+    public static func == (lhs: AttributeName, rhs: AttributeName) -> Bool {
         switch (lhs, rhs) {
         case (.self, .self):
             return true

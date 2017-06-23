@@ -20,7 +20,6 @@ class BarrelCoreDataTests: XCTestCase {
     private static var context: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel(contentsOf: Bundle(for: BarrelCoreDataTests.self).url(forResource: "SolerSystem", withExtension: "momd")!)!)
-
         
         _ = try? FileManager.default.createDirectory(at: BarrelCoreDataTests.storeDir, withIntermediateDirectories: false, attributes: nil)
         _ = try? FileManager.default.removeItem(at: BarrelCoreDataTests.storeURL)

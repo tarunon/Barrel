@@ -31,7 +31,7 @@ internal extension NSSortDescriptor {
 }
 
 public extension Realm {
-    func objects<T: Object>() -> Results<T> {
+    func objects<T>() -> Results<T> {
         return self.objects(T.self)
     }
 }

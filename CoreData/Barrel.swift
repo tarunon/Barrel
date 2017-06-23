@@ -12,7 +12,7 @@ import Barrel
 
 public protocol GroupType {
     associatedtype AttributeSourceType: NSManagedObject
-    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Self
+    func groupBy(_ keyPath: @autoclosure @escaping () -> AttributeName) -> Self
     func having(_ predicate: @autoclosure @escaping () -> NSPredicate) -> Self
 }
 
@@ -23,7 +23,7 @@ extension Group: GroupType {
 public protocol AggregateType {
     associatedtype AttributeSourceType: NSManagedObject
     func aggregate(_ expressionDescription: @autoclosure @escaping () -> NSExpressionDescription) -> Self
-    func groupBy(_ keyPath: @autoclosure @escaping () -> KeyPath) -> Group<AttributeSourceType>
+    func groupBy(_ keyPath: @autoclosure @escaping () -> AttributeName) -> Group<AttributeSourceType>
 }
 
 extension Aggregate: AggregateType {
@@ -56,7 +56,7 @@ extension Executable {
     }
 }
 
-extension Barrel where Base: FetchType, Base.AttributeSourceType: ExpressionType {
+extension Barrel where Base: FetchType {
     public func filter(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Predicate) -> Barrel {
         return Barrel(base: base.filter(f(Attribute()).value))
     }
@@ -70,18 +70,18 @@ extension Barrel where Base: FetchType, Base.AttributeSourceType: ExpressionType
     }
 }
 
-extension Barrel where Base: AggregateType, Base.AttributeSourceType: ExpressionType {
+extension Barrel where Base: AggregateType {
     public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel where E.ValueType == V {
         return Barrel(base: base.aggregate(Expression(f(Attribute())).expressionDescription()))
     }
 
-    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Group<Base.AttributeSourceType>> {
+    public func groupBy<E>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel<Group<Base.AttributeSourceType>> {
         return Barrel<Group<Base.AttributeSourceType>>(base: base.groupBy(f(Attribute()).keyPath))
     }
 }
 
-extension Barrel where Base: GroupType, Base.AttributeSourceType: ExpressionType {
-    public func groupBy<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel {
+extension Barrel where Base: GroupType {
+    public func groupBy<E>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> Attribute<E>) -> Barrel {
         return Barrel(base: base.groupBy(f(Attribute()).keyPath))
     }
 

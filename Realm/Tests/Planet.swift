@@ -12,9 +12,9 @@ import Barrel
 import Barrel_Realm
 
 class Planet: StarBase {
-    dynamic var semiMajorAxis: Double = 0.0
+    @objc dynamic var semiMajorAxis: Double = 0.0
     
-    dynamic var parent: Star?
+    @objc dynamic var parent: Star?
     
     let children: LinkingObjects<Satellite> = LinkingObjects(fromType: Satellite.self, property: "parent")
 }
