@@ -19,7 +19,7 @@ public struct ExpressionWrapper<V: ExpressionType>: ExpressionType {
 
 prefix operator *
 
-public prefix func * <E: ExpressionType>(_ arg: E) -> ExpressionWrapper<E> {
+public prefix func * <E>(_ arg: E) -> ExpressionWrapper<E> {
     return ExpressionWrapper(value: arg)
 }
 
@@ -70,23 +70,23 @@ public struct Expression<T: ExpressionType>: ExpressionType {
     }
 }
 
-public func unwrapExpression<E: ExpressionType, T: ExpressionType>(_ value: E) -> Expression<T> where E.ValueType == T {
+public func unwrapExpression<E: ExpressionType, T>(_ value: E) -> Expression<T> where E.ValueType == T {
     return Expression(value)
 }
 
-public func +<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+public func +<L: ExpressionType, R: ExpressionType, T>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
     return Expression(lhs: lhs, rhs: rhs, function: .add)
 }
 
-public func -<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+public func -<L: ExpressionType, R: ExpressionType, T>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
     return Expression(lhs: lhs, rhs: rhs, function: .subtract)
 }
 
-public func *<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+public func *<L: ExpressionType, R: ExpressionType, T>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
     return Expression(lhs: lhs, rhs: rhs, function: .multiply)
 }
 
-public func /<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
+public func /<L: ExpressionType, R: ExpressionType, T>(lhs: L, rhs: R) -> Expression<T> where L.ValueType == T, R.ValueType == T {
     return Expression(lhs: lhs, rhs: rhs, function: .divide)
 }
 

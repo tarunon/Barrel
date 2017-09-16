@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20D20DD1F6CDF280029ADF7 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFB1C488A59004D17EE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20DE1F6CDF280029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFC1C488A59004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20E21F6CDF860029ADF7 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFF1C488A60004D17EE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20E31F6CDF860029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FC001C488A60004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB8480611C488E9000437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7F9BA1C4885E1004D17EE /* Barrel.framework */; };
 		EB8480621C488E9400437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB8480631C488E9800437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
@@ -32,10 +36,10 @@
 		EBD35D7C1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
 		EBD35D7D1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
 		EBD35D7E1DE4245400E27F78 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6D1DE4245400E27F78 /* Expression.swift */; };
-		EBD35D831DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
-		EBD35D841DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
-		EBD35D851DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
-		EBD35D861DE4245400E27F78 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* KeyPath.swift */; };
+		EBD35D831DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
+		EBD35D841DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
+		EBD35D851DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
+		EBD35D861DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
 		EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EBD35D881DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EBD35D891DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
@@ -247,6 +251,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D20D20DC1F6CDF160029ADF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D20D20DD1F6CDF280029ADF7 /* Realm.framework in CopyFiles */,
+				D20D20DE1F6CDF280029ADF7 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20D20DF1F6CDF740029ADF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D20D20E21F6CDF860029ADF7 /* Realm.framework in CopyFiles */,
+				D20D20E31F6CDF860029ADF7 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBF7FC141C488BB6004D17EE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,7 +291,7 @@
 		EBD35D6C1DE4245400E27F78 /* Barrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barrel.h; sourceTree = "<group>"; };
 		EBD35D6D1DE4245400E27F78 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		EBD35D6E1DE4245400E27F78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBD35D6F1DE4245400E27F78 /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
+		EBD35D6F1DE4245400E27F78 /* AttributeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeName.swift; sourceTree = "<group>"; };
 		EBD35D701DE4245400E27F78 /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		EBD35D711DE4245400E27F78 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		EBD35D721DE4245400E27F78 /* SortDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortDescriptors.swift; sourceTree = "<group>"; };
@@ -569,7 +595,7 @@
 				EBD35D6C1DE4245400E27F78 /* Barrel.h */,
 				EBD35D6D1DE4245400E27F78 /* Expression.swift */,
 				EBD35D6E1DE4245400E27F78 /* Info.plist */,
-				EBD35D6F1DE4245400E27F78 /* KeyPath.swift */,
+				EBD35D6F1DE4245400E27F78 /* AttributeName.swift */,
 				EBD35D701DE4245400E27F78 /* Predicate.swift */,
 				EBD35D711DE4245400E27F78 /* Protocols.swift */,
 				EBD35D721DE4245400E27F78 /* SortDescriptors.swift */,
@@ -1085,6 +1111,7 @@
 				EBF7FBA51C488965004D17EE /* Sources */,
 				EBF7FBA61C488965004D17EE /* Frameworks */,
 				EBF7FBA71C488965004D17EE /* Resources */,
+				D20D20DC1F6CDF160029ADF7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1121,6 +1148,7 @@
 				EBF7FBC11C488973004D17EE /* Sources */,
 				EBF7FBC21C488973004D17EE /* Frameworks */,
 				EBF7FBC31C488973004D17EE /* Resources */,
+				D20D20DF1F6CDF740029ADF7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1157,7 +1185,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = tarunon;
 				TargetAttributes = {
 					EBF7F9B91C4885E1004D17EE = {
@@ -1431,7 +1459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBD35D8B1DE4245400E27F78 /* Protocols.swift in Sources */,
-				EBD35D831DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D831DE4245400E27F78 /* AttributeName.swift in Sources */,
 				EBD35D7B1DE4245400E27F78 /* Expression.swift in Sources */,
 				EBD35D731DE4245400E27F78 /* Attribute.swift in Sources */,
 				EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */,
@@ -1452,7 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBD35D8C1DE4245400E27F78 /* Protocols.swift in Sources */,
-				EBD35D841DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D841DE4245400E27F78 /* AttributeName.swift in Sources */,
 				EBD35D7C1DE4245400E27F78 /* Expression.swift in Sources */,
 				EBD35D741DE4245400E27F78 /* Attribute.swift in Sources */,
 				EBD35D881DE4245400E27F78 /* Predicate.swift in Sources */,
@@ -1473,7 +1501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBD35D8D1DE4245400E27F78 /* Protocols.swift in Sources */,
-				EBD35D851DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D851DE4245400E27F78 /* AttributeName.swift in Sources */,
 				EBD35D7D1DE4245400E27F78 /* Expression.swift in Sources */,
 				EBD35D751DE4245400E27F78 /* Attribute.swift in Sources */,
 				EBD35D891DE4245400E27F78 /* Predicate.swift in Sources */,
@@ -1494,7 +1522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBD35D8E1DE4245400E27F78 /* Protocols.swift in Sources */,
-				EBD35D861DE4245400E27F78 /* KeyPath.swift in Sources */,
+				EBD35D861DE4245400E27F78 /* AttributeName.swift in Sources */,
 				EBD35D7E1DE4245400E27F78 /* Expression.swift in Sources */,
 				EBD35D761DE4245400E27F78 /* Attribute.swift in Sources */,
 				EBD35D8A1DE4245400E27F78 /* Predicate.swift in Sources */,
@@ -1756,14 +1784,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1806,14 +1840,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1860,7 +1900,7 @@
 				PRODUCT_NAME = Barrel;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1881,7 +1921,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.Barrel;
 				PRODUCT_NAME = Barrel;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1892,7 +1932,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1903,7 +1943,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1926,7 +1966,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1949,7 +1989,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1964,7 +2004,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1979,7 +2019,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1999,7 +2039,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2021,7 +2061,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2035,7 +2075,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2048,7 +2088,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarunon.BarrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2069,7 +2109,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2091,7 +2131,7 @@
 				PRODUCT_NAME = Barrel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2114,7 +2154,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2134,7 +2174,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreData";
 				PRODUCT_NAME = Barrel_CoreData;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2148,7 +2188,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2161,7 +2201,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2185,7 +2225,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2208,7 +2248,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2226,7 +2266,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2243,7 +2283,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2264,7 +2304,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2286,7 +2326,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2303,7 +2343,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2318,7 +2358,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-CoreDataTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2341,7 +2381,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2364,7 +2404,7 @@
 				PRODUCT_NAME = Barrel_CoreData;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2389,7 +2429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-Realm";
 				PRODUCT_NAME = Barrel_Realm;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2412,7 +2452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-Realm";
 				PRODUCT_NAME = Barrel_Realm;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2427,7 +2467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2442,7 +2482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2468,7 +2508,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2494,7 +2534,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2513,7 +2553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2532,7 +2572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2555,7 +2595,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2580,7 +2620,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2598,7 +2638,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -2615,7 +2655,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarunon.Barrel-RealmTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
@@ -2640,7 +2680,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -2666,7 +2706,7 @@
 				PRODUCT_NAME = Barrel_Realm;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

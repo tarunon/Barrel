@@ -11,9 +11,9 @@ import CoreData
 
 public protocol Executable: LazyCollectionProtocol {
     associatedtype ElementType: NSFetchRequestResult
-    typealias Elements = [ElementType]
-    typealias Iterator = Array<ElementType>.Iterator
-    typealias SubSequence = Array<ElementType>.SubSequence
+    associatedtype Elements = [ElementType]
+    associatedtype SubSequence = Array<ElementType>.SubSequence
+    associatedtype Iterator = Array<ElementType>.Iterator
 
     var context: NSManagedObjectContext { get }
     func fetchRequest() -> NSFetchRequest<ElementType>

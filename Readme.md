@@ -104,5 +104,8 @@ extension AttributeType where ValueType: SomeClass {
 }
 ```
 
+## for Swift3.x
+[Version 4.0.1](https://github.com/tarunon/Barrel/releases/tag/4.0.1) supports Swift3.
+
 ## LISENSE
 MIT

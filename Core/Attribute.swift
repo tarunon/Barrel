@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol AttributeBase {
-    var keyPath: KeyPath { get }
+    var keyPath: AttributeName { get }
 }
 
 public protocol AttributeType: ExpressionType, AttributeBase {
@@ -18,7 +18,7 @@ public protocol AttributeType: ExpressionType, AttributeBase {
 }
 
 public extension AttributeType {
-    func attribute<T: ExpressionType>(_ name: String = #function) -> Attribute<T> {
+    func attribute<T>(_ name: String = #function) -> Attribute<T> {
         return Attribute(name: name, parent: self)
     }
 }
@@ -26,14 +26,14 @@ public extension AttributeType {
 public struct Attribute<T: ExpressionType>: AttributeType {
     public typealias SourceType = T
     
-    public let keyPath: KeyPath
+    public let keyPath: AttributeName
     
     public init(name: String? = nil) {
-        self.keyPath = KeyPath(name, parent: nil)
+        self.keyPath = AttributeName(name, parent: nil)
     }
     
     public init<A: AttributeType>(name: String?, parent: A?) {
-        self.keyPath = KeyPath(name, parent: parent?.keyPath)
+        self.keyPath = AttributeName(name, parent: parent?.keyPath)
     }
 }
 

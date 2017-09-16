@@ -12,9 +12,9 @@ import Barrel
 import Barrel_Realm
 
 class Satellite: StarBase {
-    dynamic var semiMajorAxis: Double = 0.0
+    @objc dynamic var semiMajorAxis: Double = 0.0
 
-    dynamic var parent: Planet?
+    @objc dynamic var parent: Planet?
 }
 
 extension Attribute where ValueType: Satellite {
