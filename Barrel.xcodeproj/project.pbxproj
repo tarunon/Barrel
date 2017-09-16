@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20D20DD1F6CDF280029ADF7 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFB1C488A59004D17EE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20DE1F6CDF280029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFC1C488A59004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20E21F6CDF860029ADF7 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFF1C488A60004D17EE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D20D20E31F6CDF860029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FC001C488A60004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB8480611C488E9000437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7F9BA1C4885E1004D17EE /* Barrel.framework */; };
 		EB8480621C488E9400437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB8480631C488E9800437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
@@ -247,6 +251,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D20D20DC1F6CDF160029ADF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D20D20DD1F6CDF280029ADF7 /* Realm.framework in CopyFiles */,
+				D20D20DE1F6CDF280029ADF7 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D20D20DF1F6CDF740029ADF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D20D20E21F6CDF860029ADF7 /* Realm.framework in CopyFiles */,
+				D20D20E31F6CDF860029ADF7 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBF7FC141C488BB6004D17EE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1085,6 +1111,7 @@
 				EBF7FBA51C488965004D17EE /* Sources */,
 				EBF7FBA61C488965004D17EE /* Frameworks */,
 				EBF7FBA71C488965004D17EE /* Resources */,
+				D20D20DC1F6CDF160029ADF7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1121,6 +1148,7 @@
 				EBF7FBC11C488973004D17EE /* Sources */,
 				EBF7FBC21C488973004D17EE /* Frameworks */,
 				EBF7FBC31C488973004D17EE /* Resources */,
+				D20D20DF1F6CDF740029ADF7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
