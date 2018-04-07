@@ -28,7 +28,7 @@ public struct ComparisonPredicate: Predicate {
 }
 
 extension ComparisonPredicate {
-    init<L : ExpressionType, R : ExpressionType, T : ExpressionType>(lhs: L, rhs: R, type: NSComparisonPredicate.Operator, options: NSComparisonPredicate.Options) where L.ValueType == T, R.ValueType == T {
+    init<L : ExpressionType, R : ExpressionType>(lhs: L, rhs: R, type: NSComparisonPredicate.Operator, options: NSComparisonPredicate.Options) where L.ValueType == R.ValueType {
         self.init(
             generator: {
                 NSComparisonPredicate(leftExpression: Expression(lhs).value, rightExpression: Expression(rhs).value, modifier: $0, type: type, options: options)
@@ -46,35 +46,35 @@ internal struct Values<E: ExpressionType>: ExpressionType {
     }
 }
 
-public func ==<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func ==<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .equalTo, options: [])
 }
 
-public func <=<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func <=<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .lessThanOrEqualTo, options: [])
 }
 
-public func <<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func <<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .lessThan, options: [])
 }
 
-public func >=<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func >=<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .greaterThanOrEqualTo, options: [])
 }
 
-public func ><L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func ><L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .greaterThan, options: [])
 }
 
-public func !=<L: ExpressionType, R: ExpressionType, T: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == T, R.ValueType == T {
+public func !=<L: ExpressionType, R: ExpressionType>(lhs: L, rhs: R) -> ComparisonPredicate where L.ValueType == R.ValueType {
     return ComparisonPredicate(lhs: lhs, rhs: rhs, type: .notEqualTo, options: [])
 }
 
-public func <<<E: ExpressionType, T: ExpressionType>(lhs: E, rhs: Range<T>) -> ComparisonPredicate where E.ValueType == T {
+public func <<<E: ExpressionType>(lhs: E, rhs: Range<E.ValueType>) -> ComparisonPredicate {
     return ComparisonPredicate(lhs: lhs, rhs: Values([rhs.lowerBound, rhs.upperBound]), type: .between, options: [])
 }
 
-public func <<<E: ExpressionType, T: ExpressionType>(lhs: E, rhs: [T]) -> ComparisonPredicate where E.ValueType == T {
+public func <<<E: ExpressionType>(lhs: E, rhs: [E.ValueType]) -> ComparisonPredicate {
     return ComparisonPredicate(lhs: lhs, rhs: Values(rhs), type: .in, options: [])
 }
 
@@ -129,15 +129,15 @@ extension AttributeType where ValueType == String {
 }
 
 public protocol ManyType: ExpressionType {
-    associatedtype ElementType: ExpressionType
+    associatedtype _ElementType: ExpressionType
 }
 
 extension AttributeType where SourceType: ManyType {
-    public func any(_ f: (Attribute<SourceType.ElementType>) -> ComparisonPredicate) -> Predicate {
+    public func any(_ f: (Attribute<SourceType._ElementType>) -> ComparisonPredicate) -> Predicate {
         return ComparisonPredicate(generator: f(Attribute(name:self.keyPath.string)).generator, modifier: .any)
     }
     
-    public func all(_ f: (Attribute<SourceType.ElementType>) -> ComparisonPredicate) -> Predicate {
+    public func all(_ f: (Attribute<SourceType._ElementType>) -> ComparisonPredicate) -> Predicate {
         return ComparisonPredicate(generator: f(Attribute(name:self.keyPath.string)).generator, modifier: .all)
     }
 }

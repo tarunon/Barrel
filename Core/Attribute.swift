@@ -37,7 +37,7 @@ public struct Attribute<T: ExpressionType>: AttributeType {
     }
 }
 
-extension Optional: ExpressionType {
+extension Optional: ExpressionType where Wrapped: ExpressionType {
     public typealias ValueType = Wrapped
 }
 

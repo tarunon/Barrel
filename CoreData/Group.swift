@@ -46,7 +46,7 @@ extension Group {
 }
 
 extension Group: Executable {
-    public typealias ElementType = NSDictionary
+    public typealias Element = NSDictionary
     
     public func fetchRequest() -> NSFetchRequest<NSDictionary> {
         let fetchRequest = self.builder.build()

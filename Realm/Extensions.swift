@@ -14,25 +14,19 @@ extension Object: ExpressionType {
     public typealias ValueType = Object
 }
 
-extension List: ExpressionType, ManyType {
+extension List: ExpressionType, ManyType where Element: ExpressionType {
     public typealias ValueType = List
-    public typealias ElementType = ExpressionWrapper<T>
+    public typealias _ElementType = ExpressionWrapper<Element>
 }
 
-extension LinkingObjects: ExpressionType, ManyType {
+extension LinkingObjects: ExpressionType, ManyType where Element: ExpressionType {
     public typealias ValueType = LinkingObjects
-    public typealias ElementType = ExpressionWrapper<T>
+    public typealias _ElementType = ExpressionWrapper<Element>
 }
 
 internal extension NSSortDescriptor {
     func toRealmObject() -> SortDescriptor {
         return SortDescriptor(keyPath: self.key!, ascending: ascending)
-    }
-}
-
-public extension Realm {
-    func objects<T>() -> Results<T> {
-        return self.objects(T.self)
     }
 }
 
@@ -46,7 +40,7 @@ extension Object: RealmObjectType {
 
 public extension RealmObjectType where Self: Object {
     public static func objects(_ realm: Realm) -> Results<Self> {
-        return realm.objects()
+        return realm.objects(Self.self)
     }
     
     public static func insert(_ realm: Realm) -> Self {

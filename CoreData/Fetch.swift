@@ -30,7 +30,7 @@ public struct Fetch<T: NSManagedObject> {
 }
 
 extension Fetch: Executable {
-    public typealias ElementType = T
+    public typealias Element = T
 
     public func fetchRequest() -> NSFetchRequest<T> {
         let fetchRequest = self.builder.build()

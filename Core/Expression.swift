@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol ExpressionType {
-    associatedtype ValueType
+    associatedtype ValueType: ExpressionType
 }
 
 public struct ExpressionWrapper<V: ExpressionType>: ExpressionType {

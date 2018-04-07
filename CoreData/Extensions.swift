@@ -77,7 +77,7 @@ extension NSManagedObject: ExpressionType {
 
 public struct Many<T: NSManagedObject>: ExpressionType, ManyType {
     public typealias ValueType = Set<T>
-    public typealias ElementType = ExpressionWrapper<T>
+    public typealias _ElementType = ExpressionWrapper<T>
 }
 
 public protocol ManagedObjectType {

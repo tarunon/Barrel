@@ -10,6 +10,8 @@ import XCTest
 import Barrel
 
 struct TestModel: SelfExpression {
+    typealias ValueType = TestModel
+    
     var text: String = ""
     var number: Int = 0
     var array: [Int]
@@ -18,7 +20,7 @@ struct TestModel: SelfExpression {
 
 struct Many<T: ExpressionType>: ManyType {
     typealias ValueType = [T]
-    typealias ElementType = T
+    typealias _ElementType = T
 }
 
 extension AttributeType where ValueType == TestModel {

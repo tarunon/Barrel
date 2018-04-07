@@ -8,23 +8,19 @@
 
 import Foundation
 import CoreData
+import Barrel
 
-public protocol Executable: LazyCollectionProtocol {
-    associatedtype ElementType: NSFetchRequestResult
-    associatedtype Elements = [ElementType]
-    associatedtype SubSequence = Array<ElementType>.SubSequence
-    associatedtype Iterator = Array<ElementType>.Iterator
-
+public protocol Executable: LazyCollectionProtocol where Element: NSFetchRequestResult, Elements == [Element] {
     var context: NSManagedObjectContext { get }
-    func fetchRequest() -> NSFetchRequest<ElementType>
+    func fetchRequest() -> NSFetchRequest<Element>
 }
 
 extension Executable {
-    public func all() throws -> [ElementType] {
+    public func all() throws -> [Element] {
         return try self.context.fetch(self.fetchRequest())
     }
     
-    public func get(_ offset: Int = 0) throws -> ElementType? {
+    public func get(_ offset: Int = 0) throws -> Element? {
         let fetchRequest = self.fetchRequest()
         fetchRequest.fetchLimit = 1
         fetchRequest.fetchOffset = offset
@@ -49,7 +45,7 @@ extension Executable {
         }
     }
     
-    public subscript (position: Int) -> ElementType {
+    public subscript (position: Int) -> Element {
         return try! self.get(position)!
     }
 
@@ -57,11 +53,11 @@ extension Executable {
         return i + 1
     }
 
-    public var elements: [ElementType] {
+    public var elements: [Element] {
         return (try? all()) ?? []
     }
 
-    public func makeIterator() -> Array<ElementType>.Iterator {
+    public func makeIterator() -> Elements.Iterator {
         return ((try? all()) ?? []).makeIterator()
     }
     
@@ -70,54 +66,6 @@ extension Executable {
             return try self.count()
         } catch {
             return 0
-        }
-    }
-    
-    public func dropFirst(_ n: Int) -> ArraySlice<ElementType> {
-        do {
-            let fetchRequest = self.fetchRequest()
-            fetchRequest.fetchOffset = n
-            return ArraySlice(try self.context.fetch(fetchRequest))
-        } catch {
-            return []
-        }
-    }
-    
-    public func dropLast(_ n: Int) -> ArraySlice<ElementType> {
-        do {
-            let fetchRequest = self.fetchRequest()
-            fetchRequest.fetchLimit = self.underestimateCount() - n
-            return ArraySlice(try self.context.fetch(fetchRequest))
-        } catch {
-            return []
-        }
-    }
-    
-    public func prefix(_ maxLength: Int) -> ArraySlice<ElementType> {
-        do {
-            let fetchRequest = self.fetchRequest()
-            fetchRequest.fetchLimit = maxLength
-            return ArraySlice(try self.context.fetch(fetchRequest))
-        } catch {
-            return []
-        }
-    }
-    
-    public func suffix(_ maxLength: Int) -> ArraySlice<ElementType> {
-        do {
-            let fetchRequest = self.fetchRequest()
-            fetchRequest.fetchOffset = self.underestimateCount() - maxLength
-            return ArraySlice(try self.context.fetch(fetchRequest))
-        } catch {
-            return []
-        }
-    }
-
-    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, whereSeparator: (Self.ElementType) throws -> Bool) rethrows -> [AnySequence<Self.ElementType>] {
-        do {
-            return try self.all().split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: whereSeparator)
-        } catch {
-            return []
         }
     }
 }

@@ -42,7 +42,7 @@ public struct Aggregate<T: NSManagedObject> {
     public let context: NSManagedObjectContext
     internal let builder: Builder<NSFetchRequest<NSDictionary>>
     
-    fileprivate init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>) {
+    internal init(context: NSManagedObjectContext, builder: Builder<NSFetchRequest<NSDictionary>>) {
         self.context = context
         self.builder = builder
     }
@@ -60,9 +60,9 @@ public struct Aggregate<T: NSManagedObject> {
 }
 
 extension Aggregate: Executable {
-    public typealias ElementType = NSDictionary
+    public typealias Element = NSDictionary
     
-    public func fetchRequest() -> NSFetchRequest<NSDictionary> {
+    public func fetchRequest() -> NSFetchRequest<Element> {
         let fetchRequest = self.builder.build()
         return fetchRequest
     }
@@ -82,7 +82,7 @@ public extension Aggregate {
 
 public extension Aggregate {
     @available(*, renamed: "brl.aggregate")
-    func brl_aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate where E.ValueType == V {
+    func brl_aggregate<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate {
         return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
     }
 }
@@ -106,7 +106,7 @@ public extension Fetch {
 
 public extension Fetch {
     @available(*, renamed: "brl.aggregate")
-    func brl_aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate<T> where E.ValueType == V {
+    func brl_aggregate<E: ExpressionType>(_ f: @escaping (Attribute<T>) -> E) -> Aggregate<T> {
         return self.aggregate(unwrapExpression(f(Attribute())).expressionDescription())
     }
 }

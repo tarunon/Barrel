@@ -11,11 +11,11 @@ import RealmSwift
 import Barrel
 
 public protocol BarrelType {
-    associatedtype Base: RealmCollection
+    associatedtype Base: RealmCollection where Base.Element: ExpressionType
     var base: Base { get }
 }
 
-public struct Barrel<R: RealmCollection>: BarrelType {
+public struct Barrel<R: RealmCollection>: BarrelType where R.Element: ExpressionType {
     public typealias Base = R
     public let base: R
     public func confirm() -> R {
@@ -23,7 +23,7 @@ public struct Barrel<R: RealmCollection>: BarrelType {
     }
 }
 
-extension RealmCollection {
+extension RealmCollection where Element: ExpressionType {
     public var brl: Barrel<Self> {
         return Barrel(base: self)
     }
@@ -54,7 +54,7 @@ public extension BarrelType {
         return base.sum(ofProperty: f(Attribute()).keyPath.string)
     }
 
-    func average<U: AddableType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> U? {
+    func average<U: AddableType>(_ f: (Attribute<ExpressionWrapper<Base.Element>>) -> Attribute<U>) -> Double? {
         return base.average(ofProperty: f(Attribute()).keyPath.string)
     }
 }

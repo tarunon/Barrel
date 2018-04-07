@@ -65,13 +65,13 @@ extension Barrel where Base: FetchType {
         return Barrel(base: base.sorted(f(Attribute.sortAttributeFirst(), Attribute.sortAttributeSecond()).value))
     }
 
-    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> where E.ValueType == V {
+    public func aggregate<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel<Aggregate<Base.AttributeSourceType>> {
         return Barrel<Aggregate<Base.AttributeSourceType>>(base: base.aggregate(Expression(f(Attribute())).expressionDescription()))
     }
 }
 
 extension Barrel where Base: AggregateType {
-    public func aggregate<E: ExpressionType, V: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel where E.ValueType == V {
+    public func aggregate<E: ExpressionType>(_ f: @escaping (Attribute<ExpressionWrapper<Base.AttributeSourceType>>) -> E) -> Barrel {
         return Barrel(base: base.aggregate(Expression(f(Attribute())).expressionDescription()))
     }
 
