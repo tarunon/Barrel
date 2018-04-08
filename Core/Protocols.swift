@@ -30,62 +30,65 @@ public func ><C: NSComparable>(lhs: C, rhs: C) -> Bool {
     return lhs.compare(rhs) == .orderedDescending
 }
 
-public protocol SelfExpression : ExpressionType where ValueType == Self {
-    associatedtype ValueType = Self
+@available(*, unavailable, renamed: "ExpressionType")
+public typealias SelfExpression = ExpressionType
+
+extension Double : ExpressionType, NumberType {
+    
 }
 
-extension Double : SelfExpression, NumberType {
-    public typealias ValueType = Double
+extension Int16 : ExpressionType, NumberType {
+    
 }
 
-extension Int16 : SelfExpression, NumberType {
-    public typealias ValueType = Int16
+extension Int32 : ExpressionType, NumberType {
+    
 }
 
-extension Int32 : SelfExpression, NumberType {
-    public typealias ValueType = Int32
+extension Int64 : ExpressionType, NumberType {
+    
 }
 
-extension Int64 : SelfExpression, NumberType {
-    public typealias ValueType = Int64
+extension Float : ExpressionType, NumberType {
+    
 }
 
-extension Float : SelfExpression, NumberType {
-    public typealias ValueType = Float
+extension Bool : ExpressionType, NumberType {
+    
 }
 
-extension Bool : SelfExpression, NumberType {
-    public typealias ValueType = Bool
+extension Int : ExpressionType , NumberType {
+    
 }
 
-extension Int : SelfExpression , NumberType {
-    public typealias ValueType = Int
+extension Date : ExpressionType, NSComparable {
+    
 }
 
-extension Date : SelfExpression, NSComparable {
-    public typealias ValueType = Date
+extension String : ExpressionType {
+    
 }
 
-extension String : SelfExpression {
-    public typealias ValueType = String
+extension Data : ExpressionType {
+    
 }
 
-extension Data : SelfExpression {
-    public typealias ValueType = Data
+extension NSNumber: ExpressionType, NSComparable, NumberType {
+    
 }
 
-extension NSNumber: SelfExpression, NSComparable, NumberType {
-    public typealias ValueType = NSNumber
+extension Array: ExpressionType where Element: ExpressionType {
+    
 }
 
-extension Array: SelfExpression where Element: ExpressionType {
-    public typealias ValueType = Array
+extension Dictionary: ExpressionType where Value: ExpressionType {
+    
 }
 
-extension Dictionary: SelfExpression where Value: ExpressionType {
-    public typealias ValueType = Dictionary
+extension Set: ExpressionType where Element: ExpressionType {
+    
 }
 
-extension Set: SelfExpression where Element: ExpressionType {
-    public typealias ValueType = Set
+extension Optional: ExpressionType where Wrapped: ExpressionType {
+    public typealias ValueType = Wrapped
 }

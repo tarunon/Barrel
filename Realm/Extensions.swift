@@ -11,16 +11,14 @@ import RealmSwift
 import Barrel
 
 extension Object: ExpressionType {
-    public typealias ValueType = Object
+    
 }
 
 extension List: ExpressionType, ManyType where Element: ExpressionType {
-    public typealias ValueType = List
     public typealias _ElementType = ExpressionWrapper<Element>
 }
 
 extension LinkingObjects: ExpressionType, ManyType where Element: ExpressionType {
-    public typealias ValueType = LinkingObjects
     public typealias _ElementType = ExpressionWrapper<Element>
 }
 

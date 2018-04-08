@@ -72,7 +72,7 @@ internal extension NSManagedObjectContext {
 }
 
 extension NSManagedObject: ExpressionType {
-    public typealias ValueType = NSManagedObject
+    
 }
 
 public struct Many<T: NSManagedObject>: ExpressionType, ManyType {

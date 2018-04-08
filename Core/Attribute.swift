@@ -37,10 +37,6 @@ public struct Attribute<T: ExpressionType>: AttributeType {
     }
 }
 
-extension Optional: ExpressionType where Wrapped: ExpressionType {
-    public typealias ValueType = Wrapped
-}
-
 @available(*, unavailable, renamed : "Attribute")
 public func storedAttribute<T: AttributeType>(_ name: String? = nil) -> T {
     fatalError()

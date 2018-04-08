@@ -142,13 +142,13 @@ extension AttributeType where SourceType: ManyType {
     }
 }
 
-extension AttributeType where ValueType: ExpressionType, SourceType == Optional<ValueType> {
+extension AttributeType where SourceType == Optional<ValueType> {
     public func isNull() -> ComparisonPredicate {
-        return ComparisonPredicate(lhs: self, rhs: Expression<SourceType>(NSExpression(forConstantValue: nil)), type: .equalTo, options: [])
+        return ComparisonPredicate(lhs: Expression(self), rhs: Expression<ValueType>(NSExpression(forConstantValue: nil)), type: .equalTo, options: [])
     }
     
     public func isNotNull() -> ComparisonPredicate {
-        return ComparisonPredicate(lhs: self, rhs: Expression<SourceType>(NSExpression(forConstantValue: nil)), type: .notEqualTo, options: [])
+        return ComparisonPredicate(lhs: Expression(self), rhs: Expression<ValueType>(NSExpression(forConstantValue: nil)), type: .notEqualTo, options: [])
     }
 }
 

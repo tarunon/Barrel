@@ -11,6 +11,7 @@
 		D20D20DE1F6CDF280029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFC1C488A59004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D20D20E21F6CDF860029ADF7 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FBFF1C488A60004D17EE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D20D20E31F6CDF860029ADF7 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBF7FC001C488A60004D17EE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2F6A55E2079AA8A00F73AD6 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EB8480611C488E9000437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7F9BA1C4885E1004D17EE /* Barrel.framework */; };
 		EB8480621C488E9400437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA5B1C4886CF004D17EE /* Barrel.framework */; };
 		EB8480631C488E9800437182 /* Barrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF7FA771C4886E0004D17EE /* Barrel.framework */; };
@@ -40,7 +41,6 @@
 		EBD35D841DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
 		EBD35D851DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
 		EBD35D861DE4245400E27F78 /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D6F1DE4245400E27F78 /* AttributeName.swift */; };
-		EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EBD35D881DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EBD35D891DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
 		EBD35D8A1DE4245400E27F78 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD35D701DE4245400E27F78 /* Predicate.swift */; };
@@ -1459,10 +1459,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBD35D8B1DE4245400E27F78 /* Protocols.swift in Sources */,
+				D2F6A55E2079AA8A00F73AD6 /* Predicate.swift in Sources */,
 				EBD35D831DE4245400E27F78 /* AttributeName.swift in Sources */,
 				EBD35D7B1DE4245400E27F78 /* Expression.swift in Sources */,
 				EBD35D731DE4245400E27F78 /* Attribute.swift in Sources */,
-				EBD35D871DE4245400E27F78 /* Predicate.swift in Sources */,
 				EBD35D8F1DE4245400E27F78 /* SortDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

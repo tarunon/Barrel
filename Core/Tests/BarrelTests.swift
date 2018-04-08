@@ -9,9 +9,7 @@
 import XCTest
 import Barrel
 
-struct TestModel: SelfExpression {
-    typealias ValueType = TestModel
-    
+struct TestModel: ExpressionType {
     var text: String = ""
     var number: Int = 0
     var array: [Int]
