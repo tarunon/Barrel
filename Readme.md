@@ -4,7 +4,7 @@
 
 A simple type-safe library for NSPredicate and NSExpresion.
 
-##Installation
+## Installation
 
 You can use Carthage to install Barrel by adding it to your Cartfile:
 
@@ -12,7 +12,7 @@ You can use Carthage to install Barrel by adding it to your Cartfile:
 github "tarunon/Barrel"
 ```
 
-##Summary
+## Summary
 
 Extend your class/struct A and AttributeType like.
 ```swift
@@ -104,8 +104,8 @@ extension AttributeType where ValueType: SomeClass {
 }
 ```
 
-## for Swift3.x
-[Version 4.0.1](https://github.com/tarunon/Barrel/releases/tag/4.0.1) supports Swift3.
+## for Swift 3.x
+[Version 4.0.1](https://github.com/tarunon/Barrel/releases/tag/4.0.1) supports Swift 3.
 
 ## LISENSE
 MIT
